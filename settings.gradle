@@ -1,5 +1,4 @@
 rootProject.name = 'root'
 include 'qx-config'
 include 'qx-api'
-include 'qx-dao'
 
