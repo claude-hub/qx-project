@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration // 配置注解
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:com/qianxun/application.yml")
 @ComponentScan
 @AutoConfigureBefore({FlywayAutoConfiguration.class})
 @ImportAutoConfiguration({FlywayAutoConfiguration.class, DataSourceAutoConfiguration.class})
