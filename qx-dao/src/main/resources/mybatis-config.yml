@@ -1,0 +1,3 @@
+mybatis:
+  # 指定sql映射文件位置
+  mapper-locations: classpath:com.qianxun.dao.mapper/*.xml

@@ -1,0 +1,18 @@
+group 'com.qianxun'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile DRUID
+    compile JDBC_STARTER
+    compile MYSQL_COMMECTOR
+    compile MYBATIS_STARTER
+    compile project(":qx-entity")
+}

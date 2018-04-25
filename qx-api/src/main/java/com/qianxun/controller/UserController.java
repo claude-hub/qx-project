@@ -1,7 +1,9 @@
 package com.qianxun.controller;
 
-import com.qianxun.bean.User;
-import com.qianxun.mapper.UserMapper;
+import com.qianxun.BeanMapper;
+import com.qianxun.dto.*;
+import com.qianxun.service.UserService;
+import com.qianxun.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,37 +14,43 @@ import java.util.List;
 @RestController
 public class UserController {
 
-    @Autowired
-    UserMapper userMapper;
+    private final UserService userService;
 
-    //@RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
-    @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable("id") Integer id) {
-        User user = userMapper.getUserById(id);
+    @Autowired
+    public UserController(UserService userService){
+        this.userService = userService;
+    }
+
+
+    @GetMapping("/user")
+    public User getUserById(UserSearchByIdDTO input) {
+        User user = userService.getUserById(input.getId());
         return user;
     }
 
     @GetMapping("/allUser")
     public List<User> getAllUser() {
-        List<User> allUser = userMapper.getAllUser();
+        List<User> allUser = userService.getAllUser();
         return allUser;
     }
 
     @PostMapping("/addUser")
-    public User addUser(User user) {
-        userMapper.addUser(user);
+    public User addUser(UserAddDTO input) {
+        User user = BeanMapper.map(input, User.class);
+        userService.addUser(user);
         return user;
     }
 
     @PutMapping("/updateUser")
-    public User updateUser(User user) {
-        userMapper.updateUser(user);
+    public User updateUser(UserEditDTO input) {
+        User user = BeanMapper.map(input, User.class);
+        userService.updateUser(user);
         return user;
     }
 
-    @DeleteMapping("/deleteUser/{id}")
-    public int deleteUser(@PathVariable("id") Integer id) {
-        userMapper.deleteUser(id);
-        return id;
+    @DeleteMapping("/deleteUser")
+    public boolean deleteUser(UserDeleteDTO input) {
+        boolean succes = userService.deleteUser(input.getId());
+        return succes;
     }
 }

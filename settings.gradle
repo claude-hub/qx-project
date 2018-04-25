@@ -1,4 +1,8 @@
 rootProject.name = 'root'
-include 'qx-config'
+include 'qx-utils'
 include 'qx-api'
+include 'qx-dao'
+include 'qx-service'
+include 'qx-service-impl'
+include 'qx-entity'
 

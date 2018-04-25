@@ -30,12 +30,12 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('org.springframework.boot:spring-boot-starter-web')
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    compile DRUID
-    compile JDBC_STARTER
-    compile MYSQL_COMMECTOR
-    compile MYBATIS_STARTER
+
     compile SWAGGER_UI
     compile SWAGGER_CORE
 
-    compile project(':qx-config')
+    compile project(':qx-utils')
+    compile project(':qx-entity')
+    compile project(':qx-service')
+    compile project(':qx-service-impl')
 }

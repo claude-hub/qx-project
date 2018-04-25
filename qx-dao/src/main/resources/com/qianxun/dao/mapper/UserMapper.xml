@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxun.dao.mapper.UserMapper">
+
+    <select id="selectByPrimaryKey" resultType="com.qianxun.entity.User">
+        SELECT * FROM `user` WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.qianxun.entity.User">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        INSERT INTO `user`(name) VALUES (#{name})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="com.qianxun.entity.User">
+        UPDATE `user` SET NAME = #{name} WHERE id = #{id}
+    </update>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        DELETE FROM `user` WHERE id = #{id}
+    </delete>
+
+    <resultMap id="ResultMapCommon" type="com.qianxun.entity.User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+    </resultMap>
+    <select id="selectAllUser" resultMap="ResultMapCommon">
+        SELECT * FROM `user`
+    </select>
+
+</mapper>
