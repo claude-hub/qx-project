@@ -16,7 +16,7 @@
 
 #### 参与贡献
 
-### git,tag版本管理
+#### git,tag版本管理
 [中文文档](/https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE)
 ~~~
 
@@ -33,3 +33,7 @@ git tag -d <tagname>可以删除一个本地标签
 git push origin :refs/tags/<tagname> 可以删除一个远程标签
 
 ~~~
+
+#### MyBatis Generator生成model,dao,mapper
+
+请参考博客[springboot-gradle + mybatis-generator-plugin](/https://blog.csdn.net/inke88/article/details/74766432)

@@ -2,11 +2,19 @@ group 'com.qianxun'
 version '1.0.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: "com.arenagod.gradle.MybatisGenerator"
 
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
+    }
 }
 
 dependencies {
@@ -15,4 +23,13 @@ dependencies {
     compile MYSQL_COMMECTOR
     compile MYBATIS_STARTER
     compile project(":qx-entity")
+}
+
+configurations {
+    mybatisGenerator
+}
+
+mybatisGenerator {
+    verbose = true
+    configFile = 'src/main/resources/generatorConfig.xml'
 }
