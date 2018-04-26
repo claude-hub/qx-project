@@ -1,4 +1,4 @@
-package com.qianxun;
+package com.qianxun.utils;
 
 import org.dozer.DozerBeanMapperBuilder;
 import org.dozer.Mapper;

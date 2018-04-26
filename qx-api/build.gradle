@@ -34,7 +34,7 @@ dependencies {
     compile SWAGGER_UI
     compile SWAGGER_CORE
 
-    compile project(':qx-utils')
+    compile project(':qx-global')
     compile project(':qx-entity')
     compile project(':qx-service')
     compile project(':qx-service-impl')

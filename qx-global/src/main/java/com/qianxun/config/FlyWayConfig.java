@@ -1,4 +1,4 @@
-package com.qianxun;
+package com.qianxun.config;
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration // 配置注解
-@PropertySource("classpath:com/qianxun/db/application.yml")
+@PropertySource("classpath:global-config.yml")
 @ComponentScan
 @AutoConfigureBefore({FlywayAutoConfiguration.class})
 @ImportAutoConfiguration({FlywayAutoConfiguration.class, DataSourceAutoConfiguration.class})

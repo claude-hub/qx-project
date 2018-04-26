@@ -1,6 +1,6 @@
 package com.qianxun.controller;
 
-import com.qianxun.BeanMapper;
+import com.qianxun.utils.BeanMapper;
 import com.qianxun.dto.*;
 import com.qianxun.service.UserService;
 import com.qianxun.entity.User;
