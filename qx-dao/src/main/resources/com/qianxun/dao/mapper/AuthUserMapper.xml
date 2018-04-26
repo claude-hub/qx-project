@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxun.dao.mapper.AuthUserMapper">
+  <resultMap id="BaseResultMap" type="com.qianxun.entity.AuthUser">
+    <constructor>
+      <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="username" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="email" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="password_encrypted" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="identification" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reset_password_token" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="reset_password_sent_at" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="sign_in_count" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="current_sign_in_at" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="last_sign_in_at" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="current_token" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from auth_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianxun.entity.AuthUser">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into auth_user (name, username, phone, 
+      email, password_encrypted, identification, 
+      reset_password_token, reset_password_sent_at, 
+      sign_in_count, current_sign_in_at, last_sign_in_at, 
+      created_at, updated_at, current_token
+      )
+    values (#{name,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{passwordEncrypted,jdbcType=VARCHAR}, #{identification,jdbcType=VARCHAR}, 
+      #{resetPasswordToken,jdbcType=VARCHAR}, #{resetPasswordSentAt,jdbcType=TIMESTAMP}, 
+      #{signInCount,jdbcType=INTEGER}, #{currentSignInAt,jdbcType=TIMESTAMP}, #{lastSignInAt,jdbcType=TIMESTAMP}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{currentToken,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.qianxun.entity.AuthUser">
+    update auth_user
+    set name = #{name,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      password_encrypted = #{passwordEncrypted,jdbcType=VARCHAR},
+      identification = #{identification,jdbcType=VARCHAR},
+      reset_password_token = #{resetPasswordToken,jdbcType=VARCHAR},
+      reset_password_sent_at = #{resetPasswordSentAt,jdbcType=TIMESTAMP},
+      sign_in_count = #{signInCount,jdbcType=INTEGER},
+      current_sign_in_at = #{currentSignInAt,jdbcType=TIMESTAMP},
+      last_sign_in_at = #{lastSignInAt,jdbcType=TIMESTAMP},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      current_token = #{currentToken,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, username, phone, email, password_encrypted, identification, reset_password_token, 
+    reset_password_sent_at, sign_in_count, current_sign_in_at, last_sign_in_at, created_at, 
+    updated_at, current_token
+    from auth_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, name, username, phone, email, password_encrypted, identification, reset_password_token, 
+    reset_password_sent_at, sign_in_count, current_sign_in_at, last_sign_in_at, created_at, 
+    updated_at, current_token
+    from auth_user
+  </select>
+</mapper>

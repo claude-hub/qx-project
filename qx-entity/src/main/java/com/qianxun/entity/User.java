@@ -1,9 +1,18 @@
 package com.qianxun.entity;
 
 public class User {
-
     private Integer id;
+
     private String name;
+
+    public User(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public User() {
+        super();
+    }
 
     public Integer getId() {
         return id;
@@ -18,6 +27,6 @@ public class User {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 }
