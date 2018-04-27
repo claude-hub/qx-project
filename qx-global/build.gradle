@@ -16,6 +16,10 @@ ext {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile FLYWAY
+
+    //阿里云短信验证码
+    compile ALIYUN_JAVA_SDK_CORE
+    compile ALIYUN_JAVA_SDK_DYSMSAPI
     compile "com.github.dozermapper:dozer-core:6.1.0"
     compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
 }
