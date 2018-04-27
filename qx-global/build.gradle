@@ -5,8 +5,11 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
-repositories {
-    mavenCentral()
+buildscript {
+    repositories {
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+    }
 }
 
 ext {
@@ -20,7 +23,7 @@ dependencies {
     //阿里云短信验证码
     compile ALIYUN_JAVA_SDK_CORE
     compile ALIYUN_JAVA_SDK_DYSMSAPI
+
     compile "com.github.dozermapper:dozer-core:6.1.0"
     compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
 }
-
