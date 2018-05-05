@@ -4,6 +4,7 @@ import com.qianxun.utils.BeanMapper;
 import com.qianxun.dto.*;
 import com.qianxun.service.UserService;
 import com.qianxun.entity.User;
+import com.qianxun.utils.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,9 +30,11 @@ public class UserController {
     }
 
     @GetMapping("/allUser")
-    public List<User> getAllUser() {
+    public JSONResult getAllUser() {
+        JSONResult<List<User>> jsonResult = new JSONResult<>();
         List<User> allUser = userService.getAllUser();
-        return allUser;
+        jsonResult.setData(allUser);
+        return jsonResult;
     }
 
     @PostMapping("/addUser")
@@ -50,7 +53,6 @@ public class UserController {
 
     @DeleteMapping("/deleteUser")
     public boolean deleteUser(UserDeleteDTO input) {
-        boolean succes = userService.deleteUser(input.getId());
-        return succes;
+        return userService.deleteUser(input.getId());
     }
 }

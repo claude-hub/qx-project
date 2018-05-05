@@ -1,3 +1,4 @@
+#数据库相关配置
 spring:
   datasource:
     url: ${MYSQL_URL:}
@@ -6,3 +7,9 @@ spring:
     #使用阿里的druid数据源
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+#阿里云短信验证码配置
+sms:
+  accessKeyId: ${ACCESS_KEY_ID:}
+  accessKeySecret: ${ACCESS_KEY_SECRET:}
+  signName: ${SING_NAME:}
+  templateCode: ${TEMPLATE_CODE:}

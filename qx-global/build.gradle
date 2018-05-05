@@ -24,6 +24,8 @@ dependencies {
     compile ALIYUN_JAVA_SDK_CORE
     compile ALIYUN_JAVA_SDK_DYSMSAPI
 
+    compile SWAGGER_CORE
+
     compile "com.github.dozermapper:dozer-core:6.1.0"
     compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
 }
