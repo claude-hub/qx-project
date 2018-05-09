@@ -1,5 +1,6 @@
-package com.qianxun.controller;
+package com.qianxun.controller.basic;
 
+import com.qianxun.controller.BaseController;
 import com.qianxun.utils.BeanMapper;
 import com.qianxun.dto.*;
 import com.qianxun.service.UserService;
@@ -13,7 +14,7 @@ import java.util.List;
 //@ResponseBody
 //@Controller
 @RestController
-public class UserController {
+public class UserController extends BaseController {
 
     private final UserService userService;
 
@@ -54,5 +55,10 @@ public class UserController {
     @DeleteMapping("/deleteUser")
     public boolean deleteUser(UserDeleteDTO input) {
         return userService.deleteUser(input.getId());
+    }
+
+    @GetMapping("/currentUser")
+    public User currentUser(){
+        return getCurrentUser();
     }
 }
