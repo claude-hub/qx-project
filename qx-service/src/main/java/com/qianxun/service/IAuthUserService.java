@@ -2,6 +2,6 @@ package com.qianxun.service;
 
 import com.qianxun.entity.AuthUser;
 
-public interface  AuthUserService {
+public interface IAuthUserService {
     AuthUser singIn(String loginStr, String password);
 }
