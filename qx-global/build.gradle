@@ -18,12 +18,14 @@ ext {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    //生成数据库
     compile FLYWAY
 
     //阿里云短信验证码
     compile ALIYUN_JAVA_SDK_CORE
     compile ALIYUN_JAVA_SDK_DYSMSAPI
 
+    //支持@ApiModelProperty注解
     compile SWAGGER_CORE
 
     compile "com.github.dozermapper:dozer-core:6.1.0"

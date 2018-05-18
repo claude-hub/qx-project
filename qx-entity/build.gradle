@@ -11,3 +11,9 @@ buildscript {
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
     }
 }
+dependencies {
+    //支持@ApiModelProperty注解
+    compile SWAGGER_CORE
+    //支持@NotBlank注解
+    compile HIBERNATE_VALIDATION
+}
