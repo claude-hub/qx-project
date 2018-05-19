@@ -5,16 +5,14 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
-allprojects {
+buildscript {
     repositories {
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
     }
+}
+dependencies {
+    compile SPRING_WEB
 
-    apply plugin: 'idea'
-    idea {
-        module {
-            inheritOutputDirs = true
-        }
-    }
+    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
