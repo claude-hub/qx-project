@@ -1,28 +1,7 @@
-group 'com.qianxun'
-version '1.0.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-ext {
-    springBootVersion = SPRING_BOOT_VERSION
-}
-
-repositories {
-    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-    maven { url "https://repo.spring.io/milestone" }
-}
-
 dependencies {
-    //生成数据库
-    compile FLYWAY
-    compile DRUID
-    compile MYSQL_COMMECTOR
-    compile MYBATIS_STARTER
-
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-
-    compile("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
+    compile rootProject.ext.dependencies["flyway-core"]
+    compile rootProject.ext.dependencies["druid"]
+    compile rootProject.ext.dependencies["mybatis-starter"]
+    compile rootProject.ext.dependencies["mysql-connector"]
+    compile rootProject.ext.dependencies["spring-boot-autoconfigure"]
 }

@@ -1,0 +1,6 @@
+dependencies {
+    compile rootProject.ext.dependencies["mybatis-plus"]
+    compile rootProject.ext.dependencies["mysql-connector"]
+    compile rootProject.ext.dependencies["jdbc-starter"]
+    compile rootProject.ext.dependencies["velocity"]
+}

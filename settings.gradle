@@ -15,4 +15,7 @@ findProject(':qx-admin:admin-entity')?.name = 'admin-entity'
 include 'qx-utils'
 include 'qx-utils:qx-flyway'
 findProject(':qx-utils:qx-flyway')?.name = 'qx-flyway'
-
+include 'qx-utils:qx-generator'
+findProject(':qx-utils:qx-generator')?.name = 'qx-generator'
+include 'qx-utils:custom-utils'
+findProject(':qx-utils:custom-utils')?.name = 'custom-utils'
