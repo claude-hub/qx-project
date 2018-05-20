@@ -17,7 +17,7 @@
 #### 参与贡献
 
 ### git,tag版本管理
-[中文文档](https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE){:target="_blank"}
+[中文文档](https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE)
 ~~~
 git tag 查看全部tag
 
