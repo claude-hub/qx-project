@@ -12,5 +12,5 @@ repositories {
 }
 
 dependencies {
-
+    compile project(":qx-utils:qx-flyway")
 }

@@ -35,4 +35,5 @@ dependencies {
 
     compile project(":qx-admin")
     compile project(":qx-weixin")
+    compile project(":qx-utils")
 }

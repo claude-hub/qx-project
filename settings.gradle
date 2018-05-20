@@ -12,4 +12,7 @@ include 'qx-admin:admin-service-impl'
 findProject(':qx-admin:admin-service-impl')?.name = 'admin-service-impl'
 include 'qx-admin:admin-entity'
 findProject(':qx-admin:admin-entity')?.name = 'admin-entity'
+include 'qx-utils'
+include 'qx-utils:qx-flyway'
+findProject(':qx-utils:qx-flyway')?.name = 'qx-flyway'
 
