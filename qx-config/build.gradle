@@ -1,0 +1,5 @@
+dependencies {
+    compile rootProject.ext.dependencies["spring-boot-autoconfigure"]
+    compile rootProject.ext.dependencies["swagger2"]
+    compile rootProject.ext.dependencies["swagger-ui"]
+}

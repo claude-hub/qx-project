@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxun.mapper.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.qianxun.entity.SysUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password_encrypted" jdbcType="VARCHAR" property="passwordEncrypted" />
+    <result column="identification" jdbcType="VARCHAR" property="identification" />
+    <result column="reset_password_token" jdbcType="VARCHAR" property="resetPasswordToken" />
+    <result column="reset_password_sent_at" jdbcType="TIMESTAMP" property="resetPasswordSentAt" />
+    <result column="sign_in_count" jdbcType="INTEGER" property="signInCount" />
+    <result column="current_sign_in_at" jdbcType="TIMESTAMP" property="currentSignInAt" />
+    <result column="last_sign_in_at" jdbcType="TIMESTAMP" property="lastSignInAt" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="current_token" jdbcType="VARCHAR" property="currentToken" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, username, phone, email, password_encrypted, identification, reset_password_token, 
+    reset_password_sent_at, sign_in_count, current_sign_in_at, last_sign_in_at, created_at, 
+    updated_at, current_token
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianxun.entity.SysUser">
+    insert into sys_user (id, name, username, 
+      phone, email, password_encrypted, 
+      identification, reset_password_token, reset_password_sent_at, 
+      sign_in_count, current_sign_in_at, last_sign_in_at, 
+      created_at, updated_at, current_token
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{passwordEncrypted,jdbcType=VARCHAR}, 
+      #{identification,jdbcType=VARCHAR}, #{resetPasswordToken,jdbcType=VARCHAR}, #{resetPasswordSentAt,jdbcType=TIMESTAMP}, 
+      #{signInCount,jdbcType=INTEGER}, #{currentSignInAt,jdbcType=TIMESTAMP}, #{lastSignInAt,jdbcType=TIMESTAMP}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{currentToken,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianxun.entity.SysUser">
+    insert into sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="passwordEncrypted != null">
+        password_encrypted,
+      </if>
+      <if test="identification != null">
+        identification,
+      </if>
+      <if test="resetPasswordToken != null">
+        reset_password_token,
+      </if>
+      <if test="resetPasswordSentAt != null">
+        reset_password_sent_at,
+      </if>
+      <if test="signInCount != null">
+        sign_in_count,
+      </if>
+      <if test="currentSignInAt != null">
+        current_sign_in_at,
+      </if>
+      <if test="lastSignInAt != null">
+        last_sign_in_at,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="currentToken != null">
+        current_token,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordEncrypted != null">
+        #{passwordEncrypted,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="resetPasswordToken != null">
+        #{resetPasswordToken,jdbcType=VARCHAR},
+      </if>
+      <if test="resetPasswordSentAt != null">
+        #{resetPasswordSentAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signInCount != null">
+        #{signInCount,jdbcType=INTEGER},
+      </if>
+      <if test="currentSignInAt != null">
+        #{currentSignInAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastSignInAt != null">
+        #{lastSignInAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="currentToken != null">
+        #{currentToken,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianxun.entity.SysUser">
+    update sys_user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="passwordEncrypted != null">
+        password_encrypted = #{passwordEncrypted,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null">
+        identification = #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="resetPasswordToken != null">
+        reset_password_token = #{resetPasswordToken,jdbcType=VARCHAR},
+      </if>
+      <if test="resetPasswordSentAt != null">
+        reset_password_sent_at = #{resetPasswordSentAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="signInCount != null">
+        sign_in_count = #{signInCount,jdbcType=INTEGER},
+      </if>
+      <if test="currentSignInAt != null">
+        current_sign_in_at = #{currentSignInAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastSignInAt != null">
+        last_sign_in_at = #{lastSignInAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="currentToken != null">
+        current_token = #{currentToken,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianxun.entity.SysUser">
+    update sys_user
+    set name = #{name,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      password_encrypted = #{passwordEncrypted,jdbcType=VARCHAR},
+      identification = #{identification,jdbcType=VARCHAR},
+      reset_password_token = #{resetPasswordToken,jdbcType=VARCHAR},
+      reset_password_sent_at = #{resetPasswordSentAt,jdbcType=TIMESTAMP},
+      sign_in_count = #{signInCount,jdbcType=INTEGER},
+      current_sign_in_at = #{currentSignInAt,jdbcType=TIMESTAMP},
+      last_sign_in_at = #{lastSignInAt,jdbcType=TIMESTAMP},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      current_token = #{currentToken,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

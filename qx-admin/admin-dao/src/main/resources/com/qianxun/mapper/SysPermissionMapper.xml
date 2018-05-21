@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxun.mapper.SysPermissionMapper">
+  <resultMap id="BaseResultMap" type="com.qianxun.entity.SysPermission">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="module" jdbcType="INTEGER" property="module" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="key" jdbcType="VARCHAR" property="key" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, module, description, key
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_permission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_permission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qianxun.entity.SysPermission">
+    insert into sys_permission (id, name, module, 
+      description, key)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{module,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qianxun.entity.SysPermission">
+    insert into sys_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="module != null">
+        module,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="key != null">
+        key,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="module != null">
+        #{module,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qianxun.entity.SysPermission">
+    update sys_permission
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="module != null">
+        module = #{module,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qianxun.entity.SysPermission">
+    update sys_permission
+    set name = #{name,jdbcType=VARCHAR},
+      module = #{module,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      key = #{key,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

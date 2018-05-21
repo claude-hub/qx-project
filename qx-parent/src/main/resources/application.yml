@@ -1,4 +1,12 @@
-#数据库相关配置
+################### qx配置  ###################
+qianxun:
+  swagger-open: true #是否开启swagger (true/false)
+
+###################  项目启动端口  ###################
+server:
+  port: 8080
+
+###################  spring配置  ###################
 spring:
   datasource:
     url: ${MYSQL_URL:}
