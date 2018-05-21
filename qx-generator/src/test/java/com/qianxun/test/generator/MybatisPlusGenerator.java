@@ -15,7 +15,10 @@ import org.junit.Test;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GeneratorServiceEntity {
+public class MybatisPlusGenerator {
+    private final String URL = "jdbc:mysql://123.207.242.177:3306/qianxun_dev";
+    private String USERNAME = "root";
+    private String PASSWORD = "";
     @Test
     public void entityGenerator() {
         AutoGenerator mpg = new AutoGenerator();
@@ -42,9 +45,9 @@ public class GeneratorServiceEntity {
             }
         });
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("");
-        dsc.setUrl("jdbc:mysql://localhost:3306/qianxun_dev");
+        dsc.setUsername(USERNAME);
+        dsc.setPassword(PASSWORD);
+        dsc.setUrl(URL);
         mpg.setDataSource(dsc);
 
         // 策略配置

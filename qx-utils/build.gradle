@@ -1,5 +1,4 @@
 dependencies {
     compile project(":qx-utils:qx-flyway")
-    compile project(":qx-utils:qx-generator")
     compile project(":qx-utils:custom-utils")
 }
