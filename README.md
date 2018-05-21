@@ -31,3 +31,10 @@ git tag -d <tagname>可以删除一个本地标签
 
 git push origin :refs/tags/<tagname> 可以删除一个远程标签
 ~~~
+
+### generator-plus
+修改并运行qx-generator下的test，MybatisPlusGenerator，数据库密码
+
+### mybatis-generator
+修改qx-admin\admin-dao\src\main\resources\generatorConfig.xml,数据库密码
+运行Gradle里面的:qx-admin:admin-dao,Tasks.other.mbGenerator
