@@ -1,6 +1,7 @@
 package com.qianxun.mapper;
 
 import com.qianxun.entity.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 public interface SysUserMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +15,7 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    int columnStrExists(@Param("columnName") String columnName, @Param("value") String value);
+
 }

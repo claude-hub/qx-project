@@ -1,3 +1,4 @@
 dependencies {
+    compile rootProject.ext.dependencies["mybatis-starter"]
     compile project(":qx-admin:admin-entity")
 }

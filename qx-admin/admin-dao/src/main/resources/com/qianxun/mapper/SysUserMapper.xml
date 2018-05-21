@@ -210,4 +210,9 @@
       current_token = #{currentToken,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="columnStrExists" resultType="java.lang.Integer">
+    SELECT count(*) AS `count`
+    FROM sys_user
+    WHERE ${columnName} = #{value}
+  </select>
 </mapper>

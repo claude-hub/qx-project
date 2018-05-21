@@ -1,3 +1,6 @@
 dependencies {
-
+    compile project(":qx-admin:admin-entity")
+    compile project(":qx-admin:admin-service")
+    compile project(":qx-admin:admin-dao")
+    compile project(":qx-utils")
 }

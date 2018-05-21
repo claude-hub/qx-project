@@ -10,6 +10,9 @@ ext {
             "jdbc-starter"             : "org.springframework.boot:spring-boot-starter-jdbc:${spring_boot_version}",
             "swagger2"                 : "io.springfox:springfox-swagger2:${swagger_version}",
             "swagger-ui"               : "io.springfox:springfox-swagger-ui:${swagger_version}",
+            "hibernate-validator"      : "org.hibernate:hibernate-validator:${hibernate_validator_version}",
+            "dozer-core"               : "com.github.dozermapper:dozer-core:${dozer_core_version}",
+            "shiro-core"               : "org.apache.shiro:shiro-core:${shiro_core_version}",
     ]
 }
 allprojects {

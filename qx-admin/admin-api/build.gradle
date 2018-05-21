@@ -1,3 +1,8 @@
 dependencies {
     compile rootProject.ext.dependencies["spring-boot-starter-web"]
+    compile project(":qx-utils")
+    compile project(":qx-admin:admin-entity")
+    compile project(":qx-admin:admin-dao")
+    compile project(":qx-admin:admin-service")
+    compile project(":qx-admin:admin-service-impl")
 }

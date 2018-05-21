@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
-@Import(FlyWayConfig.class)
+@Import({FlyWayConfig.class})
 @SpringBootApplication
-@ComponentScan("com.qianxun")//包名
+@ComponentScan(basePackages = "com.qianxun")//包名
 public class QianXunStartApplication {
 
 	public static void main(String[] args) {

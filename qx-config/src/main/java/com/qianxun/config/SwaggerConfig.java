@@ -34,8 +34,6 @@ public class SwaggerConfig{
         return new ApiInfoBuilder()
                 .title("QianXun Doc")
                 .description("QianXun Api文档")
-                .termsOfServiceUrl("https://gitee.com/cloudyscode/qx-project")
-                .contact("cloudy")
                 .version("1.0")
                 .build();
     }
