@@ -45,13 +45,13 @@ public class JSONResult<T> {
      * 当前页
      */
     @ApiModelProperty(value = "当前页", name = "page", dataType = "Integer")
-    private Integer page = 1;
+    private Integer page;
 
     /**
      * 分页大小
      */
     @ApiModelProperty(value = "分页大小", name = "pageSize", dataType = "Integer")
-    private Integer pageSize = 20;
+    private Integer pageSize;
 
     /**
      * 总记录数
@@ -86,12 +86,12 @@ public class JSONResult<T> {
         return message;
     }
 
-//    /**
-//     * 设置 消息
-//     */
-//    public void setMessage(Object message) {
-//        this.message = message;
-//    }
+    /**
+     * 设置 消息
+     */
+    public void setMessage(Object message) {
+        this.message = message;
+    }
 
     /**
      * 设置 消息

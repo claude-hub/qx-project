@@ -8,14 +8,9 @@ public interface SysUserMapper {
 
     int insert(SysUser record);
 
-    int insertSelective(SysUser record);
-
     SysUser selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
 
     int columnStrExists(@Param("columnName") String columnName, @Param("value") String value);
-
 }

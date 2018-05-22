@@ -1,4 +1,5 @@
 dependencies {
+    compile rootProject.ext.dependencies["spring-boot-starter-web"]
     compile rootProject.ext.dependencies["shiro-core"]
     compile rootProject.ext.dependencies["dozer-core"]
     compile rootProject.ext.dependencies["swagger2"]

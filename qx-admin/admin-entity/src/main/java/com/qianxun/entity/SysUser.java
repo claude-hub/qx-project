@@ -11,57 +11,57 @@ public class SysUser implements Serializable {
     private Integer id;
 
     /**
-     * 姓名.
+     * 姓名
      */
     private String name;
 
     /**
-     * 用户名.
+     * 用户名
      */
-    private String username;
+    private String userName;
 
     /**
-     * 电话.
+     * 电话
      */
     private String phone;
 
     /**
-     * 电子邮件.
+     * 电子邮件
      */
     private String email;
 
     /**
-     * 加密后的密码.
+     * 加密后的密码
      */
     private String passwordEncrypted;
 
     /**
-     * 身份证.
+     * 身份证
      */
     private String identification;
 
     /**
-     * 重置密码的令牌.
+     * 重置密码的令牌
      */
     private String resetPasswordToken;
 
     /**
-     * 令牌生成时间.
+     * 令牌生成时间
      */
     private Date resetPasswordSentAt;
 
     /**
-     * 累积登录次数.
+     * 累积登录次数
      */
     private Integer signInCount;
 
     /**
-     * 当前登录时间.
+     * 当前登录时间
      */
     private Date currentSignInAt;
 
     /**
-     * 上一次登录时间.
+     * 上一次登录时间
      */
     private Date lastSignInAt;
 
@@ -92,12 +92,12 @@ public class SysUser implements Serializable {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPhone() {
