@@ -6,13 +6,13 @@ import com.qianxun.service.ISysUserService;
 import com.qianxun.utils.BeanMapper;
 import com.qianxun.utils.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping(value = "admin")
 public class AdminController extends BaseController{
     private final ISysUserService iSysUserService;
 
@@ -34,8 +34,12 @@ public class AdminController extends BaseController{
      * 添加管理员
      */
     @PostMapping("/add")
-    public JSONResult createSysUser(@Valid SysUserFormInputDTO input){
+    public JSONResult createSysUser(@Valid @ModelAttribute SysUserFormInputDTO input,BindingResult bindingResult){
         JSONResult data = new JSONResult();
+        if(bindingResult.hasErrors()){
+            data.setData(bindingResult.getFieldError().getDefaultMessage());
+            return data;
+        }
         SysUser sysUser = BeanMapper.map(input,SysUser.class);
         data.setData(iSysUserService.addSysUser(sysUser,input.getPassword()));
         return data;

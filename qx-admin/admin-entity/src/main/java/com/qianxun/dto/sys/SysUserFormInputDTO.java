@@ -7,22 +7,22 @@ import java.util.List;
 
 public class SysUserFormInputDTO {
     @NotBlank(message = "姓名不能为空")
-    @ApiModelProperty(value = "姓名")
+    @ApiModelProperty(value = "姓名", required = true)
     private String name;
 
-    @NotBlank(message = "用户名不能为空")
+    @NotBlank(message = "电话不能为空")
+    @ApiModelProperty(value = "电话", required = true)
+    private String phone;
+
+    @NotBlank(message = "密码不能为空")
+    @ApiModelProperty(value = "密码", required = true)
+    private String password;
+
     @ApiModelProperty(value = "用户名")
     private String userName;
 
-    @NotBlank(message = "密码不能为空")
-    @ApiModelProperty(value = "密码")
-    private String password;
-
     @ApiModelProperty(value = "电子邮件")
     private String email;
-
-    @ApiModelProperty(value = "电话")
-    private String phone;
 
     @ApiModelProperty(value = "身份证")
     private String identification;

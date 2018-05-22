@@ -20,8 +20,8 @@ public class SysUserServiceImpl implements ISysUserService {
 
     @Override
     public Boolean addSysUser(SysUser sysUser, String password) {
-        // 判断账号是否重复
-        int columnStrExists = sysUserMapper.columnStrExists("email",sysUser.getEmail());
+        // 判断电话是否重复
+        int columnStrExists = sysUserMapper.columnStrExists("phone",sysUser.getPhone());
         if (columnStrExists > 0) {
 
         }
