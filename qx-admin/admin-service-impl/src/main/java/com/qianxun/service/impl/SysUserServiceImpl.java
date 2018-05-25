@@ -26,10 +26,9 @@ public class SysUserServiceImpl implements ISysUserService {
         }
         // 完善账号信息
         String salt = ShiroKit.getRandomSalt(5);
+        sysUser.setPasswordSalt(salt);
         String passwordEncrypted = ShiroKit.md5(password, salt);
         sysUser.setPasswordEncrypted(passwordEncrypted);
-        //设置登录次数为0
-        sysUser.setSignInCount(0);
 
         return  sysUserMapper.insert(sysUser) > 0;
     }
