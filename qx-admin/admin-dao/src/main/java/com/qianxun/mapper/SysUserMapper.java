@@ -13,4 +13,6 @@ public interface SysUserMapper {
     int updateByPrimaryKey(SysUser record);
 
     int columnStrExists(@Param("columnName") String columnName, @Param("value") String value);
+
+    SysUser selectByLoginStr(@Param("loginStr") String loginStr);
 }

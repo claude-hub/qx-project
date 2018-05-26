@@ -1,7 +1,6 @@
 package com.qianxun.utils.exception;
 
 import com.qianxun.utils.JSONResult;
-import com.qianxun.utils.phone.PhoneHelper;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
@@ -105,20 +104,4 @@ public class GlobalExceptionHandler {
         jsonResult.setMessage(e.getMessage());
         return jsonResult;
     }
-
-//    /**
-//     * 处理所有业务异常
-//     *
-//     * @param e
-//     * @return
-//     */
-//    @ExceptionHandler(NoSuchMessageException.class)
-//    @ResponseBody
-//    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-//    JSONResult handleNoSuchMessageException(NoSuchMessageException e) {
-//        String errCode = "0";
-//        String message = "服务异常 NoSuchMessageException";
-//
-//        return new JSONResult<HashMap>(errCode, message);
-//    }
 }
