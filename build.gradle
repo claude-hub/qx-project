@@ -13,7 +13,8 @@ ext {
             "hibernate-validator"         : "org.hibernate:hibernate-validator:${hibernate_validator_version}",
             "dozer-core"                  : "com.github.dozermapper:dozer-core:${dozer_core_version}",
             "shiro-core"                  : "org.apache.shiro:shiro-core:${shiro_core_version}",
-            "spring-boot-starter-security": "org.springframework.boot:spring-boot-starter-security:${spring_boot_version}"
+            "spring-boot-starter-security": "org.springframework.boot:spring-boot-starter-security:${spring_boot_version}",
+            "jjwt"                        : "io.jsonwebtoken:jjwt:${jjwt_version}",
     ]
 }
 allprojects {
