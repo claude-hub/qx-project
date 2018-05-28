@@ -11,7 +11,7 @@
  Target Server Version : 50722
  File Encoding         : 65001
 
- Date: 25/05/2018 19:39:16
+ Date: 28/05/2018 17:59:20
 */
 
 SET FOREIGN_KEY_CHECKS = 0;
@@ -72,22 +72,21 @@ CREATE TABLE `sys_user`  (
   `phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '电话',
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电子邮件',
   `password_encrypted` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '加密后的密码',
-  `password_salt` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码盐',
   `status` int(11) NULL DEFAULT 0 COMMENT '状态(冻结、非冻结)',
   `identification` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '身份证',
   `reset_password_token` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '重置密码的令牌',
-  `reset_password_sent_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '令牌生成时间',
-  `sign_in_count` int(11) NULL DEFAULT 0 COMMENT '累积登录次数',
-  `current_sign_in_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '当前登录时间',
-  `last_sign_in_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '上一次登录时间',
-  `created_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `reset_password_sent_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '令牌生成时间',
+  `sign_in_count` int(11) NOT NULL DEFAULT 0 COMMENT '累积登录次数',
+  `current_sign_in_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '当前登录时间',
+  `last_sign_in_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上一次登录时间',
+  `created_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
   `current_token` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '当前的认证令牌',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `sys_user_phone_uindex`(`phone`) USING BTREE,
   UNIQUE INDEX `sys_user_username_uindex`(`user_name`) USING BTREE,
   UNIQUE INDEX `sys_user_email_uindex`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for sys_user_role

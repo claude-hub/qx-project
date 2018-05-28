@@ -37,11 +37,6 @@ public class SysUser implements Serializable {
     private String passwordEncrypted;
 
     /**
-     * 密码盐
-     */
-    private String passwordSalt;
-
-    /**
      * 状态(冻结、非冻结)
      */
     private Integer status;
@@ -139,14 +134,6 @@ public class SysUser implements Serializable {
 
     public void setPasswordEncrypted(String passwordEncrypted) {
         this.passwordEncrypted = passwordEncrypted;
-    }
-
-    public String getPasswordSalt() {
-        return passwordSalt;
-    }
-
-    public void setPasswordSalt(String passwordSalt) {
-        this.passwordSalt = passwordSalt;
     }
 
     public Integer getStatus() {
