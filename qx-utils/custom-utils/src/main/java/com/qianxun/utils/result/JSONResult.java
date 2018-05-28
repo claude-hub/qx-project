@@ -1,6 +1,7 @@
-package com.qianxun.utils;
+package com.qianxun.utils.result;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.qianxun.utils.message.Message;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

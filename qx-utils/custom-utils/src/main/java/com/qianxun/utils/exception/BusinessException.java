@@ -1,6 +1,6 @@
 package com.qianxun.utils.exception;
 
-import com.qianxun.utils.Message;
+import com.qianxun.utils.message.Message;
 
 public class BusinessException extends Exception {
 

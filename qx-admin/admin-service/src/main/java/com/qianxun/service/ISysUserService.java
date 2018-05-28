@@ -16,4 +16,6 @@ public interface ISysUserService {
      * @return 用户实体
      */
     SysUser signIn(String token);
+
+    SysUser getUser();
 }

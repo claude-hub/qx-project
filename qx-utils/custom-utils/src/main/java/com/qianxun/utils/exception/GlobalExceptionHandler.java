@@ -1,6 +1,6 @@
 package com.qianxun.utils.exception;
 
-import com.qianxun.utils.JSONResult;
+import com.qianxun.utils.result.JSONResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;

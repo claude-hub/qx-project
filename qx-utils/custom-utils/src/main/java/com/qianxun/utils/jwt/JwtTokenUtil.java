@@ -1,7 +1,7 @@
-package com.qianxun.admin.jwt.util;
+package com.qianxun.utils.jwt;
 
 
-import com.qianxun.admin.jwt.properties.JwtProperties;
+import com.qianxun.utils.properties.JwtProperties;
 import com.qianxun.utils.ToolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -110,6 +110,15 @@ public class JwtTokenUtil {
         Map<String, Object> claims = new HashMap<>();
         claims.put(jwtProperties.getMd5Key(), randomKey);
         return doGenerateToken(claims, userName);
+    }
+
+    /**
+     * 生成token(通过userid，phone生成)
+     */
+    public String generateToken(Integer id, String phone) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("id", id);
+        return doGenerateToken(claims, phone);
     }
 
     /**

@@ -1,4 +1,4 @@
-package com.qianxun.utils;
+package com.qianxun.utils.message;
 
 public class Message {
 

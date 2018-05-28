@@ -1,4 +1,4 @@
-package com.qianxun.utils;
+package com.qianxun.utils.message;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.MessageSource;

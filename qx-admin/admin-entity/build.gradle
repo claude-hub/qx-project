@@ -1,6 +1,3 @@
 dependencies {
-    //支持@ApiModelProperty注解
-    compile rootProject.ext.dependencies["swagger2"]
-    //支持@NotBlank注解
-    compile rootProject.ext.dependencies["hibernate-validator"]
+    compile project(":qx-utils")
 }

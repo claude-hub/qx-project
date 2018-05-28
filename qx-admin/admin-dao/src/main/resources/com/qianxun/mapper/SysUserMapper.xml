@@ -84,4 +84,20 @@
     WHERE user_name = #{loginStr} OR phone = #{loginStr} OR email = #{loginStr}
     LIMIT 1
   </select>
+  <update id="updateCol">
+    UPDATE sys_user
+    SET ${column} = #{value}
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateSignInAt" parameterType="java.lang.Integer">
+    UPDATE sys_user
+    SET last_sign_in_at = current_sign_in_at,
+    current_sign_in_at = current_timestamp()
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="increaseSignInCount" parameterType="java.lang.Integer">
+    UPDATE sys_user
+    SET sign_in_count = sign_in_count + 1
+    WHERE id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

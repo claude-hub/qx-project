@@ -1,11 +1,12 @@
 package com.qianxun.dto.sys;
 
+import com.qianxun.dto.RequestDTO;
 import io.swagger.annotations.ApiModelProperty;
 import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.List;
 
-public class SysUserFormInputDTO {
+public class SysUserFormInputDTO extends RequestDTO {
     @NotBlank(message = "姓名不能为空")
     @ApiModelProperty(value = "姓名", required = true)
     private String name;

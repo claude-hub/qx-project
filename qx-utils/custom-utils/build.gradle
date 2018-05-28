@@ -1,7 +1,11 @@
 dependencies {
+    //支持@NotBlank注解
+    compile rootProject.ext.dependencies["hibernate-validator"]
+    //支持@ApiModelProperty注解
+    compile rootProject.ext.dependencies["swagger2"]
     compile rootProject.ext.dependencies["spring-boot-starter-web"]
+    compile rootProject.ext.dependencies["jjwt"]
     compile rootProject.ext.dependencies["shiro-core"]
     compile rootProject.ext.dependencies["dozer-core"]
-    compile rootProject.ext.dependencies["swagger2"]
     compile("org.springframework.boot:spring-boot-autoconfigure:${spring_boot_version}")
 }

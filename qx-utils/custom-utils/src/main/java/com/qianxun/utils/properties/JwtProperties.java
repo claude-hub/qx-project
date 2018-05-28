@@ -1,7 +1,6 @@
-package com.qianxun.admin.jwt.properties;
+package com.qianxun.utils.properties;
 
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -9,22 +8,13 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class JwtProperties {
-
-    public static final String JWT_PREFIX = "jwt";
-
     private String header = "Authorization";
 
     private String secret = "defaultSecret";
 
     private Long expiration = 604800L;
 
-    private String authPath = "auth";
-
     private String md5Key = "randomKey";
-
-    public static String getJwtPrefix() {
-        return JWT_PREFIX;
-    }
 
     public String getHeader() {
         return header;
@@ -48,14 +38,6 @@ public class JwtProperties {
 
     public void setExpiration(Long expiration) {
         this.expiration = expiration;
-    }
-
-    public String getAuthPath() {
-        return authPath;
-    }
-
-    public void setAuthPath(String authPath) {
-        this.authPath = authPath;
     }
 
     public String getMd5Key() {

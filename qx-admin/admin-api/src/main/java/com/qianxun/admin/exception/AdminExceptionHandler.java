@@ -1,7 +1,7 @@
 package com.qianxun.admin.exception;
 
 import com.qianxun.service.exception.UserNotFoundException;
-import com.qianxun.utils.JSONResult;
+import com.qianxun.utils.result.JSONResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

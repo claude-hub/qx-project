@@ -1,6 +1,5 @@
 dependencies {
     compile rootProject.ext.dependencies["spring-boot-starter-web"]
-    compile rootProject.ext.dependencies["jjwt"]
     compile project(":qx-utils")
     compile project(":qx-admin:admin-entity")
     compile project(":qx-admin:admin-dao")

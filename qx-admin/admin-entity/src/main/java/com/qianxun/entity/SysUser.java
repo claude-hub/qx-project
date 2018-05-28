@@ -2,6 +2,7 @@ package com.qianxun.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * sys_user
@@ -83,6 +84,12 @@ public class SysUser implements Serializable {
      * 当前的认证令牌
      */
     private String currentToken;
+
+    // 外键查询出的
+    List<SysRole> roles;
+
+    // 外键查询出的
+    List<SysPermission> permissions;
 
     private static final long serialVersionUID = 1L;
 
@@ -220,5 +227,21 @@ public class SysUser implements Serializable {
 
     public void setCurrentToken(String currentToken) {
         this.currentToken = currentToken;
+    }
+
+    public List<SysRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<SysRole> roles) {
+        this.roles = roles;
+    }
+
+    public List<SysPermission> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(List<SysPermission> permissions) {
+        this.permissions = permissions;
     }
 }
