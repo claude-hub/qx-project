@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class SysUserServiceImpl implements ISysUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -27,6 +27,7 @@ public class SysUserServiceImpl implements ISysUserService {
 
     @Override
     public SysUser getUser(){
+        //获取spring security认证的用户
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Object principal = authentication.getPrincipal();
 

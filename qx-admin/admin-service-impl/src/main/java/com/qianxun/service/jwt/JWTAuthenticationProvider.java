@@ -2,11 +2,15 @@ package com.qianxun.service.jwt;
 
 import com.qianxun.entity.SysUser;
 import com.qianxun.service.ISysUserService;
+import com.qianxun.utils.jwt.JwtTokenUtil;
+import io.jsonwebtoken.JwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,21 +22,35 @@ public class JWTAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private ISysUserService userService;
 
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
     @Override
-    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        if (authentication.isAuthenticated())
-            return authentication;
-
-        String token = authentication.getCredentials().toString();
-
-        SysUser user = userService.signIn(token);
-
-        if (user != null) {
-            Authentication auth = new JWTAuthenticationToken(user);
-            auth.setAuthenticated(true);
+    public Authentication authenticate(Authentication auth) throws AuthenticationException {
+        if (auth.isAuthenticated())
             return auth;
-        } else
-            throw new BadCredentialsException("无效的Token");
+        String token = auth.getCredentials().toString();
+        try {
+            //验证token格式是否正确
+            jwtTokenUtil.parseToken(token);
+            //验证token是否过期
+            boolean flag = jwtTokenUtil.isTokenExpired(token);
+            if (flag) {
+                throw new CredentialsExpiredException("JWT证书过期");
+            }
+        } catch (JwtException e) {
+            throw new BadCredentialsException("JWT证书格式错误");
+        }
+        SysUser user = userService.signIn(token);
+        //认证用户
+        JWTAuthenticationToken authentication = null;
+        if (user != null) {
+            authentication = new JWTAuthenticationToken(user);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        } else {
+            throw new BadCredentialsException("无效的JWT证书");
+        }
+        return authentication;
     }
 
     @Override

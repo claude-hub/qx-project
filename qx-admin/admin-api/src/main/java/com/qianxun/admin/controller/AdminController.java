@@ -13,17 +13,22 @@ import com.qianxun.utils.exception.InvalidException;
 import com.qianxun.utils.exception.PhoneException;
 import com.qianxun.utils.phone.PhoneHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "admin")
+@RequestMapping(value = "api/admin")
 public class AdminController extends BaseController{
     @Autowired
     private ISysUserService iSysUserService;
 
     private PhoneHelper phoneHelper = PhoneHelper.getPhoneHelper();
 
+    @PermitAll
     @PostMapping("/getUser")
     public SysUser getUser(@Valid @ModelAttribute RequestDTO input){
         return getCurrentUser();
@@ -48,6 +53,19 @@ public class AdminController extends BaseController{
         JSONResult data = new JSONResult();
         SysUser sysUser = iSysUserService.signIn(input.getLoginStr(),input.getPassword());
         data.setData(BeanMapper.map(sysUser,SysUserLoginDTO.class));
+        return data;
+    }
+
+    @DenyAll
+    @PostMapping("/deny_all")
+    public JSONResult denyAll(){
+        JSONResult data = new JSONResult();
+        return data;
+    }
+    @PreAuthorize("hasAnyRole('ROLE_ADD_PERMISSION')")
+    @PostMapping("/test1")
+    public JSONResult test1(@Valid @ModelAttribute RequestDTO input){
+        JSONResult data = new JSONResult();
         return data;
     }
 }

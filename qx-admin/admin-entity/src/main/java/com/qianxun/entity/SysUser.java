@@ -80,12 +80,6 @@ public class SysUser implements Serializable {
      */
     private String currentToken;
 
-    // 外键查询出的
-    List<SysRole> roles;
-
-    // 外键查询出的
-    List<SysPermission> permissions;
-
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -214,21 +208,5 @@ public class SysUser implements Serializable {
 
     public void setCurrentToken(String currentToken) {
         this.currentToken = currentToken;
-    }
-
-    public List<SysRole> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<SysRole> roles) {
-        this.roles = roles;
-    }
-
-    public List<SysPermission> getPermissions() {
-        return permissions;
-    }
-
-    public void setPermissions(List<SysPermission> permissions) {
-        this.permissions = permissions;
     }
 }

@@ -27,61 +27,6 @@
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{module,jdbcType=INTEGER}, 
       #{description,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.qianxun.entity.SysPermission">
-    insert into sys_permission
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="name != null">
-        name,
-      </if>
-      <if test="module != null">
-        module,
-      </if>
-      <if test="description != null">
-        description,
-      </if>
-      <if test="key != null">
-        key,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="module != null">
-        #{module,jdbcType=INTEGER},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="key != null">
-        #{key,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qianxun.entity.SysPermission">
-    update sys_permission
-    <set>
-      <if test="name != null">
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="module != null">
-        module = #{module,jdbcType=INTEGER},
-      </if>
-      <if test="description != null">
-        description = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="key != null">
-        key = #{key,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
   <update id="updateByPrimaryKey" parameterType="com.qianxun.entity.SysPermission">
     update sys_permission
     set name = #{name,jdbcType=VARCHAR},
@@ -90,4 +35,9 @@
       key = #{key,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findPermissionsByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT * FROM sys_permission p WHERE p.id IN
+    (SELECT p.id FROM sys_role_permission rp WHERE rp.sys_role_id IN
+    (SELECT rp.sys_role_id FROM sys_user_role ur WHERE ur.sys_user_id = #{id,jdbcType=INTEGER}))
+  </select>
 </mapper>
