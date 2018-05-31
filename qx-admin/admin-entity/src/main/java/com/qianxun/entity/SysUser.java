@@ -6,7 +6,8 @@ import java.util.List;
 
 /**
  * sys_user
- * @author 
+ *
+ * @author
  */
 public class SysUser implements Serializable {
     private Integer id;
@@ -39,7 +40,7 @@ public class SysUser implements Serializable {
     /**
      * 状态(冻结、非冻结)
      */
-    private Integer status;
+    private Integer status = 0;
 
     /**
      * 身份证
@@ -59,7 +60,7 @@ public class SysUser implements Serializable {
     /**
      * 累积登录次数
      */
-    private Integer signInCount;
+    private Integer signInCount = 0;
 
     /**
      * 当前登录时间
@@ -135,6 +136,9 @@ public class SysUser implements Serializable {
     }
 
     public void setStatus(Integer status) {
+        if (status == null) {
+            this.status = 0;
+        }
         this.status = status;
     }
 
@@ -167,6 +171,9 @@ public class SysUser implements Serializable {
     }
 
     public void setSignInCount(Integer signInCount) {
+        if (signInCount == null) {
+            this.signInCount = 0;
+        }
         this.signInCount = signInCount;
     }
 

@@ -1,4 +1,4 @@
-package com.qianxun.service.jwt;
+package com.qianxun.admin.config.jwt;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,13 +18,11 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 @EnableWebSecurity
 //prePostEnabled支持权限注解 @PreAuthorize("hasAnyRole('ROLE_USER')")
-//jsr250Enabled支持权限注解@DenyAll
-@EnableGlobalMethodSecurity(prePostEnabled = true,jsr250Enabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JWTAuthenticationProvider provider;
-
 
     @Bean
     public PasswordEncoder passwordEncoder(){

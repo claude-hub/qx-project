@@ -19,4 +19,6 @@ findProject(':qx-utils:qx-flyway')?.name = 'qx-flyway'
 include 'qx-utils:custom-utils'
 findProject(':qx-utils:custom-utils')?.name = 'custom-utils'
 include 'qx-config'
+include 'qx-admin:admin-config'
+findProject(':qx-admin:admin-config')?.name = 'admin-config'
 

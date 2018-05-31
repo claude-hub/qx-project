@@ -10,14 +10,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SysPermissionService implements ISysPermissionService {
+public class SysPermissionServiceImpl implements ISysPermissionService {
     @Autowired
     private SysPermissionMapper permissionMapper;
-
-    //用静态方法的方式获取spring容器中的bean
-    public static ISysPermissionService me() {
-        return SpringContextHolderUtil.getBean(ISysPermissionService.class);
-    }
 
     @Override
     public List<SysPermission> getPermissionsByUserId(Integer id) {

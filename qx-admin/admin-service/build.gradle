@@ -1,4 +1,3 @@
 dependencies {
     compile project(":qx-admin:admin-entity")
-    compile project(":qx-utils")
 }

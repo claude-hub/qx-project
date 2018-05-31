@@ -1,0 +1,6 @@
+dependencies {
+    compile project(":qx-admin:admin-service")
+    //导入impl，拿到service层的bean，就可以使用@Autowired，自动注入
+    compile project(":qx-admin:admin-service-impl")
+    compile rootProject.ext.dependencies["spring-boot-starter-security"]
+}

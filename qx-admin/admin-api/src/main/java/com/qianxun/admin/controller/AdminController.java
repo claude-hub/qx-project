@@ -16,8 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.security.DenyAll;
-import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 
 @RestController
@@ -28,7 +26,6 @@ public class AdminController extends BaseController{
 
     private PhoneHelper phoneHelper = PhoneHelper.getPhoneHelper();
 
-    @PermitAll
     @PostMapping("/getUser")
     public SysUser getUser(@Valid @ModelAttribute RequestDTO input){
         return getCurrentUser();
@@ -56,12 +53,6 @@ public class AdminController extends BaseController{
         return data;
     }
 
-    @DenyAll
-    @PostMapping("/deny_all")
-    public JSONResult denyAll(){
-        JSONResult data = new JSONResult();
-        return data;
-    }
     @PreAuthorize("hasAnyRole('ROLE_ADD_PERMISSION')")
     @PostMapping("/test1")
     public JSONResult test1(@Valid @ModelAttribute RequestDTO input){

@@ -1,4 +1,4 @@
-package com.qianxun.service.jwt;
+package com.qianxun.admin.config.jwt;
 
 import com.qianxun.entity.SysUser;
 import com.qianxun.service.ISysUserService;

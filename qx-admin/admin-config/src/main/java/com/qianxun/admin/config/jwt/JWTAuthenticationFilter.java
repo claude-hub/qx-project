@@ -1,4 +1,4 @@
-package com.qianxun.service.jwt;
+package com.qianxun.admin.config.jwt;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
