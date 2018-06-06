@@ -1,9 +1,0 @@
-#数据库相关配置
-spring:
-  datasource:
-    url: ${MYSQL_URL:}
-    username: ${MYSQL_USER:root}
-    password: ${MYSQL_PASS:}
-    #使用阿里的druid数据源
-    driver-class-name: com.mysql.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource

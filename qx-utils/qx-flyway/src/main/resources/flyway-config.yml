@@ -1,5 +1,0 @@
-spring:
-  flyway:
-    validate-on-migrate: false
-    out-of-order: true
-    baseline-on-migrate: false
