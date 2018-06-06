@@ -1,20 +1,30 @@
-group 'com.qianxun'
-version '1.0.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
 allprojects {
-    repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
-    }
+	group 'com.qianxun'
+	version '1.0.0-SNAPSHOT'
 
-    apply plugin: 'idea'
-    idea {
-        module {
-            inheritOutputDirs = true
-        }
-    }
+	//jdk版本
+	tasks.withType(JavaCompile) {
+		sourceCompatibility = JavaVersion.VERSION_1_8
+		targetCompatibility = JavaVersion.VERSION_1_8
+	}
+
+	//阿里云代理
+	repositories {
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+		maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter' }
+	}
+
+	apply plugin: 'idea'
+
+	idea {
+		module {
+			inheritOutputDirs = true
+		}
+	}
+}
+subprojects {
+	apply plugin: 'java'
+	dependencies {
+		testCompile("junit:junit:${junit_version}")
+	}
 }
