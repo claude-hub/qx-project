@@ -1,4 +1,4 @@
-################### qx配置  ###################
+################### qx-admin配置  ###################
 qianxun:
   swagger-open: true #是否开启swagger (true/false)
 

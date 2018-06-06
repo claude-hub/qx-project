@@ -24,7 +24,6 @@ dependencies {
     compile rootProject.ext.dependencies["spring-boot-starter-web"]
 
     compile project(":qx-admin")
-    compile project(":qx-weixin")
     compile project(":qx-utils")
     compile project(":qx-config")
 }

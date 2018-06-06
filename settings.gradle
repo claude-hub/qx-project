@@ -1,7 +1,6 @@
 rootProject.name = 'root'
 include 'qx-parent'
 include 'qx-admin'
-include 'qx-weixin'
 include 'qx-generator'
 include 'qx-admin:admin-api'
 findProject(':qx-admin:admin-api')?.name = 'admin-api'

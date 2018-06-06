@@ -2,4 +2,14 @@ dependencies {
     compile project(":qx-admin:admin-entity")
     compile project(":qx-admin:admin-dao")
     compile project(":qx-admin:admin-config")
+
+    // https://mvnrepository.com/artifact/commons-configuration/commons-configuration
+    compile group: 'commons-configuration', name: 'commons-configuration', version: '1.10'
+
+    // https://mvnrepository.com/artifact/org.apache.velocity/velocity
+    compile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
+
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+
 }

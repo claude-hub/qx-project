@@ -1,4 +1,5 @@
 dependencies {
     compile project(":qx-admin:admin-dao")
     compile project(":qx-admin:admin-config")
+    compile rootProject.ext.dependencies["fastjson"]
 }

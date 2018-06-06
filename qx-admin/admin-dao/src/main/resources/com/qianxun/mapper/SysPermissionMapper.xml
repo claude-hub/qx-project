@@ -22,8 +22,8 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.qianxun.entity.SysPermission">
-    insert into sys_permission (id, name, module, 
-      description, key)
+    insert into sys_permission (id, `name`, module,
+      description, `key`)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{module,jdbcType=INTEGER}, 
       #{description,jdbcType=VARCHAR}, #{key,jdbcType=VARCHAR})
   </insert>

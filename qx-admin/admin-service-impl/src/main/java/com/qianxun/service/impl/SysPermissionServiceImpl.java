@@ -3,7 +3,6 @@ package com.qianxun.service.impl;
 import com.qianxun.entity.SysPermission;
 import com.qianxun.mapper.SysPermissionMapper;
 import com.qianxun.service.ISysPermissionService;
-import com.qianxun.utils.spring.SpringContextHolderUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +16,10 @@ public class SysPermissionServiceImpl implements ISysPermissionService {
     @Override
     public List<SysPermission> getPermissionsByUserId(Integer id) {
         return permissionMapper.findPermissionsByUserId(id);
+    }
+
+    @Override
+    public Boolean addPermission(SysPermission permission) {
+        return permissionMapper.insert(permission) > 0;
     }
 }

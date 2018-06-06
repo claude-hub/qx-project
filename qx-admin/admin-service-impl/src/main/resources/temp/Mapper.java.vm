@@ -1,0 +1,24 @@
+package ${package}.dao.mapper;
+
+import ${package}.entity.${className};
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+
+ public interface ${className}Mapper {
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(${className} record);
+
+    ${className} selectByPrimaryKey(Integer id);
+
+    List<${className}> selectAll();
+
+    int updateByPrimaryKey(${className} record);
+
+}
