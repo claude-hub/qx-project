@@ -1,0 +1,73 @@
+package ${package}.${moduleName}.controller;
+
+import com.qianxun.admin.BaseController;
+import ${package}.${moduleName}.service.${className}Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import ${package}.common.utils.result.JSONResult;
+import org.springframework.web.bind.annotation.*;
+
+
+import javax.validation.Valid;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@RestController
+@RequestMapping("/api/${moduleName}/${className}")
+public class ${className}Controller extends BaseController {
+
+    @Autowired
+    private ${className}Service ${classname}Service;
+
+    /**
+     * 分页查询
+     * @param input
+     * @return
+     */
+    @GetMapping("/query")
+    public JSONResult query(@Valid ${className}QueryInputDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        jsonResult.setMessage("接口未实现"); // 实现后删除本行
+        jsonResult.setData("查询出来的数据");
+        return jsonResult;
+    }
+
+    /**
+     * 新增
+     * @param input
+     * @return
+     */
+    @PostMapping("/add")
+    public JSONResult add(@Valid ${className}AddInputDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        jsonResult.setMessage("接口未实现");
+        return jsonResult;
+    }
+
+    /**
+     * 删除
+     * @param input
+     * @return
+     */
+    @DeleteMapping("/delete")
+    public JSONResult delete(@Valid ${className}DeleteInputDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        jsonResult.setMessage("接口未实现");
+        return jsonResult;
+    }
+
+    /**
+     * 修改
+     * @param input
+     * @return
+     */
+    @PutMapping("/update")
+    public JSONResult update(@Valid ${className}UpdateInputDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        jsonResult.setMessage("接口未实现");
+        return jsonResult;
+    }
+}

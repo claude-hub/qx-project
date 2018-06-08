@@ -1,0 +1,42 @@
+package ${package}.service.impl;
+
+import ${package}.${moduleName}.dao.${className}Mapper;
+import ${package}.${moduleName}.entity.${className};
+import ${package}.${moduleName}.service.${className}Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ${className}ServiceImpl implements ${className}Service {
+
+    @Autowired
+    private ${className}Mapper ${classname}Mapper;
+
+    @Override
+    public boolean add${className}(${className} ${classname}) {
+        return this.${classname}Mapper.insert(${classname}) > 0;
+    }
+
+    @Override
+    public boolean edit${className}(${className} ${classname}) {
+        return ${classname}Mapper.updateByPrimaryKey(${classname}) > 0;
+
+    }
+
+    @Override
+    public List<${className}> findAll${className}s() {
+        return ${classname}Mapper.selectAll();
+    }
+
+    @Override
+    public ${className} get${className}(int id) {
+        return ${classname}Mapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public boolean delete${className}(int id) {
+        return ${classname}Mapper.deleteByPrimaryKey(id) > 0;
+    }
+}
