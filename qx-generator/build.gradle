@@ -8,4 +8,6 @@ dependencies {
     compile("commons-configuration:commons-configuration:${commons_configuration_version}")
     compile("org.apache.velocity:velocity:${velocity_version}")
     compile("commons-io:commons-io:${commons_io_version}")
+    //热部署
+    compile("org.springframework.boot:spring-boot-devtools:${spring_boot_version}")
 }

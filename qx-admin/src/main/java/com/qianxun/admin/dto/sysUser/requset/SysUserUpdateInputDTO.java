@@ -1,4 +1,4 @@
-package com.qianxun.admin.dto.user;
+package com.qianxun.admin.dto.sysUser.requset;
 
 import io.swagger.annotations.ApiModelProperty;
 

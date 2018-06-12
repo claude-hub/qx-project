@@ -23,6 +23,8 @@ public class ColumnEntity {
     private String attrAllType;
     //auto_increment
     private String extra;
+    //可空，与数据库查询出来的YES，NO匹配
+    private String nullable;
 
     public String getColumnName() {
         return columnName;
@@ -94,5 +96,13 @@ public class ColumnEntity {
 
     public void setExtra(String extra) {
         this.extra = extra;
+    }
+
+    public String getNullable() {
+        return nullable;
+    }
+
+    public void setNullable(String nullable) {
+        this.nullable = nullable;
     }
 }

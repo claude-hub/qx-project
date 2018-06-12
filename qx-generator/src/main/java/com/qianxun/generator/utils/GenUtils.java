@@ -41,6 +41,10 @@ public class GenUtils {
         templates.add("temp/Controller.java.vm");
         templates.add("temp/Service.java.vm");
         templates.add("temp/ServiceImpl.java.vm");
+        templates.add("temp/dto/request/AddInputDTO.java.vm");
+        templates.add("temp/dto/request/DeleteInputDTO.java.vm");
+        templates.add("temp/dto/request/QueryInputDTO.java.vm");
+        templates.add("temp/dto/request/UpdateInputDTO.java.vm");
         return templates;
     }
 
@@ -73,7 +77,7 @@ public class GenUtils {
             columnEntity.setDataUpperCaseType(column.get("dataType").toUpperCase());
             columnEntity.setComments(column.get("columnComment"));
             columnEntity.setExtra(column.get("extra"));
-
+            columnEntity.setNullable(column.get("isNullable"));
             //列名转换成Java属性名
             String attrName = columnToJava(columnEntity.getColumnName());
             columnEntity.setAttrName(attrName);
@@ -139,6 +143,7 @@ public class GenUtils {
             try {
                 //添加到zip
                 String name = getFileName(template, tableEntity.getClassName(),
+                        tableEntity.getClassname(),
                         config.getString("package"),
                         config.getString("moduleName"));
                 zip.putNextEntry(new ZipEntry(name));
@@ -182,7 +187,8 @@ public class GenUtils {
     /**
      * 获取文件名
      */
-    private static String getFileName(String template, String className, String packageName, String moduleName) {
+    private static String getFileName(String template, String className, String classname,
+                                      String packageName, String moduleName) {
         String packagePath = "main" + File.separator + "java" + File.separator;
 //        if (StringUtils.isNotBlank(packageName)) {
 //            packagePath += packageName.replace(".", File.separator) + File.separator + moduleName + File.separator;
@@ -234,6 +240,18 @@ public class GenUtils {
         }
         if (template.contains("ServiceImpl.java.vm")) {
             return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
+        }
+        if (template.contains("AddInputDTO.java.vm")) {
+            return packagePath + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "AddInputDTO.java";
+        }
+        if (template.contains("DeleteInputDTO.java.vm")) {
+            return packagePath + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "DeleteInputDTO.java";
+        }
+        if (template.contains("QueryInputDTO.java.vm")) {
+            return packagePath + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "QueryInputDTO.java";
+        }
+        if (template.contains("UpdateInputDTO.java.vm")) {
+            return packagePath + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
         }
         return null;
     }

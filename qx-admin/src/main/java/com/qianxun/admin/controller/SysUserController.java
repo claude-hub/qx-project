@@ -1,7 +1,10 @@
 package com.qianxun.admin.controller;
 
 import com.qianxun.admin.BaseController;
-import com.qianxun.admin.dto.user.*;
+import com.qianxun.admin.dto.sysUser.requset.SysUserAddInputDTO;
+import com.qianxun.admin.dto.sysUser.requset.SysUserDeleteInputDTO;
+import com.qianxun.admin.dto.sysUser.requset.SysUserQueryInputDTO;
+import com.qianxun.admin.dto.sysUser.requset.SysUserUpdateInputDTO;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.service.SysUserService;
 import com.qianxun.common.utils.mapper.BeanMapper;

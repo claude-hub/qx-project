@@ -1,7 +1,10 @@
 package ${package}.${moduleName}.controller;
 
-import com.qianxun.admin.BaseController;
+import ${package}.${moduleName}.dto.${classname}.request.*;
+import ${package}.${moduleName}.BaseController;
+import ${package}.${moduleName}.entity.${className};
 import ${package}.${moduleName}.service.${className}Service;
+import ${package}.common.utils.mapper.BeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import ${package}.common.utils.result.JSONResult;
 import org.springframework.web.bind.annotation.*;
@@ -30,8 +33,7 @@ public class ${className}Controller extends BaseController {
     @GetMapping("/query")
     public JSONResult query(@Valid ${className}QueryInputDTO input) {
         JSONResult jsonResult = new JSONResult();
-        jsonResult.setMessage("接口未实现"); // 实现后删除本行
-        jsonResult.setData("查询出来的数据");
+        jsonResult.setData(${classname}Service.findAll${className}s());
         return jsonResult;
     }
 
@@ -43,7 +45,8 @@ public class ${className}Controller extends BaseController {
     @PostMapping("/add")
     public JSONResult add(@Valid ${className}AddInputDTO input) {
         JSONResult jsonResult = new JSONResult();
-        jsonResult.setMessage("接口未实现");
+        ${className} ${classname} = BeanMapper.map(input,${className}.class);
+        jsonResult.setData(${classname}Service.add${className}(${classname}));
         return jsonResult;
     }
 
@@ -55,7 +58,7 @@ public class ${className}Controller extends BaseController {
     @DeleteMapping("/delete")
     public JSONResult delete(@Valid ${className}DeleteInputDTO input) {
         JSONResult jsonResult = new JSONResult();
-        jsonResult.setMessage("接口未实现");
+        jsonResult.setData(${classname}Service.delete${className}(input.getId()));
         return jsonResult;
     }
 
@@ -67,7 +70,8 @@ public class ${className}Controller extends BaseController {
     @PutMapping("/update")
     public JSONResult update(@Valid ${className}UpdateInputDTO input) {
         JSONResult jsonResult = new JSONResult();
-        jsonResult.setMessage("接口未实现");
+        ${className} ${classname} = BeanMapper.map(input,${className}.class);
+        jsonResult.setData(${classname}Service.edit${className}(${classname}));
         return jsonResult;
     }
 }

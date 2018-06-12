@@ -5,19 +5,15 @@
         #foreach($column in $columns)
             #if(${column.dataUpperCaseType} == "INT")
                 #if($column.columnName == $pk.columnName)
-                    <id column="${column.columnName}" javaType="${column.attrAllType}"
-                        jdbcType="INTEGER" property="${column.attrname}"/>
+        <id column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="INTEGER" property="${column.attrname}"/>
                 #else
-                    <result column="${column.columnName}" javaType="${column.attrAllType}"
-                            jdbcType="INTEGER" property="${column.attrname}"/>
+        <result column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="INTEGER" property="${column.attrname}"/>
                 #end
             #else
                 #if($column.columnName == $pk.columnName)
-                    <id column="${column.columnName}" javaType="${column.attrAllType}"
-                        jdbcType="${column.dataUpperCaseType}" property="${column.attrname}"/>
+        <id column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="${column.dataUpperCaseType}" property="${column.attrname}"/>
                 #else
-                    <result column="${column.columnName}" javaType="${column.attrAllType}"
-                            jdbcType="${column.dataUpperCaseType}" property="${column.attrname}"/>
+        <result column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="${column.dataUpperCaseType}" property="${column.attrname}"/>
                 #end
             #end
         #end
@@ -39,26 +35,46 @@
         </selectKey>
         insert into ${tableName} (
         #foreach($column in $columns)
-            ${column.columnName},
+            #if($velocityCount == $columns.size())
+                ${column.columnName}
+            #else
+                ${column.columnName},
+            #end
         #end)
         values (
         #foreach($column in $columns)
-            #if(${column.dataUpperCaseType} == "INT")
-                #{${column.attrname},jdbcType=INTEGER},
+            #if($velocityCount == $columns.size())
+                #if(${column.dataUpperCaseType} == "INT")
+                    #{${column.attrname},jdbcType=INTEGER}
+                #else
+                    #{${column.attrname},jdbcType=${column.dataUpperCaseType}}
+                #end
             #else
-                #{${column.attrname},jdbcType=${column.dataUpperCaseType}},
+                #if(${column.dataUpperCaseType} == "INT")
+                    #{${column.attrname},jdbcType=INTEGER},
+                #else
+                    #{${column.attrname},jdbcType=${column.dataUpperCaseType}},
+                #end
             #end
         #end)
     </insert>
     <update id="updateByPrimaryKey" parameterType="${package}.${moduleName}.entity.${className}">
         update ${tableName} set
         #foreach($column in $columns)
+        #if($velocityCount == $columns.size())
             #if(${column.dataUpperCaseType} == "INT")
-            ${column.columnName} = #{${column.attrname},jdbcType=INTEGER},
-            #else
-            ${column.columnName} = #{${column.attrname},jdbcType=${column.dataUpperCaseType}},
-            #end
+                ${column.columnName} = #{${column.attrname},jdbcType=INTEGER}
+                #else
+                ${column.columnName} = #{${column.attrname},jdbcType=${column.dataUpperCaseType}}
+                #end
+        #else
+            #if(${column.dataUpperCaseType} == "INT")
+                ${column.columnName} = #{${column.attrname},jdbcType=INTEGER},
+                #else
+                ${column.columnName} = #{${column.attrname},jdbcType=${column.dataUpperCaseType}},
+                #end
         #end
+    #end
         #if(${pk.dataUpperCaseType} == "INT")
            where ${pk.columnName} = #{${pk.attrname},jdbcType=INTEGER}
         #else
