@@ -1,7 +1,6 @@
 package com.qianxun.admin.controller;
 
 import com.qianxun.admin.dto.sysRole.request.*;
-import com.qianxun.admin.BaseController;
 import com.qianxun.admin.entity.SysRole;
 import com.qianxun.admin.service.SysRoleService;
 import com.qianxun.common.utils.mapper.BeanMapper;

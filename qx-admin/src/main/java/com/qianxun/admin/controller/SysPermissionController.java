@@ -1,7 +1,6 @@
 package com.qianxun.admin.controller;
 
 import com.qianxun.admin.dto.sysPermission.request.*;
-import com.qianxun.admin.BaseController;
 import com.qianxun.admin.entity.SysPermission;
 import com.qianxun.admin.service.SysPermissionService;
 import com.qianxun.common.utils.mapper.BeanMapper;

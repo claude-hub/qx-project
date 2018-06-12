@@ -1,6 +1,7 @@
 package com.qianxun.admin.dao;
 
 import com.qianxun.admin.entity.SysUser;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,4 +24,11 @@ public interface SysUserMapper {
 
     int updateByPrimaryKey(SysUser record);
 
+    /**
+     * 验证列存在
+     * @param columnName
+     * @param value
+     * @return
+     */
+    int columnStrExists(@Param("columnName") String columnName, @Param("value") String value);
 }

@@ -1,13 +1,15 @@
 package com.qianxun.admin.controller;
 
-import com.qianxun.admin.BaseController;
 import com.qianxun.admin.dto.sysUser.requset.SysUserAddInputDTO;
 import com.qianxun.admin.dto.sysUser.requset.SysUserDeleteInputDTO;
 import com.qianxun.admin.dto.sysUser.requset.SysUserQueryInputDTO;
 import com.qianxun.admin.dto.sysUser.requset.SysUserUpdateInputDTO;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.service.SysUserService;
+import com.qianxun.common.utils.exception.InvalidException;
+import com.qianxun.common.utils.exception.PhoneException;
 import com.qianxun.common.utils.mapper.BeanMapper;
+import com.qianxun.common.utils.phone.PhoneHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.qianxun.common.utils.result.JSONResult;
 import org.springframework.web.bind.annotation.*;
@@ -22,11 +24,13 @@ import javax.validation.Valid;
  * @date 2018-06-08 12:04:33
  */
 @RestController
-@RequestMapping("/admin/SysUser")
+@RequestMapping("/api/admin/SysUser")
 public class SysUserController extends BaseController {
 
     @Autowired
     private SysUserService sysUserService;
+
+    private PhoneHelper phoneHelper = PhoneHelper.getPhoneHelper();
 
     /**
      * 分页查询
@@ -46,8 +50,10 @@ public class SysUserController extends BaseController {
      * @return
      */
     @PostMapping("/add")
-    public JSONResult add(@Valid SysUserAddInputDTO input) {
+    public JSONResult add(@Valid SysUserAddInputDTO input) throws PhoneException, InvalidException {
         JSONResult jsonResult = new JSONResult();
+        //判断是否是手机号
+        phoneHelper.isMobileExact(input.getPhone());
         SysUser sysUser = BeanMapper.map(input,SysUser.class);
         jsonResult.setData(sysUserService.addSysUser(sysUser,input.getPassword()));
         return jsonResult;

@@ -106,4 +106,9 @@
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
         delete from sys_user where id = #{id,jdbcType=INTEGER}
     </delete>
+    <select id="columnStrExists" resultType="java.lang.Integer">
+        SELECT count(*) AS `count`
+        FROM sys_user
+        WHERE ${columnName} = #{value}
+    </select>
 </mapper>

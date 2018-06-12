@@ -1,11 +1,12 @@
 package com.qianxun.admin.service;
 
 import com.qianxun.admin.entity.SysUser;
+import com.qianxun.common.utils.exception.InvalidException;
 
 import java.util.List;
 
 public interface SysUserService {
-    boolean addSysUser(SysUser sysUser, String password);
+    boolean addSysUser(SysUser sysUser, String password) throws InvalidException;
 
     boolean editSysUser(SysUser sysUser);
 
