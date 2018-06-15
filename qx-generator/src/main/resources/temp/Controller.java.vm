@@ -1,0 +1,77 @@
+package ${package}.${moduleName}.controller;
+
+import ${package}.${moduleName}.dto.${classname}.request.*;
+import ${package}.${moduleName}.BaseController;
+import ${package}.${moduleName}.entity.${className};
+import ${package}.${moduleName}.service.${className}Service;
+import ${package}.common.utils.mapper.BeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import ${package}.common.utils.result.JSONResult;
+import org.springframework.web.bind.annotation.*;
+
+
+import javax.validation.Valid;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@RestController
+@RequestMapping("/api/${moduleName}/${className}")
+public class ${className}Controller extends BaseController {
+
+    @Autowired
+    private ${className}Service ${classname}Service;
+
+    /**
+     * 分页查询
+     * @param input
+     * @return
+     */
+    @GetMapping("/query")
+    public JSONResult query(@Valid ${className}QueryInputDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        jsonResult.setData(${classname}Service.findAll${className}s());
+        return jsonResult;
+    }
+
+    /**
+     * 新增
+     * @param input
+     * @return
+     */
+    @PostMapping("/add")
+    public JSONResult add(@Valid ${className}AddInputDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        ${className} ${classname} = BeanMapper.map(input,${className}.class);
+        jsonResult.setData(${classname}Service.add${className}(${classname}));
+        return jsonResult;
+    }
+
+    /**
+     * 删除
+     * @param input
+     * @return
+     */
+    @DeleteMapping("/delete")
+    public JSONResult delete(@Valid ${className}DeleteInputDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        jsonResult.setData(${classname}Service.delete${className}(input.getId()));
+        return jsonResult;
+    }
+
+    /**
+     * 修改
+     * @param input
+     * @return
+     */
+    @PutMapping("/update")
+    public JSONResult update(@Valid ${className}UpdateInputDTO input) {
+        JSONResult jsonResult = new JSONResult();
+        ${className} ${classname} = BeanMapper.map(input,${className}.class);
+        jsonResult.setData(${classname}Service.edit${className}(${classname}));
+        return jsonResult;
+    }
+}

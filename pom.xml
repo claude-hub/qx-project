@@ -7,33 +7,44 @@
 	<artifactId>qx-project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<modules>
-		<module>qx-admin</module>
+		<module>qx-generator</module>
 		<module>qx-common</module>
+		<module>qx-admin</module>
 	</modules>
 	<packaging>pom</packaging>
 
 	<name>qx-project</name>
-	<description>Demo project for Spring Boot</description>
+	<description>qianxun</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.0.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.0.2.RELEASE</version>
+		<relativePath/>
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+
+		<!--通用模块(qx-common)依赖版本-->
+		<spring.boot.version>2.0.2.RELEASE</spring.boot.version>
+		<swagger.version>2.8.0</swagger.version>
+		<spring.web.version>5.0.7.RELEASE</spring.web.version>
+		<dozer.core.version>6.2.0</dozer.core.version>
+		<jjwt.version>0.9.0</jjwt.version>
+		<druid.version>1.1.10</druid.version>
+		<mybatis.starter.version>1.3.2</mybatis.starter.version>
+		<mysql.version>8.0.11</mysql.version>
+
+		<!--代码生成器模块(qx-generator)依赖版本-->
+		<commons.configuration.version>1.10</commons.configuration.version>
+		<velocity.version>1.7</velocity.version>
+		<commons.io.version>2.6</commons.io.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -41,14 +52,49 @@
 		</dependency>
 	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
+    <!-- 阿里云maven仓库 -->
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 
 </project>

@@ -8,19 +8,30 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>qx-admin</artifactId>
+
+    <artifactId>qx-generator</artifactId>
 
     <dependencies>
+        <!--代码生成器依赖-->
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>${commons.configuration.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>${velocity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons.io.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.qianxun</groupId>
             <artifactId>qx-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <!--安全框架-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>${spring.boot.version}</version>
         </dependency>
     </dependencies>
 
@@ -36,5 +47,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
