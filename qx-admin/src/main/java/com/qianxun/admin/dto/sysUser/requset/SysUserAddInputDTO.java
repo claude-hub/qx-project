@@ -1,7 +1,7 @@
 package com.qianxun.admin.dto.sysUser.requset;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 import java.util.List;
 

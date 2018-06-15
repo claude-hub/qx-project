@@ -1,7 +1,7 @@
 package com.qianxun.admin.dto.auth.request;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 public class AuthUserLoginInputDTO {
     @NotBlank(message = "登录名不能为空")

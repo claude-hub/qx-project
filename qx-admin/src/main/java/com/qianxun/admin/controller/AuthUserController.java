@@ -7,11 +7,9 @@ import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.admin.service.AuthUserService;
 import com.qianxun.common.utils.mapper.BeanMapper;
-import com.qianxun.common.utils.phone.PhoneHelper;
 import com.qianxun.common.utils.result.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,14 +23,14 @@ public class AuthUserController extends BaseController {
     private AuthUserService authUserService;
 
     @PostMapping("/getUser")
-    public SysUser getUser(@Valid @ModelAttribute RequestDTO input){
+    public SysUser getUser(@Valid RequestDTO input){
         return getCurrentUser();
     }
     /**
      * 登录
      */
     @PostMapping("/sign_in")
-    public JSONResult sign_in(@ModelAttribute @Valid AuthUserLoginInputDTO input) throws AuthenticateException {
+    public JSONResult sign_in(@Valid AuthUserLoginInputDTO input) throws AuthenticateException {
         JSONResult data = new JSONResult();
         SysUser sysUser = authUserService.signIn(input.getLoginStr(),input.getPassword());
         data.setData(BeanMapper.map(sysUser,AuthUserLoginDTO.class));
@@ -41,7 +39,7 @@ public class AuthUserController extends BaseController {
 
     @PreAuthorize("hasAnyRole('ROLE_ADD_PERMISSION')")
     @PostMapping("/test1")
-    public JSONResult test1(@Valid @ModelAttribute RequestDTO input){
+    public JSONResult test1(@Valid RequestDTO input){
         JSONResult data = new JSONResult();
         return data;
     }

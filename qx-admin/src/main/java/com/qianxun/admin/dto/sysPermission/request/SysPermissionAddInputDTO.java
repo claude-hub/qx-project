@@ -1,10 +1,8 @@
 package com.qianxun.admin.dto.sysPermission.request;
 
-import java.util.Date;
 import javax.validation.constraints.NotNull;
-
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 /**
  * 用户权限表

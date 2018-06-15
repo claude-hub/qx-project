@@ -1,7 +1,8 @@
 package com.qianxun.admin.dto;
 
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
+
 
 public class RequestDTO{
     @ApiModelProperty(value = "token", required = true)

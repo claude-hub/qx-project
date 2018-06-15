@@ -3,7 +3,7 @@ package ${package}.${moduleName}.admin.dto.${classname}.requset;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
-import org.hibernate.validator.constraints.NotBlank;
+import javax.validation.constraints.NotBlank;
 
 /**
  * ${comments}
