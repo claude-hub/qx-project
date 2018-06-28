@@ -6,19 +6,21 @@ import com.qianxun.admin.dto.auth.response.AuthUserLoginDTO;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.admin.service.AuthUserService;
+import com.qianxun.common.utils.captcha.CaptchaHelper;
 import com.qianxun.common.utils.mapper.BeanMapper;
 import com.qianxun.common.utils.result.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "api/admin/auth")
+@RequestMapping(value = "auth")
+@CrossOrigin
 public class AuthUserController extends BaseController {
+    private CaptchaHelper captchaHelper = CaptchaHelper.getCaptchaHelper();
+
     @Autowired
     private AuthUserService authUserService;
 
@@ -30,8 +32,11 @@ public class AuthUserController extends BaseController {
      * 登录
      */
     @PostMapping("/sign_in")
-    public JSONResult sign_in(@Valid AuthUserLoginInputDTO input) throws AuthenticateException {
+    @CrossOrigin
+    public JSONResult sign_in(@RequestBody @Valid AuthUserLoginInputDTO input) throws AuthenticateException {
         JSONResult data = new JSONResult();
+        // 验证，验证码
+//        captchaHelper.validateThrow(request, input.getCaptcha());
         SysUser sysUser = authUserService.signIn(input.getLoginStr(),input.getPassword());
         data.setData(BeanMapper.map(sysUser,AuthUserLoginDTO.class));
         return data;

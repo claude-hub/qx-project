@@ -18,7 +18,7 @@ import javax.validation.Valid;
  * @date 2018-06-12 22:49:20
  */
 @RestController
-@RequestMapping("/api/admin/SysPermission")
+@RequestMapping("SysPermission")
 public class SysPermissionController extends BaseController {
 
     @Autowired

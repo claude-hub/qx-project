@@ -12,6 +12,12 @@ public class AuthUserLoginInputDTO {
     @ApiModelProperty(value = "密码", required = true)
     String password;
 
+    @ApiModelProperty(value = "验证码")
+    String captcha;
+
+    @ApiModelProperty(value = "记住密码")
+    Boolean remember = false;
+
     public String getLoginStr() {
         return loginStr;
     }
@@ -26,5 +32,21 @@ public class AuthUserLoginInputDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getCaptcha() {
+        return captcha;
+    }
+
+    public void setCaptcha(String captcha) {
+        this.captcha = captcha;
+    }
+
+    public Boolean getRemember() {
+        return remember;
+    }
+
+    public void setRemember(Boolean remember) {
+        this.remember = remember;
     }
 }

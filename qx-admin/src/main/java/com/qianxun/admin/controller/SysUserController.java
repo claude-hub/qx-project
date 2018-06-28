@@ -24,7 +24,7 @@ import javax.validation.Valid;
  * @date 2018-06-08 12:04:33
  */
 @RestController
-@RequestMapping("/api/admin/SysUser")
+@RequestMapping("SysUser")
 public class SysUserController extends BaseController {
 
     @Autowired
