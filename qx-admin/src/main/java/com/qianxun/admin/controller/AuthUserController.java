@@ -17,7 +17,6 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping(value = "auth")
-@CrossOrigin
 public class AuthUserController extends BaseController {
     private CaptchaHelper captchaHelper = CaptchaHelper.getCaptchaHelper();
 
@@ -32,7 +31,6 @@ public class AuthUserController extends BaseController {
      * 登录
      */
     @PostMapping("/sign_in")
-    @CrossOrigin
     public JSONResult sign_in(@RequestBody @Valid AuthUserLoginInputDTO input) throws AuthenticateException {
         JSONResult data = new JSONResult();
         // 验证，验证码
@@ -45,6 +43,12 @@ public class AuthUserController extends BaseController {
     @PreAuthorize("hasAnyRole('ROLE_ADD_PERMISSION')")
     @PostMapping("/test1")
     public JSONResult test1(@Valid RequestDTO input){
+        JSONResult data = new JSONResult();
+        return data;
+    }
+
+    @PostMapping("/menu")
+    public JSONResult menu(@Valid RequestDTO input){
         JSONResult data = new JSONResult();
         return data;
     }
