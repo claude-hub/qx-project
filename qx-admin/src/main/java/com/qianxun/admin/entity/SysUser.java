@@ -6,53 +6,65 @@ import java.util.Date;
  * 用户表
  *
  * @author cloudy
- * @date 2018-06-08 12:04:33
+ * @date 2018-06-29 17:20:12
  */
 public class SysUser {
     /**
-     *
+     * 主键ID
      */
-    private Integer id;
+    private Integer userId;
+    /**
+     * 部门ID
+     */
+    private Integer deptId;
     /**
      * 姓名
      */
     private String name;
     /**
-     * 用户名
+     * 身份证
      */
-    private String userName;
+    private String identification;
     /**
      * 电话
      */
     private String phone;
     /**
-     * 电子邮件
+     * 邮箱
      */
     private String email;
+    /**
+     * 头像
+     */
+    private String avatar;
+    /**
+     * 0-正常，-1-冻结
+     */
+    private Integer status;
+    /**
+     * 用户名
+     */
+    private String userName;
+    /**
+     * 重置密码的token
+     */
+    private String resetPasswordToken;
     /**
      * 加密后的密码
      */
     private String passwordEncrypted;
     /**
-     * 状态(冻结、非冻结)
+     * 创建时间
      */
-    private Integer status;
+    private Date createdAt;
     /**
-     * 身份证
+     * 修改时间
      */
-    private String identification;
+    private Date updatedAt;
     /**
-     * 重置密码的令牌
+     * 当前的token
      */
-    private String resetPasswordToken;
-    /**
-     * 令牌生成时间
-     */
-    private Date resetPasswordSentAt;
-    /**
-     * 累积登录次数
-     */
-    private Integer signInCount = 0;
+    private String currentToken;
     /**
      * 当前登录时间
      */
@@ -62,41 +74,41 @@ public class SysUser {
      */
     private Date lastSignInAt;
     /**
-     *
+     * 累积登录次数
      */
-    private Date createdAt;
-    /**
-     *
-     */
-    private Date updatedAt;
-    /**
-     * 当前的认证令牌
-     */
-    private String currentToken;
+    private Integer signInCount = 0;
 
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
+    }
+
+    public Integer getDeptId() {
+        return deptId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getIdentification() {
+        return identification;
+    }
+
+    public void setIdentification(String identification) {
+        this.identification = identification;
     }
 
     public void setPhone(String phone) {
@@ -115,12 +127,12 @@ public class SysUser {
         return email;
     }
 
-    public void setPasswordEncrypted(String passwordEncrypted) {
-        this.passwordEncrypted = passwordEncrypted;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public String getPasswordEncrypted() {
-        return passwordEncrypted;
+    public String getAvatar() {
+        return avatar;
     }
 
     public void setStatus(Integer status) {
@@ -131,12 +143,12 @@ public class SysUser {
         return status;
     }
 
-    public void setIdentification(String identification) {
-        this.identification = identification;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getIdentification() {
-        return identification;
+    public String getUserName() {
+        return userName;
     }
 
     public void setResetPasswordToken(String resetPasswordToken) {
@@ -147,36 +159,12 @@ public class SysUser {
         return resetPasswordToken;
     }
 
-    public void setResetPasswordSentAt(Date resetPasswordSentAt) {
-        this.resetPasswordSentAt = resetPasswordSentAt;
+    public void setPasswordEncrypted(String passwordEncrypted) {
+        this.passwordEncrypted = passwordEncrypted;
     }
 
-    public Date getResetPasswordSentAt() {
-        return resetPasswordSentAt;
-    }
-
-    public void setSignInCount(Integer signInCount) {
-        this.signInCount = signInCount;
-    }
-
-    public Integer getSignInCount() {
-        return signInCount;
-    }
-
-    public void setCurrentSignInAt(Date currentSignInAt) {
-        this.currentSignInAt = currentSignInAt;
-    }
-
-    public Date getCurrentSignInAt() {
-        return currentSignInAt;
-    }
-
-    public void setLastSignInAt(Date lastSignInAt) {
-        this.lastSignInAt = lastSignInAt;
-    }
-
-    public Date getLastSignInAt() {
-        return lastSignInAt;
+    public String getPasswordEncrypted() {
+        return passwordEncrypted;
     }
 
     public void setCreatedAt(Date createdAt) {
@@ -201,5 +189,29 @@ public class SysUser {
 
     public String getCurrentToken() {
         return currentToken;
+    }
+
+    public void setCurrentSignInAt(Date currentSignInAt) {
+        this.currentSignInAt = currentSignInAt;
+    }
+
+    public Date getCurrentSignInAt() {
+        return currentSignInAt;
+    }
+
+    public void setLastSignInAt(Date lastSignInAt) {
+        this.lastSignInAt = lastSignInAt;
+    }
+
+    public Date getLastSignInAt() {
+        return lastSignInAt;
+    }
+
+    public void setSignInCount(Integer signInCount) {
+        this.signInCount = signInCount;
+    }
+
+    public Integer getSignInCount() {
+        return signInCount;
     }
 }

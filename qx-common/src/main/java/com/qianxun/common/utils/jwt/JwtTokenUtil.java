@@ -116,7 +116,7 @@ public class JwtTokenUtil {
      */
     public String generateToken(Integer id, String phone) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("id", id);
+        claims.put("user_id", id);
         return doGenerateToken(claims, phone);
     }
 

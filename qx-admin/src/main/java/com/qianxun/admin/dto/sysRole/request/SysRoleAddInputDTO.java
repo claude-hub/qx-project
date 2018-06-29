@@ -1,36 +1,58 @@
 package com.qianxun.admin.dto.sysRole.request;
 
+import java.util.Date;
+import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotBlank;
 
 /**
- * 角色表
+ * 
  *
  * @author cloudy
- * @date 2018-06-12 22:31:11
+ * @date 2018-06-29 17:20:12
  */
 public class SysRoleAddInputDTO {
-    @NotBlank(message = "角色名不能为空")
-    @ApiModelProperty(value = "角色名" , required = true)
+                                                                                                                                                    @NotBlank(message = "角色名不能为空")
+                        @ApiModelProperty(value = "角色名" , required = true)
+                                            
+                private String roleName;
+                                                                                                                                                                        @NotBlank(message = "角色码不能为空")
+                        @ApiModelProperty(value = "角色码" , required = true)
+                                            
+                private String roleCode;
+                                                                                                                                            @ApiModelProperty(value = "角色描述")
+                    
+                private String roleDesc;
+                                                                                                                                                                                                                                                                            @ApiModelProperty(value = "删除标识（0-正常,1-删除）")
+                    
+                private Integer status;
+                                        
+                                                                        public void setRoleName(String roleName) {
+                        this.roleName = roleName;
+                    }
 
-    private String name;
-    @ApiModelProperty(value = "描述")
+                    public String getRoleName() {
+                        return roleName;
+                    }
+                                                                                                public void setRoleCode(String roleCode) {
+                        this.roleCode = roleCode;
+                    }
 
-    private String description;
+                    public String getRoleCode() {
+                        return roleCode;
+                    }
+                                                                                                public void setRoleDesc(String roleDesc) {
+                        this.roleDesc = roleDesc;
+                    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+                    public String getRoleDesc() {
+                        return roleDesc;
+                    }
+                                                                                                                                                                                            public void setStatus(Integer status) {
+                        this.status = status;
+                    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-}
+                    public Integer getStatus() {
+                        return status;
+                    }
+                                        }

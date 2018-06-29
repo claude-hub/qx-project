@@ -1,6 +1,6 @@
 package com.qianxun.admin.dao;
 
-import com.qianxun.admin.entity.SysPermission;
+import com.qianxun.admin.entity.SysMenu;
 import com.qianxun.admin.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
 
@@ -43,9 +43,9 @@ public interface AuthUserMapper {
     void updateSignInAt(Integer id);
 
     /**
-     * 通过用户id，获取用户权限集合
+     * 通过用户id，获取用户动态菜单
      * @param id
      * @return
      */
-    List<SysPermission> findPermissionsByUserId(Integer id);
+    List<SysMenu> findMenusByUserId(Integer id);
 }

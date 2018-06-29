@@ -2,68 +2,71 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qianxun.admin.dao.AuthUserMapper">
     <resultMap id="BaseResultMap" type="com.qianxun.admin.entity.SysUser">
-        <id column="id" jdbcType="INTEGER" property="id"/>
+        <id column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="userId"/>
+        <result column="dept_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="deptId"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
-        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
-        <result column="phone" jdbcType="VARCHAR" property="phone"/>
-        <result column="email" jdbcType="VARCHAR" property="email"/>
-        <result column="password_encrypted" jdbcType="VARCHAR" property="passwordEncrypted"/>
-        <result column="status" jdbcType="INTEGER" property="status"/>
         <result column="identification" jdbcType="VARCHAR" property="identification"/>
-        <result column="reset_password_token" jdbcType="VARCHAR" property="resetPasswordToken"/>
-        <result column="reset_password_sent_at" jdbcType="TIMESTAMP" property="resetPasswordSentAt"/>
-        <result column="sign_in_count" jdbcType="INTEGER" property="signInCount"/>
-        <result column="current_sign_in_at" jdbcType="TIMESTAMP" property="currentSignInAt"/>
-        <result column="last_sign_in_at" jdbcType="TIMESTAMP" property="lastSignInAt"/>
-        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
-        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
-        <result column="current_token" jdbcType="VARCHAR" property="currentToken"/>
+        <result column="phone" javaType="java.lang.String" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" javaType="java.lang.String" jdbcType="VARCHAR" property="email"/>
+        <result column="avatar" javaType="java.lang.String" jdbcType="VARCHAR" property="avatar"/>
+        <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
+        <result column="user_name" javaType="java.lang.String" jdbcType="VARCHAR" property="userName"/>
+        <result column="reset_password_token" javaType="java.lang.String" jdbcType="VARCHAR"
+                property="resetPasswordToken"/>
+        <result column="password_encrypted" javaType="java.lang.String" jdbcType="VARCHAR"
+                property="passwordEncrypted"/>
+        <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="current_token" javaType="java.lang.String" jdbcType="VARCHAR" property="currentToken"/>
+        <result column="current_sign_in_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="currentSignInAt"/>
+        <result column="last_sign_in_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="lastSignInAt"/>
+        <result column="sign_in_count" javaType="java.lang.Integer" jdbcType="INTEGER" property="signInCount"/>
     </resultMap>
-    <sql id="Base_Column_List">
-        id, name, user_name, phone, email, password_encrypted, status, identification,
-        reset_password_token, reset_password_sent_at, sign_in_count, current_sign_in_at,
-        last_sign_in_at, created_at, updated_at, current_token
-    </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
+        select *
         from sys_user
-        where id = #{id,jdbcType=INTEGER}
+        where user_id = #{id,jdbcType=INTEGER}
     </select>
     <select id="selectByLoginStr" resultMap="BaseResultMap">
         SELECT *
         FROM sys_user
-        LEFT JOIN sys_user_role ON sys_user.id = sys_user_role.sys_user_id
-        LEFT JOIN sys_role ON sys_user_role.sys_role_id = sys_role.id
+        LEFT JOIN sys_user_role ON sys_user.user_id = sys_user_role.user_id
+        LEFT JOIN sys_role ON sys_user_role.role_id = sys_role.role_id
         WHERE user_name = #{loginStr} OR phone = #{loginStr} OR email = #{loginStr}
         LIMIT 1
     </select>
     <update id="updateCol">
         UPDATE sys_user
         SET ${column} = #{value}
-        WHERE id = #{id,jdbcType=INTEGER}
+        WHERE user_id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateSignInAt" parameterType="java.lang.Integer">
         UPDATE sys_user
         SET last_sign_in_at = current_sign_in_at,
         current_sign_in_at = current_timestamp()
-        WHERE id = #{id,jdbcType=INTEGER}
+        WHERE user_id = #{id,jdbcType=INTEGER}
     </update>
     <update id="increaseSignInCount" parameterType="java.lang.Integer">
         UPDATE sys_user
         SET sign_in_count = sign_in_count + 1
-        WHERE id = #{id,jdbcType=INTEGER}
+        WHERE user_id = #{id,jdbcType=INTEGER}
     </update>
-    <resultMap id="PermissionResultMap" type="com.qianxun.admin.entity.SysPermission">
-        <id column="id" jdbcType="INTEGER" property="id" />
-        <result column="name" jdbcType="VARCHAR" property="name" />
-        <result column="module" jdbcType="INTEGER" property="module" />
-        <result column="description" jdbcType="VARCHAR" property="description" />
-        <result column="key" jdbcType="VARCHAR" property="key" />
+    <resultMap id="MenuResultMap" type="com.qianxun.admin.entity.SysMenu">
+        <id column="menu_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="menuId"/>
+        <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
+        <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name"/>
+        <result column="menu_code" javaType="java.lang.String" jdbcType="VARCHAR" property="menuCode"/>
+        <result column="url" javaType="java.lang.String" jdbcType="VARCHAR" property="url"/>
+        <result column="icon" javaType="java.lang.String" jdbcType="VARCHAR" property="icon"/>
+        <result column="sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sort"/>
+        <result column="type" javaType="java.lang.Integer" jdbcType="INTEGER" property="type"/>
+        <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
     </resultMap>
-    <select id="findPermissionsByUserId" parameterType="java.lang.Integer" resultMap="PermissionResultMap">
-        SELECT * FROM sys_permission p WHERE p.id IN
-        (SELECT p.id FROM sys_role_permission rp WHERE rp.sys_role_id IN
-        (SELECT rp.sys_role_id FROM sys_user_role ur WHERE ur.sys_user_id = #{id,jdbcType=INTEGER}))
+    <select id="findMenusByUserId" parameterType="java.lang.Integer" resultMap="MenuResultMap">
+         SELECT * FROM sys_menu WHERE sys_menu.menu_id IN
+        (SELECT sys_menu.menu_id FROM sys_role_menu WHERE sys_role_menu.role_id IN
+        (SELECT sys_role_menu.role_id FROM sys_user_role WHERE sys_user_role.user_id = #{id,jdbcType=INTEGER}))
     </select>
 </mapper>

@@ -9,7 +9,7 @@ import java.util.List;
  * 用户表
  *
  * @author cloudy
- * @date 2018-06-08 12:04:33
+ * @date 2018-06-29 17:20:12
  */
 
 public interface SysUserMapper {
@@ -26,9 +26,11 @@ public interface SysUserMapper {
 
     /**
      * 验证列存在
+     *
      * @param columnName
      * @param value
      * @return
      */
     int columnStrExists(@Param("columnName") String columnName, @Param("value") String value);
+
 }

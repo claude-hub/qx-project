@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxun.admin.dao.SysMenuMapper">
+    <resultMap id="BaseResultMap" type="com.qianxun.admin.entity.SysMenu">
+        <id column="menu_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="menuId"/>
+        <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
+        <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name"/>
+        <result column="menu_code" javaType="java.lang.String" jdbcType="VARCHAR" property="menuCode"/>
+        <result column="url" javaType="java.lang.String" jdbcType="VARCHAR" property="url"/>
+        <result column="icon" javaType="java.lang.String" jdbcType="VARCHAR" property="icon"/>
+        <result column="sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sort"/>
+        <result column="type" javaType="java.lang.Integer" jdbcType="INTEGER" property="type"/>
+        <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from sys_menu
+           where menu_id = #{menu_id,jdbcType=INTEGER}
+        </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from sys_menu
+    </select>
+    <insert id="insert" parameterType="com.qianxun.admin.entity.SysMenu">
+        <selectKey keyProperty="menuId" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_menu (
+        menu_id,
+        parent_id,
+        name,
+        menu_code,
+        url,
+        icon,
+        sort,
+        type,
+        created_at,
+        updated_at,
+        status
+        )
+        values (
+        #{menuId,jdbcType=INTEGER},
+        #{parentId,jdbcType=INTEGER},
+        #{name,jdbcType=VARCHAR},
+        #{menuCode,jdbcType=VARCHAR},
+        #{url,jdbcType=VARCHAR},
+        #{icon,jdbcType=VARCHAR},
+        #{sort,jdbcType=INTEGER},
+        #{type,jdbcType=INTEGER},
+        #{createdAt,jdbcType=TIMESTAMP},
+        #{updatedAt,jdbcType=TIMESTAMP},
+        #{status,jdbcType=INTEGER}
+        )
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.qianxun.admin.entity.SysMenu">
+        update sys_menu set
+                                            menu_id = #{menuId,jdbcType=INTEGER},
+                                                                parent_id = #{parentId,jdbcType=INTEGER},
+                                                                name = #{name,jdbcType=VARCHAR},
+                                                                menu_code = #{menuCode,jdbcType=VARCHAR},
+                                                                url = #{url,jdbcType=VARCHAR},
+                                                                icon = #{icon,jdbcType=VARCHAR},
+                                                                sort = #{sort,jdbcType=INTEGER},
+                                                                type = #{type,jdbcType=INTEGER},
+                                                                created_at = #{createdAt,jdbcType=TIMESTAMP},
+                                                                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+                                                                status = #{status,jdbcType=INTEGER}
+                                               where menu_id = #{menuId,jdbcType=INTEGER}
+            </update>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_menu
+                   where menu_id = #{menu_id,jdbcType=INTEGER}
+            </delete>
+</mapper>

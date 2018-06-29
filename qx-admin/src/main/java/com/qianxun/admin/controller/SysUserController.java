@@ -1,9 +1,6 @@
 package com.qianxun.admin.controller;
 
-import com.qianxun.admin.dto.sysUser.requset.SysUserAddInputDTO;
-import com.qianxun.admin.dto.sysUser.requset.SysUserDeleteInputDTO;
-import com.qianxun.admin.dto.sysUser.requset.SysUserQueryInputDTO;
-import com.qianxun.admin.dto.sysUser.requset.SysUserUpdateInputDTO;
+import com.qianxun.admin.dto.sysUser.request.*;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.service.SysUserService;
 import com.qianxun.common.utils.exception.InvalidException;
@@ -21,7 +18,7 @@ import javax.validation.Valid;
  * 用户表
  *
  * @author cloudy
- * @date 2018-06-08 12:04:33
+ * @date 2018-06-29 17:20:12
  */
 @RestController
 @RequestMapping("SysUser")
@@ -34,6 +31,7 @@ public class SysUserController extends BaseController {
 
     /**
      * 分页查询
+     *
      * @param input
      * @return
      */
@@ -46,21 +44,23 @@ public class SysUserController extends BaseController {
 
     /**
      * 新增
+     *
      * @param input
      * @return
      */
     @PostMapping("/add")
-    public JSONResult add(@Valid SysUserAddInputDTO input) throws PhoneException, InvalidException {
+    public JSONResult add(@Valid SysUserAddInputDTO input) throws InvalidException, PhoneException {
         JSONResult jsonResult = new JSONResult();
         //判断是否是手机号
         phoneHelper.isMobileExact(input.getPhone());
-        SysUser sysUser = BeanMapper.map(input,SysUser.class);
-        jsonResult.setData(sysUserService.addSysUser(sysUser,input.getPassword()));
+        SysUser sysUser = BeanMapper.map(input, SysUser.class);
+        jsonResult.setData(sysUserService.addSysUser(sysUser, input.getPassword()));
         return jsonResult;
     }
 
     /**
      * 删除
+     *
      * @param input
      * @return
      */
@@ -73,14 +73,14 @@ public class SysUserController extends BaseController {
 
     /**
      * 修改
+     *
      * @param input
      * @return
      */
     @PutMapping("/update")
     public JSONResult update(@Valid SysUserUpdateInputDTO input) {
         JSONResult jsonResult = new JSONResult();
-        SysUser sysUser = BeanMapper.map(input,SysUser.class);
-        sysUser.setPasswordEncrypted(input.getPassword());
+        SysUser sysUser = BeanMapper.map(input, SysUser.class);
         jsonResult.setData(sysUserService.editSysUser(sysUser));
         return jsonResult;
     }

@@ -1,10 +1,10 @@
-package com.qianxun.admin.dto.sysUser.requset;
+package com.qianxun.admin.dto.sysUserRole.request;
 
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotNull;
 
-public class SysUserDeleteInputDTO {
+public class SysUserRoleDeleteInputDTO {
     @NotNull(message = "id不能为空")
     @ApiModelProperty(value = "id", required = true)
     private Integer id;

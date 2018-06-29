@@ -1,7 +1,7 @@
 package com.qianxun.admin.service.impl;
 
 import com.qianxun.admin.dao.AuthUserMapper;
-import com.qianxun.admin.entity.SysPermission;
+import com.qianxun.admin.entity.SysMenu;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.admin.exception.PasswordInvalid;
@@ -58,8 +58,8 @@ public class AuthUserServiceImpl implements AuthUserService {
         if(!accountValid(user, password)){
             throw new PasswordInvalid("密码错误");
         }
-        String token = jwtTokenUtil.generateToken(user.getId(),user.getPhone());
-        authUserMapper.updateCol(user.getId(), "current_token", token);
+        String token = jwtTokenUtil.generateToken(user.getUserId(),user.getPhone());
+        authUserMapper.updateCol(user.getUserId(), "current_token", token);
         user.setCurrentToken(token);
         return afterSignIn(user);
     }
@@ -70,8 +70,8 @@ public class AuthUserServiceImpl implements AuthUserService {
      * @return
      */
     private SysUser afterSignIn(SysUser user) {
-        authUserMapper.increaseSignInCount(user.getId());
-        authUserMapper.updateSignInAt(user.getId());
+        authUserMapper.increaseSignInCount(user.getUserId());
+        authUserMapper.updateSignInAt(user.getUserId());
         return user;
     }
 
@@ -82,7 +82,7 @@ public class AuthUserServiceImpl implements AuthUserService {
      */
     @Override
     public SysUser signIn(String token) {
-        String userId = jwtTokenUtil.getPrivateClaimFromToken(token,"id");
+        String userId = jwtTokenUtil.getPrivateClaimFromToken(token,"user_id");
         SysUser user = authUserMapper.selectByPrimaryKey(Integer.parseInt(userId));
         if (!user.getCurrentToken().equals(token)) {
             return null;
@@ -101,7 +101,7 @@ public class AuthUserServiceImpl implements AuthUserService {
     }
 
     @Override
-    public List<SysPermission> getPermissionsByUserId(Integer id) {
-        return authUserMapper.findPermissionsByUserId(id);
+    public List<SysMenu> getMenusByUserId(Integer id) {
+        return authUserMapper.findMenusByUserId(id);
     }
 }

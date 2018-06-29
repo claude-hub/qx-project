@@ -1,6 +1,6 @@
 package com.qianxun.admin.config.jwt;
 
-import com.qianxun.admin.entity.SysPermission;
+import com.qianxun.admin.entity.SysMenu;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.service.AuthUserService;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
@@ -32,12 +32,12 @@ public class JWTAuthenticationToken extends AbstractAuthenticationToken {
         super(null);
         this.credentials = user.getCurrentToken();
         this.principal = user;
-        AuthUserService permissionService = AuthUserService.me();
-        List<SysPermission> permissions = permissionService.getPermissionsByUserId(user.getId());
+        AuthUserService authUserService = AuthUserService.me();
+        List<SysMenu> menus = authUserService.getMenusByUserId(user.getUserId());
         authorities = new ArrayList<GrantedAuthority>();
-        Iterator<SysPermission> it = permissions.iterator();
+        Iterator<SysMenu> it = menus.iterator();
         while (it.hasNext()) {
-            authorities.add(new SimpleGrantedAuthority(it.next().getKey()));
+            authorities.add(new SimpleGrantedAuthority(it.next().getMenuCode()));
         }
         setAuthenticated(true);
     }

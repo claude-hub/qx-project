@@ -3,56 +3,72 @@ package com.qianxun.admin.entity;
 import java.util.Date;
 
 /**
- * 角色表
+ * 
  *
  * @author cloudy
- * @date 2018-06-12 22:23:27
+ * @date 2018-06-29 17:20:12
  */
-public class SysRole {
-    /**
-     *
-     */
-    private Integer id;
-    /**
-     * 角色名
-     */
-    private String name;
-    /**
-     * 描述
-     */
-    private String description;
-    /**
-     * 创建时间
-     */
+public class SysRole{
+/**
+ * 
+ */
+    private Integer roleId;
+/**
+ * 角色名
+ */
+    private String roleName;
+/**
+ * 角色码
+ */
+    private String roleCode;
+/**
+ * 角色描述
+ */
+    private String roleDesc;
+/**
+ * 
+ */
     private Date createdAt;
-    /**
-     * 更新时间
-     */
+/**
+ * 
+ */
     private Date updatedAt;
+/**
+ * 删除标识（0-正常,1-删除）
+ */
+    private Integer status;
 
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getRoleId() {
+        return roleId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
-    public String getName() {
-        return name;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setRoleCode(String roleCode) {
+        this.roleCode = roleCode;
     }
 
-    public String getDescription() {
-        return description;
+    public String getRoleCode() {
+        return roleCode;
+    }
+
+    public void setRoleDesc(String roleDesc) {
+        this.roleDesc = roleDesc;
+    }
+
+    public String getRoleDesc() {
+        return roleDesc;
     }
 
     public void setCreatedAt(Date createdAt) {
@@ -69,5 +85,13 @@ public class SysRole {
 
     public Date getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public Integer getStatus() {
+        return status;
     }
 }

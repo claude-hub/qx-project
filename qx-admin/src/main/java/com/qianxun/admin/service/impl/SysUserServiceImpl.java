@@ -19,13 +19,6 @@ public class SysUserServiceImpl implements SysUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    /**
-     * 添加管理员
-     * @param sysUser
-     * @param password
-     * @return
-     * @throws InvalidException
-     */
     @Override
     public boolean addSysUser(SysUser sysUser, String password) throws InvalidException {
         // 判断电话是否重复
@@ -34,7 +27,7 @@ public class SysUserServiceImpl implements SysUserService {
             throw new InvalidException("手机号已存在");
         }
         sysUser.setPasswordEncrypted(encryptPassword(password));
-        return sysUserMapper.insert(sysUser) > 0;
+        return this.sysUserMapper.insert(sysUser) > 0;
     }
     private String encryptPassword(String password){
         return passwordEncoder.encode(password);

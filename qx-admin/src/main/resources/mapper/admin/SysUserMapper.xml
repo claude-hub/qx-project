@@ -2,109 +2,99 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qianxun.admin.dao.SysUserMapper">
     <resultMap id="BaseResultMap" type="com.qianxun.admin.entity.SysUser">
-        <id column="id" javaType="java.lang.Integer"
-            jdbcType="INTEGER" property="id"/>
-        <result column="name" javaType="java.lang.String"
-                jdbcType="VARCHAR" property="name"/>
-        <result column="user_name" javaType="java.lang.String"
-                jdbcType="VARCHAR" property="userName"/>
-        <result column="phone" javaType="java.lang.String"
-                jdbcType="VARCHAR" property="phone"/>
-        <result column="email" javaType="java.lang.String"
-                jdbcType="VARCHAR" property="email"/>
-        <result column="password_encrypted" javaType="java.lang.String"
-                jdbcType="VARCHAR" property="passwordEncrypted"/>
-        <result column="status" javaType="java.lang.Integer"
-                jdbcType="INTEGER" property="status"/>
-        <result column="identification" javaType="java.lang.String"
-                jdbcType="VARCHAR" property="identification"/>
-        <result column="reset_password_token" javaType="java.lang.String"
-                jdbcType="VARCHAR" property="resetPasswordToken"/>
-        <result column="reset_password_sent_at" javaType="java.util.Date"
-                jdbcType="TIMESTAMP" property="resetPasswordSentAt"/>
-        <result column="sign_in_count" javaType="java.lang.Integer"
-                jdbcType="INTEGER" property="signInCount"/>
-        <result column="current_sign_in_at" javaType="java.util.Date"
-                jdbcType="TIMESTAMP" property="currentSignInAt"/>
-        <result column="last_sign_in_at" javaType="java.util.Date"
-                jdbcType="TIMESTAMP" property="lastSignInAt"/>
-        <result column="created_at" javaType="java.util.Date"
-                jdbcType="TIMESTAMP" property="createdAt"/>
-        <result column="updated_at" javaType="java.util.Date"
-                jdbcType="TIMESTAMP" property="updatedAt"/>
-        <result column="current_token" javaType="java.lang.String"
-                jdbcType="VARCHAR" property="currentToken"/>
+        <id column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="userId"/>
+        <result column="dept_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="deptId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="identification" jdbcType="VARCHAR" property="identification"/>
+        <result column="phone" javaType="java.lang.String" jdbcType="VARCHAR" property="phone"/>
+        <result column="email" javaType="java.lang.String" jdbcType="VARCHAR" property="email"/>
+        <result column="avatar" javaType="java.lang.String" jdbcType="VARCHAR" property="avatar"/>
+        <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
+        <result column="user_name" javaType="java.lang.String" jdbcType="VARCHAR" property="userName"/>
+        <result column="reset_password_token" javaType="java.lang.String" jdbcType="VARCHAR"
+                property="resetPasswordToken"/>
+        <result column="password_encrypted" javaType="java.lang.String" jdbcType="VARCHAR"
+                property="passwordEncrypted"/>
+        <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="current_token" javaType="java.lang.String" jdbcType="VARCHAR" property="currentToken"/>
+        <result column="current_sign_in_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="currentSignInAt"/>
+        <result column="last_sign_in_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="lastSignInAt"/>
+        <result column="sign_in_count" javaType="java.lang.Integer" jdbcType="INTEGER" property="signInCount"/>
     </resultMap>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select * from sys_user
-        where id = #{id,jdbcType=INTEGER}
-    </select>
+           where user_id = #{id,jdbcType=INTEGER}
+        </select>
     <select id="selectAll" resultMap="BaseResultMap">
         select * from sys_user
     </select>
     <insert id="insert" parameterType="com.qianxun.admin.entity.SysUser">
-        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+        <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
         insert into sys_user (
-        id,
-        name,
-        user_name,
+        user_id,
+        dept_id,
+        `name`,
+        identification,
         phone,
         email,
-        password_encrypted,
+        avatar,
         status,
-        identification,
+        user_name,
         reset_password_token,
-        reset_password_sent_at,
-        sign_in_count,
-        current_sign_in_at,
-        last_sign_in_at,
+        password_encrypted,
         created_at,
         updated_at,
-        current_token
+        current_token,
+        current_sign_in_at,
+        last_sign_in_at,
+        sign_in_count
         )
         values (
-        #{id,jdbcType=INTEGER},
+        #{userId,jdbcType=INTEGER},
+        #{deptId,jdbcType=INTEGER},
         #{name,jdbcType=VARCHAR},
-        #{userName,jdbcType=VARCHAR},
+        #{identification,jdbcType=VARCHAR},
         #{phone,jdbcType=VARCHAR},
         #{email,jdbcType=VARCHAR},
-        #{passwordEncrypted,jdbcType=VARCHAR},
+        #{avatar,jdbcType=VARCHAR},
         #{status,jdbcType=INTEGER},
-        #{identification,jdbcType=VARCHAR},
+        #{userName,jdbcType=VARCHAR},
         #{resetPasswordToken,jdbcType=VARCHAR},
-        #{resetPasswordSentAt,jdbcType=TIMESTAMP},
-        #{signInCount,jdbcType=INTEGER},
-        #{currentSignInAt,jdbcType=TIMESTAMP},
-        #{lastSignInAt,jdbcType=TIMESTAMP},
+        #{passwordEncrypted,jdbcType=VARCHAR},
         #{createdAt,jdbcType=TIMESTAMP},
         #{updatedAt,jdbcType=TIMESTAMP},
-        #{currentToken,jdbcType=VARCHAR}
+        #{currentToken,jdbcType=VARCHAR},
+        #{currentSignInAt,jdbcType=TIMESTAMP},
+        #{lastSignInAt,jdbcType=TIMESTAMP},
+        #{signInCount,jdbcType=INTEGER}
         )
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.qianxun.admin.entity.SysUser">
-        update sys_user set
-        id = #{id,jdbcType=INTEGER},
-        name = #{name,jdbcType=VARCHAR},
-        user_name = #{userName,jdbcType=VARCHAR},
+      update sys_user set
+        user_id = #{userId,jdbcType=INTEGER},
+        dept_id = #{deptId,jdbcType=INTEGER},
+        `name` = #{name,jdbcType=VARCHAR},
+        identification = #{identification,jdbcType=VARCHAR},
         phone = #{phone,jdbcType=VARCHAR},
         email = #{email,jdbcType=VARCHAR},
-        password_encrypted = #{passwordEncrypted,jdbcType=VARCHAR},
+        avatar = #{avatar,jdbcType=VARCHAR},
         status = #{status,jdbcType=INTEGER},
-        identification = #{identification,jdbcType=VARCHAR},
+        user_name = #{userName,jdbcType=VARCHAR},
         reset_password_token = #{resetPasswordToken,jdbcType=VARCHAR},
-        reset_password_sent_at = #{resetPasswordSentAt,jdbcType=TIMESTAMP},
-        sign_in_count = #{signInCount,jdbcType=INTEGER},
-        current_sign_in_at = #{currentSignInAt,jdbcType=TIMESTAMP},
-        last_sign_in_at = #{lastSignInAt,jdbcType=TIMESTAMP},
+        password_encrypted = #{passwordEncrypted,jdbcType=VARCHAR},
         created_at = #{createdAt,jdbcType=TIMESTAMP},
         updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-        current_token = #{currentToken,jdbcType=VARCHAR}
-        where id = #{id,jdbcType=INTEGER}
+        current_token = #{currentToken,jdbcType=VARCHAR},
+        current_sign_in_at = #{currentSignInAt,jdbcType=TIMESTAMP},
+        last_sign_in_at = #{lastSignInAt,jdbcType=TIMESTAMP},
+        sign_in_count = #{signInCount,jdbcType=INTEGER}
+       where user_id = #{userId,jdbcType=INTEGER}
     </update>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from sys_user where id = #{id,jdbcType=INTEGER}
+        delete from sys_user where user_id = #{user_id,jdbcType=INTEGER}
     </delete>
     <select id="columnStrExists" resultType="java.lang.Integer">
         SELECT count(*) AS `count`

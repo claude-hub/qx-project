@@ -1,6 +1,6 @@
 package com.qianxun.admin.service;
 
-import com.qianxun.admin.entity.SysPermission;
+import com.qianxun.admin.entity.SysMenu;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.common.utils.spring.SpringContextHolderUtil;
@@ -36,9 +36,9 @@ public interface AuthUserService {
     SysUser getUser();
 
     /**
-     * 通过用户id，获取用户权限集
+     * 通过用户id，获取动态菜单
      * @param id
      * @return
      */
-    List<SysPermission> getPermissionsByUserId(Integer id);
+    List<SysMenu> getMenusByUserId(Integer id);
 }
