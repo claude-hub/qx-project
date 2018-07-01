@@ -65,8 +65,21 @@
         <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
     </resultMap>
     <select id="findMenusByUserId" parameterType="java.lang.Integer" resultMap="MenuResultMap">
-         SELECT * FROM sys_menu WHERE sys_menu.menu_id IN
-        (SELECT sys_menu.menu_id FROM sys_role_menu WHERE sys_role_menu.role_id IN
-        (SELECT sys_role_menu.role_id FROM sys_user_role WHERE sys_user_role.user_id = #{id,jdbcType=INTEGER}))
+        SELECT * FROM sys_menu WHERE menu_id IN
+        (SELECT menu_id FROM sys_role_menu WHERE role_id IN
+        (SELECT role_id FROM sys_user_role WHERE user_id = #{id,jdbcType=INTEGER}))
+    </select>
+    <resultMap id="RoleResultMap" type="com.qianxun.admin.entity.SysRole">
+        <id column="role_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="roleId"/>
+        <result column="role_name" javaType="java.lang.String" jdbcType="VARCHAR" property="roleName"/>
+        <result column="role_code" javaType="java.lang.String" jdbcType="VARCHAR" property="roleCode"/>
+        <result column="role_desc" javaType="java.lang.String" jdbcType="VARCHAR" property="roleDesc"/>
+        <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
+    </resultMap>
+    <select id="findRolesByUserId" parameterType="java.lang.Integer" resultMap="RoleResultMap">
+        SELECT * FROM sys_role WHERE role_id IN
+        (SELECT role_id FROM sys_user_role WHERE user_id = #{id,jdbcType=INTEGER})
     </select>
 </mapper>

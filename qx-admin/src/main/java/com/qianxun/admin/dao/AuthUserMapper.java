@@ -1,6 +1,7 @@
 package com.qianxun.admin.dao;
 
 import com.qianxun.admin.entity.SysMenu;
+import com.qianxun.admin.entity.SysRole;
 import com.qianxun.admin.entity.SysUser;
 import org.apache.ibatis.annotations.Param;
 
@@ -48,4 +49,6 @@ public interface AuthUserMapper {
      * @return
      */
     List<SysMenu> findMenusByUserId(Integer id);
+
+    List<SysRole> findRolesByUserId(Integer id);
 }

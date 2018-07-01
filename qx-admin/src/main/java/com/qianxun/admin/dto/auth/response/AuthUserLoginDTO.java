@@ -1,158 +1,223 @@
 package com.qianxun.admin.dto.auth.response;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.qianxun.admin.entity.SysMenu;
+import com.qianxun.admin.entity.SysRole;
 import com.sun.istack.internal.Nullable;
 
-
 import java.util.Date;
+import java.util.List;
 
-public final class AuthUserLoginDTO {
+/**
+ * 用户表
+ *
+ * @author cloudy
+ * @date 2018-06-29 17:20:12
+ */
+public class AuthUserLoginDTO {
+    /**
+     * 主键ID
+     */
     @Nullable
-    private Integer id;
-    @Nullable
+    private Integer userId;
+    /**
+     * 部门ID
+     */
+    private Integer deptId;
+    /**
+     * 姓名
+     */
     private String name;
-    @Nullable
-    private String username;
-    @Nullable
-    private String phone;
-    @Nullable
-    private String email;
-    @Nullable
+    /**
+     * 身份证
+     */
     private String identification;
+    /**
+     * 电话
+     */
+    private String phone;
+    /**
+     * 邮箱
+     */
+    private String email;
+    /**
+     * 头像
+     */
+    private String avatar;
+    /**
+     * 0-正常，-1-冻结
+     */
+    private Integer status;
+    /**
+     * 用户名
+     */
+    private String userName;
+    /**
+     * 创建时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @Nullable
-    private Date resetPasswordSentAt;
-    @Nullable
-    private Integer signInCount;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    @Nullable
-    private Date currentSignInAt;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @Nullable
-    private Date lastSignInAt;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @Nullable
     private Date createdAt;
+    /**
+     * 修改时间
+     */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    @Nullable
     private Date updatedAt;
-    @Nullable
+    /**
+     * 当前的token
+     */
     private String currentToken;
+    /**
+     * 当前登录时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date currentSignInAt;
+    /**
+     * 上一次登录时间
+     */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
+    private Date lastSignInAt;
+    /**
+     * 累积登录次数
+     */
+    private Integer signInCount = 0;
 
-    @Nullable
-    public final Integer getId() {
-        return this.id;
+    private List<SysRole> roles;
+
+    private List<SysMenu> menus;
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public final void setId(@Nullable Integer id) {
-        this.id = id;
+    public Integer getUserId() {
+        return userId;
     }
 
-    @Nullable
-    public final String getName() {
-        return this.name;
+    public void setDeptId(Integer deptId) {
+        this.deptId = deptId;
     }
 
-    public final void setName(@Nullable String name) {
+    public Integer getDeptId() {
+        return deptId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
-    @Nullable
-    public final String getUsername() {
-        return this.username;
+    public String getIdentification() {
+        return identification;
     }
 
-    public final void setUsername(@Nullable String username) {
-        this.username = username;
-    }
-
-    @Nullable
-    public final String getPhone() {
-        return this.phone;
-    }
-
-    public final void setPhone(@Nullable String phone) {
-        this.phone = phone;
-    }
-
-    @Nullable
-    public final String getEmail() {
-        return this.email;
-    }
-
-    public final void setEmail(@Nullable String email) {
-        this.email = email;
-    }
-
-    @Nullable
-    public final String getIdentification() {
-        return this.identification;
-    }
-
-    public final void setIdentification(@Nullable String identification) {
+    public void setIdentification(String identification) {
         this.identification = identification;
     }
 
-    @Nullable
-    public final Date getResetPasswordSentAt() {
-        return this.resetPasswordSentAt;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public final void setResetPasswordSentAt(@Nullable Date resetPasswordSentAt) {
-        this.resetPasswordSentAt = resetPasswordSentAt;
+    public String getPhone() {
+        return phone;
     }
 
-    @Nullable
-    public final Integer getSignInCount() {
-        return this.signInCount;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public final void setSignInCount(@Nullable Integer signInCount) {
-        this.signInCount = signInCount;
+    public String getEmail() {
+        return email;
     }
 
-    @Nullable
-    public final Date getCurrentSignInAt() {
-        return this.currentSignInAt;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public final void setCurrentSignInAt(@Nullable Date currentSignInAt) {
-        this.currentSignInAt = currentSignInAt;
+    public String getAvatar() {
+        return avatar;
     }
 
-    @Nullable
-    public final Date getLastSignInAt() {
-        return this.lastSignInAt;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
-    public final void setLastSignInAt(@Nullable Date lastSignInAt) {
-        this.lastSignInAt = lastSignInAt;
+    public Integer getStatus() {
+        return status;
     }
 
-    @Nullable
-    public final Date getCreatedAt() {
-        return this.createdAt;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public final void setCreatedAt(@Nullable Date createdAt) {
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    @Nullable
-    public final Date getUpdatedAt() {
-        return this.updatedAt;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public final void setUpdatedAt(@Nullable Date updatedAt) {
+    public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    @Nullable
-    public final String getCurrentToken() {
-        return this.currentToken;
+    public Date getUpdatedAt() {
+        return updatedAt;
     }
 
-    public final void setCurrentToken(@Nullable String currentToken) {
+    public void setCurrentToken(String currentToken) {
         this.currentToken = currentToken;
+    }
+
+    public String getCurrentToken() {
+        return currentToken;
+    }
+
+    public void setCurrentSignInAt(Date currentSignInAt) {
+        this.currentSignInAt = currentSignInAt;
+    }
+
+    public Date getCurrentSignInAt() {
+        return currentSignInAt;
+    }
+
+    public void setLastSignInAt(Date lastSignInAt) {
+        this.lastSignInAt = lastSignInAt;
+    }
+
+    public Date getLastSignInAt() {
+        return lastSignInAt;
+    }
+
+    public void setSignInCount(Integer signInCount) {
+        this.signInCount = signInCount;
+    }
+
+    public Integer getSignInCount() {
+        return signInCount;
+    }
+
+    public List<SysRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<SysRole> roles) {
+        this.roles = roles;
+    }
+
+    public List<SysMenu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<SysMenu> menus) {
+        this.menus = menus;
     }
 }

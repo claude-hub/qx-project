@@ -1,9 +1,11 @@
 package com.qianxun.admin.service;
 
 import com.qianxun.admin.entity.SysMenu;
+import com.qianxun.admin.entity.SysRole;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.common.utils.spring.SpringContextHolderUtil;
+import io.swagger.models.auth.In;
 
 import java.util.List;
 
@@ -41,4 +43,11 @@ public interface AuthUserService {
      * @return
      */
     List<SysMenu> getMenusByUserId(Integer id);
+
+    /**
+     * 通过用户id，获取用户角色列表
+     * @param id
+     * @return
+     */
+    List<SysRole> getRolesByUserId(Integer id);
 }

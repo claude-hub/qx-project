@@ -1,6 +1,7 @@
 package com.qianxun.admin.entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户表
@@ -78,6 +79,9 @@ public class SysUser {
      */
     private Integer signInCount = 0;
 
+    private List<SysRole> roles;
+
+    private List<SysMenu> menus;
 
     public void setUserId(Integer userId) {
         this.userId = userId;
@@ -213,5 +217,21 @@ public class SysUser {
 
     public Integer getSignInCount() {
         return signInCount;
+    }
+
+    public List<SysRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<SysRole> roles) {
+        this.roles = roles;
+    }
+
+    public List<SysMenu> getMenus() {
+        return menus;
+    }
+
+    public void setMenus(List<SysMenu> menus) {
+        this.menus = menus;
     }
 }

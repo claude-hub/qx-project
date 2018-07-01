@@ -8,50 +8,50 @@ import java.util.Date;
  * @author cloudy
  * @date 2018-06-29 17:20:12
  */
-public class SysMenu{
-/**
- * 菜单ID
- */
+public class SysMenu {
+    /**
+     * 菜单ID
+     */
     private Integer menuId;
-/**
- * 父菜单ID
- */
+    /**
+     * 父菜单ID
+     */
     private Integer parentId;
-/**
- * 菜单名称
- */
+    /**
+     * 菜单名称
+     */
     private String name;
-/**
- * 菜单权限标识
- */
+    /**
+     * 菜单权限标识
+     */
     private String menuCode;
-/**
- * 请求链接
- */
+    /**
+     * 请求链接
+     */
     private String url;
-/**
- * 图标
- */
+    /**
+     * 图标
+     */
     private String icon;
-/**
- * 排序值
- */
+    /**
+     * 排序值
+     */
     private Integer sort;
-/**
- * 菜单类型 （0菜单 1按钮）
- */
+    /**
+     * 菜单类型 （0菜单 1按钮）
+     */
     private Integer type;
-/**
- * 创建时间
- */
+    /**
+     * 创建时间
+     */
     private Date createdAt;
-/**
- * 更新时间
- */
+    /**
+     * 更新时间
+     */
     private Date updatedAt;
-/**
- * 0--正常 1--删除
- */
+    /**
+     * 0--正常 1--删除
+     */
     private Integer status;
 
 

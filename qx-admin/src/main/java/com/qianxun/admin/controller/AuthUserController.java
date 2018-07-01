@@ -3,6 +3,7 @@ package com.qianxun.admin.controller;
 import com.qianxun.admin.dto.RequestDTO;
 import com.qianxun.admin.dto.auth.request.AuthUserLoginInputDTO;
 import com.qianxun.admin.dto.auth.response.AuthUserLoginDTO;
+import com.qianxun.admin.entity.SysMenu;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.admin.service.AuthUserService;
@@ -14,6 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "auth")
@@ -47,9 +49,12 @@ public class AuthUserController extends BaseController {
         return data;
     }
 
-    @PostMapping("/menu")
+    @GetMapping("/menu")
     public JSONResult menu(@Valid RequestDTO input){
         JSONResult data = new JSONResult();
+        SysUser user = getCurrentUser();
+        List<SysMenu> menus = authUserService.getMenusByUserId(user.getUserId());
+        data.setData(menus);
         return data;
     }
 }

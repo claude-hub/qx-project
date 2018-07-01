@@ -2,6 +2,7 @@ package com.qianxun.admin.service.impl;
 
 import com.qianxun.admin.dao.AuthUserMapper;
 import com.qianxun.admin.entity.SysMenu;
+import com.qianxun.admin.entity.SysRole;
 import com.qianxun.admin.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.admin.exception.PasswordInvalid;
@@ -70,6 +71,10 @@ public class AuthUserServiceImpl implements AuthUserService {
      * @return
      */
     private SysUser afterSignIn(SysUser user) {
+        // 设置角色列表
+        user.setRoles(getRolesByUserId(user.getUserId()));
+        // 设置动态菜单列表
+        user.setMenus(getMenusByUserId(user.getUserId()));
         authUserMapper.increaseSignInCount(user.getUserId());
         authUserMapper.updateSignInAt(user.getUserId());
         return user;
@@ -104,4 +109,10 @@ public class AuthUserServiceImpl implements AuthUserService {
     public List<SysMenu> getMenusByUserId(Integer id) {
         return authUserMapper.findMenusByUserId(id);
     }
+
+    @Override
+    public List<SysRole> getRolesByUserId(Integer id) {
+        return authUserMapper.findRolesByUserId(id);
+    }
+
 }
