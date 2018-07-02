@@ -35,16 +35,16 @@ public class GenUtils {
 //        templates.add("template/list.html.vm");
 //        templates.add("template/list.js.vm");
 //        templates.add("template/menu.sql.vm");
-        templates.add("temp/Entity.java.vm");
+        templates.add("temp/model/entity/Entity.java.vm");
         templates.add("temp/Mapper.java.vm");
         templates.add("temp/Mapper.xml.vm");
         templates.add("temp/Controller.java.vm");
         templates.add("temp/Service.java.vm");
         templates.add("temp/ServiceImpl.java.vm");
-        templates.add("temp/dto/request/AddInputDTO.java.vm");
-        templates.add("temp/dto/request/DeleteInputDTO.java.vm");
-        templates.add("temp/dto/request/QueryInputDTO.java.vm");
-        templates.add("temp/dto/request/UpdateInputDTO.java.vm");
+        templates.add("temp/model/dto/request/AddInputDTO.java.vm");
+        templates.add("temp/model/dto/request/DeleteInputDTO.java.vm");
+        templates.add("temp/model/dto/request/QueryInputDTO.java.vm");
+        templates.add("temp/model/dto/request/UpdateInputDTO.java.vm");
         return templates;
     }
 
@@ -227,7 +227,7 @@ public class GenUtils {
             return packagePath + "controller" + File.separator + className + "Controller.java";
         }
         if (template.contains("Entity.java.vm")) {
-            return packagePath + "entity" + File.separator + className + ".java";
+            return packagePath + "model" + File.separator + "entity" + File.separator + className + ".java";
         }
         if (template.contains("Mapper.java.vm")) {
             return packagePath + "mapper" + File.separator + className + "Mapper.java";
@@ -242,16 +242,16 @@ public class GenUtils {
             return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
         }
         if (template.contains("AddInputDTO.java.vm")) {
-            return packagePath + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "AddInputDTO.java";
+            return packagePath + "model" + File.separator + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "AddInputDTO.java";
         }
         if (template.contains("DeleteInputDTO.java.vm")) {
-            return packagePath + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "DeleteInputDTO.java";
+            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "DeleteInputDTO.java";
         }
         if (template.contains("QueryInputDTO.java.vm")) {
-            return packagePath + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "QueryInputDTO.java";
+            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "QueryInputDTO.java";
         }
         if (template.contains("UpdateInputDTO.java.vm")) {
-            return packagePath + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
+            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
         }
         return null;
     }

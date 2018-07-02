@@ -1,6 +1,6 @@
 package ${package}.service;
 
-import ${package}.${moduleName}.entity.${className};
+import ${package}.${moduleName}.model.entity.${className};
 
 import java.util.List;
 

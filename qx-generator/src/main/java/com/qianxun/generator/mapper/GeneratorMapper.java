@@ -1,4 +1,4 @@
-package com.qianxun.generator.dao.mapper;
+package com.qianxun.generator.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 

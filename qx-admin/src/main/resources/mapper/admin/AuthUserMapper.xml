@@ -88,10 +88,13 @@
         <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
         <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name"/>
         <result column="menu_code" javaType="java.lang.String" jdbcType="VARCHAR" property="menuCode"/>
-        <result column="url" javaType="java.lang.String" jdbcType="VARCHAR" property="url"/>
+        <result column="path" javaType="java.lang.String" jdbcType="VARCHAR" property="path"/>
+        <result column="component" javaType="java.lang.String" jdbcType="VARCHAR" property="component"/>
         <result column="icon" javaType="java.lang.String" jdbcType="VARCHAR" property="icon"/>
         <result column="sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sort"/>
         <result column="type" javaType="java.lang.Integer" jdbcType="INTEGER" property="type"/>
+        <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
         <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
         <collection property="children" column="menu_id" select="findChildren"/>
     </resultMap>

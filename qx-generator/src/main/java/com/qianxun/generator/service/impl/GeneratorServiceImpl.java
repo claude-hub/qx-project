@@ -1,6 +1,6 @@
 package com.qianxun.generator.service.impl;
 
-import com.qianxun.generator.dao.mapper.GeneratorMapper;
+import com.qianxun.generator.mapper.GeneratorMapper;
 import com.qianxun.generator.service.GeneratorService;
 import com.qianxun.generator.utils.GenUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;

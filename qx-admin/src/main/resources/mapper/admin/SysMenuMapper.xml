@@ -6,7 +6,8 @@
         <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
         <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name"/>
         <result column="menu_code" javaType="java.lang.String" jdbcType="VARCHAR" property="menuCode"/>
-        <result column="url" javaType="java.lang.String" jdbcType="VARCHAR" property="url"/>
+        <result column="path" javaType="java.lang.String" jdbcType="VARCHAR" property="path"/>
+        <result column="component" javaType="java.lang.String" jdbcType="VARCHAR" property="component"/>
         <result column="icon" javaType="java.lang.String" jdbcType="VARCHAR" property="icon"/>
         <result column="sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sort"/>
         <result column="type" javaType="java.lang.Integer" jdbcType="INTEGER" property="type"/>
@@ -30,7 +31,8 @@
         parent_id,
         name,
         menu_code,
-        url,
+        path,
+        component,
         icon,
         sort,
         type,
@@ -43,7 +45,8 @@
         #{parentId,jdbcType=INTEGER},
         #{name,jdbcType=VARCHAR},
         #{menuCode,jdbcType=VARCHAR},
-        #{url,jdbcType=VARCHAR},
+        #{path,jdbcType=VARCHAR},
+        #{component,jdbcType=VARCHAR},
         #{icon,jdbcType=VARCHAR},
         #{sort,jdbcType=INTEGER},
         #{type,jdbcType=INTEGER},
@@ -54,21 +57,21 @@
     </insert>
     <update id="updateByPrimaryKey" parameterType="com.qianxun.admin.model.entity.SysMenu">
         update sys_menu set
-                                            menu_id = #{menuId,jdbcType=INTEGER},
-                                                                parent_id = #{parentId,jdbcType=INTEGER},
-                                                                name = #{name,jdbcType=VARCHAR},
-                                                                menu_code = #{menuCode,jdbcType=VARCHAR},
-                                                                url = #{url,jdbcType=VARCHAR},
-                                                                icon = #{icon,jdbcType=VARCHAR},
-                                                                sort = #{sort,jdbcType=INTEGER},
-                                                                type = #{type,jdbcType=INTEGER},
-                                                                created_at = #{createdAt,jdbcType=TIMESTAMP},
-                                                                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
-                                                                status = #{status,jdbcType=INTEGER}
-                                               where menu_id = #{menuId,jdbcType=INTEGER}
-            </update>
+            menu_id = #{menuId,jdbcType=INTEGER},
+            parent_id = #{parentId,jdbcType=INTEGER},
+            name = #{name,jdbcType=VARCHAR},
+            menu_code = #{menuCode,jdbcType=VARCHAR},
+            path = #{path,jdbcType=VARCHAR},
+            component = #{component,jdbcType=VARCHAR},
+            icon = #{icon,jdbcType=VARCHAR},
+            sort = #{sort,jdbcType=INTEGER},
+            type = #{type,jdbcType=INTEGER},
+            created_at = #{createdAt,jdbcType=TIMESTAMP},
+            updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+            status = #{status,jdbcType=INTEGER}
+        where menu_id = #{menuId,jdbcType=INTEGER}
+    </update>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from sys_menu
-                   where menu_id = #{menu_id,jdbcType=INTEGER}
-            </delete>
+        delete from sys_menu where menu_id = #{menu_id,jdbcType=INTEGER}
+    </delete>
 </mapper>

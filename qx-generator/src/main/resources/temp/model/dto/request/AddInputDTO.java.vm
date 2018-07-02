@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.admin.dto.${classname}.requset;
+package ${package}.${moduleName}.admin.model.dto.${classname}.requset;
 
 import java.util.Date;
 import javax.validation.constraints.NotNull;

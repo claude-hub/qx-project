@@ -9,7 +9,7 @@ import javax.validation.constraints.NotBlank;
  * 菜单权限表
  *
  * @author cloudy
- * @date 2018-06-29 17:20:12
+ * @date 2018-07-02 16:23:19
  */
 public class SysMenuAddInputDTO {
                                                                                                                         @ApiModelProperty(value = "父菜单ID")
@@ -23,9 +23,12 @@ public class SysMenuAddInputDTO {
                         @ApiModelProperty(value = "菜单权限标识" , required = true)
                                             
                 private String menuCode;
-                                                                                                                                            @ApiModelProperty(value = "请求链接")
+                                                                                                                                            @ApiModelProperty(value = "前端URL")
                     
-                private String url;
+                private String path;
+                                                                                                                                            @ApiModelProperty(value = "VUE页面组件名")
+                    
+                private String component;
                                                                                                                                             @ApiModelProperty(value = "图标")
                     
                 private String icon;
@@ -60,12 +63,19 @@ public class SysMenuAddInputDTO {
                     public String getMenuCode() {
                         return menuCode;
                     }
-                                                                                                public void setUrl(String url) {
-                        this.url = url;
+                                                                                                public void setPath(String path) {
+                        this.path = path;
                     }
 
-                    public String getUrl() {
-                        return url;
+                    public String getPath() {
+                        return path;
+                    }
+                                                                                                public void setComponent(String component) {
+                        this.component = component;
+                    }
+
+                    public String getComponent() {
+                        return component;
                     }
                                                                                                 public void setIcon(String icon) {
                         this.icon = icon;

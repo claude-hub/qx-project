@@ -1,5 +1,0 @@
-package ${package}.${moduleName}.admin.dto.${classname}.requset;
-
-public class ${className}QueryInputDTO {
-
-}

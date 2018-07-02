@@ -42,7 +42,7 @@ public class GeneratorController {
 //        String[] tableNames = new String[]{};
 //        String tables = request.getParameter("tables");
 //        tableNames = JSON.parseArray(tables).toArray(tableNames);
-        String[] tableNames = {"sys_user","sys_role","sys_user_role","sys_menu","sys_role_menu","sys_dept","sys_role_dept"};
+        String[] tableNames = {"sys_menu"};
         byte[] data = generatorService.generatorCode(tableNames);
 
         response.reset();

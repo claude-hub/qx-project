@@ -6,7 +6,7 @@ import java.util.Date;
  * 菜单权限表
  *
  * @author cloudy
- * @date 2018-06-29 17:20:12
+ * @date 2018-07-02 16:23:19
  */
 public class SysMenu {
     /**
@@ -26,9 +26,13 @@ public class SysMenu {
      */
     private String menuCode;
     /**
-     * 请求链接
+     * 前端URL
      */
-    private String url;
+    private String path;
+    /**
+     * VUE页面组件名
+     */
+    private String component;
     /**
      * 图标
      */
@@ -87,12 +91,20 @@ public class SysMenu {
         return menuCode;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setPath(String path) {
+        this.path = path;
     }
 
-    public String getUrl() {
-        return url;
+    public String getPath() {
+        return path;
+    }
+
+    public void setComponent(String component) {
+        this.component = component;
+    }
+
+    public String getComponent() {
+        return component;
     }
 
     public void setIcon(String icon) {

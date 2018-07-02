@@ -1,0 +1,5 @@
+package ${package}.${moduleName}.admin.model.dto.${classname}.requset;
+
+public class ${className}QueryInputDTO {
+
+}
