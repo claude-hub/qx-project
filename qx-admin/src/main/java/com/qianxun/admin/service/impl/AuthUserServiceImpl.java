@@ -1,6 +1,7 @@
 package com.qianxun.admin.service.impl;
 
 import com.qianxun.admin.mapper.AuthUserMapper;
+import com.qianxun.admin.model.dto.sysMenu.response.MenuTree;
 import com.qianxun.admin.model.entity.SysMenu;
 import com.qianxun.admin.model.entity.SysRole;
 import com.qianxun.admin.model.entity.SysUser;
@@ -113,6 +114,11 @@ public class AuthUserServiceImpl implements AuthUserService {
     @Override
     public List<SysRole> getRolesByUserId(Integer id) {
         return authUserMapper.findRolesByUserId(id);
+    }
+
+    @Override
+    public List<MenuTree> getUserMenuTree(Integer id) {
+        return authUserMapper.selectUserMenuTree(id);
     }
 
 }

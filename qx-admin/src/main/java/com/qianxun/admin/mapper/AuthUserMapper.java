@@ -1,5 +1,6 @@
 package com.qianxun.admin.mapper;
 
+import com.qianxun.admin.model.dto.sysMenu.response.MenuTree;
 import com.qianxun.admin.model.entity.SysMenu;
 import com.qianxun.admin.model.entity.SysRole;
 import com.qianxun.admin.model.entity.SysUser;
@@ -51,4 +52,6 @@ public interface AuthUserMapper {
     List<SysMenu> findMenusByUserId(Integer id);
 
     List<SysRole> findRolesByUserId(Integer id);
+
+    List<MenuTree> selectUserMenuTree(Integer id);
 }

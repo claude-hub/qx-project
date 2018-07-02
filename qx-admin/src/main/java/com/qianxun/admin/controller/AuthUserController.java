@@ -3,6 +3,7 @@ package com.qianxun.admin.controller;
 import com.qianxun.admin.model.dto.RequestDTO;
 import com.qianxun.admin.model.dto.auth.request.AuthUserLoginInputDTO;
 import com.qianxun.admin.model.dto.auth.response.AuthUserLoginDTO;
+import com.qianxun.admin.model.dto.sysMenu.response.MenuTree;
 import com.qianxun.admin.model.entity.SysMenu;
 import com.qianxun.admin.model.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
@@ -53,7 +54,7 @@ public class AuthUserController extends BaseController {
     public JSONResult menu(@Valid RequestDTO input){
         JSONResult data = new JSONResult();
         SysUser user = getCurrentUser();
-        List<SysMenu> menus = authUserService.getMenusByUserId(user.getUserId());
+        List<MenuTree> menus = authUserService.getUserMenuTree(user.getUserId());
         data.setData(menus);
         return data;
     }

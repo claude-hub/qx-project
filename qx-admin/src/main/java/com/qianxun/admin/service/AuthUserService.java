@@ -1,5 +1,6 @@
 package com.qianxun.admin.service;
 
+import com.qianxun.admin.model.dto.sysMenu.response.MenuTree;
 import com.qianxun.admin.model.entity.SysMenu;
 import com.qianxun.admin.model.entity.SysRole;
 import com.qianxun.admin.model.entity.SysUser;
@@ -49,4 +50,11 @@ public interface AuthUserService {
      * @return
      */
     List<SysRole> getRolesByUserId(Integer id);
+
+    /**
+     * 获取用户的菜单列表
+     * @param id
+     * @return
+     */
+    List<MenuTree> getUserMenuTree (Integer id);
 }

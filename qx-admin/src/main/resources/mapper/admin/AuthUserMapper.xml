@@ -82,4 +82,27 @@
         SELECT * FROM sys_role WHERE role_id IN
         (SELECT role_id FROM sys_user_role WHERE user_id = #{id,jdbcType=INTEGER})
     </select>
+
+    <resultMap id="ResultMenuTree" type="com.qianxun.admin.model.dto.sysMenu.response.MenuTree">
+        <id column="menu_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="menuId"/>
+        <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
+        <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name"/>
+        <result column="menu_code" javaType="java.lang.String" jdbcType="VARCHAR" property="menuCode"/>
+        <result column="url" javaType="java.lang.String" jdbcType="VARCHAR" property="url"/>
+        <result column="icon" javaType="java.lang.String" jdbcType="VARCHAR" property="icon"/>
+        <result column="sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sort"/>
+        <result column="type" javaType="java.lang.Integer" jdbcType="INTEGER" property="type"/>
+        <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
+        <collection property="children" column="menu_id" select="findChildren"/>
+    </resultMap>
+    <select id="selectUserMenuTree" resultMap="ResultMenuTree">
+        SELECT * FROM sys_menu
+        WHERE sys_menu.parent_id IS NULL AND sys_menu.type IS NULL
+        ORDER BY sys_menu.sort, sys_menu.menu_id
+    </select>
+    <select id="findChildren" parameterType="java.lang.Integer" resultMap="ResultMenuTree">
+        SELECT * FROM sys_menu
+        WHERE sys_menu.parent_id = #{id} AND sys_menu.type IS NULL
+        ORDER BY sys_menu.sort, sys_menu.menu_id
+    </select>
 </mapper>
