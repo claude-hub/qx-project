@@ -1,7 +1,7 @@
 package com.qianxun.admin.service.impl;
 
-import com.qianxun.admin.dao.SysUserMapper;
-import com.qianxun.admin.entity.SysUser;
+import com.qianxun.admin.mapper.SysUserMapper;
+import com.qianxun.admin.model.entity.SysUser;
 import com.qianxun.admin.service.SysUserService;
 import com.qianxun.common.utils.exception.InvalidException;
 import org.springframework.beans.factory.annotation.Autowired;

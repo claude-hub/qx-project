@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qianxun.admin.dao.SysMenuMapper">
-    <resultMap id="BaseResultMap" type="com.qianxun.admin.entity.SysMenu">
+<mapper namespace="com.qianxun.admin.mapper.SysMenuMapper">
+    <resultMap id="BaseResultMap" type="com.qianxun.admin.model.entity.SysMenu">
         <id column="menu_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="menuId"/>
         <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
         <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name"/>
@@ -21,7 +21,7 @@
     <select id="selectAll" resultMap="BaseResultMap">
         select * from sys_menu
     </select>
-    <insert id="insert" parameterType="com.qianxun.admin.entity.SysMenu">
+    <insert id="insert" parameterType="com.qianxun.admin.model.entity.SysMenu">
         <selectKey keyProperty="menuId" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -52,7 +52,7 @@
         #{status,jdbcType=INTEGER}
         )
     </insert>
-    <update id="updateByPrimaryKey" parameterType="com.qianxun.admin.entity.SysMenu">
+    <update id="updateByPrimaryKey" parameterType="com.qianxun.admin.model.entity.SysMenu">
         update sys_menu set
                                             menu_id = #{menuId,jdbcType=INTEGER},
                                                                 parent_id = #{parentId,jdbcType=INTEGER},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qianxun.admin.dao.SysUserMapper">
-    <resultMap id="BaseResultMap" type="com.qianxun.admin.entity.SysUser">
+<mapper namespace="com.qianxun.admin.mapper.SysUserMapper">
+    <resultMap id="BaseResultMap" type="com.qianxun.admin.model.entity.SysUser">
         <id column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="userId"/>
         <result column="dept_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="deptId"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -29,7 +29,7 @@
     <select id="selectAll" resultMap="BaseResultMap">
         select * from sys_user
     </select>
-    <insert id="insert" parameterType="com.qianxun.admin.entity.SysUser">
+    <insert id="insert" parameterType="com.qianxun.admin.model.entity.SysUser">
         <selectKey keyProperty="userId" order="AFTER" resultType="java.lang.Integer">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -72,7 +72,7 @@
         #{signInCount,jdbcType=INTEGER}
         )
     </insert>
-    <update id="updateByPrimaryKey" parameterType="com.qianxun.admin.entity.SysUser">
+    <update id="updateByPrimaryKey" parameterType="com.qianxun.admin.model.entity.SysUser">
       update sys_user set
         user_id = #{userId,jdbcType=INTEGER},
         dept_id = #{deptId,jdbcType=INTEGER},

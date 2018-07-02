@@ -1,9 +1,9 @@
 package com.qianxun.admin.service.impl;
 
-import com.qianxun.admin.dao.AuthUserMapper;
-import com.qianxun.admin.entity.SysMenu;
-import com.qianxun.admin.entity.SysRole;
-import com.qianxun.admin.entity.SysUser;
+import com.qianxun.admin.mapper.AuthUserMapper;
+import com.qianxun.admin.model.entity.SysMenu;
+import com.qianxun.admin.model.entity.SysRole;
+import com.qianxun.admin.model.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.admin.exception.PasswordInvalid;
 import com.qianxun.admin.exception.UserNotFoundException;

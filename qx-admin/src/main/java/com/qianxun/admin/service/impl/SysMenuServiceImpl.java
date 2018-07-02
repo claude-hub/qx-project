@@ -1,7 +1,7 @@
 package com.qianxun.admin.service.impl;
 
-import com.qianxun.admin.dao.SysMenuMapper;
-import com.qianxun.admin.entity.SysMenu;
+import com.qianxun.admin.mapper.SysMenuMapper;
+import com.qianxun.admin.model.entity.SysMenu;
 import com.qianxun.admin.service.SysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

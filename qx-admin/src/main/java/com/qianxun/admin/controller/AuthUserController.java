@@ -1,10 +1,10 @@
 package com.qianxun.admin.controller;
 
-import com.qianxun.admin.dto.RequestDTO;
-import com.qianxun.admin.dto.auth.request.AuthUserLoginInputDTO;
-import com.qianxun.admin.dto.auth.response.AuthUserLoginDTO;
-import com.qianxun.admin.entity.SysMenu;
-import com.qianxun.admin.entity.SysUser;
+import com.qianxun.admin.model.dto.RequestDTO;
+import com.qianxun.admin.model.dto.auth.request.AuthUserLoginInputDTO;
+import com.qianxun.admin.model.dto.auth.response.AuthUserLoginDTO;
+import com.qianxun.admin.model.entity.SysMenu;
+import com.qianxun.admin.model.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.admin.service.AuthUserService;
 import com.qianxun.common.utils.captcha.CaptchaHelper;

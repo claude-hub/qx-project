@@ -1,8 +1,8 @@
 package com.qianxun.admin.config.jwt;
 
-import com.qianxun.admin.entity.SysMenu;
-import com.qianxun.admin.entity.SysRole;
-import com.qianxun.admin.entity.SysUser;
+import com.qianxun.admin.model.entity.SysMenu;
+import com.qianxun.admin.model.entity.SysRole;
+import com.qianxun.admin.model.entity.SysUser;
 import com.qianxun.admin.service.AuthUserService;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;

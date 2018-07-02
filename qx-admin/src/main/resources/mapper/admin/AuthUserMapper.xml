@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.qianxun.admin.dao.AuthUserMapper">
-    <resultMap id="BaseResultMap" type="com.qianxun.admin.entity.SysUser">
+<mapper namespace="com.qianxun.admin.mapper.AuthUserMapper">
+    <resultMap id="BaseResultMap" type="com.qianxun.admin.model.entity.SysUser">
         <id column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="userId"/>
         <result column="dept_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="deptId"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
@@ -51,7 +51,7 @@
         SET sign_in_count = sign_in_count + 1
         WHERE user_id = #{id,jdbcType=INTEGER}
     </update>
-    <resultMap id="MenuResultMap" type="com.qianxun.admin.entity.SysMenu">
+    <resultMap id="MenuResultMap" type="com.qianxun.admin.model.entity.SysMenu">
         <id column="menu_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="menuId"/>
         <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
         <result column="name" javaType="java.lang.String" jdbcType="VARCHAR" property="name"/>
@@ -69,7 +69,7 @@
         (SELECT menu_id FROM sys_role_menu WHERE role_id IN
         (SELECT role_id FROM sys_user_role WHERE user_id = #{id,jdbcType=INTEGER}))
     </select>
-    <resultMap id="RoleResultMap" type="com.qianxun.admin.entity.SysRole">
+    <resultMap id="RoleResultMap" type="com.qianxun.admin.model.entity.SysRole">
         <id column="role_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="roleId"/>
         <result column="role_name" javaType="java.lang.String" jdbcType="VARCHAR" property="roleName"/>
         <result column="role_code" javaType="java.lang.String" jdbcType="VARCHAR" property="roleCode"/>

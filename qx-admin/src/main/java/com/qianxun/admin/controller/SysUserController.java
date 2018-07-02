@@ -1,7 +1,7 @@
 package com.qianxun.admin.controller;
 
-import com.qianxun.admin.dto.sysUser.request.*;
-import com.qianxun.admin.entity.SysUser;
+import com.qianxun.admin.model.dto.sysUser.request.*;
+import com.qianxun.admin.model.entity.SysUser;
 import com.qianxun.admin.service.SysUserService;
 import com.qianxun.common.utils.exception.InvalidException;
 import com.qianxun.common.utils.exception.PhoneException;

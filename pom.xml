@@ -10,7 +10,8 @@
 		<module>qx-generator</module>
 		<module>qx-common</module>
 		<module>qx-admin</module>
-	</modules>
+        <module>qx-auth</module>
+    </modules>
 	<packaging>pom</packaging>
 
 	<name>qx-project</name>

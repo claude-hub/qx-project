@@ -1,7 +1,7 @@
 package com.qianxun.admin.service.impl;
 
-import com.qianxun.admin.dao.SysDeptMapper;
-import com.qianxun.admin.entity.SysDept;
+import com.qianxun.admin.mapper.SysDeptMapper;
+import com.qianxun.admin.model.entity.SysDept;
 import com.qianxun.admin.service.SysDeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

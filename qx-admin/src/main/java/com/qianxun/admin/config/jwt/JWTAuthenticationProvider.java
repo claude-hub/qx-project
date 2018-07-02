@@ -1,8 +1,7 @@
 package com.qianxun.admin.config.jwt;
 
-import com.qianxun.admin.entity.SysUser;
+import com.qianxun.admin.model.entity.SysUser;
 import com.qianxun.admin.service.AuthUserService;
-import com.qianxun.admin.service.SysUserService;
 import com.qianxun.common.utils.jwt.JwtTokenUtil;
 import io.jsonwebtoken.JwtException;
 import org.springframework.beans.factory.annotation.Autowired;

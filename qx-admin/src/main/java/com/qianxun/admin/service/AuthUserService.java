@@ -1,11 +1,10 @@
 package com.qianxun.admin.service;
 
-import com.qianxun.admin.entity.SysMenu;
-import com.qianxun.admin.entity.SysRole;
-import com.qianxun.admin.entity.SysUser;
+import com.qianxun.admin.model.entity.SysMenu;
+import com.qianxun.admin.model.entity.SysRole;
+import com.qianxun.admin.model.entity.SysUser;
 import com.qianxun.admin.exception.AuthenticateException;
 import com.qianxun.common.utils.spring.SpringContextHolderUtil;
-import io.swagger.models.auth.In;
 
 import java.util.List;
 

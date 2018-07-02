@@ -1,7 +1,7 @@
 package com.qianxun.admin.controller;
 
-import com.qianxun.admin.dto.sysDept.request.*;
-import com.qianxun.admin.entity.SysDept;
+import com.qianxun.admin.model.dto.sysDept.request.*;
+import com.qianxun.admin.model.entity.SysDept;
 import com.qianxun.admin.service.SysDeptService;
 import com.qianxun.common.utils.mapper.BeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;

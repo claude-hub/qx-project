@@ -1,6 +1,6 @@
 package com.qianxun.admin.service;
 
-import com.qianxun.admin.entity.SysRole;
+import com.qianxun.admin.model.entity.SysRole;
 
 import java.util.List;
 

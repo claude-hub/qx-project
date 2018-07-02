@@ -1,7 +1,7 @@
 package com.qianxun.admin.controller;
 
-import com.qianxun.admin.dto.sysMenu.request.*;
-import com.qianxun.admin.entity.SysMenu;
+import com.qianxun.admin.model.dto.sysMenu.request.*;
+import com.qianxun.admin.model.entity.SysMenu;
 import com.qianxun.admin.service.SysMenuService;
 import com.qianxun.common.utils.mapper.BeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;

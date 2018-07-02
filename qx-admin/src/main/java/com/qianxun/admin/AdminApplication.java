@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = "com.qianxun")
 //扫描bean
-@MapperScan("com.qianxun.admin.dao")
+@MapperScan("com.qianxun.admin.mapper")
 public class AdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(AdminApplication.class, args);

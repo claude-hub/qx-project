@@ -1,7 +1,7 @@
 package com.qianxun.admin.controller;
 
-import com.qianxun.admin.dto.sysRole.request.*;
-import com.qianxun.admin.entity.SysRole;
+import com.qianxun.admin.model.dto.sysRole.request.*;
+import com.qianxun.admin.model.entity.SysRole;
 import com.qianxun.admin.service.SysRoleService;
 import com.qianxun.common.utils.mapper.BeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;

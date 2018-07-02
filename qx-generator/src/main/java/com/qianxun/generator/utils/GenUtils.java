@@ -197,7 +197,7 @@ public class GenUtils {
 //            return packagePath + "entity" + File.separator + className + "Entity.java";
 //        }
 //        if (template.contains("Dao.java.vm")) {
-//            return packagePath + "dao" + File.separator + className + "Dao.java";
+//            return packagePath + "mapper" + File.separator + className + "Dao.java";
 //        }
 //        if (template.contains("Service.java.vm")) {
 //            return packagePath + "service" + File.separator + className + "Service.java";
@@ -230,7 +230,7 @@ public class GenUtils {
             return packagePath + "entity" + File.separator + className + ".java";
         }
         if (template.contains("Mapper.java.vm")) {
-            return packagePath + "dao" + File.separator + className + "Mapper.java";
+            return packagePath + "mapper" + File.separator + className + "Mapper.java";
         }
         if (template.contains("Mapper.xml.vm")) {
             return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Mapper.xml";
