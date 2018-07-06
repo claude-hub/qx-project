@@ -99,13 +99,20 @@
         <collection property="children" column="menu_id" select="findChildren"/>
     </resultMap>
     <select id="selectUserMenuTree" resultMap="ResultMenuTree">
+--         SELECT * FROM sys_menu
+--         WHERE sys_menu.parent_id IS NULL AND sys_menu.type IS NULL
+--         ORDER BY sys_menu.sort, sys_menu.menu_id
         SELECT * FROM sys_menu
-        WHERE sys_menu.parent_id IS NULL AND sys_menu.type IS NULL
+        WHERE sys_menu.parent_id IS NULL AND sys_menu.type IS NULL AND menu_id IN
+        (SELECT menu_id FROM sys_role_menu WHERE role_id IN
+        (SELECT role_id FROM sys_user_role WHERE user_id = #{id}))
         ORDER BY sys_menu.sort, sys_menu.menu_id
     </select>
     <select id="findChildren" parameterType="java.lang.Integer" resultMap="ResultMenuTree">
         SELECT * FROM sys_menu
-        WHERE sys_menu.parent_id = #{id} AND sys_menu.type IS NULL
+        WHERE sys_menu.parent_id = #{id} AND sys_menu.type IS NULL AND menu_id IN
+        (SELECT menu_id FROM sys_role_menu WHERE role_id IN
+        (SELECT role_id FROM sys_user_role WHERE user_id = 1))
         ORDER BY sys_menu.sort, sys_menu.menu_id
     </select>
 </mapper>

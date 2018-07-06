@@ -12,9 +12,11 @@ import com.qianxun.common.utils.captcha.CaptchaHelper;
 import com.qianxun.common.utils.mapper.BeanMapper;
 import com.qianxun.common.utils.result.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -34,19 +36,28 @@ public class AuthUserController extends BaseController {
      * 登录
      */
     @PostMapping("/sign_in")
-    public JSONResult sign_in(@RequestBody @Valid AuthUserLoginInputDTO input) throws AuthenticateException {
+    public JSONResult sign_in(HttpServletRequest request, @RequestBody @Valid AuthUserLoginInputDTO input) throws AuthenticateException, CaptchaHelper.CaptchaException {
         JSONResult data = new JSONResult();
         // 验证，验证码
-//        captchaHelper.validateThrow(request, input.getCaptcha());
+        captchaHelper.validateThrow(request, input.getCaptcha());
         SysUser sysUser = authUserService.signIn(input.getLoginStr(),input.getPassword());
         data.setData(BeanMapper.map(sysUser,AuthUserLoginDTO.class));
         return data;
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADD_PERMISSION')")
+    @PreAuthorize("hasAnyRole('ROLE_SYSTEMM')")
     @PostMapping("/test1")
     public JSONResult test1(@Valid RequestDTO input){
         JSONResult data = new JSONResult();
+        data.setMessage("请求成功");
+        return data;
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_SYSTEM')")
+    @PostMapping("/test2")
+    public JSONResult test2(@Valid RequestDTO input){
+        JSONResult data = new JSONResult();
+        data.setMessage("请求成功");
         return data;
     }
 
