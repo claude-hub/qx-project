@@ -21,7 +21,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "auth")
+@RequestMapping(value = "/api/admin/auth")
 public class AuthUserController extends BaseController {
     private CaptchaHelper captchaHelper = CaptchaHelper.getCaptchaHelper();
 

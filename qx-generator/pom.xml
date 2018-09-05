@@ -29,6 +29,11 @@
             <version>${commons.io.version}</version>
         </dependency>
         <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
             <groupId>com.qianxun</groupId>
             <artifactId>qx-common</artifactId>
             <version>0.0.1-SNAPSHOT</version>

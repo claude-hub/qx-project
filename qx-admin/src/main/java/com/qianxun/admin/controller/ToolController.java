@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping(value = "tool")
+@RequestMapping(value = "/api/admin/tool")
 public class ToolController {
     private CaptchaHelper captchaHelper = CaptchaHelper.getCaptchaHelper();
 

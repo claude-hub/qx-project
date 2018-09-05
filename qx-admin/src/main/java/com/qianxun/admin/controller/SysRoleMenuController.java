@@ -18,7 +18,7 @@ import javax.validation.Valid;
  * @date 2018-06-29 17:20:13
  */
 @RestController
-@RequestMapping("SysRoleMenu")
+@RequestMapping("/api/admin/sysRoleMenu")
 public class SysRoleMenuController extends BaseController {
 
     @Autowired

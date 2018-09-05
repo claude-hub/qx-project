@@ -1,6 +1,7 @@
 package com.qianxun.generator.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.generator.service.GeneratorService;
 import org.apache.commons.io.IOUtils;
@@ -17,7 +18,7 @@ import java.io.IOException;
  * 代码生成器
  */
 @RestController
-@RequestMapping(value = "api/admin/generator")
+@RequestMapping(value = "/api/admin/generator")
 public class GeneratorController {
 
     @Autowired
@@ -39,10 +40,10 @@ public class GeneratorController {
      */
     @RequestMapping("/code")
     public void code(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        String[] tableNames = new String[]{};
-//        String tables = request.getParameter("tables");
-//        tableNames = JSON.parseArray(tables).toArray(tableNames);
-        String[] tableNames = {"sys_menu"};
+        String[] tableNames = new String[]{};
+        String tables = request.getParameter("tables");
+        tableNames = JSON.parseArray(tables).toArray(tableNames);
+//        String[] tableNames = {"sys_menu"};
         byte[] data = generatorService.generatorCode(tableNames);
 
         response.reset();
