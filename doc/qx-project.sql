@@ -1,3 +1,19 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : mysql
+ Source Server Type    : MySQL
+ Source Server Version : 50722
+ Source Host           : 123.207.242.177:3306
+ Source Schema         : qx-project
+
+ Target Server Type    : MySQL
+ Target Server Version : 50722
+ File Encoding         : 65001
+
+ Date: 15/11/2018 10:01:53
+*/
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -10,7 +26,7 @@ CREATE TABLE `sys_dept`  (
   `parent_id` int(11) NULL DEFAULT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '部门名称',
   `order_num` int(11) NULL DEFAULT NULL COMMENT '排序',
-  `created_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `created_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
   `status` int(11) NULL DEFAULT NULL COMMENT '是否删除  -1：已删除  0：正常',
   PRIMARY KEY (`dept_id`) USING BTREE
@@ -35,7 +51,7 @@ CREATE TABLE `sys_menu`  (
   `icon` varchar(32) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '图标',
   `sort` int(11) NULL DEFAULT 1 COMMENT '排序值',
   `type` int(11) NULL DEFAULT NULL COMMENT '菜单类型 （0菜单 1按钮）',
-  `created_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `created_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
   `status` int(11) NULL DEFAULT NULL COMMENT '0--正常 1--删除',
   PRIMARY KEY (`menu_id`) USING BTREE
@@ -70,7 +86,7 @@ CREATE TABLE `sys_role`  (
   `role_name` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '角色名',
   `role_code` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL COMMENT '角色码',
   `role_desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL COMMENT '角色描述',
-  `created_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP(0),
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `status` int(11) NULL DEFAULT NULL COMMENT '删除标识（0-正常,1-删除）',
   PRIMARY KEY (`role_id`) USING BTREE,
@@ -140,11 +156,11 @@ CREATE TABLE `sys_user`  (
   `user_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户名',
   `reset_password_token` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '重置密码的token',
   `password_encrypted` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '加密后的密码',
-  `created_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `created_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '创建时间',
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '修改时间',
   `current_token` varchar(1000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '当前的token',
-  `current_sign_in_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '当前登录时间',
-  `last_sign_in_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP COMMENT '上一次登录时间',
+  `current_sign_in_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '当前登录时间',
+  `last_sign_in_at` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '上一次登录时间',
   `sign_in_count` int(11) NOT NULL COMMENT '累积登录次数',
   PRIMARY KEY (`user_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
@@ -152,7 +168,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 1, '张云鹏', NULL, '123456', '314705487@qq.com', '/images/head.jpg', NULL, 'cloudy', NULL, '$2a$10$tdBj8lS.GW8BlvfgHQfv6es0y0rzMK0UvM35oyd7DsmKacas7vBba', NULL, '2018-07-06 18:44:20', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMjM0NTYiLCJ1c2VyX2lkIjoxLCJleHAiOjE1MzE1MDc0NTksImlhdCI6MTUzMDkwMjY1OX0.RH5WoNXDdR2-eH0iZGQIGlUZP-84rNLJDUTn6Y-PPdSJxZT9beB82rAJZ5tbgJehVxIqNsNnu0XOhWwx7Ur3pw', '2018-07-06 18:44:20', '2018-07-06 03:42:52', 118);
+INSERT INTO `sys_user` VALUES (1, 1, 'admin', NULL, 'admin', '314705487@qq.com', '/images/head.jpg', NULL, 'cloudy', NULL, '$2a$10$tdBj8lS.GW8BlvfgHQfv6es0y0rzMK0UvM35oyd7DsmKacas7vBba', NULL, '2018-11-15 01:49:06', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInVzZXJfaWQiOjEsImV4cCI6MTU0Mjg1MTM0NiwiaWF0IjoxNTQyMjQ2NTQ2fQ.bR88T_St47FXzcnJTBfwcWy23QAfs4BCwgnziHgGOeSX_p1d4zOYieWbnhmU11DyuAG39PiQYV5fUF6qtce7bA', '2018-11-15 01:49:06', '2018-11-15 01:45:03', 133);
 INSERT INTO `sys_user` VALUES (2, 2, '测试账号', NULL, '15223246130', NULL, '/images/test.jpg', 1, NULL, NULL, '$2a$10$KsNCGzkDxjl.K.xRD/OBMetLwBFbKNrnrlijq0TA5J/Mdov5OZCtG', NULL, '2018-07-06 03:11:03', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNTIyMzI0NjEzMCIsInVzZXJfaWQiOjIsImV4cCI6MTUzMTQ1MTQ2MCwiaWF0IjoxNTMwODQ2NjYwfQ.AR-1X7IfMiQeFGP3XEGD2AYdCkzQhgaenqOtA5WmjtDmQM5_B60k6CsXP7vLlbhyuhA8jFtmKIyCEKfJ9yebYQ', '2018-07-06 03:11:03', '2018-07-06 02:46:55', 5);
 
 -- ----------------------------
