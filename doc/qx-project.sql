@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql
+ Source Server         : mysql01
  Source Server Type    : MySQL
- Source Server Version : 50722
- Source Host           : 123.207.242.177:3306
+ Source Server Version : 50724
+ Source Host           : localhost:3306
  Source Schema         : qx-project
 
  Target Server Type    : MySQL
- Target Server Version : 50722
+ Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 15/11/2018 10:01:53
+ Date: 14/01/2019 17:11:22
 */
 
 SET NAMES utf8mb4;
@@ -168,7 +168,7 @@ CREATE TABLE `sys_user`  (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES (1, 1, 'admin', NULL, 'admin', '314705487@qq.com', '/images/head.jpg', NULL, 'cloudy', NULL, '$2a$10$tdBj8lS.GW8BlvfgHQfv6es0y0rzMK0UvM35oyd7DsmKacas7vBba', NULL, '2018-11-15 01:49:06', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInVzZXJfaWQiOjEsImV4cCI6MTU0Mjg1MTM0NiwiaWF0IjoxNTQyMjQ2NTQ2fQ.bR88T_St47FXzcnJTBfwcWy23QAfs4BCwgnziHgGOeSX_p1d4zOYieWbnhmU11DyuAG39PiQYV5fUF6qtce7bA', '2018-11-15 01:49:06', '2018-11-15 01:45:03', 133);
+INSERT INTO `sys_user` VALUES (1, 1, 'admin', NULL, 'admin', '314705487@qq.com', '/images/head.jpg', NULL, 'cloudy', NULL, '$2a$10$tdBj8lS.GW8BlvfgHQfv6es0y0rzMK0UvM35oyd7DsmKacas7vBba', NULL, '2019-01-14 09:10:24', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInVzZXJfaWQiOjEsImV4cCI6MTU0ODA2MTgyNCwiaWF0IjoxNTQ3NDU3MDI0fQ.duE3FVamOrGxMCW2P2R_eqYi6pOi2eYCHFaxDU84p2xGorqo4ZRLBkM44EWBX-6eKXEYW0vAUSnNSeNiD8QSXg', '2019-01-14 09:10:24', '2019-01-14 09:03:03', 138);
 INSERT INTO `sys_user` VALUES (2, 2, '测试账号', NULL, '15223246130', NULL, '/images/test.jpg', 1, NULL, NULL, '$2a$10$KsNCGzkDxjl.K.xRD/OBMetLwBFbKNrnrlijq0TA5J/Mdov5OZCtG', NULL, '2018-07-06 03:11:03', 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxNTIyMzI0NjEzMCIsInVzZXJfaWQiOjIsImV4cCI6MTUzMTQ1MTQ2MCwiaWF0IjoxNTMwODQ2NjYwfQ.AR-1X7IfMiQeFGP3XEGD2AYdCkzQhgaenqOtA5WmjtDmQM5_B60k6CsXP7vLlbhyuhA8jFtmKIyCEKfJ9yebYQ', '2018-07-06 03:11:03', '2018-07-06 02:46:55', 5);
 
 -- ----------------------------
