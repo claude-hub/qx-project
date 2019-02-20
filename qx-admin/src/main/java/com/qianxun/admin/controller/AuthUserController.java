@@ -39,7 +39,7 @@ public class AuthUserController extends BaseController {
     public JSONResult sign_in(HttpServletRequest request, @RequestBody @Valid AuthUserLoginInputDTO input) throws AuthenticateException, CaptchaHelper.CaptchaException {
         JSONResult data = new JSONResult();
         // 验证，验证码
-        captchaHelper.validateThrow(request, input.getCaptcha());
+//        captchaHelper.validateThrow(request, input.getCaptcha());
         SysUser sysUser = authUserService.signIn(input.getLoginStr(),input.getPassword());
         data.setData(BeanMapper.map(sysUser,AuthUserLoginDTO.class));
         return data;
