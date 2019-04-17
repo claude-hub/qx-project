@@ -40,10 +40,12 @@ public class GeneratorController {
      */
     @RequestMapping("/code")
     public void code(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String[] tableNames = new String[]{};
-        String tables = request.getParameter("tables");
-        tableNames = JSON.parseArray(tables).toArray(tableNames);
-//        String[] tableNames = {"sys_menu"};
+//        String[] tableNames = new String[]{};
+//        String tables = request.getParameter("tables");
+//        tableNames = JSON.parseArray(tables).toArray(tableNames);
+        String[] tableNames = {"sys_dept","sys_menu","sys_role_menu","sys_user_menu"
+        ,"sys_role_lang","sys_role","sys_user","sys_lang","sys_menu_lang"
+        ,"sys_dept_role","sys_dept_lang"};
         byte[] data = generatorService.generatorCode(tableNames);
 
         response.reset();
