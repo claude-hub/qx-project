@@ -1,4 +1,4 @@
-package com.qianxun.auth.grpc;
+package com.qianxun.admin.grpc.client;
 
 import com.qianxun.auth.grpc.login.LoginReq;
 import com.qianxun.auth.grpc.login.LoginRes;
@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+
 @Component
 public class LoginClient {
     private static final Logger LOGGER =

@@ -1,6 +1,6 @@
-package com.qianxun.auth.controller;
+package com.qianxun.admin.controller;
 
-import com.qianxun.auth.grpc.LoginClient;
+import com.qianxun.admin.grpc.client.LoginClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

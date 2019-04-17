@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package com.qianxun.auth.grpc.login;
+
+message LoginReq {
+  string account = 1;
+  string password = 2;
+}
+
+message LoginRes {
+  string message = 1;
+}
+
+service LoginService {
+  rpc login (LoginReq) returns (LoginRes);
+}
