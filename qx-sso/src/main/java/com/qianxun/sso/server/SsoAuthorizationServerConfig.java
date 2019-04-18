@@ -11,12 +11,6 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-/**
- * Created on 2017/12/26.
- *
- * @author zlf
- * @since 1.0
- */
 @Configuration
 @EnableAuthorizationServer
 public class SsoAuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {

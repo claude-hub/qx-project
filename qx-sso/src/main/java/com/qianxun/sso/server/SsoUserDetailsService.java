@@ -9,12 +9,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-/**
- * Created on 2017/12/26.
- *
- * @author zlf
- * @since 1.0
- */
 @Component
 public class SsoUserDetailsService implements UserDetailsService {
 

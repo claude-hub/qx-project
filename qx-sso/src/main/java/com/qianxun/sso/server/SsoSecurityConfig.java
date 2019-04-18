@@ -12,10 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * spring Security配置
- * Created on 2017/12/26.
- *
- * @author zlf
- * @since 1.0
+ * @author Cloudy
  */
 @Configuration
 public class SsoSecurityConfig extends WebSecurityConfigurerAdapter {
