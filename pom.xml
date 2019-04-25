@@ -8,6 +8,7 @@
     <version>1.0.0</version>
     <modules>
         <module>qx-config</module>
+        <module>qx-config-client</module>
     </modules>
     <packaging>pom</packaging>
 
