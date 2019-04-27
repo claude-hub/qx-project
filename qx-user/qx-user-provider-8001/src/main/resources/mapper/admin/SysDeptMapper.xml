@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qianxun.admin.provider.mapper.SysDeptMapper">
+    <resultMap id="BaseResultMap" type="com.qianxun.admin.api.entity.SysDept">
+        <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id"/>
+        <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
+        <result column="sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sort"/>
+        <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
+        <result column="db_source" javaType="java.lang.String" jdbcType="VARCHAR" property="dbSource"/>
+    </resultMap>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from sys_dept
+           where id = #{id,jdbcType=INTEGER}
+        </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select * from sys_dept
+    </select>
+    <insert id="insert" parameterType="com.qianxun.admin.api.entity.SysDept">
+        <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+        insert into sys_dept (
+        id,
+        parent_id,
+        sort,
+        created_at,
+        updated_at,
+        status,
+        db_source
+        )
+        values (
+        #{id,jdbcType=INTEGER},
+        #{parentId,jdbcType=INTEGER},
+        #{sort,jdbcType=INTEGER},
+        #{createdAt,jdbcType=TIMESTAMP},
+        #{updatedAt,jdbcType=TIMESTAMP},
+        #{status,jdbcType=INTEGER},
+        #{dbSource,jdbcType=VARCHAR}
+        )
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="com.qianxun.admin.api.entity.SysDept">
+        update sys_dept set
+                                            id = #{id,jdbcType=INTEGER},
+                                                                parent_id = #{parentId,jdbcType=INTEGER},
+                                                                sort = #{sort,jdbcType=INTEGER},
+                                                                created_at = #{createdAt,jdbcType=TIMESTAMP},
+                                                                updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+                                                                status = #{status,jdbcType=INTEGER},
+                                                                db_source = #{dbSource,jdbcType=VARCHAR}
+                                               where id = #{id,jdbcType=INTEGER}
+            </update>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from sys_dept
+                   where id = #{id,jdbcType=INTEGER}
+            </delete>
+</mapper>

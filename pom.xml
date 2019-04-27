@@ -7,8 +7,12 @@
     <artifactId>qx-project</artifactId>
     <version>1.0.0</version>
     <modules>
-        <module>qx-config</module>
+        <module>qx-config-8888</module>
         <module>qx-config-client</module>
+        <module>qx-user</module>
+        <module>qx-eureka-7001</module>
+        <module>qx-generator</module>
+        <module>qx-common</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -16,9 +20,40 @@
     <description>qianxun</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+
         <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <mybatis-plus.version>3.1.0</mybatis-plus.version>
+        <druid.version>1.1.16</druid.version>
+
+        <!--通用模块(qx-common)依赖版本-->
+        <spring.boot.version>2.1.4.RELEASE</spring.boot.version>
+        <swagger.version>2.8.0</swagger.version>
+        <spring.web.version>5.0.7.RELEASE</spring.web.version>
+        <dozer.core.version>6.2.0</dozer.core.version>
+        <jjwt.version>0.9.0</jjwt.version>
+        <druid.version>1.1.10</druid.version>
+        <mybatis.starter.version>1.3.2</mybatis.starter.version>
+        <mysql.version>8.0.11</mysql.version>
+
+        <!--代码生成器模块(qx-generator)依赖版本-->
+        <commons.configuration.version>1.10</commons.configuration.version>
+        <velocity.version>1.7</velocity.version>
+        <commons.io.version>2.6</commons.io.version>
+        <fastjson.version>1.2.49</fastjson.version>
     </properties>
+
+    <dependencies>
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -40,6 +75,27 @@
     </dependencyManagement>
     <build>
         <finalName>${project.name}</finalName>
+
+        <!--解析配置里面的info字段的$-->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <delimiters>
+                        <delimit>$</delimit>
+                    </delimiters>
+                </configuration>
+            </plugin>
+        </plugins>
+        <!---->
+
         <pluginManagement>
             <plugins>
                 <plugin>
@@ -71,10 +127,6 @@
                             <bootclasspath>${java.home}\lib\rt.jar;${java.home}\lib\jce.jar</bootclasspath>
                         </compilerArguments>
                     </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
                 </plugin>
             </plugins>
         </pluginManagement>
