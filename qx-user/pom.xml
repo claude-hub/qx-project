@@ -15,6 +15,7 @@
         <module>qx-user-api</module>
         <module>qx-user-provider-8001</module>
         <module>qx-user-consumer</module>
+        <module>qx-user-grpc-lib</module>
     </modules>
 
 

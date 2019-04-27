@@ -1,10 +1,9 @@
 package com.qianxun.user.consumer;
 
-import com.qianxun.user.consumer.myrule.MySelfRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 /**
  * @author Cloudy
@@ -13,10 +12,9 @@ import org.springframework.cloud.netflix.ribbon.RibbonClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class ConsumerApplication
-{
-    public static void main(String[] args)
-    {
+@EnableDiscoveryClient
+public class ConsumerApplication {
+    public static void main(String[] args) {
         SpringApplication.run(ConsumerApplication.class, args);
     }
 }
