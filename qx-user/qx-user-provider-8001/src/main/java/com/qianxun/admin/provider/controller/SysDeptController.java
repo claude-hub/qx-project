@@ -3,13 +3,14 @@ package com.qianxun.admin.provider.controller;
 import com.qianxun.admin.provider.model.dto.sysDept.request.*;
 import com.qianxun.admin.api.entity.SysDept;
 import com.qianxun.admin.provider.service.SysDeptService;
-import com.qianxun.common.utils.mapper.BeanMapper;
+import com.qianxun.admin.provider.utils.mapper.BeanMapper;
+import com.qianxun.admin.provider.utils.result.JSONResult;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.qianxun.common.utils.result.JSONResult;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
-
-
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  *
@@ -19,7 +20,7 @@ import javax.validation.Valid;
  */
 @RestController
 @RequestMapping("/api/admin/sysDept")
-public class SysDeptController extends BaseController {
+public class SysDeptController {
 
     @Autowired
     private SysDeptService sysDeptService;
@@ -72,5 +73,21 @@ public class SysDeptController extends BaseController {
         SysDept sysDept = BeanMapper.map(input,SysDept.class);
         jsonResult.setData(sysDeptService.editSysDept(sysDept));
         return jsonResult;
+    }
+
+    @Autowired
+	private DiscoveryClient client;
+    @RequestMapping(value = "/dept/discovery", method = RequestMethod.GET)
+    public Object discovery()
+    {
+        List<String> list = client.getServices();
+        System.out.println("**********" + list);
+
+        List<ServiceInstance> srvList = client.getInstances("QX-USER-PROVIDER");
+        for (ServiceInstance element : srvList) {
+            System.out.println(element.getServiceId() + "\t" + element.getHost() + "\t" + element.getPort() + "\t"
+                    + element.getUri());
+        }
+        return this.client;
     }
 }
