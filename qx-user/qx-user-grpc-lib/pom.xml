@@ -14,9 +14,9 @@
     <description>protobuf 存根</description>
 
     <properties>
-        <grpc.version>1.15.1</grpc.version>
-        <os.plugin.version>1.6.0</os.plugin.version>
-        <protoc.version>3.6.1</protoc.version>
+        <grpc.version>1.20.0</grpc.version>
+        <os.plugin.version>1.6.2</os.plugin.version>
+        <protoc.version>3.7.1</protoc.version>
         <protobuf.plugin.version>0.6.1</protobuf.plugin.version>
     </properties>
 
@@ -50,7 +50,7 @@
                     <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
                     <!--默认值-->
                     <!--<outputDirectory>${project.build.directory}/generated-sources/protobuf/java</outputDirectory>-->
-                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+                    <!--<outputDirectory>${project.basedir}/src/main/java</outputDirectory>-->
                     <!--设置是否在生成java文件之前清空outputDirectory的文件，默认值为true，设置为false时也会覆盖同名文件-->
                     <clearOutputDirectory>false</clearOutputDirectory>
                     <!--更多配置信息可以查看https://www.xolstice.org/protobuf-maven-plugin/compile-mojo.html-->
