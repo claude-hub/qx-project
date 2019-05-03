@@ -16,10 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DeptRes() {
-    id_ = 0;
-    parentId_ = 0;
-    sort_ = 0;
-    status_ = 0;
     dbSource_ = "";
   }
 
@@ -100,7 +96,7 @@ private static final long serialVersionUID = 0L;
             break;
           }
           default: {
-            if (!parseUnknownFieldProto3(
+            if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
               done = true;
             }
@@ -329,29 +325,28 @@ private static final long serialVersionUID = 0L;
     }
     com.qianxun.grpc.lib.dept.DeptRes other = (com.qianxun.grpc.lib.dept.DeptRes) obj;
 
-    boolean result = true;
-    result = result && (getId()
-        == other.getId());
-    result = result && (getParentId()
-        == other.getParentId());
-    result = result && (getSort()
-        == other.getSort());
-    result = result && (hasCreatedAt() == other.hasCreatedAt());
+    if (getId()
+        != other.getId()) return false;
+    if (getParentId()
+        != other.getParentId()) return false;
+    if (getSort()
+        != other.getSort()) return false;
+    if (hasCreatedAt() != other.hasCreatedAt()) return false;
     if (hasCreatedAt()) {
-      result = result && getCreatedAt()
-          .equals(other.getCreatedAt());
+      if (!getCreatedAt()
+          .equals(other.getCreatedAt())) return false;
     }
-    result = result && (hasUpdatedAt() == other.hasUpdatedAt());
+    if (hasUpdatedAt() != other.hasUpdatedAt()) return false;
     if (hasUpdatedAt()) {
-      result = result && getUpdatedAt()
-          .equals(other.getUpdatedAt());
+      if (!getUpdatedAt()
+          .equals(other.getUpdatedAt())) return false;
     }
-    result = result && (getStatus()
-        == other.getStatus());
-    result = result && getDbSource()
-        .equals(other.getDbSource());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
+    if (getStatus()
+        != other.getStatus()) return false;
+    if (!getDbSource()
+        .equals(other.getDbSource())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
+    return true;
   }
 
   @java.lang.Override
@@ -581,35 +576,35 @@ private static final long serialVersionUID = 0L;
 
     @java.lang.Override
     public Builder clone() {
-      return (Builder) super.clone();
+      return super.clone();
     }
     @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return (Builder) super.setField(field, value);
+      return super.setField(field, value);
     }
     @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
+      return super.clearField(field);
     }
     @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
+      return super.clearOneof(oneof);
     }
     @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
+      return super.setRepeatedField(field, index, value);
     }
     @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
+      return super.addRepeatedField(field, value);
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
@@ -752,7 +747,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.Timestamp createdAt_ = null;
+    private com.google.protobuf.Timestamp createdAt_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> createdAtBuilder_;
     /**
@@ -869,7 +864,7 @@ private static final long serialVersionUID = 0L;
       return createdAtBuilder_;
     }
 
-    private com.google.protobuf.Timestamp updatedAt_ = null;
+    private com.google.protobuf.Timestamp updatedAt_;
     private com.google.protobuf.SingleFieldBuilderV3<
         com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> updatedAtBuilder_;
     /**
@@ -1083,7 +1078,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return super.setUnknownFields(unknownFields);
     }
 
     @java.lang.Override
