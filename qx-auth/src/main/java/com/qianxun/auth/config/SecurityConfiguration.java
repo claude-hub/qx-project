@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 /**
  * @author Cloudy
  * Date: 2019/5/5 14:32
+ * 认证相关配置
  */
 @Configuration
 @EnableWebSecurity

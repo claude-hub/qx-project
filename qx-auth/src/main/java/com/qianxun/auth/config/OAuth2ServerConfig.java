@@ -1,9 +1,12 @@
 package com.qianxun.auth.config;
 
+import com.qianxun.auth.component.CustomTokenEnhancer;
+import com.qianxun.auth.component.FilterIgnoreProperties;
 import com.qianxun.auth.constant.SecurityConstants;
 import com.qianxun.auth.service.ClientDetailsService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.http.HttpMethod;
@@ -19,28 +22,23 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.*;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import javax.sql.DataSource;
 
 /**
  * @author Cloudy
  * Date: 2019/5/5 16:01
+ * 认证服务器配置
  */
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true) //支持权限注解 @PreAuthorize("hasAnyRole('ROLE_USER')")
 public class OAuth2ServerConfig {
-    private static final String DEMO_RESOURCE_ID = "order";
     @Configuration
     @EnableResourceServer
     @AllArgsConstructor  //替代@Autowired构造注入
     protected static class ResourceServerConfiguration extends ResourceServerConfigurerAdapter {
-        private final FilterIgnorePropertiesConfig filterIgnorePropertiesConfig;
-        @Override
-        public void configure(ResourceServerSecurityConfigurer resources) {
-            resources.resourceId(DEMO_RESOURCE_ID).stateless(true);
-        }
-
+        private final FilterIgnoreProperties filterIgnoreProperties;
         @Override
         @SneakyThrows
         public void configure(HttpSecurity httpSecurity) {
@@ -49,13 +47,12 @@ public class OAuth2ServerConfig {
             ExpressionUrlAuthorizationConfigurer<HttpSecurity>
                     .ExpressionInterceptUrlRegistry registry = httpSecurity
                     .authorizeRequests();
-            filterIgnorePropertiesConfig.getUrls()
+            filterIgnoreProperties.getUrls()
                     .forEach(url -> registry.antMatchers(url).permitAll()); //不验证配置文件放行的url
             registry.anyRequest().authenticated() //验证所有url
                     .and().csrf().disable();
         }
     }
-
 
     @Configuration
     @EnableAuthorizationServer
@@ -78,8 +75,9 @@ public class OAuth2ServerConfig {
 
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-            endpoints
-                    .tokenStore(new RedisTokenStore(redisConnectionFactory))
+                    endpoints
+                    .tokenStore(tokenStore())
+                    .tokenEnhancer(tokenEnhancer())
                     .authenticationManager(authenticationManager)
                     .userDetailsService(userDetailsService)
                     .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
@@ -91,6 +89,18 @@ public class OAuth2ServerConfig {
                     //允许表单认证
                     .allowFormAuthenticationForClients()
                     .checkTokenAccess("permitAll()");
+        }
+
+        @Bean
+        public TokenStore tokenStore() {
+            RedisTokenStore tokenStore = new RedisTokenStore(redisConnectionFactory);
+            tokenStore.setPrefix(SecurityConstants.PROJECT_PREFIX + SecurityConstants.OAUTH_PREFIX);
+            return tokenStore;
+        }
+
+        @Bean
+        public TokenEnhancer tokenEnhancer() {
+            return new CustomTokenEnhancer();
         }
     }
 

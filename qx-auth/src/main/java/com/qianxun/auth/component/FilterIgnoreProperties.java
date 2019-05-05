@@ -1,4 +1,4 @@
-package com.qianxun.auth.config;
+package com.qianxun.auth.component;
 
 import lombok.Data;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
@@ -16,7 +16,7 @@ import java.util.List;
 @Configuration
 @ConditionalOnExpression("!'${ignore}'.isEmpty()")
 @ConfigurationProperties(prefix = "ignore")
-public class FilterIgnorePropertiesConfig {
+public class FilterIgnoreProperties {
     /**
      * 放行url,放行的url不再被安全框架拦截
      */
