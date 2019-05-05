@@ -11,7 +11,7 @@ spring:
     username: root
     password: root
     #使用阿里的druid数据源
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
   jackson:
     time-zone: GMT+8
