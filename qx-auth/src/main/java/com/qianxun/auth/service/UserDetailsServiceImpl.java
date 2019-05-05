@@ -20,7 +20,7 @@ import java.util.Set;
  */
 @Slf4j
 @Service
-@AllArgsConstructor
+@AllArgsConstructor //替代@Autowired构造注入
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
     /**
@@ -41,8 +41,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 passwordEncoder.encode("123456"),
                 true,true,
                 true,true,authorities);
-
-//        return new User(username, passwordEncoder.encode("123456"),
-//                AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
     }
 }

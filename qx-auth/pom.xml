@@ -45,6 +45,12 @@
             <!--<artifactId>spring-security-oauth2</artifactId>-->
             <!--<version>${security.oauth.version}</version>-->
         <!--</dependency>-->
+        <!--配置文件处理器-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
         <!--redis-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
