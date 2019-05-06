@@ -1,18 +1,16 @@
-package ${package}.service.impl;
+package ${package}.${moduleName}.provider.service.impl;
 
-import ${package}.${moduleName}.mapper.${className}Mapper;
-import ${package}.${moduleName}.model.entity.${className};
-import ${package}.${moduleName}.service.${className}Service;
-import org.springframework.beans.factory.annotation.Autowired;
+import ${package}.${moduleName}.provider.mapper.${className}Mapper;
+import ${package}.${moduleName}.api.entity.${className};
+import ${package}.${moduleName}.provider.service.${className}Service;
 import org.springframework.stereotype.Service;
-
+import lombok.AllArgsConstructor;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ${className}ServiceImpl implements ${className}Service {
-
-    @Autowired
-    private ${className}Mapper ${classname}Mapper;
+    private final ${className}Mapper ${classname}Mapper;
 
     @Override
     public boolean add${className}(${className} ${classname}) {

@@ -1,7 +1,6 @@
-package ${package}.dao.mapper;
+package ${package}.${moduleName}.provider.mapper;
 
-import ${package}.${moduleName}.model.entity.${className};
-
+import ${package}.${moduleName}.api.entity.${className};
 import java.util.List;
 
 /**

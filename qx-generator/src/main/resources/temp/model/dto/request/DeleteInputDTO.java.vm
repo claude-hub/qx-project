@@ -1,19 +1,19 @@
-package ${package}.${moduleName}.admin.model.dto.${classname}.requset;
+package ${package}.${moduleName}.admin.api.dto.${classname}.requset;
 
 import io.swagger.annotations.ApiModelProperty;
-
 import javax.validation.constraints.NotNull;
+import lombok.Data;
+import java.io.Serializable;
 
-public class ${className}DeleteInputDTO {
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Data
+public class ${className}DeleteInputDTO implements Serializable{
     @NotNull(message = "id不能为空")
     @ApiModelProperty(value = "id", required = true)
     private Integer id;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }

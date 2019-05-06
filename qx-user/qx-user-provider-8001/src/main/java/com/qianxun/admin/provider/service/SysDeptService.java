@@ -1,7 +1,6 @@
 package com.qianxun.admin.provider.service;
 
 import com.qianxun.admin.api.entity.SysDept;
-
 import java.util.List;
 
 public interface SysDeptService{

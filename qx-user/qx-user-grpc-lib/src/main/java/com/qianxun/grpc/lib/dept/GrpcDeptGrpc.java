@@ -27,30 +27,30 @@ public final class GrpcDeptGrpc {
   public static final String SERVICE_NAME = "dept.GrpcDept";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq,
-      com.qianxun.grpc.lib.dept.DeptRes> getGetDeptMethod;
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+      com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> getGetDeptMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetDept",
-      requestType = com.qianxun.grpc.lib.dept.DeptReq.class,
-      responseType = com.qianxun.grpc.lib.dept.DeptRes.class,
+      requestType = com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq.class,
+      responseType = com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq,
-      com.qianxun.grpc.lib.dept.DeptRes> getGetDeptMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq, com.qianxun.grpc.lib.dept.DeptRes> getGetDeptMethod;
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+      com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> getGetDeptMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq, com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> getGetDeptMethod;
     if ((getGetDeptMethod = GrpcDeptGrpc.getGetDeptMethod) == null) {
       synchronized (GrpcDeptGrpc.class) {
         if ((getGetDeptMethod = GrpcDeptGrpc.getGetDeptMethod) == null) {
           GrpcDeptGrpc.getGetDeptMethod = getGetDeptMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.dept.DeptReq, com.qianxun.grpc.lib.dept.DeptRes>newBuilder()
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq, com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "dept.GrpcDept", "GetDept"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.dept.DeptReq.getDefaultInstance()))
+                  com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.dept.DeptRes.getDefaultInstance()))
+                  com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes.getDefaultInstance()))
                   .setSchemaDescriptor(new GrpcDeptMethodDescriptorSupplier("GetDept"))
                   .build();
           }
@@ -59,30 +59,30 @@ public final class GrpcDeptGrpc {
      return getGetDeptMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq,
-      com.qianxun.grpc.lib.dept.DeptRes> getGetDeptListMethod;
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+      com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> getGetDeptListMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetDeptList",
-      requestType = com.qianxun.grpc.lib.dept.DeptReq.class,
-      responseType = com.qianxun.grpc.lib.dept.DeptRes.class,
+      requestType = com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq.class,
+      responseType = com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq,
-      com.qianxun.grpc.lib.dept.DeptRes> getGetDeptListMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq, com.qianxun.grpc.lib.dept.DeptRes> getGetDeptListMethod;
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+      com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> getGetDeptListMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq, com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> getGetDeptListMethod;
     if ((getGetDeptListMethod = GrpcDeptGrpc.getGetDeptListMethod) == null) {
       synchronized (GrpcDeptGrpc.class) {
         if ((getGetDeptListMethod = GrpcDeptGrpc.getGetDeptListMethod) == null) {
           GrpcDeptGrpc.getGetDeptListMethod = getGetDeptListMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.dept.DeptReq, com.qianxun.grpc.lib.dept.DeptRes>newBuilder()
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq, com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(
                   "dept.GrpcDept", "GetDeptList"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.dept.DeptReq.getDefaultInstance()))
+                  com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.dept.DeptRes.getDefaultInstance()))
+                  com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes.getDefaultInstance()))
                   .setSchemaDescriptor(new GrpcDeptMethodDescriptorSupplier("GetDeptList"))
                   .build();
           }
@@ -91,30 +91,30 @@ public final class GrpcDeptGrpc {
      return getGetDeptListMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptRes,
-      com.qianxun.grpc.lib.dept.UpdateDeptRes> getUpdateDeptMethod;
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes,
+      com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> getUpdateDeptMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UpdateDept",
-      requestType = com.qianxun.grpc.lib.dept.DeptRes.class,
-      responseType = com.qianxun.grpc.lib.dept.UpdateDeptRes.class,
+      requestType = com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes.class,
+      responseType = com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptRes,
-      com.qianxun.grpc.lib.dept.UpdateDeptRes> getUpdateDeptMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptRes, com.qianxun.grpc.lib.dept.UpdateDeptRes> getUpdateDeptMethod;
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes,
+      com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> getUpdateDeptMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes, com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> getUpdateDeptMethod;
     if ((getUpdateDeptMethod = GrpcDeptGrpc.getUpdateDeptMethod) == null) {
       synchronized (GrpcDeptGrpc.class) {
         if ((getUpdateDeptMethod = GrpcDeptGrpc.getUpdateDeptMethod) == null) {
           GrpcDeptGrpc.getUpdateDeptMethod = getUpdateDeptMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.dept.DeptRes, com.qianxun.grpc.lib.dept.UpdateDeptRes>newBuilder()
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes, com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "dept.GrpcDept", "UpdateDept"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.dept.DeptRes.getDefaultInstance()))
+                  com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.dept.UpdateDeptRes.getDefaultInstance()))
+                  com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes.getDefaultInstance()))
                   .setSchemaDescriptor(new GrpcDeptMethodDescriptorSupplier("UpdateDept"))
                   .build();
           }
@@ -123,30 +123,30 @@ public final class GrpcDeptGrpc {
      return getUpdateDeptMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq,
-      com.qianxun.grpc.lib.dept.UpdateDeptRes> getDeleteDeptMethod;
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+      com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> getDeleteDeptMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "DeleteDept",
-      requestType = com.qianxun.grpc.lib.dept.DeptReq.class,
-      responseType = com.qianxun.grpc.lib.dept.UpdateDeptRes.class,
+      requestType = com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq.class,
+      responseType = com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq,
-      com.qianxun.grpc.lib.dept.UpdateDeptRes> getDeleteDeptMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.DeptReq, com.qianxun.grpc.lib.dept.UpdateDeptRes> getDeleteDeptMethod;
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+      com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> getDeleteDeptMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq, com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> getDeleteDeptMethod;
     if ((getDeleteDeptMethod = GrpcDeptGrpc.getDeleteDeptMethod) == null) {
       synchronized (GrpcDeptGrpc.class) {
         if ((getDeleteDeptMethod = GrpcDeptGrpc.getDeleteDeptMethod) == null) {
           GrpcDeptGrpc.getDeleteDeptMethod = getDeleteDeptMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.dept.DeptReq, com.qianxun.grpc.lib.dept.UpdateDeptRes>newBuilder()
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq, com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "dept.GrpcDept", "DeleteDept"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.dept.DeptReq.getDefaultInstance()))
+                  com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.dept.UpdateDeptRes.getDefaultInstance()))
+                  com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes.getDefaultInstance()))
                   .setSchemaDescriptor(new GrpcDeptMethodDescriptorSupplier("DeleteDept"))
                   .build();
           }
@@ -184,29 +184,29 @@ public final class GrpcDeptGrpc {
 
     /**
      */
-    public void getDept(com.qianxun.grpc.lib.dept.DeptReq request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.DeptRes> responseObserver) {
+    public void getDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> responseObserver) {
       asyncUnimplementedUnaryCall(getGetDeptMethod(), responseObserver);
     }
 
     /**
      */
-    public void getDeptList(com.qianxun.grpc.lib.dept.DeptReq request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.DeptRes> responseObserver) {
+    public void getDeptList(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> responseObserver) {
       asyncUnimplementedUnaryCall(getGetDeptListMethod(), responseObserver);
     }
 
     /**
      */
-    public void updateDept(com.qianxun.grpc.lib.dept.DeptRes request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.UpdateDeptRes> responseObserver) {
+    public void updateDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateDeptMethod(), responseObserver);
     }
 
     /**
      */
-    public void deleteDept(com.qianxun.grpc.lib.dept.DeptReq request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.UpdateDeptRes> responseObserver) {
+    public void deleteDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> responseObserver) {
       asyncUnimplementedUnaryCall(getDeleteDeptMethod(), responseObserver);
     }
 
@@ -216,29 +216,29 @@ public final class GrpcDeptGrpc {
             getGetDeptMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.dept.DeptReq,
-                com.qianxun.grpc.lib.dept.DeptRes>(
+                com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+                com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes>(
                   this, METHODID_GET_DEPT)))
           .addMethod(
             getGetDeptListMethod(),
             asyncServerStreamingCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.dept.DeptReq,
-                com.qianxun.grpc.lib.dept.DeptRes>(
+                com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+                com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes>(
                   this, METHODID_GET_DEPT_LIST)))
           .addMethod(
             getUpdateDeptMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.dept.DeptRes,
-                com.qianxun.grpc.lib.dept.UpdateDeptRes>(
+                com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes,
+                com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes>(
                   this, METHODID_UPDATE_DEPT)))
           .addMethod(
             getDeleteDeptMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.dept.DeptReq,
-                com.qianxun.grpc.lib.dept.UpdateDeptRes>(
+                com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq,
+                com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes>(
                   this, METHODID_DELETE_DEPT)))
           .build();
     }
@@ -264,32 +264,32 @@ public final class GrpcDeptGrpc {
 
     /**
      */
-    public void getDept(com.qianxun.grpc.lib.dept.DeptReq request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.DeptRes> responseObserver) {
+    public void getDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetDeptMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getDeptList(com.qianxun.grpc.lib.dept.DeptReq request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.DeptRes> responseObserver) {
+    public void getDeptList(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> responseObserver) {
       asyncServerStreamingCall(
           getChannel().newCall(getGetDeptListMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updateDept(com.qianxun.grpc.lib.dept.DeptRes request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.UpdateDeptRes> responseObserver) {
+    public void updateDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getUpdateDeptMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void deleteDept(com.qianxun.grpc.lib.dept.DeptReq request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.UpdateDeptRes> responseObserver) {
+    public void deleteDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getDeleteDeptMethod(), getCallOptions()), request, responseObserver);
     }
@@ -315,29 +315,29 @@ public final class GrpcDeptGrpc {
 
     /**
      */
-    public com.qianxun.grpc.lib.dept.DeptRes getDept(com.qianxun.grpc.lib.dept.DeptReq request) {
+    public com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes getDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request) {
       return blockingUnaryCall(
           getChannel(), getGetDeptMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<com.qianxun.grpc.lib.dept.DeptRes> getDeptList(
-        com.qianxun.grpc.lib.dept.DeptReq request) {
+    public java.util.Iterator<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> getDeptList(
+        com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request) {
       return blockingServerStreamingCall(
           getChannel(), getGetDeptListMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.qianxun.grpc.lib.dept.UpdateDeptRes updateDept(com.qianxun.grpc.lib.dept.DeptRes request) {
+    public com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes updateDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes request) {
       return blockingUnaryCall(
           getChannel(), getUpdateDeptMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.qianxun.grpc.lib.dept.UpdateDeptRes deleteDept(com.qianxun.grpc.lib.dept.DeptReq request) {
+    public com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes deleteDept(com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteDeptMethod(), getCallOptions(), request);
     }
@@ -363,24 +363,24 @@ public final class GrpcDeptGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.dept.DeptRes> getDept(
-        com.qianxun.grpc.lib.dept.DeptReq request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes> getDept(
+        com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request) {
       return futureUnaryCall(
           getChannel().newCall(getGetDeptMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.dept.UpdateDeptRes> updateDept(
-        com.qianxun.grpc.lib.dept.DeptRes request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> updateDept(
+        com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes request) {
       return futureUnaryCall(
           getChannel().newCall(getUpdateDeptMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.dept.UpdateDeptRes> deleteDept(
-        com.qianxun.grpc.lib.dept.DeptReq request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes> deleteDept(
+        com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq request) {
       return futureUnaryCall(
           getChannel().newCall(getDeleteDeptMethod(), getCallOptions()), request);
     }
@@ -409,20 +409,20 @@ public final class GrpcDeptGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_DEPT:
-          serviceImpl.getDept((com.qianxun.grpc.lib.dept.DeptReq) request,
-              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.DeptRes>) responseObserver);
+          serviceImpl.getDept((com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes>) responseObserver);
           break;
         case METHODID_GET_DEPT_LIST:
-          serviceImpl.getDeptList((com.qianxun.grpc.lib.dept.DeptReq) request,
-              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.DeptRes>) responseObserver);
+          serviceImpl.getDeptList((com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes>) responseObserver);
           break;
         case METHODID_UPDATE_DEPT:
-          serviceImpl.updateDept((com.qianxun.grpc.lib.dept.DeptRes) request,
-              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.UpdateDeptRes>) responseObserver);
+          serviceImpl.updateDept((com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptRes) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes>) responseObserver);
           break;
         case METHODID_DELETE_DEPT:
-          serviceImpl.deleteDept((com.qianxun.grpc.lib.dept.DeptReq) request,
-              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.UpdateDeptRes>) responseObserver);
+          serviceImpl.deleteDept((com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.DeptReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.UpdateDeptRes>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -446,7 +446,7 @@ public final class GrpcDeptGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.qianxun.grpc.lib.dept.DeptProto.getDescriptor();
+      return com.qianxun.grpc.lib.dept.GrpcDeptOuterClass.getDescriptor();
     }
 
     @java.lang.Override

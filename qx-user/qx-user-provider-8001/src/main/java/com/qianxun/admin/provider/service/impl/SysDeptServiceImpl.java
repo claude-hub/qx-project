@@ -3,16 +3,14 @@ package com.qianxun.admin.provider.service.impl;
 import com.qianxun.admin.provider.mapper.SysDeptMapper;
 import com.qianxun.admin.api.entity.SysDept;
 import com.qianxun.admin.provider.service.SysDeptService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import lombok.AllArgsConstructor;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class SysDeptServiceImpl implements SysDeptService {
-
-    @Autowired
-    private SysDeptMapper sysDeptMapper;
+    private final SysDeptMapper sysDeptMapper;
 
     @Override
     public boolean addSysDept(SysDept sysDept) {

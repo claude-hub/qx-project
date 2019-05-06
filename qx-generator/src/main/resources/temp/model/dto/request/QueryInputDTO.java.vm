@@ -1,5 +1,15 @@
-package ${package}.${moduleName}.admin.model.dto.${classname}.requset;
+package ${package}.${moduleName}.admin.api.dto.${classname}.requset;
 
-public class ${className}QueryInputDTO {
+import lombok.Data;
+import java.io.Serializable;
+
+/**
+ * ${comments}
+ *
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Data
+public class ${className}QueryInputDTO implements Serializable{
 
 }

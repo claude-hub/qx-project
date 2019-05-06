@@ -1,6 +1,8 @@
-package ${package}.model.entity;
+package ${package}.admin.api.entity;
 
 import java.util.Date;
+import lombok.Data;
+import java.io.Serializable;
 
 /**
  * ${comments}
@@ -8,22 +10,12 @@ import java.util.Date;
  * @author ${author}
  * @date ${datetime}
  */
-public class ${className}{
+@Data
+public class ${className} implements Serializable {
 #foreach ($column in $columns)
 /**
  * $column.comments
  */
     private ${column.attrType} $column.attrname;
-#end
-
-#foreach ($column in $columns)
-
-    public void set${column.attrName}($column.attrType $column.attrname) {
-        this.$column.attrname = $column.attrname;
-    }
-
-    public $column.attrType get${column.attrName}() {
-        return $column.attrname;
-    }
 #end
 }

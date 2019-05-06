@@ -1,9 +1,11 @@
-package ${package}.${moduleName}.admin.model.dto.${classname}.requset;
+package ${package}.${moduleName}.admin.api.dto.${classname}.requset;
 
 import java.util.Date;
+import lombok.Data;
 import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
 
 /**
  * ${comments}
@@ -11,7 +13,8 @@ import javax.validation.constraints.NotBlank;
  * @author ${author}
  * @date ${datetime}
  */
-public class ${className}AddInputDTO {
+@Data
+public class ${className}AddInputDTO implements Serializable {
     #foreach ($column in $columns)
     ##排除主键
         #if($column.columnName != $pk.columnName)
@@ -31,22 +34,6 @@ public class ${className}AddInputDTO {
                     #end
 
                 private ${column.attrType} $column.attrname;
-                #end
-            #end
-        #end
-    #end
-
-    #foreach ($column in $columns)
-        #if($column.columnName != $pk.columnName)
-            #if($column.columnName != "created_at")
-                #if($column.columnName != "updated_at")
-                    public void set${column.attrName}($column.attrType $column.attrname) {
-                        this.$column.attrname = $column.attrname;
-                    }
-
-                    public $column.attrType get${column.attrName}() {
-                        return $column.attrname;
-                    }
                 #end
             #end
         #end

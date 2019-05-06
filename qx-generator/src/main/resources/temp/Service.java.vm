@@ -1,7 +1,6 @@
-package ${package}.service;
+package ${package}.${moduleName}.provider.service;
 
-import ${package}.${moduleName}.model.entity.${className};
-
+import ${package}.${moduleName}.api.entity.${className};
 import java.util.List;
 
 public interface ${className}Service{

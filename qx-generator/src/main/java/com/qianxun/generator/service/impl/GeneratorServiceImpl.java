@@ -3,19 +3,18 @@ package com.qianxun.generator.service.impl;
 import com.qianxun.generator.mapper.GeneratorMapper;
 import com.qianxun.generator.service.GeneratorService;
 import com.qianxun.generator.utils.GenUtils;
+import lombok.AllArgsConstructor;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.ZipOutputStream;
 
 @Service
+@AllArgsConstructor
 public class GeneratorServiceImpl implements GeneratorService {
-    @Autowired
-    GeneratorMapper generatorMapper;
+    private final GeneratorMapper generatorMapper;
 
     @Override
     public List<Map<String, Object>> getTables() {
