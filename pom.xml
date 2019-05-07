@@ -7,10 +7,10 @@
     <artifactId>qx-project</artifactId>
     <version>1.0.0</version>
     <modules>
-        <module>qx-config-8888</module>
+        <module>qx-config</module>
         <module>qx-config-client</module>
         <module>qx-user</module>
-        <module>qx-eureka-7001</module>
+        <module>qx-eureka</module>
         <module>qx-generator</module>
         <module>qx-common</module>
         <module>qx-auth</module>

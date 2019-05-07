@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>qx-config-8888</artifactId>
+    <artifactId>qx-config</artifactId>
 
     <dependencies>
         <!--配置中心-->
