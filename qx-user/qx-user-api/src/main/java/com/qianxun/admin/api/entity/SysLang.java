@@ -7,36 +7,32 @@ import java.util.Date;
 
 /**
  * @author cloudy
- * @date 2019-05-06 22:58:30
+ * @date 2019-05-07 21:51:21
  */
 @Data
-public class SysDept implements Serializable {
+public class SysLang implements Serializable {
     /**
-     *
+     * 主键ID
      */
     private Integer id;
     /**
-     *
+     * 语言名
      */
-    private Integer parentId;
+    private String name;
     /**
-     *
-     */
-    private Integer sort;
-    /**
-     *
+     * 创建时间
      */
     private Date createdAt;
     /**
-     *
+     * 更新时间
      */
     private Date updatedAt;
     /**
-     * 是否删除  -1：已删除  0：正常
+     * 0--正常 -1--删除
      */
-    private Integer status;
+    private Integer status = 0;
     /**
      *
      */
-    private String dbSource;
+    private String dbSource = "";
 }

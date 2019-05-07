@@ -5,18 +5,18 @@ spring:
   application:
     name: qx-user-consumer
   # 配置中心
-  cloud:
-    config:
-      fail-fast: true
-      name: ${spring.application.name}
-      profile: ${spring.profiles.active}
-      discovery:
-        enabled: true
-        service-id: qx-config
-  profiles:
-    active: dev
-  main:
-    allow-bean-definition-overriding: true
+#  cloud:
+#    config:
+#      fail-fast: true
+#      name: ${spring.application.name}
+#      profile: ${spring.profiles.active}
+#      discovery:
+#        enabled: true
+#        service-id: qx-config
+#  profiles:
+#    active: dev
+#  main:
+#    allow-bean-definition-overriding: true
 
 # 注册中心配置
 eureka:
