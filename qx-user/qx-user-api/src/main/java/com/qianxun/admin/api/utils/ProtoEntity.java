@@ -1,9 +1,14 @@
 package com.qianxun.admin.api.utils;
 
 import com.google.protobuf.GeneratedMessageV3;
+import com.google.protobuf.Timestamp;
+import com.google.protobuf.util.Timestamps;
+import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Date;
 
 /**
  * author: Claude
@@ -14,7 +19,7 @@ public class ProtoEntity {
     /**
      * ProtoBuffer object to POJO
      */
-    private static <T> T fromProtoBuffer(GeneratedMessageV3 pbObject, Class<T> modelClass) {
+    public static <T> T fromProtoBuffer(GeneratedMessageV3 pbObject, Class<T> modelClass) {
         T model = null;
 
         try {
@@ -24,14 +29,19 @@ public class ProtoEntity {
                 for (Field modelField : modelFields) {
                     String fieldName = modelField.getName();
                     String name = fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-
                     Class<?> fieldType = modelField.getType();
                     try {
                         Method pbGetMethod = pbObject.getClass().getMethod("get" + name);
                         Object value = pbGetMethod.invoke(pbObject);
-
-                        Method modelSetMethod = modelClass.getMethod("set" + name, fieldType);
-                        modelSetMethod.invoke(model, value);
+                        String str = ObjectUtils.toString(value, "");
+                        if(StringUtils.isNotBlank(str)) {
+                            if (fieldType == Timestamp.class) {
+                                value = new Date(((Timestamp) value).getSeconds() * 1000);
+                                fieldType = Date.class;
+                            }
+                            Method modelSetMethod = modelClass.getMethod("set" + name, fieldType);
+                            modelSetMethod.invoke(model, value);
+                        }
                     } catch (NoSuchMethodException e) {
                         e.printStackTrace();
                     }
@@ -46,7 +56,7 @@ public class ProtoEntity {
     /**
      * POJO -> ProtoBuffer object
      */
-    private static <T> T toProtoBuffer(Object model, Class<T> pbClass) {
+    public static <T> T toProtoBuffer(Object model, Class<T> pbClass) {
         if (!GeneratedMessageV3.class.isAssignableFrom(pbClass)) {
             throw new RuntimeException("Not ProtoBuffer message type");
         }
@@ -55,21 +65,31 @@ public class ProtoEntity {
 
         try {
             Object pbBuilder = pbClass.getDeclaredMethod("newBuilder").invoke(null);
-            Field[] pbFields = pbClass.getDeclaredFields();
+            Field[] pbFields = model.getClass().getDeclaredFields();
             if (pbFields != null && pbFields.length > 0) {
                 for (Field pbField : pbFields) {
-                    String fieldName = pbField.getName().substring(0, pbField.getName().length() - 1);
+                    String fieldName = pbField.getName();
                     String name = fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
                     Class<?> fieldType = pbField.getType();
-                    if (pbField.getType() == Object.class) {
+                    if (fieldType == Object.class) {
                         fieldType = String.class;
                     }
-
+                    if (fieldType == Integer.class) {
+                        fieldType = int.class;
+                    }
+                    if (fieldType == Date.class) {
+                        fieldType = Timestamp.class;
+                    }
                     try {
                         Method modelGetMethod = model.getClass().getMethod("get" + name);
                         Object value = modelGetMethod.invoke(model);
                         if (value != null) {
                             Method pbBuilderSetMethod = pbBuilder.getClass().getMethod("set" + name, fieldType);
+                            // object直接setDate会报错
+                            if(fieldType == Timestamp.class){
+                                Date date = (Date)value;
+                                value = Timestamps.fromMillis(date.getTime());
+                            }
                             pbBuilderSetMethod.invoke(pbBuilder, value);
                         }
                     } catch (NoSuchMethodException e) {

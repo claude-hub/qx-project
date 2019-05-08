@@ -6,6 +6,7 @@ package com.qianxun.admin.provider.grpc.service.sysLang;
  */
 
 import com.qianxun.admin.api.entity.SysLang;
+import com.qianxun.admin.api.utils.ProtoEntity;
 import com.qianxun.admin.api.utils.SysLangUtils;
 import com.qianxun.admin.provider.service.SysLangService;
 import com.qianxun.grpc.lib.sysLang.SysLangOuterClass;
@@ -39,7 +40,8 @@ public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBas
     @Override
     public void insert(SysLangOuterClass.SysLang request,
                        StreamObserver<SysLangOuterClass.Result> responseObserver) {
-        boolean success = sysLangService.addSysLang(SysLangUtils.grpcMessageToEntity(request));
+        SysLang sysLang = ProtoEntity.fromProtoBuffer(request, SysLang.class);
+        boolean success = sysLangService.addSysLang(sysLang);
         responseObserver.onNext(SysLangOuterClass.Result.newBuilder().setSuccess(success).build());
         responseObserver.onCompleted();
     }

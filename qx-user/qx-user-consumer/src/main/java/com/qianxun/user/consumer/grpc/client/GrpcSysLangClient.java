@@ -1,6 +1,7 @@
 package com.qianxun.user.consumer.grpc.client;
 
 import com.qianxun.admin.api.entity.SysLang;
+import com.qianxun.admin.api.utils.ProtoEntity;
 import com.qianxun.admin.api.utils.SysLangUtils;
 import com.qianxun.grpc.lib.sysLang.SysLangOuterClass;
 import com.qianxun.grpc.lib.sysLang.SysLangServiceGrpc;
@@ -45,7 +46,8 @@ public class GrpcSysLangClient {
 
     public boolean addLang(SysLang sysLang) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
-        SysLangOuterClass.Result res = stub.insert(SysLangUtils.entityToGrpcMessage(sysLang));
+        SysLangOuterClass.SysLang lang = ProtoEntity.toProtoBuffer(sysLang, SysLangOuterClass.SysLang.class);
+        SysLangOuterClass.Result res = stub.insert(lang);
         return res.getSuccess();
     }
 }
