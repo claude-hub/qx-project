@@ -15,8 +15,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @ComponentScan(basePackages = "com.qianxun") //swagger
-public class ConsumerApplication {
+public class UserConsumerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(ConsumerApplication.class, args);
+        SpringApplication.run(UserConsumerApplication.class, args);
     }
 }

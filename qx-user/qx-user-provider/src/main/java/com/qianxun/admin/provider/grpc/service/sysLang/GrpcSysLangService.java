@@ -39,7 +39,9 @@ public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBas
     @Override
     public void insert(SysLangOuterClass.SysLang request,
                        StreamObserver<SysLangOuterClass.Result> responseObserver) {
-
+        boolean success = sysLangService.addSysLang(SysLangUtils.grpcMessageToEntity(request));
+        responseObserver.onNext(SysLangOuterClass.Result.newBuilder().setSuccess(success).build());
+        responseObserver.onCompleted();
     }
 //    private SysLang grpcMessageToEntity(SysLangOuterClass.SysLang res){
 //        SysLang sysLang = new SysLang();

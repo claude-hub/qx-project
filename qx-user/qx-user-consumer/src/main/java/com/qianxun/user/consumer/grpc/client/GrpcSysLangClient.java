@@ -42,4 +42,10 @@ public class GrpcSysLangClient {
         }
         return sysLangs;
     }
+
+    public boolean addLang(SysLang sysLang) {
+        SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
+        SysLangOuterClass.Result res = stub.insert(SysLangUtils.entityToGrpcMessage(sysLang));
+        return res.getSuccess();
+    }
 }

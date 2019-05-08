@@ -12,6 +12,12 @@
     <artifactId>qx-user-consumer</artifactId>
 
     <dependencies>
+        <!-- 类转换 -->
+        <dependency>
+            <groupId>com.github.dozermapper</groupId>
+            <artifactId>dozer-core</artifactId>
+            <version>${dozer.core.version}</version>
+        </dependency>
         <!--自动配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
