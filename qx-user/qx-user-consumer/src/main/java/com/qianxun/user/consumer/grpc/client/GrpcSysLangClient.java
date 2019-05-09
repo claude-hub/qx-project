@@ -33,7 +33,7 @@ public class GrpcSysLangClient {
         List<SysLang> sysLangList = new ArrayList<>();
         try {
             sysLangIterator = stub.getList(getListReq);
-            for (int i = 1; sysLangIterator.hasNext(); i++) {
+            while (sysLangIterator.hasNext()) {
                 SysLangOuterClass.SysLang sysLang = sysLangIterator.next();
                 sysLangList.add(ProtoBufUtils.fromProtoBuffer(sysLang, SysLang.class));
             }

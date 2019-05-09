@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+option java_package = "com.qianxun.grpc.lib.sysRole";
+
+package sysRole;
+
+import public "google/protobuf/timestamp.proto";
+
+service SysRoleService {
+    rpc GetById(ByIdReq) returns (SysRole){}
+    rpc GetList(GetListReq) returns (PageList) {}
+    rpc Insert(SysRole) returns (Result) {}
+    rpc Update(SysRole) returns (Result) {}
+    rpc Delete(ByIdReq) returns (Result) {}
+}
+
+message ByIdReq {
+    int32 id = 1;
+}
+
+message GetListReq {
+    string query = 1;
+    int32 page_size = 2;
+    int32 page = 3;
+}
+
+message Result {
+    bool success = 1;
+}
+
+message SysRole {
+    int32 id = 1;
+    string name = 2;
+    google.protobuf.Timestamp created_at = 3;
+    google.protobuf.Timestamp updated_at = 4;
+    int32 status = 5;
+    string db_source = 6;
+}
+
+message PageList {
+    int32 total = 1;
+    repeated SysRole sys_role = 2;
+}
