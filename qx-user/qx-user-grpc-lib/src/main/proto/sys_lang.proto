@@ -7,14 +7,14 @@ package sysLang;
 import public "google/protobuf/timestamp.proto";
 
 service SysLangService {
-    rpc GetById(GetByIdReq) returns (SysLang){}
+    rpc GetById(ByIdReq) returns (SysLang){}
     rpc GetList(GetListReq) returns (stream SysLang) {}
     rpc Insert(SysLang) returns (Result) {}
     rpc Update(SysLang) returns (Result) {}
-    rpc Delete(SysLang) returns (Result) {}
+    rpc Delete(ByIdReq) returns (Result) {}
 }
 
-message GetByIdReq {
+message ByIdReq {
     int32 id = 1;
 }
 

@@ -12,6 +12,12 @@
     <artifactId>qx-user-consumer</artifactId>
 
     <dependencies>
+        <!-- 工具类-->
+        <dependency>
+            <groupId>com.qianxun</groupId>
+            <artifactId>qx-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- 类转换 -->
         <dependency>
             <groupId>com.github.dozermapper</groupId>

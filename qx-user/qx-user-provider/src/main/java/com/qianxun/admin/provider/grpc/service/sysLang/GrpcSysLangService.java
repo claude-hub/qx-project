@@ -22,9 +22,10 @@ import java.util.List;
 @AllArgsConstructor
 public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBase {
     private final SysLangService sysLangService;
+    private final UpdateDBResponseDTO responseDTO = new UpdateDBResponseDTO();
 
     @Override
-    public void getById(SysLangOuterClass.GetByIdReq request,
+    public void getById(SysLangOuterClass.ByIdReq request,
                         StreamObserver<SysLangOuterClass.SysLang> responseObserver) {
         SysLang sysLang = sysLangService.getSysLang(request.getId());
         SysLangOuterClass.SysLang res = ProtoBufUtils.toProtoBuffer(sysLang, SysLangOuterClass.SysLang.class);
@@ -47,63 +48,25 @@ public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBas
     public void insert(SysLangOuterClass.SysLang request,
                        StreamObserver<SysLangOuterClass.Result> responseObserver) {
         SysLang sysLang = ProtoBufUtils.fromProtoBuffer(request, SysLang.class);
-        int result = sysLangService.addSysLang(sysLang);
-        responseObserver.onNext(ProtoBufUtils.toProtoBuffer(result, SysLangOuterClass.Result.class));
+        responseDTO.setResult(sysLangService.addSysLang(sysLang));
+        responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysLangOuterClass.Result.class));
         responseObserver.onCompleted();
     }
-//    private SysLang grpcMessageToEntity(SysLangOuterClass.SysLang res){
-//        SysLang sysLang = new SysLang();
-//        sysLang.setId(res.getId());
-//        sysLang.setName(res.getName());
-//        sysLang.setCreatedAt(new Date(res.getCreatedAt().getSeconds()*1000));
-//        sysLang.setUpdatedAt(new Date(res.getUpdatedAt().getSeconds()*1000));
-//        sysLang.setStatus(res.getStatus());
-//        sysLang.setDbSource(res.getDbSource());
-//        return sysLang;
-//    }
-//    private SysLangOuterClass.SysLang entityToGrpcMessage(SysLang sysLang){
-//        return SysLangOuterClass.SysLang
-//                .newBuilder()
-//                .setId(sysLang.getId())
-//                .setName(sysLang.getName())
-//                .setCreatedAt(Timestamps.fromMillis(sysLang.getCreatedAt().getTime()))
-//                .setUpdatedAt(Timestamps.fromMillis(sysLang.getUpdatedAt().getTime()))
-//                .setDbSource(sysLang.getDbSource())
-//                .build();
-//    }
 
-//    /**
-//     */
-//    public void getById(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq request,
-//                        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> responseObserver) {
-//        asyncUnimplementedUnaryCall(getGetByIdMethod(), responseObserver);
-//    }
-//
-//    /**
-//     */
-//    public void getList(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetListReq request,
-//                        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> responseObserver) {
-//        asyncUnimplementedUnaryCall(getGetListMethod(), responseObserver);
-//    }
-//
-//    /**
-//     */
-//    public void insert(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang request,
-//                       io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> responseObserver) {
-//        asyncUnimplementedUnaryCall(getInsertMethod(), responseObserver);
-//    }
-//
-//    /**
-//     */
-//    public void update(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang request,
-//                       io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> responseObserver) {
-//        asyncUnimplementedUnaryCall(getUpdateMethod(), responseObserver);
-//    }
-//
-//    /**
-//     */
-//    public void delete(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang request,
-//                       io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> responseObserver) {
-//        asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
-//    }
+    @Override
+    public void update(SysLangOuterClass.SysLang request,
+                       StreamObserver<SysLangOuterClass.Result> responseObserver) {
+        SysLang sysLang = ProtoBufUtils.fromProtoBuffer(request, SysLang.class);
+        responseDTO.setResult(sysLangService.editSysLang(sysLang));
+        responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysLangOuterClass.Result.class));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void delete(SysLangOuterClass.ByIdReq request,
+                       StreamObserver<SysLangOuterClass.Result> responseObserver) {
+        responseDTO.setResult(sysLangService.deleteSysLang(request.getId()));
+        responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysLangOuterClass.Result.class));
+        responseObserver.onCompleted();
+    }
 }

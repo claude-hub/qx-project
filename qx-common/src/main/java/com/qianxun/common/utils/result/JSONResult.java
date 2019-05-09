@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  */
 @ApiModel(description = "JSON返回数据")
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class JSONResult<T> {
+public class JSONResult {
     public JSONResult() {
     }
 
@@ -19,14 +19,14 @@ public class JSONResult<T> {
         this.message = message;
     }
 
-    public JSONResult(Integer page, Integer pageSize, Integer totalCount, T data) {
+    public JSONResult(Integer page, Integer pageSize, Integer totalCount, Object data) {
         this.page = page;
         this.pageSize = pageSize;
         this.totalCount = totalCount;
         this.data = data;
     }
 
-    public JSONResult(T data) {
+    public JSONResult(Object data) {
         this.data = data;
     }
 
@@ -64,7 +64,7 @@ public class JSONResult<T> {
      * 返回数据
      */
     @ApiModelProperty(value = "返回数据", name = "data", dataType = "Object")
-    private T data;
+    private Object data;
 
     /**
      * 返回 错误代码
@@ -146,14 +146,14 @@ public class JSONResult<T> {
     /**
      * 返回 返回数据
      */
-    public T getData() {
+    public Object getData() {
         return data;
     }
 
     /**
      * 设置 返回数据
      */
-    public void setData(T data) {
+    public void setData(Object data) {
         this.data = data;
     }
 }

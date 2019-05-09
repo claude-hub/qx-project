@@ -21,7 +21,7 @@ public class GrpcSysLangClient {
     @GrpcClient("qx-user-provider")
     private Channel serverChannel;
 
-    public SysLang getLangById(SysLangOuterClass.GetByIdReq getByIdReq) {
+    public SysLang getLangById(SysLangOuterClass.ByIdReq getByIdReq) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
         SysLangOuterClass.SysLang res = stub.getById(getByIdReq);
         return ProtoBufUtils.fromProtoBuffer(res, SysLang.class);
@@ -45,6 +45,18 @@ public class GrpcSysLangClient {
     public int addLang(SysLangOuterClass.SysLang lang) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
         SysLangOuterClass.Result res = stub.insert(lang);
+        return res.getResult();
+    }
+
+    public int updateLang(SysLangOuterClass.SysLang lang) {
+        SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
+        SysLangOuterClass.Result res = stub.update(lang);
+        return res.getResult();
+    }
+
+    public int deleteLang(SysLangOuterClass.ByIdReq req) {
+        SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
+        SysLangOuterClass.Result res = stub.delete(req);
         return res.getResult();
     }
 }

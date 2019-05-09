@@ -27,28 +27,28 @@ public final class SysLangServiceGrpc {
   public static final String SERVICE_NAME = "sysLang.SysLangService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq,
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq,
       com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> getGetByIdMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetById",
-      requestType = com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq.class,
+      requestType = com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq.class,
       responseType = com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq,
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq,
       com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> getGetByIdMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> getGetByIdMethod;
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> getGetByIdMethod;
     if ((getGetByIdMethod = SysLangServiceGrpc.getGetByIdMethod) == null) {
       synchronized (SysLangServiceGrpc.class) {
         if ((getGetByIdMethod = SysLangServiceGrpc.getGetByIdMethod) == null) {
           SysLangServiceGrpc.getGetByIdMethod = getGetByIdMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang>newBuilder()
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "sysLang.SysLangService", "GetById"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq.getDefaultInstance()))
+                  com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang.getDefaultInstance()))
                   .setSchemaDescriptor(new SysLangServiceMethodDescriptorSupplier("GetById"))
@@ -155,28 +155,28 @@ public final class SysLangServiceGrpc {
      return getUpdateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang,
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq,
       com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> getDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Delete",
-      requestType = com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang.class,
+      requestType = com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq.class,
       responseType = com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang,
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq,
       com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> getDeleteMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> getDeleteMethod;
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> getDeleteMethod;
     if ((getDeleteMethod = SysLangServiceGrpc.getDeleteMethod) == null) {
       synchronized (SysLangServiceGrpc.class) {
         if ((getDeleteMethod = SysLangServiceGrpc.getDeleteMethod) == null) {
           SysLangServiceGrpc.getDeleteMethod = getDeleteMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result>newBuilder()
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "sysLang.SysLangService", "Delete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang.getDefaultInstance()))
+                  com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result.getDefaultInstance()))
                   .setSchemaDescriptor(new SysLangServiceMethodDescriptorSupplier("Delete"))
@@ -216,7 +216,7 @@ public final class SysLangServiceGrpc {
 
     /**
      */
-    public void getById(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq request,
+    public void getById(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> responseObserver) {
       asyncUnimplementedUnaryCall(getGetByIdMethod(), responseObserver);
     }
@@ -244,7 +244,7 @@ public final class SysLangServiceGrpc {
 
     /**
      */
-    public void delete(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang request,
+    public void delete(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> responseObserver) {
       asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
     }
@@ -255,7 +255,7 @@ public final class SysLangServiceGrpc {
             getGetByIdMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq,
+                com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq,
                 com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang>(
                   this, METHODID_GET_BY_ID)))
           .addMethod(
@@ -283,7 +283,7 @@ public final class SysLangServiceGrpc {
             getDeleteMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang,
+                com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq,
                 com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result>(
                   this, METHODID_DELETE)))
           .build();
@@ -310,7 +310,7 @@ public final class SysLangServiceGrpc {
 
     /**
      */
-    public void getById(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq request,
+    public void getById(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetByIdMethod(), getCallOptions()), request, responseObserver);
@@ -342,7 +342,7 @@ public final class SysLangServiceGrpc {
 
     /**
      */
-    public void delete(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang request,
+    public void delete(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request, responseObserver);
@@ -369,7 +369,7 @@ public final class SysLangServiceGrpc {
 
     /**
      */
-    public com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang getById(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq request) {
+    public com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang getById(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq request) {
       return blockingUnaryCall(
           getChannel(), getGetByIdMethod(), getCallOptions(), request);
     }
@@ -398,7 +398,7 @@ public final class SysLangServiceGrpc {
 
     /**
      */
-    public com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result delete(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang request) {
+    public com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result delete(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteMethod(), getCallOptions(), request);
     }
@@ -425,7 +425,7 @@ public final class SysLangServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang> getById(
-        com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq request) {
+        com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq request) {
       return futureUnaryCall(
           getChannel().newCall(getGetByIdMethod(), getCallOptions()), request);
     }
@@ -449,7 +449,7 @@ public final class SysLangServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result> delete(
-        com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang request) {
+        com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq request) {
       return futureUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request);
     }
@@ -479,7 +479,7 @@ public final class SysLangServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_BY_ID:
-          serviceImpl.getById((com.qianxun.grpc.lib.sysLang.SysLangOuterClass.GetByIdReq) request,
+          serviceImpl.getById((com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang>) responseObserver);
           break;
         case METHODID_GET_LIST:
@@ -495,7 +495,7 @@ public final class SysLangServiceGrpc {
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result>) responseObserver);
           break;
         case METHODID_DELETE:
-          serviceImpl.delete((com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang) request,
+          serviceImpl.delete((com.qianxun.grpc.lib.sysLang.SysLangOuterClass.ByIdReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result>) responseObserver);
           break;
         default:

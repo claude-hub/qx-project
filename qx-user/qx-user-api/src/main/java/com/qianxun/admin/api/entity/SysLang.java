@@ -33,9 +33,9 @@ public class SysLang implements Serializable {
     /**
      * 0--正常 -1--删除
      */
-    private Integer status = 0;
+    private Integer status;
     /**
      *
      */
-    private String dbSource = "";
+    private String dbSource;
 }
