@@ -14,13 +14,13 @@ public class SysLangServiceImpl implements SysLangService {
     private final SysLangMapper sysLangMapper;
 
     @Override
-    public boolean addSysLang(SysLang sysLang) {
-        return this.sysLangMapper.insert(sysLang) > 0;
+    public int addSysLang(SysLang sysLang) {
+        return this.sysLangMapper.insert(sysLang);
     }
 
     @Override
-    public boolean editSysLang(SysLang sysLang) {
-        return sysLangMapper.updateByPrimaryKey(sysLang) > 0;
+    public int editSysLang(SysLang sysLang) {
+        return sysLangMapper.updateByPrimaryKey(sysLang);
 
     }
 
@@ -35,7 +35,7 @@ public class SysLangServiceImpl implements SysLangService {
     }
 
     @Override
-    public boolean deleteSysLang(int id) {
-        return sysLangMapper.deleteByPrimaryKey(id) > 0;
+    public int deleteSysLang(int id) {
+        return sysLangMapper.deleteByPrimaryKey(id);
     }
 }

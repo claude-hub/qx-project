@@ -1166,14 +1166,9 @@ public final class SysLangOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int32 result = 1;</code>
      */
-    int getId();
-
-    /**
-     * <code>bool success = 2;</code>
-     */
-    boolean getSuccess();
+    int getResult();
   }
   /**
    * Protobuf type {@code sysLang.Result}
@@ -1216,12 +1211,7 @@ public final class SysLangOuterClass {
               break;
             case 8: {
 
-              id_ = input.readInt32();
-              break;
-            }
-            case 16: {
-
-              success_ = input.readBool();
+              result_ = input.readInt32();
               break;
             }
             default: {
@@ -1256,22 +1246,13 @@ public final class SysLangOuterClass {
               com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result.class, com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result.Builder.class);
     }
 
-    public static final int ID_FIELD_NUMBER = 1;
-    private int id_;
+    public static final int RESULT_FIELD_NUMBER = 1;
+    private int result_;
     /**
-     * <code>int32 id = 1;</code>
+     * <code>int32 result = 1;</code>
      */
-    public int getId() {
-      return id_;
-    }
-
-    public static final int SUCCESS_FIELD_NUMBER = 2;
-    private boolean success_;
-    /**
-     * <code>bool success = 2;</code>
-     */
-    public boolean getSuccess() {
-      return success_;
+    public int getResult() {
+      return result_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1288,11 +1269,8 @@ public final class SysLangOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (id_ != 0) {
-        output.writeInt32(1, id_);
-      }
-      if (success_ != false) {
-        output.writeBool(2, success_);
+      if (result_ != 0) {
+        output.writeInt32(1, result_);
       }
       unknownFields.writeTo(output);
     }
@@ -1303,13 +1281,9 @@ public final class SysLangOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (id_ != 0) {
+      if (result_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, id_);
-      }
-      if (success_ != false) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBoolSize(2, success_);
+          .computeInt32Size(1, result_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1326,10 +1300,8 @@ public final class SysLangOuterClass {
       }
       com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result other = (com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result) obj;
 
-      if (getId()
-          != other.getId()) return false;
-      if (getSuccess()
-          != other.getSuccess()) return false;
+      if (getResult()
+          != other.getResult()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1341,11 +1313,8 @@ public final class SysLangOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId();
-      hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-          getSuccess());
+      hash = (37 * hash) + RESULT_FIELD_NUMBER;
+      hash = (53 * hash) + getResult();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1479,9 +1448,7 @@ public final class SysLangOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = 0;
-
-        success_ = false;
+        result_ = 0;
 
         return this;
       }
@@ -1509,8 +1476,7 @@ public final class SysLangOuterClass {
       @java.lang.Override
       public com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result buildPartial() {
         com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result result = new com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result(this);
-        result.id_ = id_;
-        result.success_ = success_;
+        result.result_ = result_;
         onBuilt();
         return result;
       }
@@ -1559,11 +1525,8 @@ public final class SysLangOuterClass {
 
       public Builder mergeFrom(com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result other) {
         if (other == com.qianxun.grpc.lib.sysLang.SysLangOuterClass.Result.getDefaultInstance()) return this;
-        if (other.getId() != 0) {
-          setId(other.getId());
-        }
-        if (other.getSuccess() != false) {
-          setSuccess(other.getSuccess());
+        if (other.getResult() != 0) {
+          setResult(other.getResult());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1594,54 +1557,28 @@ public final class SysLangOuterClass {
         return this;
       }
 
-      private int id_ ;
+      private int result_ ;
       /**
-       * <code>int32 id = 1;</code>
+       * <code>int32 result = 1;</code>
        */
-      public int getId() {
-        return id_;
+      public int getResult() {
+        return result_;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>int32 result = 1;</code>
        */
-      public Builder setId(int value) {
+      public Builder setResult(int value) {
         
-        id_ = value;
+        result_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 id = 1;</code>
+       * <code>int32 result = 1;</code>
        */
-      public Builder clearId() {
+      public Builder clearResult() {
         
-        id_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private boolean success_ ;
-      /**
-       * <code>bool success = 2;</code>
-       */
-      public boolean getSuccess() {
-        return success_;
-      }
-      /**
-       * <code>bool success = 2;</code>
-       */
-      public Builder setSuccess(boolean value) {
-        
-        success_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>bool success = 2;</code>
-       */
-      public Builder clearSuccess() {
-        
-        success_ = false;
+        result_ = 0;
         onChanged();
         return this;
       }
@@ -2928,20 +2865,20 @@ public final class SysLangOuterClass {
       "\n\016sys_lang.proto\022\007sysLang\032\037google/protob" +
       "uf/timestamp.proto\"\030\n\nGetByIdReq\022\n\n\002id\030\001" +
       " \001(\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpag" +
-      "e_size\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"%\n\006Result\022\n\n\002" +
-      "id\030\001 \001(\005\022\017\n\007success\030\002 \001(\010\"\246\001\n\007SysLang\022\n\n" +
-      "\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022.\n\ncreated_at\030\003 " +
-      "\001(\0132\032.google.protobuf.Timestamp\022.\n\nupdat" +
-      "ed_at\030\004 \001(\0132\032.google.protobuf.Timestamp\022" +
-      "\016\n\006status\030\005 \001(\005\022\021\n\tdb_source\030\006 \001(\t2\207\002\n\016S" +
-      "ysLangService\0222\n\007GetById\022\023.sysLang.GetBy" +
-      "IdReq\032\020.sysLang.SysLang\"\000\0224\n\007GetList\022\023.s" +
-      "ysLang.GetListReq\032\020.sysLang.SysLang\"\0000\001\022" +
-      "-\n\006Insert\022\020.sysLang.SysLang\032\017.sysLang.Re" +
-      "sult\"\000\022-\n\006Update\022\020.sysLang.SysLang\032\017.sys" +
-      "Lang.Result\"\000\022-\n\006Delete\022\020.sysLang.SysLan" +
-      "g\032\017.sysLang.Result\"\000B\036\n\034com.qianxun.grpc" +
-      ".lib.sysLangP\000b\006proto3"
+      "e_size\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"\030\n\006Result\022\016\n\006" +
+      "result\030\001 \001(\005\"\246\001\n\007SysLang\022\n\n\002id\030\001 \001(\005\022\014\n\004" +
+      "name\030\002 \001(\t\022.\n\ncreated_at\030\003 \001(\0132\032.google." +
+      "protobuf.Timestamp\022.\n\nupdated_at\030\004 \001(\0132\032" +
+      ".google.protobuf.Timestamp\022\016\n\006status\030\005 \001" +
+      "(\005\022\021\n\tdb_source\030\006 \001(\t2\207\002\n\016SysLangService" +
+      "\0222\n\007GetById\022\023.sysLang.GetByIdReq\032\020.sysLa" +
+      "ng.SysLang\"\000\0224\n\007GetList\022\023.sysLang.GetLis" +
+      "tReq\032\020.sysLang.SysLang\"\0000\001\022-\n\006Insert\022\020.s" +
+      "ysLang.SysLang\032\017.sysLang.Result\"\000\022-\n\006Upd" +
+      "ate\022\020.sysLang.SysLang\032\017.sysLang.Result\"\000" +
+      "\022-\n\006Delete\022\020.sysLang.SysLang\032\017.sysLang.R" +
+      "esult\"\000B\036\n\034com.qianxun.grpc.lib.sysLangP" +
+      "\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2973,7 +2910,7 @@ public final class SysLangOuterClass {
     internal_static_sysLang_Result_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysLang_Result_descriptor,
-        new java.lang.String[] { "Id", "Success", });
+        new java.lang.String[] { "Result", });
     internal_static_sysLang_SysLang_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_sysLang_SysLang_fieldAccessorTable = new

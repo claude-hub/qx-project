@@ -4,13 +4,13 @@ import com.qianxun.admin.api.entity.SysLang;
 import java.util.List;
 
 public interface SysLangService {
-    boolean addSysLang(SysLang sysLang);
+    int addSysLang(SysLang sysLang);
 
-    boolean editSysLang(SysLang sysLang);
+    int editSysLang(SysLang sysLang);
 
     List<SysLang> findAllSysLangs();
 
     SysLang getSysLang(int id);
 
-    boolean deleteSysLang(int id);
+    int deleteSysLang(int id);
 }

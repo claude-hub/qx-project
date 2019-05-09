@@ -15,7 +15,7 @@ import java.util.Date;
  * email: 314705487@qq.com
  * create date: 05/08/19 18:40
  */
-public class ProtoEntity {
+public class ProtoBufUtils {
     /**
      * ProtoBuffer object to POJO
      */
@@ -35,9 +35,8 @@ public class ProtoEntity {
                         Object value = pbGetMethod.invoke(pbObject);
                         String str = ObjectUtils.toString(value, "");
                         if(StringUtils.isNotBlank(str)) {
-                            if (fieldType == Timestamp.class) {
+                            if (fieldType == Date.class) {
                                 value = new Date(((Timestamp) value).getSeconds() * 1000);
-                                fieldType = Date.class;
                             }
                             Method modelSetMethod = modelClass.getMethod("set" + name, fieldType);
                             modelSetMethod.invoke(model, value);
@@ -71,25 +70,22 @@ public class ProtoEntity {
                     String fieldName = pbField.getName();
                     String name = fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
                     Class<?> fieldType = pbField.getType();
-                    if (fieldType == Object.class) {
-                        fieldType = String.class;
-                    }
-                    if (fieldType == Integer.class) {
-                        fieldType = int.class;
-                    }
-                    if (fieldType == Date.class) {
-                        fieldType = Timestamp.class;
-                    }
                     try {
                         Method modelGetMethod = model.getClass().getMethod("get" + name);
                         Object value = modelGetMethod.invoke(model);
                         if (value != null) {
-                            Method pbBuilderSetMethod = pbBuilder.getClass().getMethod("set" + name, fieldType);
-                            // object直接setDate会报错
-                            if(fieldType == Timestamp.class){
-                                Date date = (Date)value;
-                                value = Timestamps.fromMillis(date.getTime());
+                            if (fieldType == Object.class) {
+                                fieldType = String.class;
                             }
+                            if (fieldType == Integer.class) {
+                                fieldType = int.class;
+                            }
+                            if (fieldType == Date.class) {
+                                fieldType = Timestamp.class;
+                                // object直接setDate会报错
+                                value = Timestamps.fromMillis(((Date)value).getTime());
+                            }
+                            Method pbBuilderSetMethod = pbBuilder.getClass().getMethod("set" + name, fieldType);
                             pbBuilderSetMethod.invoke(pbBuilder, value);
                         }
                     } catch (NoSuchMethodException e) {

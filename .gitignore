@@ -24,7 +24,4 @@
 /nbdist/
 /.nb-gradle/
 
-qx-admin/target
-qx-common/target
-qx-auth/target
-qx-generator/target
+/*/target

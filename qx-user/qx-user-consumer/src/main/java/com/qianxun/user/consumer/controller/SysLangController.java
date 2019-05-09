@@ -1,9 +1,12 @@
 package com.qianxun.user.consumer.controller;
 
+import com.qianxun.admin.api.dto.SearchByIdInputDTO;
+import com.qianxun.admin.api.dto.sysLang.request.SysLangAddInputDTO;
+import com.qianxun.admin.api.dto.sysLang.request.SysLangQueryInputDTO;
 import com.qianxun.admin.api.entity.SysLang;
+import com.qianxun.admin.api.utils.ProtoBufUtils;
+import com.qianxun.grpc.lib.sysLang.SysLangOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysLangClient;
-import com.qianxun.user.consumer.model.sysLang.request.SysLangAddInputDTO;
-import com.qianxun.user.consumer.utils.mapper.BeanMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,18 +24,20 @@ public class SysLangController {
     private final GrpcSysLangClient grpcSysLangClient;
 
     @GetMapping(value = "/{id}")
-    public SysLang getLangId(@Valid @PathVariable("id") int id) {
-        return grpcSysLangClient.getLangById(id);
+    public SysLang getLangId(@Valid SearchByIdInputDTO inputDTO) {
+        SysLangOuterClass.GetByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(inputDTO, SysLangOuterClass.GetByIdReq.class);
+        return grpcSysLangClient.getLangById(getByIdReq);
     }
 
     @GetMapping(value = "/list")
-    public List<SysLang> getLangList() {
-        return grpcSysLangClient.getLangList();
+    public List<SysLang> getLangList(@Valid SysLangQueryInputDTO inputDTO) {
+        SysLangOuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(inputDTO, SysLangOuterClass.GetListReq.class);
+        return grpcSysLangClient.getLangList(getListReq);
     }
 
     @PostMapping(value = "/add")
-    public boolean addLang(SysLangAddInputDTO inputDTO) {
-        SysLang sysLang = BeanMapper.map(inputDTO, SysLang.class);
+    public int addLang(@Valid SysLangAddInputDTO inputDTO) {
+        SysLangOuterClass.SysLang sysLang = ProtoBufUtils.toProtoBuffer(inputDTO, SysLangOuterClass.SysLang.class);
         return grpcSysLangClient.addLang(sysLang);
     }
 }

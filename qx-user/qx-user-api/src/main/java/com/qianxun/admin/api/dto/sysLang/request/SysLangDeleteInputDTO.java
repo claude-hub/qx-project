@@ -1,8 +1,9 @@
-package com.qianxun.user.consumer.model.sysLang.request;
+package com.qianxun.admin.api.dto.sysLang.request;
 
 import io.swagger.annotations.ApiModelProperty;
-import javax.validation.constraints.NotNull;
 import lombok.Data;
+
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**

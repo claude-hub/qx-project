@@ -1,8 +1,7 @@
 package com.qianxun.user.consumer.grpc.client;
 
 import com.qianxun.admin.api.entity.SysLang;
-import com.qianxun.admin.api.utils.ProtoEntity;
-import com.qianxun.admin.api.utils.SysLangUtils;
+import com.qianxun.admin.api.utils.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysLang.SysLangOuterClass;
 import com.qianxun.grpc.lib.sysLang.SysLangServiceGrpc;
 import io.grpc.Channel;
@@ -22,32 +21,30 @@ public class GrpcSysLangClient {
     @GrpcClient("qx-user-provider")
     private Channel serverChannel;
 
-
-    public SysLang getLangById(int id) {
+    public SysLang getLangById(SysLangOuterClass.GetByIdReq getByIdReq) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
-        SysLangOuterClass.SysLang res = stub.getById(SysLangOuterClass.GetByIdReq.newBuilder().setId(id).build());
-        return SysLangUtils.grpcMessageToEntity(res);
+        SysLangOuterClass.SysLang res = stub.getById(getByIdReq);
+        return ProtoBufUtils.fromProtoBuffer(res, SysLang.class);
     }
 
-    public List<SysLang> getLangList() {
+    public List<SysLang> getLangList(SysLangOuterClass.GetListReq getListReq) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
         Iterator<SysLangOuterClass.SysLang> sysLangIterator;
-        List<SysLang> sysLangs = new ArrayList<>();
+        List<SysLang> sysLangList = new ArrayList<>();
         try {
-            sysLangIterator = stub.getList(SysLangOuterClass.GetListReq.newBuilder().build());
+            sysLangIterator = stub.getList(getListReq);
             for (int i = 1; sysLangIterator.hasNext(); i++) {
                 SysLangOuterClass.SysLang sysLang = sysLangIterator.next();
-                sysLangs.add(SysLangUtils.grpcMessageToEntity(sysLang));
+                sysLangList.add(ProtoBufUtils.fromProtoBuffer(sysLang, SysLang.class));
             }
         }catch (StatusRuntimeException e) {
         }
-        return sysLangs;
+        return sysLangList;
     }
 
-    public boolean addLang(SysLang sysLang) {
+    public int addLang(SysLangOuterClass.SysLang lang) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
-        SysLangOuterClass.SysLang lang = ProtoEntity.toProtoBuffer(sysLang, SysLangOuterClass.SysLang.class);
         SysLangOuterClass.Result res = stub.insert(lang);
-        return res.getSuccess();
+        return res.getResult();
     }
 }

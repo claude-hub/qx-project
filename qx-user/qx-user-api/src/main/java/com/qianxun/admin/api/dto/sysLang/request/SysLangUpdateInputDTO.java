@@ -1,9 +1,10 @@
-package com.qianxun.user.consumer.model.sysLang.request;
+package com.qianxun.admin.api.dto.sysLang.request;
 
-import lombok.Data;
-import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -18,16 +19,12 @@ public class SysLangUpdateInputDTO implements Serializable {
 
     @NotBlank(message = "语言名不能为空")
     @ApiModelProperty(value = "语言名", required = true)
-
     private String name;
 
-
-    @NotNull(message = "0--正常 -1--删除不能为空")
-
+    @ApiModelProperty(value = "0--正常 -1--删除")
     private Integer status;
 
     @ApiModelProperty(value = "")
-
     private String dbSource;
 
 }
