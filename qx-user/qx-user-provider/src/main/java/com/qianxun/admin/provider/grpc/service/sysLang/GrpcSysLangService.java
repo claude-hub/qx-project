@@ -27,7 +27,7 @@ public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBas
     @Override
     public void getById(SysLangOuterClass.ByIdReq request,
                         StreamObserver<SysLangOuterClass.SysLang> responseObserver) {
-        SysLang sysLang = sysLangService.getSysLang(request.getId());
+        SysLang sysLang = sysLangService.getById(request.getId());
         SysLangOuterClass.SysLang res = ProtoBufUtils.toProtoBuffer(sysLang, SysLangOuterClass.SysLang.class);
         responseObserver.onNext(res);
         responseObserver.onCompleted();
@@ -37,7 +37,7 @@ public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBas
     public void getList(SysLangOuterClass.GetListReq request,
                         StreamObserver<SysLangOuterClass.SysLang> responseObserver) {
         SysLangQueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysLangQueryInputDTO.class);
-        List<SysLang> sysLangList = sysLangService.findAllSysLangs();
+        List<SysLang> sysLangList = sysLangService.list();
         for (SysLang sysLang : sysLangList) {
             responseObserver.onNext(ProtoBufUtils.toProtoBuffer(sysLang, SysLangOuterClass.SysLang.class));
         }
@@ -48,7 +48,7 @@ public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBas
     public void insert(SysLangOuterClass.SysLang request,
                        StreamObserver<SysLangOuterClass.Result> responseObserver) {
         SysLang sysLang = ProtoBufUtils.fromProtoBuffer(request, SysLang.class);
-        responseDTO.setResult(sysLangService.addSysLang(sysLang));
+        responseDTO.setSuccess(sysLangService.save(sysLang));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysLangOuterClass.Result.class));
         responseObserver.onCompleted();
     }
@@ -57,7 +57,7 @@ public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBas
     public void update(SysLangOuterClass.SysLang request,
                        StreamObserver<SysLangOuterClass.Result> responseObserver) {
         SysLang sysLang = ProtoBufUtils.fromProtoBuffer(request, SysLang.class);
-        responseDTO.setResult(sysLangService.editSysLang(sysLang));
+        responseDTO.setSuccess(sysLangService.updateById(sysLang));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysLangOuterClass.Result.class));
         responseObserver.onCompleted();
     }
@@ -65,7 +65,7 @@ public class GrpcSysLangService extends SysLangServiceGrpc.SysLangServiceImplBas
     @Override
     public void delete(SysLangOuterClass.ByIdReq request,
                        StreamObserver<SysLangOuterClass.Result> responseObserver) {
-        responseDTO.setResult(sysLangService.deleteSysLang(request.getId()));
+        responseDTO.setSuccess(sysLangService.removeById(request.getId()));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysLangOuterClass.Result.class));
         responseObserver.onCompleted();
     }

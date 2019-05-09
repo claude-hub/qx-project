@@ -1,16 +1,8 @@
 package com.qianxun.admin.provider.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.qianxun.admin.api.entity.SysLang;
-import java.util.List;
 
-public interface SysLangService {
-    int addSysLang(SysLang sysLang);
+public interface SysLangService extends IService<SysLang> {
 
-    int editSysLang(SysLang sysLang);
-
-    List<SysLang> findAllSysLangs();
-
-    SysLang getSysLang(int id);
-
-    int deleteSysLang(int id);
 }

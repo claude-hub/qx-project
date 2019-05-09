@@ -85,6 +85,9 @@ public class ProtoBufUtils {
                                 // object直接setDate会报错
                                 value = Timestamps.fromMillis(((Date)value).getTime());
                             }
+                            if (fieldType == Boolean.class){
+                                fieldType = boolean.class;
+                            }
                             Method pbBuilderSetMethod = pbBuilder.getClass().getMethod("set" + name, fieldType);
                             pbBuilderSetMethod.invoke(pbBuilder, value);
                         }

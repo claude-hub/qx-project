@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 public class UpdateDBResponseDTO implements Serializable {
     /**
-     * 插入的id，或者受影响的行数
+     * 是否成功
      */
-    private Integer result;
+    private Boolean success;
 }

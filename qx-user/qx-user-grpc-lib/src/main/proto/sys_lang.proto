@@ -25,7 +25,7 @@ message GetListReq {
 }
 
 message Result {
-    int32 result = 1;
+    bool success = 1;
 }
 
 message SysLang {

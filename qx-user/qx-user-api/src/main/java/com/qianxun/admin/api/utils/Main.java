@@ -1,5 +1,7 @@
 package com.qianxun.admin.api.utils;
 
+import com.qianxun.grpc.lib.sysLang.SysLangOuterClass;
+
 import java.lang.reflect.Field;
 
 /**
@@ -12,5 +14,7 @@ public class Main {
         Integer i = 1;
         Field[] pbFields = i.getClass().getDeclaredFields();
         System.out.println(pbFields);
+
+        SysLangOuterClass.Result.newBuilder().setSuccess(true);
     }
 }

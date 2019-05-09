@@ -42,21 +42,21 @@ public class GrpcSysLangClient {
         return sysLangList;
     }
 
-    public int addLang(SysLangOuterClass.SysLang lang) {
+    public Boolean addLang(SysLangOuterClass.SysLang lang) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
         SysLangOuterClass.Result res = stub.insert(lang);
-        return res.getResult();
+        return res.getSuccess();
     }
 
-    public int updateLang(SysLangOuterClass.SysLang lang) {
+    public Boolean updateLang(SysLangOuterClass.SysLang lang) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
         SysLangOuterClass.Result res = stub.update(lang);
-        return res.getResult();
+        return res.getSuccess();
     }
 
-    public int deleteLang(SysLangOuterClass.ByIdReq req) {
+    public Boolean deleteLang(SysLangOuterClass.ByIdReq req) {
         SysLangServiceGrpc.SysLangServiceBlockingStub stub = SysLangServiceGrpc.newBlockingStub(serverChannel);
         SysLangOuterClass.Result res = stub.delete(req);
-        return res.getResult();
+        return res.getSuccess();
     }
 }
