@@ -30,7 +30,7 @@ message Result {
 
 message SysRole {
     int32 id = 1;
-    string name = 2;
+    string role_code = 2;
     google.protobuf.Timestamp created_at = 3;
     google.protobuf.Timestamp updated_at = 4;
     int32 status = 5;
