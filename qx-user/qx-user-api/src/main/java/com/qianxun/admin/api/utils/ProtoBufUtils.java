@@ -4,10 +4,10 @@ import com.google.protobuf.Descriptors;
 import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.Timestamp;
 import com.google.protobuf.util.Timestamps;
+import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,6 +18,7 @@ import java.util.List;
  * email: 314705487@qq.com
  * create date: 05/08/19 18:40
  */
+@Slf4j
 public class ProtoBufUtils {
     /**
      * ProtoBuffer object to POJO
@@ -73,12 +74,12 @@ public class ProtoBufUtils {
                             modelSetMethod.invoke(model, value);
                         }
                     } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
+                        log.error("NoSuchMethodException ex={}", e.getMessage(), e);
                     }
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("fromProtoBuffer filed ex={}", e.getMessage(), e);
         }
         return model;
     }
@@ -164,13 +165,13 @@ public class ProtoBufUtils {
                             }
                         }
                     } catch (NoSuchMethodException e) {
-                        e.printStackTrace();
+                        log.error("NoSuchMethodException filed ex={}", e.getMessage(), e);
                     }
                 }
             }
             pbObject = (T) pbBuilder.getClass().getDeclaredMethod("build").invoke(pbBuilder);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("toProtoBuffer filed ex={}", e.getMessage(), e);
         }
         return pbObject;
     }

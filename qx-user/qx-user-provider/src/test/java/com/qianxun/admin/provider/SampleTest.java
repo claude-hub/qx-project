@@ -4,6 +4,7 @@ import com.qianxun.admin.api.entity.SysDept;
 import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.admin.provider.service.SysDeptService;
 import com.qianxun.admin.provider.service.SysRoleService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import java.util.List;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class SampleTest {
 
     @Autowired
@@ -27,6 +29,12 @@ public class SampleTest {
 
     @Test
     public void testSelect() {
+        log.debug("debug message");
+        log.warn("warn message");
+        log.info("info message");
+        log.error("error message");
+        log.trace("trace message");
+
         SysRole add = new SysRole();
         add.setRoleCode("adadsada");
         sysRoleService.save(add);

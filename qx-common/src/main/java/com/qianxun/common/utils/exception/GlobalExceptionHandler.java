@@ -1,13 +1,11 @@
 package com.qianxun.common.utils.exception;
 
 import com.qianxun.common.utils.result.JSONResult;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +15,8 @@ import java.util.Map;
 /**
  * 全局异常处理类
  */
-@ControllerAdvice
+@Slf4j
+@RestControllerAdvice
 public class GlobalExceptionHandler {
 
     /**
@@ -29,11 +28,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    JSONResult handleException(Exception e) {
+    public JSONResult handleException(Exception e) {
         JSONResult jsonResult = new JSONResult();
-        jsonResult.setErrCode("SYSTEM_ERROR");
+        jsonResult.setErrCode("system_error");
         jsonResult.setMessage(e.getMessage());
-        e.printStackTrace();
+        log.error("全局异常信息 ex={}", e.getMessage(), e);
         return jsonResult;
     }
 
@@ -46,7 +45,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BindException.class)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    JSONResult handleBindException(BindException e) {
+    public JSONResult handleBindException(BindException e) {
         List<Map<String, Object>> errorList = new ArrayList<>();
         for (FieldError fieldError : e.getFieldErrors()) {
             Map<String, Object> error = new HashMap<>();
@@ -56,8 +55,9 @@ public class GlobalExceptionHandler {
             errorList.add(error);
         }
         JSONResult jsonResult = new JSONResult();
-        jsonResult.setErrCode("VALIDATION_ERROR");
+        jsonResult.setErrCode("validation_error");
         jsonResult.setMessage(errorList);
+        log.error("验证数据的异常 ex={}", e.getMessage(), e);
         return jsonResult;
     }
 
@@ -70,10 +70,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BusinessException.class)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    JSONResult handleBusinessException(BusinessException e) {
+    public JSONResult handleBusinessException(BusinessException e) {
         JSONResult jsonResult = new JSONResult();
         jsonResult.setErrCode(e.getErrorCode());
         jsonResult.setMessage(e.getMessage());
+        log.error("所有业务异常 ex={}", e.getMessage(), e);
         return jsonResult;
     }
 
@@ -86,10 +87,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(PhoneException.class)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    JSONResult handlePhoneServiceException(PhoneException e) {
+    public JSONResult handlePhoneServiceException(PhoneException e) {
         JSONResult jsonResult = new JSONResult();
-        jsonResult.setErrCode("PHONE_ERROR");
+        jsonResult.setErrCode("phone_error");
         jsonResult.setMessage(e.getMessage());
+        log.error("手机号错误异常 ex={}", e.getMessage(), e);
         return jsonResult;
     }
     /**
@@ -101,10 +103,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidException.class)
     @ResponseBody
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    JSONResult handleInvalidServiceException(InvalidException e) {
+    public JSONResult handleInvalidServiceException(InvalidException e) {
         JSONResult jsonResult = new JSONResult();
-        jsonResult.setErrCode("INVALID_ERROR");
+        jsonResult.setErrCode("invalid_error");
         jsonResult.setMessage(e.getMessage());
+        log.error("数据无效异常 ex={}", e.getMessage(), e);
         return jsonResult;
     }
 }
