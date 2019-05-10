@@ -14,7 +14,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * @author Cloudy
@@ -31,7 +30,7 @@ public class SysLangController {
         JSONResult result = new JSONResult();
         SysLangOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(inputDTO, SysLangOuterClass.ByIdReq.class);
         SysLang sysLang = grpcSysLangClient.getLangById(getByIdReq);
-        result.setData(sysLang.getId() > 0 ? sysLang : "");
+        result.setData(sysLang.getId() != null ? sysLang : "");
         return result;
     }
 
@@ -51,7 +50,7 @@ public class SysLangController {
         return result;
     }
 
-    @PostMapping(value = "/update")
+    @PutMapping(value = "/update")
     public JSONResult updateLang(@Valid SysLangUpdateInputDTO inputDTO) {
         JSONResult result = new JSONResult();
         SysLangOuterClass.SysLang sysLang = ProtoBufUtils.toProtoBuffer(inputDTO, SysLangOuterClass.SysLang.class);

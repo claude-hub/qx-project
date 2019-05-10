@@ -2,7 +2,6 @@ package com.qianxun.admin.provider.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qianxun.admin.api.entity.SysLang;
-import java.util.List;
 
 /**
  * @author cloudy

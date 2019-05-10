@@ -1,5 +1,8 @@
 package com.qianxun.admin.api.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -14,6 +17,7 @@ public class SysDept implements Serializable {
     /**
      *
      */
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     /**
      *
@@ -26,10 +30,12 @@ public class SysDept implements Serializable {
     /**
      *
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdAt;
     /**
      *
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedAt;
     /**
      * 是否删除  -1：已删除  0：正常

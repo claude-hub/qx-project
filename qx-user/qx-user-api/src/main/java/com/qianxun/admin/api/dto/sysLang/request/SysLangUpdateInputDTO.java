@@ -21,7 +21,7 @@ public class SysLangUpdateInputDTO implements Serializable {
     @ApiModelProperty(value = "语言名", required = true)
     private String name;
 
-    @ApiModelProperty(value = "0--正常 -1--删除")
+    @ApiModelProperty(value = "0: 正常，-1: 删除，默认0")
     private Integer status;
 
     @ApiModelProperty(value = "")
