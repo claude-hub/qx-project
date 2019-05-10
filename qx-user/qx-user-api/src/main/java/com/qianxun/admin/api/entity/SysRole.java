@@ -4,6 +4,8 @@ import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.Version;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -32,15 +34,19 @@ public class SysRole implements Serializable {
     private Date createdAt;
     /**
      * 更新时间
+     * 乐观锁
      */
+    @Version
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedAt;
-    /**
-     * 1-正常，-1-删除
-     */
-    private Integer status;
     /**
      *
      */
     private String dbSource;
+
+    /**
+     * 1-正常，-1-删除
+     */
+    @TableLogic
+    private Integer status;
 }

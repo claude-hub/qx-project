@@ -1,3 +1,6 @@
+server:
+  port: 7777 #单元测试需要web环境
+
 grpc:
   server:
     port: 8001

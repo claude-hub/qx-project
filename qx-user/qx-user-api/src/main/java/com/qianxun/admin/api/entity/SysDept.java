@@ -2,6 +2,8 @@ package com.qianxun.admin.api.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.Version;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -33,13 +35,15 @@ public class SysDept implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdAt;
     /**
-     *
+     * 乐观锁
      */
+    @Version
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedAt;
     /**
      * 是否删除  -1：已删除  0：正常
      */
+    @TableLogic
     private Integer status;
     /**
      *

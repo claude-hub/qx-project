@@ -12,6 +12,11 @@
     <artifactId>qx-user-provider</artifactId>
 
     <dependencies>
+        <!--单元测试需要web环境-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!--数据库-->
         <dependency>
             <groupId>com.alibaba</groupId>
