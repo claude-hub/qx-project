@@ -18,11 +18,6 @@
             <artifactId>qx-user-grpc-lib</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java-util</artifactId>
-            <version>${protobuf.version}</version>
-        </dependency>
         <!--参数验证-->
         <dependency>
             <groupId>javax.validation</groupId>

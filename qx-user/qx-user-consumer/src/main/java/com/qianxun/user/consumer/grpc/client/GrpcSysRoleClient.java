@@ -2,17 +2,12 @@ package com.qianxun.user.consumer.grpc.client;
 
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
 import com.qianxun.admin.api.entity.SysRole;
-import com.qianxun.admin.api.utils.ProtoBufUtils;
+import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysRole.SysRoleOuterClass;
 import com.qianxun.grpc.lib.sysRole.SysRoleServiceGrpc;
 import io.grpc.Channel;
-import io.grpc.StatusRuntimeException;
 import net.devh.springboot.autoconfigure.grpc.client.GrpcClient;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * @author Cloudy

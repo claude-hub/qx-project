@@ -38,6 +38,5 @@ message SysDept {
     int32 sort = 5;
     google.protobuf.Timestamp created_at = 6;
     google.protobuf.Timestamp updated_at = 7;
-    int32 status = 8;
-    string db_source = 9;
+    int32 deleted = 8;
 }

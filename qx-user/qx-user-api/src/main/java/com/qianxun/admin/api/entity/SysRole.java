@@ -39,14 +39,10 @@ public class SysRole implements Serializable {
     @Version
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedAt;
-    /**
-     *
-     */
-    private String dbSource;
 
     /**
      * 1-正常，-1-删除
      */
     @TableLogic
-    private Integer status;
+    private Integer deleted;
 }

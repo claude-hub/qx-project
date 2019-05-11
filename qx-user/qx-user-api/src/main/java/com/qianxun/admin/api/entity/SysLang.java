@@ -41,9 +41,5 @@ public class SysLang implements Serializable {
      * 0--正常 -1--删除
      */
     @TableLogic
-    private Integer status;
-    /**
-     *
-     */
-    private String dbSource;
+    private Integer deleted;
 }

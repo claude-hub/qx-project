@@ -1,4 +1,4 @@
-//package com.qianxun.admin.api.utils;
+package com.qianxun.common.utils.mapper;//package com.qianxun.admin.api.utils;
 //
 //import com.google.protobuf.Descriptors;
 //import io.netty.util.internal.StringUtil;

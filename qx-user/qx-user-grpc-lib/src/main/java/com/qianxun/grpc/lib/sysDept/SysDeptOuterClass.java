@@ -1821,19 +1821,9 @@ public final class SysDeptOuterClass {
     com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
 
     /**
-     * <code>int32 status = 8;</code>
+     * <code>int32 deleted = 8;</code>
      */
-    int getStatus();
-
-    /**
-     * <code>string db_source = 9;</code>
-     */
-    java.lang.String getDbSource();
-    /**
-     * <code>string db_source = 9;</code>
-     */
-    com.google.protobuf.ByteString
-        getDbSourceBytes();
+    int getDeleted();
   }
   /**
    * Protobuf type {@code sysDept.SysDept}
@@ -1849,7 +1839,6 @@ public final class SysDeptOuterClass {
     }
     private SysDept() {
       name_ = "";
-      dbSource_ = "";
     }
 
     @java.lang.Override
@@ -1930,13 +1919,7 @@ public final class SysDeptOuterClass {
             }
             case 64: {
 
-              status_ = input.readInt32();
-              break;
-            }
-            case 74: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              dbSource_ = s;
+              deleted_ = input.readInt32();
               break;
             }
             default: {
@@ -2083,47 +2066,13 @@ public final class SysDeptOuterClass {
       return getUpdatedAt();
     }
 
-    public static final int STATUS_FIELD_NUMBER = 8;
-    private int status_;
+    public static final int DELETED_FIELD_NUMBER = 8;
+    private int deleted_;
     /**
-     * <code>int32 status = 8;</code>
+     * <code>int32 deleted = 8;</code>
      */
-    public int getStatus() {
-      return status_;
-    }
-
-    public static final int DB_SOURCE_FIELD_NUMBER = 9;
-    private volatile java.lang.Object dbSource_;
-    /**
-     * <code>string db_source = 9;</code>
-     */
-    public java.lang.String getDbSource() {
-      java.lang.Object ref = dbSource_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        dbSource_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string db_source = 9;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDbSourceBytes() {
-      java.lang.Object ref = dbSource_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        dbSource_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getDeleted() {
+      return deleted_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2161,11 +2110,8 @@ public final class SysDeptOuterClass {
       if (updatedAt_ != null) {
         output.writeMessage(7, getUpdatedAt());
       }
-      if (status_ != 0) {
-        output.writeInt32(8, status_);
-      }
-      if (!getDbSourceBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 9, dbSource_);
+      if (deleted_ != 0) {
+        output.writeInt32(8, deleted_);
       }
       unknownFields.writeTo(output);
     }
@@ -2203,12 +2149,9 @@ public final class SysDeptOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(7, getUpdatedAt());
       }
-      if (status_ != 0) {
+      if (deleted_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, status_);
-      }
-      if (!getDbSourceBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(9, dbSource_);
+          .computeInt32Size(8, deleted_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2245,10 +2188,8 @@ public final class SysDeptOuterClass {
         if (!getUpdatedAt()
             .equals(other.getUpdatedAt())) return false;
       }
-      if (getStatus()
-          != other.getStatus()) return false;
-      if (!getDbSource()
-          .equals(other.getDbSource())) return false;
+      if (getDeleted()
+          != other.getDeleted()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2278,10 +2219,8 @@ public final class SysDeptOuterClass {
         hash = (37 * hash) + UPDATED_AT_FIELD_NUMBER;
         hash = (53 * hash) + getUpdatedAt().hashCode();
       }
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + getStatus();
-      hash = (37 * hash) + DB_SOURCE_FIELD_NUMBER;
-      hash = (53 * hash) + getDbSource().hashCode();
+      hash = (37 * hash) + DELETED_FIELD_NUMBER;
+      hash = (53 * hash) + getDeleted();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2437,9 +2376,7 @@ public final class SysDeptOuterClass {
           updatedAt_ = null;
           updatedAtBuilder_ = null;
         }
-        status_ = 0;
-
-        dbSource_ = "";
+        deleted_ = 0;
 
         return this;
       }
@@ -2482,8 +2419,7 @@ public final class SysDeptOuterClass {
         } else {
           result.updatedAt_ = updatedAtBuilder_.build();
         }
-        result.status_ = status_;
-        result.dbSource_ = dbSource_;
+        result.deleted_ = deleted_;
         onBuilt();
         return result;
       }
@@ -2554,12 +2490,8 @@ public final class SysDeptOuterClass {
         if (other.hasUpdatedAt()) {
           mergeUpdatedAt(other.getUpdatedAt());
         }
-        if (other.getStatus() != 0) {
-          setStatus(other.getStatus());
-        }
-        if (!other.getDbSource().isEmpty()) {
-          dbSource_ = other.dbSource_;
-          onChanged();
+        if (other.getDeleted() != 0) {
+          setDeleted(other.getDeleted());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2997,97 +2929,28 @@ public final class SysDeptOuterClass {
         return updatedAtBuilder_;
       }
 
-      private int status_ ;
+      private int deleted_ ;
       /**
-       * <code>int32 status = 8;</code>
+       * <code>int32 deleted = 8;</code>
        */
-      public int getStatus() {
-        return status_;
+      public int getDeleted() {
+        return deleted_;
       }
       /**
-       * <code>int32 status = 8;</code>
+       * <code>int32 deleted = 8;</code>
        */
-      public Builder setStatus(int value) {
+      public Builder setDeleted(int value) {
         
-        status_ = value;
+        deleted_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 status = 8;</code>
+       * <code>int32 deleted = 8;</code>
        */
-      public Builder clearStatus() {
+      public Builder clearDeleted() {
         
-        status_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object dbSource_ = "";
-      /**
-       * <code>string db_source = 9;</code>
-       */
-      public java.lang.String getDbSource() {
-        java.lang.Object ref = dbSource_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          dbSource_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string db_source = 9;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDbSourceBytes() {
-        java.lang.Object ref = dbSource_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          dbSource_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string db_source = 9;</code>
-       */
-      public Builder setDbSource(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        dbSource_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string db_source = 9;</code>
-       */
-      public Builder clearDbSource() {
-        
-        dbSource_ = getDefaultInstance().getDbSource();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string db_source = 9;</code>
-       */
-      public Builder setDbSourceBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        dbSource_ = value;
+        deleted_ = 0;
         onChanged();
         return this;
       }
@@ -3178,20 +3041,19 @@ public final class SysDeptOuterClass {
       " \001(\005\022\017\n\007lang_id\030\002 \001(\005\"M\n\nGetListReq\022\r\n\005q" +
       "uery\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004page\030\003 " +
       "\001(\005\022\017\n\007lang_id\030\004 \001(\005\"\031\n\006Result\022\017\n\007succes" +
-      "s\030\001 \001(\010\"\330\001\n\007SysDept\022\n\n\002id\030\001 \001(\005\022\017\n\007lang_" +
+      "s\030\001 \001(\010\"\306\001\n\007SysDept\022\n\n\002id\030\001 \001(\005\022\017\n\007lang_" +
       "id\030\002 \001(\005\022\021\n\tparent_id\030\003 \001(\005\022\014\n\004name\030\004 \001(" +
       "\t\022\014\n\004sort\030\005 \001(\005\022.\n\ncreated_at\030\006 \001(\0132\032.go" +
       "ogle.protobuf.Timestamp\022.\n\nupdated_at\030\007 " +
-      "\001(\0132\032.google.protobuf.Timestamp\022\016\n\006statu" +
-      "s\030\010 \001(\005\022\021\n\tdb_source\030\t \001(\t2\207\002\n\016sysDeptSe" +
-      "rvice\0222\n\007GetById\022\023.sysDept.GetByIdReq\032\020." +
-      "sysDept.SysDept\"\000\0224\n\007GetList\022\023.sysDept.G" +
-      "etListReq\032\020.sysDept.SysDept\"\0000\001\022-\n\006Inser" +
-      "t\022\020.sysDept.SysDept\032\017.sysDept.Result\"\000\022-" +
-      "\n\006Update\022\020.sysDept.SysDept\032\017.sysDept.Res" +
-      "ult\"\000\022-\n\006Delete\022\020.sysDept.SysDept\032\017.sysD" +
-      "ept.Result\"\000B\036\n\034com.qianxun.grpc.lib.sys" +
-      "DeptP\000b\006proto3"
+      "\001(\0132\032.google.protobuf.Timestamp\022\017\n\007delet" +
+      "ed\030\010 \001(\0052\207\002\n\016sysDeptService\0222\n\007GetById\022\023" +
+      ".sysDept.GetByIdReq\032\020.sysDept.SysDept\"\000\022" +
+      "4\n\007GetList\022\023.sysDept.GetListReq\032\020.sysDep" +
+      "t.SysDept\"\0000\001\022-\n\006Insert\022\020.sysDept.SysDep" +
+      "t\032\017.sysDept.Result\"\000\022-\n\006Update\022\020.sysDept" +
+      ".SysDept\032\017.sysDept.Result\"\000\022-\n\006Delete\022\020." +
+      "sysDept.SysDept\032\017.sysDept.Result\"\000B\036\n\034co" +
+      "m.qianxun.grpc.lib.sysDeptP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3229,7 +3091,7 @@ public final class SysDeptOuterClass {
     internal_static_sysDept_SysDept_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysDept_SysDept_descriptor,
-        new java.lang.String[] { "Id", "LangId", "ParentId", "Name", "Sort", "CreatedAt", "UpdatedAt", "Status", "DbSource", });
+        new java.lang.String[] { "Id", "LangId", "ParentId", "Name", "Sort", "CreatedAt", "UpdatedAt", "Deleted", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

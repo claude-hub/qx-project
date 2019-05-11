@@ -1682,19 +1682,9 @@ public final class SysRoleOuterClass {
     com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
 
     /**
-     * <code>int32 status = 5;</code>
+     * <code>int32 deleted = 5;</code>
      */
-    int getStatus();
-
-    /**
-     * <code>string db_source = 6;</code>
-     */
-    java.lang.String getDbSource();
-    /**
-     * <code>string db_source = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getDbSourceBytes();
+    int getDeleted();
   }
   /**
    * Protobuf type {@code sysRole.SysRole}
@@ -1710,7 +1700,6 @@ public final class SysRoleOuterClass {
     }
     private SysRole() {
       roleCode_ = "";
-      dbSource_ = "";
     }
 
     @java.lang.Override
@@ -1776,13 +1765,7 @@ public final class SysRoleOuterClass {
             }
             case 40: {
 
-              status_ = input.readInt32();
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              dbSource_ = s;
+              deleted_ = input.readInt32();
               break;
             }
             default: {
@@ -1902,47 +1885,13 @@ public final class SysRoleOuterClass {
       return getUpdatedAt();
     }
 
-    public static final int STATUS_FIELD_NUMBER = 5;
-    private int status_;
+    public static final int DELETED_FIELD_NUMBER = 5;
+    private int deleted_;
     /**
-     * <code>int32 status = 5;</code>
+     * <code>int32 deleted = 5;</code>
      */
-    public int getStatus() {
-      return status_;
-    }
-
-    public static final int DB_SOURCE_FIELD_NUMBER = 6;
-    private volatile java.lang.Object dbSource_;
-    /**
-     * <code>string db_source = 6;</code>
-     */
-    public java.lang.String getDbSource() {
-      java.lang.Object ref = dbSource_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        dbSource_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string db_source = 6;</code>
-     */
-    public com.google.protobuf.ByteString
-        getDbSourceBytes() {
-      java.lang.Object ref = dbSource_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        dbSource_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getDeleted() {
+      return deleted_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1971,11 +1920,8 @@ public final class SysRoleOuterClass {
       if (updatedAt_ != null) {
         output.writeMessage(4, getUpdatedAt());
       }
-      if (status_ != 0) {
-        output.writeInt32(5, status_);
-      }
-      if (!getDbSourceBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, dbSource_);
+      if (deleted_ != 0) {
+        output.writeInt32(5, deleted_);
       }
       unknownFields.writeTo(output);
     }
@@ -2001,12 +1947,9 @@ public final class SysRoleOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getUpdatedAt());
       }
-      if (status_ != 0) {
+      if (deleted_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, status_);
-      }
-      if (!getDbSourceBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, dbSource_);
+          .computeInt32Size(5, deleted_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2037,10 +1980,8 @@ public final class SysRoleOuterClass {
         if (!getUpdatedAt()
             .equals(other.getUpdatedAt())) return false;
       }
-      if (getStatus()
-          != other.getStatus()) return false;
-      if (!getDbSource()
-          .equals(other.getDbSource())) return false;
+      if (getDeleted()
+          != other.getDeleted()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2064,10 +2005,8 @@ public final class SysRoleOuterClass {
         hash = (37 * hash) + UPDATED_AT_FIELD_NUMBER;
         hash = (53 * hash) + getUpdatedAt().hashCode();
       }
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + getStatus();
-      hash = (37 * hash) + DB_SOURCE_FIELD_NUMBER;
-      hash = (53 * hash) + getDbSource().hashCode();
+      hash = (37 * hash) + DELETED_FIELD_NUMBER;
+      hash = (53 * hash) + getDeleted();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2217,9 +2156,7 @@ public final class SysRoleOuterClass {
           updatedAt_ = null;
           updatedAtBuilder_ = null;
         }
-        status_ = 0;
-
-        dbSource_ = "";
+        deleted_ = 0;
 
         return this;
       }
@@ -2259,8 +2196,7 @@ public final class SysRoleOuterClass {
         } else {
           result.updatedAt_ = updatedAtBuilder_.build();
         }
-        result.status_ = status_;
-        result.dbSource_ = dbSource_;
+        result.deleted_ = deleted_;
         onBuilt();
         return result;
       }
@@ -2322,12 +2258,8 @@ public final class SysRoleOuterClass {
         if (other.hasUpdatedAt()) {
           mergeUpdatedAt(other.getUpdatedAt());
         }
-        if (other.getStatus() != 0) {
-          setStatus(other.getStatus());
-        }
-        if (!other.getDbSource().isEmpty()) {
-          dbSource_ = other.dbSource_;
-          onChanged();
+        if (other.getDeleted() != 0) {
+          setDeleted(other.getDeleted());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2687,97 +2619,28 @@ public final class SysRoleOuterClass {
         return updatedAtBuilder_;
       }
 
-      private int status_ ;
+      private int deleted_ ;
       /**
-       * <code>int32 status = 5;</code>
+       * <code>int32 deleted = 5;</code>
        */
-      public int getStatus() {
-        return status_;
+      public int getDeleted() {
+        return deleted_;
       }
       /**
-       * <code>int32 status = 5;</code>
+       * <code>int32 deleted = 5;</code>
        */
-      public Builder setStatus(int value) {
+      public Builder setDeleted(int value) {
         
-        status_ = value;
+        deleted_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 status = 5;</code>
+       * <code>int32 deleted = 5;</code>
        */
-      public Builder clearStatus() {
+      public Builder clearDeleted() {
         
-        status_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object dbSource_ = "";
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public java.lang.String getDbSource() {
-        java.lang.Object ref = dbSource_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          dbSource_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDbSourceBytes() {
-        java.lang.Object ref = dbSource_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          dbSource_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public Builder setDbSource(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        dbSource_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public Builder clearDbSource() {
-        
-        dbSource_ = getDefaultInstance().getDbSource();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public Builder setDbSourceBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        dbSource_ = value;
+        deleted_ = 0;
         onChanged();
         return this;
       }
@@ -3718,20 +3581,20 @@ public final class SysRoleOuterClass {
       "uf/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
       "\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_s" +
       "ize\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"\031\n\006Result\022\017\n\007suc" +
-      "cess\030\001 \001(\010\"\253\001\n\007SysRole\022\n\n\002id\030\001 \001(\005\022\021\n\tro" +
+      "cess\030\001 \001(\010\"\231\001\n\007SysRole\022\n\n\002id\030\001 \001(\005\022\021\n\tro" +
       "le_code\030\002 \001(\t\022.\n\ncreated_at\030\003 \001(\0132\032.goog" +
       "le.protobuf.Timestamp\022.\n\nupdated_at\030\004 \001(" +
-      "\0132\032.google.protobuf.Timestamp\022\016\n\006status\030" +
-      "\005 \001(\005\022\021\n\tdb_source\030\006 \001(\t\"=\n\010PageList\022\r\n\005" +
-      "total\030\001 \001(\005\022\"\n\010sys_role\030\002 \003(\0132\020.sysRole." +
-      "SysRole2\203\002\n\016SysRoleService\022/\n\007GetById\022\020." +
-      "sysRole.ByIdReq\032\020.sysRole.SysRole\"\000\0223\n\007G" +
-      "etList\022\023.sysRole.GetListReq\032\021.sysRole.Pa" +
-      "geList\"\000\022-\n\006Insert\022\020.sysRole.SysRole\032\017.s" +
-      "ysRole.Result\"\000\022-\n\006Update\022\020.sysRole.SysR" +
-      "ole\032\017.sysRole.Result\"\000\022-\n\006Delete\022\020.sysRo" +
-      "le.ByIdReq\032\017.sysRole.Result\"\000B\036\n\034com.qia" +
-      "nxun.grpc.lib.sysRoleP\000b\006proto3"
+      "\0132\032.google.protobuf.Timestamp\022\017\n\007deleted" +
+      "\030\005 \001(\005\"=\n\010PageList\022\r\n\005total\030\001 \001(\005\022\"\n\010sys" +
+      "_role\030\002 \003(\0132\020.sysRole.SysRole2\203\002\n\016SysRol" +
+      "eService\022/\n\007GetById\022\020.sysRole.ByIdReq\032\020." +
+      "sysRole.SysRole\"\000\0223\n\007GetList\022\023.sysRole.G" +
+      "etListReq\032\021.sysRole.PageList\"\000\022-\n\006Insert" +
+      "\022\020.sysRole.SysRole\032\017.sysRole.Result\"\000\022-\n" +
+      "\006Update\022\020.sysRole.SysRole\032\017.sysRole.Resu" +
+      "lt\"\000\022-\n\006Delete\022\020.sysRole.ByIdReq\032\017.sysRo" +
+      "le.Result\"\000B\036\n\034com.qianxun.grpc.lib.sysR" +
+      "oleP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3769,7 +3632,7 @@ public final class SysRoleOuterClass {
     internal_static_sysRole_SysRole_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_SysRole_descriptor,
-        new java.lang.String[] { "Id", "RoleCode", "CreatedAt", "UpdatedAt", "Status", "DbSource", });
+        new java.lang.String[] { "Id", "RoleCode", "CreatedAt", "UpdatedAt", "Deleted", });
     internal_static_sysRole_PageList_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_sysRole_PageList_fieldAccessorTable = new

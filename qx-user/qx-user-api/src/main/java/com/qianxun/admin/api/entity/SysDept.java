@@ -44,9 +44,5 @@ public class SysDept implements Serializable {
      * 是否删除  -1：已删除  0：正常
      */
     @TableLogic
-    private Integer status;
-    /**
-     *
-     */
-    private String dbSource;
+    private Integer deleted;
 }

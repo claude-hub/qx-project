@@ -18,13 +18,10 @@ public class SysLangUpdateInputDTO implements Serializable {
     private Integer id;
 
     @NotBlank(message = "语言名不能为空")
+    @ApiModelProperty(value = "语言Code", required = true)
+    private String langCode;
+
+    @NotBlank(message = "语言名不能为空")
     @ApiModelProperty(value = "语言名", required = true)
     private String name;
-
-    @ApiModelProperty(value = "0: 正常，-1: 删除，默认0")
-    private Integer status;
-
-    @ApiModelProperty(value = "")
-    private String dbSource;
-
 }

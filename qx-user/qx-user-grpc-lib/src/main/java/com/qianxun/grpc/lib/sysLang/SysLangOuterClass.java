@@ -1656,45 +1656,45 @@ public final class SysLangOuterClass {
         getNameBytes();
 
     /**
-     * <code>.google.protobuf.Timestamp created_at = 3;</code>
+     * <code>string lang_code = 3;</code>
+     */
+    java.lang.String getLangCode();
+    /**
+     * <code>string lang_code = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getLangCodeBytes();
+
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
      */
     boolean hasCreatedAt();
     /**
-     * <code>.google.protobuf.Timestamp created_at = 3;</code>
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
      */
     com.google.protobuf.Timestamp getCreatedAt();
     /**
-     * <code>.google.protobuf.Timestamp created_at = 3;</code>
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
      */
     com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder();
 
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
      */
     boolean hasUpdatedAt();
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
      */
     com.google.protobuf.Timestamp getUpdatedAt();
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
      */
     com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
 
     /**
-     * <code>int32 status = 5;</code>
+     * <code>int32 deleted = 6;</code>
      */
-    int getStatus();
-
-    /**
-     * <code>string db_source = 6;</code>
-     */
-    java.lang.String getDbSource();
-    /**
-     * <code>string db_source = 6;</code>
-     */
-    com.google.protobuf.ByteString
-        getDbSourceBytes();
+    int getDeleted();
   }
   /**
    * Protobuf type {@code sysLang.SysLang}
@@ -1710,7 +1710,7 @@ public final class SysLangOuterClass {
     }
     private SysLang() {
       name_ = "";
-      dbSource_ = "";
+      langCode_ = "";
     }
 
     @java.lang.Override
@@ -1749,6 +1749,12 @@ public final class SysLangOuterClass {
               break;
             }
             case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              langCode_ = s;
+              break;
+            }
+            case 34: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (createdAt_ != null) {
                 subBuilder = createdAt_.toBuilder();
@@ -1761,7 +1767,7 @@ public final class SysLangOuterClass {
 
               break;
             }
-            case 34: {
+            case 42: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (updatedAt_ != null) {
                 subBuilder = updatedAt_.toBuilder();
@@ -1774,15 +1780,9 @@ public final class SysLangOuterClass {
 
               break;
             }
-            case 40: {
+            case 48: {
 
-              status_ = input.readInt32();
-              break;
-            }
-            case 50: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              dbSource_ = s;
+              deleted_ = input.readInt32();
               break;
             }
             default: {
@@ -1860,89 +1860,89 @@ public final class SysLangOuterClass {
       }
     }
 
-    public static final int CREATED_AT_FIELD_NUMBER = 3;
-    private com.google.protobuf.Timestamp createdAt_;
+    public static final int LANG_CODE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object langCode_;
     /**
-     * <code>.google.protobuf.Timestamp created_at = 3;</code>
+     * <code>string lang_code = 3;</code>
      */
-    public boolean hasCreatedAt() {
-      return createdAt_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 3;</code>
-     */
-    public com.google.protobuf.Timestamp getCreatedAt() {
-      return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 3;</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
-      return getCreatedAt();
-    }
-
-    public static final int UPDATED_AT_FIELD_NUMBER = 4;
-    private com.google.protobuf.Timestamp updatedAt_;
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
-     */
-    public boolean hasUpdatedAt() {
-      return updatedAt_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
-     */
-    public com.google.protobuf.Timestamp getUpdatedAt() {
-      return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
-      return getUpdatedAt();
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 5;
-    private int status_;
-    /**
-     * <code>int32 status = 5;</code>
-     */
-    public int getStatus() {
-      return status_;
-    }
-
-    public static final int DB_SOURCE_FIELD_NUMBER = 6;
-    private volatile java.lang.Object dbSource_;
-    /**
-     * <code>string db_source = 6;</code>
-     */
-    public java.lang.String getDbSource() {
-      java.lang.Object ref = dbSource_;
+    public java.lang.String getLangCode() {
+      java.lang.Object ref = langCode_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        dbSource_ = s;
+        langCode_ = s;
         return s;
       }
     }
     /**
-     * <code>string db_source = 6;</code>
+     * <code>string lang_code = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getDbSourceBytes() {
-      java.lang.Object ref = dbSource_;
+        getLangCodeBytes() {
+      java.lang.Object ref = langCode_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        dbSource_ = b;
+        langCode_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
+    }
+
+    public static final int CREATED_AT_FIELD_NUMBER = 4;
+    private com.google.protobuf.Timestamp createdAt_;
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
+     */
+    public boolean hasCreatedAt() {
+      return createdAt_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
+     */
+    public com.google.protobuf.Timestamp getCreatedAt() {
+      return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
+      return getCreatedAt();
+    }
+
+    public static final int UPDATED_AT_FIELD_NUMBER = 5;
+    private com.google.protobuf.Timestamp updatedAt_;
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
+     */
+    public boolean hasUpdatedAt() {
+      return updatedAt_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
+     */
+    public com.google.protobuf.Timestamp getUpdatedAt() {
+      return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
+      return getUpdatedAt();
+    }
+
+    public static final int DELETED_FIELD_NUMBER = 6;
+    private int deleted_;
+    /**
+     * <code>int32 deleted = 6;</code>
+     */
+    public int getDeleted() {
+      return deleted_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -1965,17 +1965,17 @@ public final class SysLangOuterClass {
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
+      if (!getLangCodeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, langCode_);
+      }
       if (createdAt_ != null) {
-        output.writeMessage(3, getCreatedAt());
+        output.writeMessage(4, getCreatedAt());
       }
       if (updatedAt_ != null) {
-        output.writeMessage(4, getUpdatedAt());
+        output.writeMessage(5, getUpdatedAt());
       }
-      if (status_ != 0) {
-        output.writeInt32(5, status_);
-      }
-      if (!getDbSourceBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, dbSource_);
+      if (deleted_ != 0) {
+        output.writeInt32(6, deleted_);
       }
       unknownFields.writeTo(output);
     }
@@ -1993,20 +1993,20 @@ public final class SysLangOuterClass {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
+      if (!getLangCodeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, langCode_);
+      }
       if (createdAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getCreatedAt());
+          .computeMessageSize(4, getCreatedAt());
       }
       if (updatedAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, getUpdatedAt());
+          .computeMessageSize(5, getUpdatedAt());
       }
-      if (status_ != 0) {
+      if (deleted_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, status_);
-      }
-      if (!getDbSourceBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, dbSource_);
+          .computeInt32Size(6, deleted_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2027,6 +2027,8 @@ public final class SysLangOuterClass {
           != other.getId()) return false;
       if (!getName()
           .equals(other.getName())) return false;
+      if (!getLangCode()
+          .equals(other.getLangCode())) return false;
       if (hasCreatedAt() != other.hasCreatedAt()) return false;
       if (hasCreatedAt()) {
         if (!getCreatedAt()
@@ -2037,10 +2039,8 @@ public final class SysLangOuterClass {
         if (!getUpdatedAt()
             .equals(other.getUpdatedAt())) return false;
       }
-      if (getStatus()
-          != other.getStatus()) return false;
-      if (!getDbSource()
-          .equals(other.getDbSource())) return false;
+      if (getDeleted()
+          != other.getDeleted()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2056,6 +2056,8 @@ public final class SysLangOuterClass {
       hash = (53 * hash) + getId();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + LANG_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getLangCode().hashCode();
       if (hasCreatedAt()) {
         hash = (37 * hash) + CREATED_AT_FIELD_NUMBER;
         hash = (53 * hash) + getCreatedAt().hashCode();
@@ -2064,10 +2066,8 @@ public final class SysLangOuterClass {
         hash = (37 * hash) + UPDATED_AT_FIELD_NUMBER;
         hash = (53 * hash) + getUpdatedAt().hashCode();
       }
-      hash = (37 * hash) + STATUS_FIELD_NUMBER;
-      hash = (53 * hash) + getStatus();
-      hash = (37 * hash) + DB_SOURCE_FIELD_NUMBER;
-      hash = (53 * hash) + getDbSource().hashCode();
+      hash = (37 * hash) + DELETED_FIELD_NUMBER;
+      hash = (53 * hash) + getDeleted();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2205,6 +2205,8 @@ public final class SysLangOuterClass {
 
         name_ = "";
 
+        langCode_ = "";
+
         if (createdAtBuilder_ == null) {
           createdAt_ = null;
         } else {
@@ -2217,9 +2219,7 @@ public final class SysLangOuterClass {
           updatedAt_ = null;
           updatedAtBuilder_ = null;
         }
-        status_ = 0;
-
-        dbSource_ = "";
+        deleted_ = 0;
 
         return this;
       }
@@ -2249,6 +2249,7 @@ public final class SysLangOuterClass {
         com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang result = new com.qianxun.grpc.lib.sysLang.SysLangOuterClass.SysLang(this);
         result.id_ = id_;
         result.name_ = name_;
+        result.langCode_ = langCode_;
         if (createdAtBuilder_ == null) {
           result.createdAt_ = createdAt_;
         } else {
@@ -2259,8 +2260,7 @@ public final class SysLangOuterClass {
         } else {
           result.updatedAt_ = updatedAtBuilder_.build();
         }
-        result.status_ = status_;
-        result.dbSource_ = dbSource_;
+        result.deleted_ = deleted_;
         onBuilt();
         return result;
       }
@@ -2316,18 +2316,18 @@ public final class SysLangOuterClass {
           name_ = other.name_;
           onChanged();
         }
+        if (!other.getLangCode().isEmpty()) {
+          langCode_ = other.langCode_;
+          onChanged();
+        }
         if (other.hasCreatedAt()) {
           mergeCreatedAt(other.getCreatedAt());
         }
         if (other.hasUpdatedAt()) {
           mergeUpdatedAt(other.getUpdatedAt());
         }
-        if (other.getStatus() != 0) {
-          setStatus(other.getStatus());
-        }
-        if (!other.getDbSource().isEmpty()) {
-          dbSource_ = other.dbSource_;
-          onChanged();
+        if (other.getDeleted() != 0) {
+          setDeleted(other.getDeleted());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2453,17 +2453,86 @@ public final class SysLangOuterClass {
         return this;
       }
 
+      private java.lang.Object langCode_ = "";
+      /**
+       * <code>string lang_code = 3;</code>
+       */
+      public java.lang.String getLangCode() {
+        java.lang.Object ref = langCode_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          langCode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string lang_code = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getLangCodeBytes() {
+        java.lang.Object ref = langCode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          langCode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string lang_code = 3;</code>
+       */
+      public Builder setLangCode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        langCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string lang_code = 3;</code>
+       */
+      public Builder clearLangCode() {
+        
+        langCode_ = getDefaultInstance().getLangCode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string lang_code = 3;</code>
+       */
+      public Builder setLangCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        langCode_ = value;
+        onChanged();
+        return this;
+      }
+
       private com.google.protobuf.Timestamp createdAt_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> createdAtBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public boolean hasCreatedAt() {
         return createdAtBuilder_ != null || createdAt_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public com.google.protobuf.Timestamp getCreatedAt() {
         if (createdAtBuilder_ == null) {
@@ -2473,7 +2542,7 @@ public final class SysLangOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public Builder setCreatedAt(com.google.protobuf.Timestamp value) {
         if (createdAtBuilder_ == null) {
@@ -2489,7 +2558,7 @@ public final class SysLangOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public Builder setCreatedAt(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -2503,7 +2572,7 @@ public final class SysLangOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public Builder mergeCreatedAt(com.google.protobuf.Timestamp value) {
         if (createdAtBuilder_ == null) {
@@ -2521,7 +2590,7 @@ public final class SysLangOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public Builder clearCreatedAt() {
         if (createdAtBuilder_ == null) {
@@ -2535,7 +2604,7 @@ public final class SysLangOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public com.google.protobuf.Timestamp.Builder getCreatedAtBuilder() {
         
@@ -2543,7 +2612,7 @@ public final class SysLangOuterClass {
         return getCreatedAtFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
         if (createdAtBuilder_ != null) {
@@ -2554,7 +2623,7 @@ public final class SysLangOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 3;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -2574,13 +2643,13 @@ public final class SysLangOuterClass {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> updatedAtBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public boolean hasUpdatedAt() {
         return updatedAtBuilder_ != null || updatedAt_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public com.google.protobuf.Timestamp getUpdatedAt() {
         if (updatedAtBuilder_ == null) {
@@ -2590,7 +2659,7 @@ public final class SysLangOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public Builder setUpdatedAt(com.google.protobuf.Timestamp value) {
         if (updatedAtBuilder_ == null) {
@@ -2606,7 +2675,7 @@ public final class SysLangOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public Builder setUpdatedAt(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -2620,7 +2689,7 @@ public final class SysLangOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public Builder mergeUpdatedAt(com.google.protobuf.Timestamp value) {
         if (updatedAtBuilder_ == null) {
@@ -2638,7 +2707,7 @@ public final class SysLangOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public Builder clearUpdatedAt() {
         if (updatedAtBuilder_ == null) {
@@ -2652,7 +2721,7 @@ public final class SysLangOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public com.google.protobuf.Timestamp.Builder getUpdatedAtBuilder() {
         
@@ -2660,7 +2729,7 @@ public final class SysLangOuterClass {
         return getUpdatedAtFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
         if (updatedAtBuilder_ != null) {
@@ -2671,7 +2740,7 @@ public final class SysLangOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -2687,97 +2756,28 @@ public final class SysLangOuterClass {
         return updatedAtBuilder_;
       }
 
-      private int status_ ;
+      private int deleted_ ;
       /**
-       * <code>int32 status = 5;</code>
+       * <code>int32 deleted = 6;</code>
        */
-      public int getStatus() {
-        return status_;
+      public int getDeleted() {
+        return deleted_;
       }
       /**
-       * <code>int32 status = 5;</code>
+       * <code>int32 deleted = 6;</code>
        */
-      public Builder setStatus(int value) {
+      public Builder setDeleted(int value) {
         
-        status_ = value;
+        deleted_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>int32 status = 5;</code>
+       * <code>int32 deleted = 6;</code>
        */
-      public Builder clearStatus() {
+      public Builder clearDeleted() {
         
-        status_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object dbSource_ = "";
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public java.lang.String getDbSource() {
-        java.lang.Object ref = dbSource_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          dbSource_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public com.google.protobuf.ByteString
-          getDbSourceBytes() {
-        java.lang.Object ref = dbSource_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          dbSource_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public Builder setDbSource(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        dbSource_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public Builder clearDbSource() {
-        
-        dbSource_ = getDefaultInstance().getDbSource();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string db_source = 6;</code>
-       */
-      public Builder setDbSourceBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        dbSource_ = value;
+        deleted_ = 0;
         onChanged();
         return this;
       }
@@ -2867,19 +2867,19 @@ public final class SysLangOuterClass {
       "uf/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
       "\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_s" +
       "ize\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"\031\n\006Result\022\017\n\007suc" +
-      "cess\030\001 \001(\010\"\246\001\n\007SysLang\022\n\n\002id\030\001 \001(\005\022\014\n\004na" +
-      "me\030\002 \001(\t\022.\n\ncreated_at\030\003 \001(\0132\032.google.pr" +
-      "otobuf.Timestamp\022.\n\nupdated_at\030\004 \001(\0132\032.g" +
-      "oogle.protobuf.Timestamp\022\016\n\006status\030\005 \001(\005" +
-      "\022\021\n\tdb_source\030\006 \001(\t2\204\002\n\016SysLangService\022/" +
-      "\n\007GetById\022\020.sysLang.ByIdReq\032\020.sysLang.Sy" +
-      "sLang\"\000\0224\n\007GetList\022\023.sysLang.GetListReq\032" +
-      "\020.sysLang.SysLang\"\0000\001\022-\n\006Insert\022\020.sysLan" +
-      "g.SysLang\032\017.sysLang.Result\"\000\022-\n\006Update\022\020" +
-      ".sysLang.SysLang\032\017.sysLang.Result\"\000\022-\n\006D" +
-      "elete\022\020.sysLang.ByIdReq\032\017.sysLang.Result" +
-      "\"\000B\036\n\034com.qianxun.grpc.lib.sysLangP\000b\006pr" +
-      "oto3"
+      "cess\030\001 \001(\010\"\247\001\n\007SysLang\022\n\n\002id\030\001 \001(\005\022\014\n\004na" +
+      "me\030\002 \001(\t\022\021\n\tlang_code\030\003 \001(\t\022.\n\ncreated_a" +
+      "t\030\004 \001(\0132\032.google.protobuf.Timestamp\022.\n\nu" +
+      "pdated_at\030\005 \001(\0132\032.google.protobuf.Timest" +
+      "amp\022\017\n\007deleted\030\006 \001(\0052\204\002\n\016SysLangService\022" +
+      "/\n\007GetById\022\020.sysLang.ByIdReq\032\020.sysLang.S" +
+      "ysLang\"\000\0224\n\007GetList\022\023.sysLang.GetListReq" +
+      "\032\020.sysLang.SysLang\"\0000\001\022-\n\006Insert\022\020.sysLa" +
+      "ng.SysLang\032\017.sysLang.Result\"\000\022-\n\006Update\022" +
+      "\020.sysLang.SysLang\032\017.sysLang.Result\"\000\022-\n\006" +
+      "Delete\022\020.sysLang.ByIdReq\032\017.sysLang.Resul" +
+      "t\"\000B\036\n\034com.qianxun.grpc.lib.sysLangP\000b\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2917,7 +2917,7 @@ public final class SysLangOuterClass {
     internal_static_sysLang_SysLang_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysLang_SysLang_descriptor,
-        new java.lang.String[] { "Id", "Name", "CreatedAt", "UpdatedAt", "Status", "DbSource", });
+        new java.lang.String[] { "Id", "Name", "LangCode", "CreatedAt", "UpdatedAt", "Deleted", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

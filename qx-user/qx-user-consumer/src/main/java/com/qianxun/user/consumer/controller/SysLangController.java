@@ -6,7 +6,7 @@ import com.qianxun.admin.api.dto.sysLang.request.SysLangDeleteInputDTO;
 import com.qianxun.admin.api.dto.sysLang.request.SysLangQueryInputDTO;
 import com.qianxun.admin.api.dto.sysLang.request.SysLangUpdateInputDTO;
 import com.qianxun.admin.api.entity.SysLang;
-import com.qianxun.admin.api.utils.ProtoBufUtils;
+import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysLang.SysLangOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysLangClient;

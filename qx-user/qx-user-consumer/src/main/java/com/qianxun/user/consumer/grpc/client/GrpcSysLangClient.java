@@ -1,7 +1,7 @@
 package com.qianxun.user.consumer.grpc.client;
 
 import com.qianxun.admin.api.entity.SysLang;
-import com.qianxun.admin.api.utils.ProtoBufUtils;
+import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysLang.SysLangOuterClass;
 import com.qianxun.grpc.lib.sysLang.SysLangServiceGrpc;
 import io.grpc.Channel;

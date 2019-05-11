@@ -1,4 +1,4 @@
-package com.qianxun.admin.api.utils;
+package com.qianxun.common.utils.mapper;
 
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.GeneratedMessageV3;
@@ -29,7 +29,7 @@ public class ProtoBufUtils {
         try {
             model = modelClass.newInstance();
             Field[] modelFields = modelClass.getDeclaredFields();
-            if(modelFields == null || modelFields.length == 0){
+            if (modelFields == null || modelFields.length == 0) {
                 modelFields = model.getClass().getSuperclass().getDeclaredFields();
             }
             if (modelFields != null && modelFields.length > 0) {
@@ -46,11 +46,11 @@ public class ProtoBufUtils {
                         Method pbGetMethod;
                         Object value;
                         // 判断是否是repeated类型
-                        if (fd != null && fd.isRepeated()){
+                        if (fd != null && fd.isRepeated()) {
                             pbGetMethod = pbObject.getClass().getMethod("get" + upperName + "List");
                             Object pbValue = pbGetMethod.invoke(pbObject);
                             // 嵌套数组转化为java的pojo
-                            Class<?> classType=Class.forName("com.qianxun.admin.api.entity." + upperName);
+                            Class<?> classType = Class.forName("com.qianxun.admin.api.entity." + upperName);
                             List<Object> pojo = new ArrayList<>();
                             List<Object> protoList = (List<Object>) pbValue; //数据为List集合
                             for (Object item : protoList) {
@@ -99,7 +99,7 @@ public class ProtoBufUtils {
             Descriptors.Descriptor descriptor = (Descriptors.Descriptor) getDescriptorForType.invoke(pbBuilder);
 
             Field[] modelFields = model.getClass().getDeclaredFields();
-            if(modelFields == null || modelFields.length == 0){
+            if (modelFields == null || modelFields.length == 0) {
                 modelFields = model.getClass().getSuperclass().getDeclaredFields();
             }
             if (modelFields != null && modelFields.length > 0) {

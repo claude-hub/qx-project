@@ -12,6 +12,12 @@
     <artifactId>qx-common</artifactId>
 
     <dependencies>
+        <!--protobuf-->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
         <!--swagger依赖-->
         <dependency>
             <groupId>io.springfox</groupId>

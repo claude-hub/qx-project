@@ -15,15 +15,11 @@ public class SysRoleUpdateInputDTO implements Serializable {
     @NotNull(message = "角色ID不能为空")
     private Integer id;
 
+//    @NotBlank(message = "角色名不能为空")
+//    @ApiModelProperty(value = "角色名", required = true)
+//    private String name;
+
     @NotBlank(message = "角色码不能为空")
     @ApiModelProperty(value = "角色码", required = true)
-
     private String roleCode;
-
-    @ApiModelProperty(value = "0: 正常，-1: 删除，默认0")
-    private Integer status;
-
-    @ApiModelProperty(value = "")
-    private String dbSource;
-
 }

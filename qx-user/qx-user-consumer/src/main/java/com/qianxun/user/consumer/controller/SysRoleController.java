@@ -7,7 +7,7 @@ import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleUpdateInputDTO;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
 import com.qianxun.admin.api.entity.SysRole;
-import com.qianxun.admin.api.utils.ProtoBufUtils;
+import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysRole.SysRoleOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysRoleClient;

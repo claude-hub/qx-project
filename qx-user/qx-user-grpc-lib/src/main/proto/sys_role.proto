@@ -33,8 +33,7 @@ message SysRole {
     string role_code = 2;
     google.protobuf.Timestamp created_at = 3;
     google.protobuf.Timestamp updated_at = 4;
-    int32 status = 5;
-    string db_source = 6;
+    int32 deleted = 5;
 }
 
 message PageList {
