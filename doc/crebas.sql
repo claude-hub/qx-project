@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/4/27 9:40:56                            */
+/* Created on:     2019/5/11 22:13:29                           */
 /*==============================================================*/
 
 
@@ -12,9 +12,13 @@ drop table if exists sys_dept_role;
 
 drop table if exists sys_lang;
 
+drop table if exists sys_log;
+
 drop table if exists sys_menu;
 
 drop table if exists sys_menu_lang;
+
+drop table if exists sys_oauth_client_details;
 
 drop table if exists sys_role;
 
@@ -36,8 +40,7 @@ create table sys_dept
    sort                 int,
    created_at           timestamp not null default CURRENT_TIMESTAMP,
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-   status               int not null default 0 comment '是否删除  -1：已删除  0：正常',
-   db_source            varchar(64),
+   deleted              int default 0 comment '是否删除  -1：已删除  0：正常',
    primary key (id)
 );
 
@@ -52,7 +55,6 @@ create table sys_dept_lang
    name                 varchar(64) not null,
    created_at           timestamp not null default CURRENT_TIMESTAMP,
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-   db_source            varchar(64),
    primary key (id)
 );
 
@@ -66,7 +68,6 @@ create table sys_dept_role
    role_id              int not null,
    created_at           timestamp not null default CURRENT_TIMESTAMP,
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-   db_source            varchar(64),
    primary key (id)
 );
 
@@ -77,10 +78,32 @@ create table sys_lang
 (
    id                   int not null auto_increment comment '主键ID',
    name                 varchar(32) not null comment '语言名',
+   lang_code            varchar(255) not null,
    created_at           timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
-   status               int not null default 0 comment '0--正常 -1--删除',
-   db_source            varchar(64),
+   deleted              int default 0 comment '0--正常 -1--删除',
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: sys_log                                               */
+/*==============================================================*/
+create table sys_log
+(
+   id                   bigint not null auto_increment,
+   type                 char(1) comment '日志类型',
+   title                varchar(255) comment '日志标题',
+   service_id           varchar(64) comment '服务ID',
+   create_by            varchar(64) comment '创建者',
+   created_at           timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
+   updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
+   ip_addr              varchar(64) comment '操作IP地址',
+   request_uri          varchar(255) comment '请求URI',
+   method               varchar(32) comment '操作方式',
+   params               text comment '操作提交的数据',
+   time                 bigint comment '执行时间',
+   exception            text comment '异常信息',
+   deleted              int default 0 comment '1-正常，-1-删除',
    primary key (id)
 );
 
@@ -98,8 +121,7 @@ create table sys_menu
    type                 int comment '菜单类型 （0菜单 1按钮）',
    created_at           timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
-   status               int not null default 0 comment '0--正常 -1--删除',
-   db_source            varchar(64),
+   deleted              int default 0 comment '0--正常 -1--删除',
    primary key (id)
 );
 
@@ -114,8 +136,26 @@ create table sys_menu_lang
    name                 varchar(32) not null comment '菜单名',
    created_at           timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
-   db_source            varchar(64),
    primary key (id)
+);
+
+/*==============================================================*/
+/* Table: sys_oauth_client_details                              */
+/*==============================================================*/
+create table sys_oauth_client_details
+(
+   client_id            varchar(255) not null,
+   resource_ids         varchar(255),
+   client_secret        varchar(255),
+   scope                varchar(255),
+   authorized_grant_types varchar(255),
+   web_server_redirect_uri varchar(255),
+   authorities          varchar(255),
+   access_token_validity int(11),
+   refresh_token_validity int(11),
+   additional_information varchar(255),
+   autoapprove          varchar(255),
+   primary key (client_id)
 );
 
 /*==============================================================*/
@@ -127,8 +167,7 @@ create table sys_role
    role_code            varchar(32) not null comment '角色码',
    created_at           timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
-   status               int not null default 0 comment '1-正常，-1-删除',
-   db_source            varchar(64),
+   deleted              int default 0 comment '1-正常，-1-删除',
    primary key (id)
 );
 
@@ -144,7 +183,6 @@ create table sys_role_lang
    role_desc            varchar(255) comment '角色描述',
    created_at           timestamp not null default CURRENT_TIMESTAMP,
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-   db_source            varchar(64),
    primary key (id)
 );
 
@@ -158,7 +196,6 @@ create table sys_role_menu
    menu_id              int not null,
    created_at           timestamp not null default CURRENT_TIMESTAMP,
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-   db_source            varchar(64),
    primary key (id)
 );
 
@@ -175,7 +212,8 @@ create table sys_user
    phone                varchar(20) not null comment '电话',
    email                varchar(255) comment '邮箱',
    avatar               varchar(255) comment '头像',
-   status               int not null default 0 comment '0-正常，-1-冻结',
+   locked               int default 0 comment '0-正常，-1-冻结',
+   deleted              int default 0 comment '0-正常，-1-冻结',
    user_name            varchar(255) comment '用户名',
    reset_password_token varchar(255) comment '重置密码的token',
    password_encrypted   varchar(255) not null comment '加密后的密码',
@@ -199,7 +237,6 @@ create table sys_user_menu
    menu_id              int not null,
    created_at           timestamp not null default CURRENT_TIMESTAMP,
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-   db_source            varchar(64),
    primary key (id)
 );
 
