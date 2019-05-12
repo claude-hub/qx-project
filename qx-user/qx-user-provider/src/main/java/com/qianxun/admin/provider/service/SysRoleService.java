@@ -17,4 +17,6 @@ public interface SysRoleService extends IService<SysRole> {
     Boolean saveRole(SysRoleDTO sysRoleDTO);
 
     IPage getRoles(Page page, SysRoleQueryInputDTO inputDTO);
+
+    Boolean updateRole(SysRoleDTO sysRoleDTO);
 }

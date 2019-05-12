@@ -62,8 +62,8 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
     @Override
     public void update(SysRoleOuterClass.SysRole request,
                        StreamObserver<SysRoleOuterClass.Result> responseObserver) {
-        SysRole sysRole = ProtoBufUtils.fromProtoBuffer(request, SysRole.class);
-        responseDTO.setSuccess(sysRoleService.updateById(sysRole));
+        SysRoleDTO sysRoleDTO = ProtoBufUtils.fromProtoBuffer(request, SysRoleDTO.class);
+        responseDTO.setSuccess(sysRoleService.updateRole(sysRoleDTO));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysRoleOuterClass.Result.class));
         responseObserver.onCompleted();
     }

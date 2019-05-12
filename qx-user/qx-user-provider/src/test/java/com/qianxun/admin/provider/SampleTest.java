@@ -29,29 +29,29 @@ public class SampleTest {
 
     @Test
     public void testSelect() {
-        log.debug("debug message");
-        log.warn("warn message");
-        log.info("info message");
-        log.error("error message");
-        log.trace("trace message");
+//        log.debug("debug message");
+//        log.warn("warn message");
+//        log.info("info message");
+//        log.error("error message");
+//        log.trace("trace message");
+//
+//        SysRole add = new SysRole();
+//        add.setRoleCode("adadsada");
+//        sysRoleService.save(add);
 
-        SysRole add = new SysRole();
-        add.setRoleCode("adadsada");
-        sysRoleService.save(add);
 
 
-
-//        SysRole sysRole = new SysRole();
-//        sysRole.setId(3);
+        SysRole sysRole = new SysRole();
+        sysRole.setId(3);
 //        sysRole.setUpdatedAt(new Date());
-//        sysRole.setRoleCode("aseaw");
-////        sysRole.setVersion(0);
-//        if(sysRoleService.updateById(sysRole)){
-//            System.out.println("Update successfully");
-//        }else{
-//            System.out.println("Update failed due to modified by others");
-//        }
-        sysRoleService.removeById(9);
+        sysRole.setRoleCode("aseaw");
+//        sysRole.setVersion(0);
+        if(sysRoleService.updateById(sysRole)){
+            System.out.println("Update successfully");
+        }else{
+            System.out.println("Update failed due to modified by others");
+        }
+//        sysRoleService.removeById(9);
 
         System.out.println(("----- selectAll method test ------"));
         List<SysRole> userList = sysRoleService.list();

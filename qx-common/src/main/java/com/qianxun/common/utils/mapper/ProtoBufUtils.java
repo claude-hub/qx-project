@@ -77,7 +77,7 @@ public class ProtoBufUtils {
                         if (str != null && !str.equals("0") && !str.equals("") && !str.equals("[]")) {
                             if (fieldType == Date.class) {
                                 Timestamp timestamp = (Timestamp) value;
-                                value = new Date(timestamp.getSeconds());
+                                value = new Date(timestamp.getSeconds() * 1000);
                             }
                             // java的class类
                             Method modelSetMethod = modelClass.getMethod("set" + upperName, fieldType);

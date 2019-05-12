@@ -1,6 +1,7 @@
 package com.qianxun.admin.provider.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianxun.admin.api.dto.extend.SysRoleDTO;
@@ -29,12 +30,13 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
 
     /**
      * 保存角色信息
+     *
      * @param roleDTO
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public Boolean saveRole(SysRoleDTO roleDTO){
+    public Boolean saveRole(SysRoleDTO roleDTO) {
         SysRole sysRole = new SysRole();
         BeanUtils.copyProperties(roleDTO, sysRole);
         baseMapper.insert(sysRole);
@@ -45,8 +47,25 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     }
 
     @Override
-    public IPage getRoles(Page page, SysRoleQueryInputDTO inputDTO){
-        IPage a =baseMapper.getRolesWithLang(page, inputDTO);
-        return a;
+    public IPage getRoles(Page page, SysRoleQueryInputDTO inputDTO) {
+        return baseMapper.getRolesWithLang(page, inputDTO);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public Boolean updateRole(SysRoleDTO sysRoleDTO) {
+        SysRole sysRole = new SysRole();
+        BeanUtils.copyProperties(sysRoleDTO, sysRole);
+        if (baseMapper.updateById(sysRole) > 0) {
+            roleLangService.remove(Wrappers.<SysRoleLang>update().lambda()
+                    .eq(SysRoleLang::getRoleId, sysRole.getId()));
+            SysRoleLang sysRoleLang = new SysRoleLang();
+            sysRoleLang.setRoleId(sysRoleDTO.getId());
+            sysRoleLang.setLangId(sysRoleDTO.getLangId());
+            sysRoleLang.setName(sysRoleDTO.getName());
+            sysRoleLang.setRoleDesc(sysRoleDTO.getRoleDesc());
+            return roleLangService.save(sysRoleLang);
+        }
+        return false;
     }
 }
