@@ -19,21 +19,23 @@ public class ${className}UpdateInputDTO implements Serializable {
     ##排除created_at字段
         #if($column.columnName != "created_at")
         ##排除updated_at字段
-            #if($column.columnName != "updated_at")
+            #if($column.columnName == "updated_at")
+            @NotNull(message = "上此更新的时间不能为空")
+            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+            @ApiModelProperty(value = "$column.comments", required = true)
+            #else
                 #if($column.nullable == "NO")
-                    #if($column.dataType == "int")
+                    #if($column.attrType == "Integer")
                     @NotNull(message = "${column.comments}不能为空")
                     #else
                     @NotBlank(message = "${column.comments}不能为空")
-                    @ApiModelProperty(value = "$column.comments" , required = true)
+                    @ApiModelProperty(value = "$column.comments", required = true)
                     #end
                 #else
                 @ApiModelProperty(value = "$column.comments")
                 #end
-
-            private ${column.attrType} $column.attrname;
             #end
+        private ${column.attrType} $column.attrname;
         #end
-
     #end
 }

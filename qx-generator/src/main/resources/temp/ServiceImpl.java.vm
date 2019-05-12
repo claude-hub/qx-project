@@ -1,40 +1,73 @@
-package ${package}.${moduleName}.provider.service.impl;
+package com.qianxun.admin.provider.service.impl;
 
-import ${package}.${moduleName}.provider.mapper.${className}Mapper;
-import ${package}.${moduleName}.api.entity.${className};
-import ${package}.${moduleName}.provider.service.${className}Service;
-import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.qianxun.admin.api.dto.extend.${className}DTO;
+import com.qianxun.admin.api.dto.${classname}.request.${className}QueryInputDTO;
+import com.qianxun.admin.api.entity.${className};
+import com.qianxun.admin.api.entity.${className}Lang;
+import com.qianxun.admin.provider.mapper.${className}Mapper;
+import com.qianxun.admin.provider.service.${className}LangService;
+import com.qianxun.admin.provider.service.${className}Service;
 import lombok.AllArgsConstructor;
-import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * @author ${author}
+ * Date ${datetime}
+ */
+@Slf4j
 @Service
 @AllArgsConstructor
-public class ${className}ServiceImpl implements ${className}Service {
-    private final ${className}Mapper ${classname}Mapper;
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
+    private final ${className}LangService ${classname}LangService;
 
+    /**
+     * 保存角色信息
+     *
+     * @param ${classname}DTO
+     * @return
+     */
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public boolean add${className}(${className} ${classname}) {
-        return this.${classname}Mapper.insert(${classname}) > 0;
+    public Boolean save${className}(${className}DTO ${classname}DTO) {
+        ${className} ${classname} = new ${className}();
+        BeanUtils.copyProperties(${classname}DTO, ${classname});
+        baseMapper.insert(${classname});
+        ${className}Lang ${classname}Lang = new ${className}Lang();
+        BeanUtils.copyProperties(${classname}DTO, ${classname}Lang);
+        ${classname}Lang.set${className}Id(${classname}.getId());
+        return ${classname}LangService.save(${classname}Lang);
     }
 
     @Override
-    public boolean edit${className}(${className} ${classname}) {
-        return ${classname}Mapper.updateByPrimaryKey(${classname}) > 0;
-
+    public IPage get${className}s(Page page, ${className}QueryInputDTO inputDTO) {
+        return baseMapper.get${className}sWithLang(page, inputDTO);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public List<${className}> findAll${className}s() {
-        return ${classname}Mapper.selectAll();
-    }
-
-    @Override
-    public ${className} get${className}(int id) {
-        return ${classname}Mapper.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public boolean delete${className}(int id) {
-        return ${classname}Mapper.deleteByPrimaryKey(id) > 0;
+    public Boolean update${className}(${className}DTO ${classname}DTO) {
+        if (${classname}DTO.getUpdatedAt() == null){
+            return false;
+        }
+        ${className} ${classname} = new ${className}();
+        BeanUtils.copyProperties(${classname}DTO, ${classname});
+        if (baseMapper.updateById(${classname}) > 0) {
+            ${classname}LangService.remove(Wrappers.<${className}Lang>update().lambda()
+                    .eq(${className}Lang::get${className}Id, ${classname}.getId()));
+            ${className}Lang ${classname}Lang = new ${className}Lang();
+            ${classname}Lang.set${className}Id(${classname}DTO.getId());
+            ${classname}Lang.setLangId(${classname}DTO.getLangId());
+            ${classname}Lang.setName(${classname}DTO.getName());
+            return ${classname}LangService.save(${classname}Lang);
+        }
+        return false;
     }
 }
+

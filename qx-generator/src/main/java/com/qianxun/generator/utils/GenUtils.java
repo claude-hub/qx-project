@@ -26,12 +26,19 @@ import java.util.zip.ZipOutputStream;
 public class GenUtils {
     public static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
+        templates.add("temp/GrpcService.java.vm");
+
         templates.add("temp/model/entity/Entity.java.vm");
         templates.add("temp/Mapper.java.vm");
         templates.add("temp/Mapper.xml.vm");
         templates.add("temp/Controller.java.vm");
         templates.add("temp/Service.java.vm");
         templates.add("temp/ServiceImpl.java.vm");
+
+        templates.add("temp/GrpcClient.java.vm");
+
+        templates.add("temp/proto.vm");
+
         templates.add("temp/model/dto/request/AddInputDTO.java.vm");
         templates.add("temp/model/dto/request/DeleteInputDTO.java.vm");
         templates.add("temp/model/dto/request/QueryInputDTO.java.vm");
@@ -192,6 +199,12 @@ public class GenUtils {
         if (template.contains("Mapper.xml.vm")) {
             return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Mapper.xml";
         }
+        if (template.contains("GrpcClient.java.vm")) {
+            return packagePath + "grpc" + File.separator + "client" + File.separator + "Grpc"+ className + "Client.java";
+        }
+        if (template.contains("GrpcService.java.vm")) {
+            return packagePath + "grpc" + File.separator + "service" + File.separator  + "Grpc"+ className + "Service.java";
+        }
         if (template.contains("Service.java.vm")) {
             return packagePath + "service" + File.separator + className + "Service.java";
         }
@@ -209,6 +222,9 @@ public class GenUtils {
         }
         if (template.contains("UpdateInputDTO.java.vm")) {
             return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
+        }
+        if (template.contains("proto.vm")) {
+            return packagePath + "proto" + File.separator + classname + ".proto";
         }
         return null;
     }

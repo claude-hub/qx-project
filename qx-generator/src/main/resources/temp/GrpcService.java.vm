@@ -1,0 +1,81 @@
+package ${package}.${moduleName}.provider.grpc.service.${classname};
+
+/**
+ * @author Cloudy
+ * Date: ${datetime}
+ */
+
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${package}.${moduleName}.api.dto.base.UpdateDBResponseDTO;
+import ${package}.${moduleName}.api.dto.extend.${className}DTO;
+import ${package}.${moduleName}.api.dto.${classname}.request.${className}QueryInputDTO;
+import ${package}.${moduleName}.api.dto.${classname}.response.${className}ResponseDTO;
+import ${package}.${moduleName}.api.entity.${className};
+import ${package}.${moduleName}.provider.service.${className}Service;
+import ${package}.common.utils.mapper.ProtoBufUtils;
+import ${package}.grpc.lib.${classname}.${className}OuterClass;
+import ${package}.grpc.lib.${classname}.${className}ServiceGrpc;
+import io.grpc.stub.StreamObserver;
+import lombok.AllArgsConstructor;
+import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
+
+/**
+ * @author ${author}
+ * Date: ${datetime}
+ */
+@GrpcService(${className}OuterClass.class)
+@AllArgsConstructor
+public class Grpc${className}Service extends ${className}ServiceGrpc.${className}ServiceImplBase {
+    private final ${className}Service ${classname}Service;
+    private final UpdateDBResponseDTO responseDTO = new UpdateDBResponseDTO();
+
+    @Override
+    public void getById(${className}OuterClass.ByIdReq request,
+                        StreamObserver<${className}OuterClass.${className}> responseObserver) {
+        ${className} ${classname} = ${classname}Service.getById(request.getId());
+        ${className}OuterClass.${className} res = ProtoBufUtils.toProtoBuffer(${classname}, ${className}OuterClass.${className}.class);
+        responseObserver.onNext(res);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getList(${className}OuterClass.GetListReq request,
+                        StreamObserver<${className}OuterClass.PageList> responseObserver) {
+        ${className}QueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, ${className}QueryInputDTO.class);
+        Page page = new Page(inputDTO.getPage(),inputDTO.getPageSize());
+        IPage pageList = ${classname}Service.get${className}s(page, inputDTO);
+        ${className}ResponseDTO dto = new ${className}ResponseDTO();
+        dto.setTotal((int) pageList.getTotal());
+        dto.set${className}s(pageList.getRecords());
+        ${className}OuterClass.PageList res = ProtoBufUtils.toProtoBuffer(dto, ${className}OuterClass.PageList.class);
+        responseObserver.onNext(res);
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void insert(${className}OuterClass.Base${className} request,
+                       StreamObserver<${className}OuterClass.Result> responseObserver) {
+        ${className}DTO ${classname}DTO = ProtoBufUtils.fromProtoBuffer(request, ${className}DTO.class);
+        responseDTO.setSuccess(${classname}Service.save${className}(${classname}DTO));
+        responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, ${className}OuterClass.Result.class));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void update(${className}OuterClass.${className} request,
+                       StreamObserver<${className}OuterClass.Result> responseObserver) {
+        ${className}DTO ${classname}DTO = ProtoBufUtils.fromProtoBuffer(request, ${className}DTO.class);
+        responseDTO.setSuccess(${classname}Service.update${className}(${classname}DTO));
+        responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, ${className}OuterClass.Result.class));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void delete(${className}OuterClass.ByIdReq request,
+                       StreamObserver<${className}OuterClass.Result> responseObserver) {
+        responseDTO.setSuccess(${classname}Service.removeById(request.getId()));
+        responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, ${className}OuterClass.Result.class));
+        responseObserver.onCompleted();
+    }
+}

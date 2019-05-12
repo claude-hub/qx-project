@@ -46,7 +46,7 @@ public class GeneratorController {
 //        String[] tableNames = {"sys_dept","sys_menu","sys_role_menu","sys_user_menu"
 //        ,"sys_role_lang","sys_role","sys_user","sys_lang","sys_menu_lang"
 //        ,"sys_dept_role","sys_dept_lang"};
-        String[] tableNames = {"sys_role"};
+        String[] tableNames = {"sys_dept"};
         byte[] data = generatorService.generatorCode(tableNames);
 
         response.reset();

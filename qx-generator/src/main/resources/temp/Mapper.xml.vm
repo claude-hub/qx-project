@@ -1,92 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="${package}.${moduleName}.provider.mapper.${className}Mapper">
-    <resultMap id="BaseResultMap" type="${package}.${moduleName}.api.entity.${className}">
-        #foreach($column in $columns)
-            #if(${column.dataUpperCaseType} == "INT")
-                #if($column.columnName == $pk.columnName)
-        <id column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="INTEGER" property="${column.attrname}"/>
-                #else
-        <result column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="INTEGER" property="${column.attrname}"/>
-                #end
+<resultMap id="BaseResultMap" type="${package}.${moduleName}.api.dto.extend.${className}DTO">
+    #foreach($column in $columns)
+        #if(${column.dataUpperCaseType} == "INT")
+            #if($column.columnName == $pk.columnName)
+                <id column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="INTEGER" property="${column.attrname}"/>
             #else
-                #if($column.columnName == $pk.columnName)
-        <id column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="${column.dataUpperCaseType}" property="${column.attrname}"/>
-                #else
-        <result column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="${column.dataUpperCaseType}" property="${column.attrname}"/>
-                #end
+                <result column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="INTEGER" property="${column.attrname}"/>
+            #end
+        #else
+            #if($column.columnName == $pk.columnName)
+                <id column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="${column.dataUpperCaseType}" property="${column.attrname}"/>
+            #else
+                <result column="${column.columnName}" javaType="${column.attrAllType}" jdbcType="${column.dataUpperCaseType}" property="${column.attrname}"/>
             #end
         #end
-    </resultMap>
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select * from ${tableName}
-    #if(${pk.dataUpperCaseType} == "INT")
-       where ${pk.columnName} = #{${pk.columnName},jdbcType=INTEGER}
+    #end
+</resultMap>
+<sql id="${classname}WithLangSql">
+    #foreach($column in $columns)
+      ${column.columnName},
+    #end
+${tableName}_lang.name AS `name`, ${tableName}_lang.lang_id AS lang_id
+from ${tableName} LEFT JOIN ${tableName}_lang ON ${tableName}.id =
+    #if($tableName.startsWith('sys_'))
+        ${tableName}_lang.${tableName.substring(5)}_id
     #else
-       where ${pk.columnName} = #{${pk.columnName},jdbcType=${pk.dataUpperCaseType}}
+        ${tableName}_lang.${tableName}_id
     #end
-    </select>
-    <select id="selectAll" resultMap="BaseResultMap">
-        select * from ${tableName}
-    </select>
-    <insert id="insert" parameterType="${package}.${moduleName}.api.entity.${className}">
-        <selectKey keyProperty="${pk.attrname}" order="AFTER" resultType="java.lang.Integer">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
-        insert into ${tableName} (
-        #foreach($column in $columns)
-            #if($velocityCount == $columns.size())
-                ${column.columnName}
-            #else
-                ${column.columnName},
-            #end
-        #end)
-        values (
-        #foreach($column in $columns)
-            #if($velocityCount == $columns.size())
-                #if(${column.dataUpperCaseType} == "INT")
-                    #{${column.attrname},jdbcType=INTEGER}
-                #else
-                    #{${column.attrname},jdbcType=${column.dataUpperCaseType}}
-                #end
-            #else
-                #if(${column.dataUpperCaseType} == "INT")
-                    #{${column.attrname},jdbcType=INTEGER},
-                #else
-                    #{${column.attrname},jdbcType=${column.dataUpperCaseType}},
-                #end
-            #end
-        #end)
-    </insert>
-    <update id="updateByPrimaryKey" parameterType="${package}.${moduleName}.api.entity.${className}">
-        update ${tableName} set
-        #foreach($column in $columns)
-        #if($velocityCount == $columns.size())
-            #if(${column.dataUpperCaseType} == "INT")
-                ${column.columnName} = #{${column.attrname},jdbcType=INTEGER}
-                #else
-                ${column.columnName} = #{${column.attrname},jdbcType=${column.dataUpperCaseType}}
-                #end
-        #else
-            #if(${column.dataUpperCaseType} == "INT")
-                ${column.columnName} = #{${column.attrname},jdbcType=INTEGER},
-                #else
-                ${column.columnName} = #{${column.attrname},jdbcType=${column.dataUpperCaseType}},
-                #end
-        #end
-    #end
-        #if(${pk.dataUpperCaseType} == "INT")
-           where ${pk.columnName} = #{${pk.attrname},jdbcType=INTEGER}
-        #else
-           where ${pk.columnName} = #{${pk.attrname},jdbcType=${pk.dataUpperCaseType}}
-        #end
-    </update>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-        delete from ${tableName}
-        #if(${pk.dataUpperCaseType} == "INT")
-           where ${pk.columnName} = #{${pk.columnName},jdbcType=INTEGER}
-        #else
-           where ${pk.columnName} = #{${pk.columnName},jdbcType=${pk.dataUpperCaseType}}
-        #end
-    </delete>
+    </sql>
+<select id="get${className}sWithLang" resultMap="BaseResultMap">
+    select
+    <include refid="${classname}WithLangSql"/>
+    <where>
+        AND ${tableName}_lang.lang_id = #{inputDTO.langId} AND ${tableName}.deleted != -1
+        <if test="inputDTO.query != null and inputDTO.query != ''">
+            AND ${tableName}_lang.`name` LIKE CONCAT('%',#{inputDTO.query},'%')
+        </if>
+    </where>
+    ORDER BY ${tableName}.created_at DESC
+</select>
 </mapper>

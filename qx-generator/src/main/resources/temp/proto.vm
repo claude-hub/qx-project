@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+option java_package = "${package}.grpc.lib.${classname}";
+
+package ${classname};
+
+import public "google/protobuf/timestamp.proto";
+
+service ${className}Service {
+    rpc GetById(ByIdReq) returns (${className}){}
+    rpc GetList(GetListReq) returns (PageList) {}
+    rpc Insert(Base${className}) returns (Result) {}
+    rpc Update(${className}) returns (Result) {}
+    rpc Delete(ByIdReq) returns (Result) {}
+}
+
+message ByIdReq {
+    int32 id = 1;
+}
+
+message GetListReq {
+    int32 lang_id = 1;
+    string query = 2;
+    int32 page_size = 3;
+    int32 page = 4;
+}
+
+message Result {
+    bool success = 1;
+}
+
+// 新增时,使用的message,以保证用户不传入多余信息
+message Base${className} {
+#foreach ($column in $columns)
+##排除主键
+    #if($column.columnName != $pk.columnName)
+    ##排除created_at字段
+        #if($column.columnName != "created_at")
+        ##排除updated_at字段
+            #if($column.columnName != "updated_at")
+            ##排除deleted字段
+                #if($column.columnName != "deleted")
+                    #if($column.attrType == "Integer")
+                    int32 ${columnName} = 1;
+                    #end
+                    #if($column.attrType == "String")
+                    string ${columnName} = 1;
+                    #end
+                    #if($column.attrType == "Date")
+                    google.protobuf.Timestamp ${columnName} = 1;
+                    #end
+                #end
+            #end
+        #end
+    #end
+#end
+
+    int32 lang_id = 1;
+    string name = 2;
+}
+
+message ${className} {
+#foreach ($column in $columns)
+    #if($column.attrType == "Integer")
+    int32 ${columnName} = 1;
+    #end
+    #if($column.attrType == "String")
+    string ${columnName} = 1;
+    #end
+    #if($column.attrType == "Date")
+    google.protobuf.Timestamp ${columnName} = 1;
+    #end
+#end
+    int32 lang_id = 2;
+    string name = 3;
+}
+
+message PageList {
+    int32 total = 1;
+    repeated ${className} ${tableName}s = 2;
+}

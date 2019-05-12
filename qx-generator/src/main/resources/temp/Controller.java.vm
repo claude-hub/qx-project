@@ -1,76 +1,94 @@
-package ${package}.${moduleName}.controller;
+package ${package}.user.consumer.controller;
 
-import ${package}.${moduleName}.model.dto.${classname}.request.*;
-import ${package}.${moduleName}.model.entity.${className};
-import ${package}.${moduleName}.service.${className}Service;
-import ${package}.common.utils.mapper.BeanMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import ${package}.${moduleName}.api.dto.base.SearchByIdInputDTO;
+import ${package}.${moduleName}.api.dto.${classname}.request.*;
+import ${package}.${moduleName}.api.dto.${classname}.response.${className}ResponseDTO};
+import ${package}.${moduleName}.api.entity.${className};
+import ${package}.common.utils.mapper.ProtoBufUtils;
 import ${package}.common.utils.result.JSONResult;
+import ${package}.grpc.lib.${classname}.${className}OuterClass;
+import ${package}.user.consumer.grpc.client.Grpc${className}Client;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
-
 import javax.validation.Valid;
 
 /**
  * ${comments}
  *
  * @author ${author}
- * @date ${datetime}
+ * Date ${datetime}
  */
 @RestController
-@RequestMapping("/api/admin/${classname}")
+@AllArgsConstructor
+@RequestMapping("/api/${classname}")
 public class ${className}Controller extends BaseController {
-
-    @Autowired
-    private ${className}Service ${classname}Service;
+    private final Grpc${className}Client grpc${className}Client;
 
     /**
-     * 分页查询
-     * @param input
-     * @return
-     */
-    @GetMapping("/query")
-    public JSONResult query(@Valid ${className}QueryInputDTO input) {
-        JSONResult jsonResult = new JSONResult();
-        jsonResult.setData(${classname}Service.findAll${className}s());
-        return jsonResult;
+    * selectById
+    * @param input
+    * @return
+    */
+    @GetMapping(value = "/{id}")
+    public JSONResult get${className}Id(@Valid SearchByIdInputDTO input) {
+        JSONResult result = new JSONResult();
+        ${className}OuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, ${className}OuterClass.ByIdReq.class);
+        ${className} ${classname} = grpc${className}Client.get${className}ById(getByIdReq);
+        result.setData(${classname}.getId() != null ? ${classname} : "");
+        return result;
     }
 
     /**
-     * 新增
-     * @param input
-     * @return
-     */
-    @PostMapping("/add")
-    public JSONResult add(@Valid ${className}AddInputDTO input) {
-        JSONResult jsonResult = new JSONResult();
-        ${className} ${classname} = BeanMapper.map(input,${className}.class);
-        jsonResult.setData(${classname}Service.add${className}(${classname}));
-        return jsonResult;
+    * 根据语言分页查询
+    * @param input
+    * @return
+    */
+    @GetMapping(value = "/list")
+    public JSONResult get${className}List(@Valid ${className}QueryInputDTO input) {
+        JSONResult result = new JSONResult();
+        ${className}OuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(input, ${className}OuterClass.GetListReq.class);
+        ${className}ResponseDTO responseDTO = grpc${className}Client.get${className}List(getListReq);
+        result.setData(responseDTO.get${className}s());
+        result.setTotalCount(responseDTO.getTotal());
+        return result;
     }
 
     /**
-     * 删除
-     * @param input
-     * @return
-     */
-    @DeleteMapping("/delete")
-    public JSONResult delete(@Valid ${className}DeleteInputDTO input) {
-        JSONResult jsonResult = new JSONResult();
-        jsonResult.setData(${classname}Service.delete${className}(input.getId()));
-        return jsonResult;
+    * 根据语言新增
+    * @param input
+    * @return
+    */
+    @PostMapping(value = "/add")
+    public JSONResult add${className}(@Valid ${className}AddInputDTO input) {
+        JSONResult result = new JSONResult();
+        ${className}OuterClass.Base${className} base${className} = ProtoBufUtils.toProtoBuffer(input, ${className}OuterClass.Base${className}.class);
+        result.setData(grpc${className}Client.add${className}(base${className}));
+        return result;
     }
 
     /**
-     * 修改
-     * @param input
-     * @return
-     */
-    @PutMapping("/update")
-    public JSONResult update(@Valid ${className}UpdateInputDTO input) {
-        JSONResult jsonResult = new JSONResult();
-        ${className} ${classname} = BeanMapper.map(input,${className}.class);
-        jsonResult.setData(${classname}Service.edit${className}(${classname}));
-        return jsonResult;
+    * 更新
+    * @param input
+    * @return
+    */
+    @PutMapping(value = "/update")
+    public JSONResult update${className}(@Valid ${className}UpdateInputDTO input) {
+        JSONResult result = new JSONResult();
+        ${className}OuterClass.${className} ${classname} = ProtoBufUtils.toProtoBuffer(input, ${className}OuterClass.${className}.class);
+        result.setData(grpc${className}Client.update${className}(${classname}));
+        return result;
+    }
+
+    /**
+    * 逻辑删除
+    * @param input
+    * @return
+    */
+    @DeleteMapping(value = "/{id}")
+    public JSONResult delete${className}(@Valid ${className}DeleteInputDTO input) {
+        JSONResult result = new JSONResult();
+        ${className}OuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, ${className}OuterClass.ByIdReq.class);
+        result.setData(grpc${className}Client.delete${className}(req));
+        return result;
     }
 }

@@ -1,10 +1,7 @@
 package com.qianxun.user.consumer.controller;
 
 import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
-import com.qianxun.admin.api.dto.sysRole.request.SysRoleAddInputDTO;
-import com.qianxun.admin.api.dto.sysRole.request.SysRoleDeleteInputDTO;
-import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
-import com.qianxun.admin.api.dto.sysRole.request.SysRoleUpdateInputDTO;
+import com.qianxun.admin.api.dto.sysRole.request.*;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
 import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;

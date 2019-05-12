@@ -1,6 +1,6 @@
-package ${package}.${moduleName}.admin.api.dto.${classname}.requset;
+package ${package}.${moduleName}.api.dto.${classname}.requset;
 
-import lombok.Data;
+import ${package}.${moduleName}.api.dto.base.BaseQueryInputDTO;
 import java.io.Serializable;
 
 /**
@@ -9,7 +9,6 @@ import java.io.Serializable;
  * @author ${author}
  * @date ${datetime}
  */
-@Data
-public class ${className}QueryInputDTO implements Serializable{
+public class ${className}QueryInputDTO extends BaseQueryInputDTO implements Serializable{
 
 }

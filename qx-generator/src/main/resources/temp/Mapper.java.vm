@@ -1,25 +1,18 @@
 package ${package}.${moduleName}.provider.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${package}.${moduleName}.api.dto.${classname}.request.${className}QueryInputDTO;
 import ${package}.${moduleName}.api.entity.${className};
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 /**
- * ${comments}
- *
- * @author ${author}
- * @date ${datetime}
+ * @author: Claude
+ * email: 314705487@qq.com
+ * Date: 05/10/19 9:30
  */
-
- public interface ${className}Mapper {
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(${className} record);
-
-    ${className} selectByPrimaryKey(Integer id);
-
-    List<${className}> selectAll();
-
-    int updateByPrimaryKey(${className} record);
-
+public interface ${className}Mapper extends BaseMapper<${className}> {
+   IPage get${className}sWithLang(Page page, @Param("inputDTO")${className}QueryInputDTO inputDTO);
 }
+
