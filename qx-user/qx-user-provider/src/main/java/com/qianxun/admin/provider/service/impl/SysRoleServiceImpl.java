@@ -1,7 +1,10 @@
 package com.qianxun.admin.provider.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianxun.admin.api.dto.extend.SysRoleDTO;
+import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
 import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.admin.api.entity.SysRoleLang;
 import com.qianxun.admin.provider.mapper.SysRoleMapper;
@@ -39,5 +42,11 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
         BeanUtils.copyProperties(roleDTO, roleLang);
         roleLang.setRoleId(sysRole.getId());
         return roleLangService.save(roleLang);
+    }
+
+    @Override
+    public IPage getRoles(Page page, SysRoleQueryInputDTO inputDTO){
+        IPage a =baseMapper.getRolesWithLang(page, inputDTO);
+        return a;
     }
 }

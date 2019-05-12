@@ -40,8 +40,8 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
     public void getList(SysRoleOuterClass.GetListReq request,
                         StreamObserver<SysRoleOuterClass.PageList> responseObserver) {
         SysRoleQueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysRoleQueryInputDTO.class);
-        IPage<SysRole> page = new Page<SysRole>(inputDTO.getPage(),inputDTO.getPageSize());
-        IPage pageList = sysRoleService.page(page);
+        Page page = new Page(inputDTO.getPage(),inputDTO.getPageSize());
+        IPage pageList = sysRoleService.getRoles(page, inputDTO);
         SysRoleResponseDTO dto = new SysRoleResponseDTO();
         dto.setTotal((int) pageList.getTotal());
         dto.setSysRoles(pageList.getRecords());
