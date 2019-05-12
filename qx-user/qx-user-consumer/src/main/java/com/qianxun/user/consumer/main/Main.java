@@ -57,17 +57,39 @@ public class Main {
 //        sysRoles.add()
 
 
-        SysRoleAddInputDTO inputDTO = new SysRoleAddInputDTO();
-        inputDTO.setLangId(1);
-        inputDTO.setName("asd");
-        inputDTO.setRoleCode("Y");
-        inputDTO.setRoleDesc("m");
-        SysRoleOuterClass.BaseSysRole baseSysRole = ProtoBufUtils.toProtoBuffer(inputDTO, SysRoleOuterClass.BaseSysRole.class);
+//        SysRoleAddInputDTO inputDTO = new SysRoleAddInputDTO();
+//        inputDTO.setLangId(1);
+//        inputDTO.setName("asd");
+//        inputDTO.setRoleCode("Y");
+//        inputDTO.setRoleDesc("m");
+//        SysRoleOuterClass.BaseSysRole baseSysRole = ProtoBufUtils.toProtoBuffer(inputDTO, SysRoleOuterClass.BaseSysRole.class);
+//
+//        System.out.println(baseSysRole);
+//
+//        SysRoleDTO sysRoleDTO = ProtoBufUtils.fromProtoBuffer(baseSysRole, SysRoleDTO.class);
+//
+//        System.out.println(sysRoleDTO);
 
-        System.out.println(baseSysRole);
+        SysRoleResponseDTO roleResponseDTO = new SysRoleResponseDTO();
+        roleResponseDTO.setTotal(20);
+        List<SysRoleDTO> sysRoleList = new ArrayList<>();
+        SysRoleDTO sysRole = new SysRoleDTO();
+        sysRole.setId(1);
+        sysRole.setName("role");
+        sysRole.setCreatedAt(new Date());
+        sysRole.setUpdatedAt(new Date());
+        sysRole.setRoleCode("user");
+        sysRoleList.add(sysRole);
 
-        SysRoleDTO sysRoleDTO = ProtoBufUtils.fromProtoBuffer(baseSysRole, SysRoleDTO.class);
+        roleResponseDTO.setSysRoles(sysRoleList);
 
-        System.out.println(sysRoleDTO);
+        SysRoleOuterClass.PageList ad = ProtoBufUtils.toProtoBuffer(roleResponseDTO, SysRoleOuterClass.PageList.class);
+        System.out.println("11111111");
+        System.out.println(ad);
+
+
+        SysRoleResponseDTO a = ProtoBufUtils.fromProtoBuffer(ad, SysRoleResponseDTO.class);
+        System.out.println("2222222222");
+        System.out.println(a);
     }
 }

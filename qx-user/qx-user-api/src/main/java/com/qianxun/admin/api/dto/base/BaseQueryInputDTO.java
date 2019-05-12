@@ -2,6 +2,7 @@ package com.qianxun.admin.api.dto.base;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import javax.validation.constraints.NotNull;
 
 /**
  * author: Claude
@@ -10,6 +11,10 @@ import lombok.Data;
  */
 @Data
 public class BaseQueryInputDTO {
+    @NotNull(message = "语言ID不能为空")
+    @ApiModelProperty(value = "语言ID", required = true)
+    private Integer langId;
+
     @ApiModelProperty(value = "搜索内容")
     private String query;
 

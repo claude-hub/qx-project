@@ -44,7 +44,7 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
         IPage pageList = sysRoleService.page(page);
         SysRoleResponseDTO dto = new SysRoleResponseDTO();
         dto.setTotal((int) pageList.getTotal());
-        dto.setSysRole(pageList.getRecords());
+        dto.setSysRoles(pageList.getRecords());
         SysRoleOuterClass.PageList res = ProtoBufUtils.toProtoBuffer(dto, SysRoleOuterClass.PageList.class);
         responseObserver.onNext(res);
         responseObserver.onCompleted();

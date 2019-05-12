@@ -7,9 +7,7 @@ import com.google.protobuf.Timestamp;
 import com.google.protobuf.util.Timestamps;
 import lombok.extern.slf4j.Slf4j;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Type;
+import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,42 +28,47 @@ public class ProtoBufUtils {
         try {
             model = modelClass.newInstance();
             Field[] modelFields = modelClass.getDeclaredFields();
-            Field[] superModelFields = model.getClass().getSuperclass().getDeclaredFields();
-            modelFields = ArrayUtil.addAll(modelFields ,superModelFields);
+            Field[] superModelFields = modelClass.getSuperclass().getDeclaredFields();
+            modelFields = ArrayUtil.addAll(modelFields, superModelFields);
             Method[] methods = pbObject.getClass().getMethods();
             if (modelFields != null && modelFields.length > 0) {
                 for (Field modelField : modelFields) {
                     String fieldName = modelField.getName();
                     String upperName = fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
                     Class<?> fieldType = modelField.getType();
+                    Type type = modelField.getGenericType(); // 获取属性的参数类型（java.lang.List<com.qianxun.api.sysRole>）
+
                     try {
                         Method getDescriptorForType = pbObject.getClass().getMethod("getDescriptorForType");
                         Descriptors.Descriptor descriptor = (Descriptors.Descriptor) getDescriptorForType.invoke(pbObject);
                         // 根据proto文件命名规范，使用的下划线命名
                         Descriptors.FieldDescriptor fd = descriptor.findFieldByName(toUnderline(fieldName));
 
-                        Method pbGetMethod;
-                        Object value;
+                        Method pbGetMethod = null;
+                        Object value = null;
                         // 判断是否是repeated类型
                         if (fd != null && fd.isRepeated()) {
                             pbGetMethod = pbGetMethod(methods, "get" + upperName + "List");
-                            if(pbGetMethod == null){
+                            if (pbGetMethod == null) {
                                 continue;
                             }
                             Object pbValue = pbGetMethod.invoke(pbObject);
-                            // 嵌套数组转化为java的pojo
-                            Class<?> classType = Class.forName("com.qianxun.admin.api.entity." + upperName);
-                            List<Object> pojo = new ArrayList<>();
-                            List<Object> protoList = (List<Object>) pbValue; //数据为List集合
-                            for (Object item : protoList) {
-                                Object object = fromProtoBuffer(item, classType);
-                                pojo.add(object);
+                            if (type instanceof ParameterizedType) {
+                                ParameterizedType pt = (ParameterizedType) type;
+                                //得到属性泛型里的class类型对象
+                                Class<?> classType = (Class) pt.getActualTypeArguments()[0];
+                                // 嵌套数组转化为java的pojo
+                                List<Object> pojo = new ArrayList<>();
+                                List<Object> protoList = (List<Object>) pbValue; //数据为List集合
+                                for (Object item : protoList) {
+                                    Object object = fromProtoBuffer(item, classType);
+                                    pojo.add(object);
+                                }
+                                value = pojo;
                             }
-                            value = pojo;
-
                         } else {
                             pbGetMethod = pbGetMethod(methods, "get" + upperName);
-                            if(pbGetMethod == null){
+                            if (pbGetMethod == null) {
                                 continue;
                             }
                             value = pbGetMethod.invoke(pbObject);
@@ -107,7 +110,7 @@ public class ProtoBufUtils {
 
             Field[] modelFields = model.getClass().getDeclaredFields();
             Field[] superModelFields = model.getClass().getSuperclass().getDeclaredFields();
-            modelFields = ArrayUtil.addAll(modelFields ,superModelFields);
+            modelFields = ArrayUtil.addAll(modelFields, superModelFields);
             if (modelFields != null && modelFields.length > 0) {
                 for (Field modelField : modelFields) {
                     // 小驼峰命名
@@ -152,7 +155,13 @@ public class ProtoBufUtils {
                                     value = Timestamps.fromMillis(((Date) value).getTime());
                                 }
                                 Method me = pbBuilder.getClass().getMethod("setField", Descriptors.FieldDescriptor.class, Object.class);
-                                me.invoke(pbBuilder, fd, value);
+                                try {
+                                    me.invoke(pbBuilder, fd, value);
+                                } catch (InvocationTargetException e) {
+                                    log.error("proto field can`t equals java POJO fieldName={}", lowerName, e.getMessage(), e);
+                                    continue;
+                                }
+
                             }
                         }
                     } catch (NoSuchMethodException e) {
@@ -162,7 +171,7 @@ public class ProtoBufUtils {
             }
             pbObject = (T) pbBuilder.getClass().getDeclaredMethod("build").invoke(pbBuilder);
         } catch (Exception e) {
-            log.error("toProtoBuffer filed ex={}", e.getMessage(), e);
+            log.error("toProtoBuffer failed ex={}", e.getMessage(), e);
         }
         return pbObject;
     }
@@ -189,14 +198,15 @@ public class ProtoBufUtils {
 
     /**
      * 判断pb中是否有该get方法
+     *
      * @param methods
      * @param methodName
      * @return
      */
-    private static Method pbGetMethod(Method[] methods, String methodName){
+    private static Method pbGetMethod(Method[] methods, String methodName) {
         for (Method mItem : methods) {
             String pbMethodName = mItem.getName();
-            if(pbMethodName.equals(methodName)){
+            if (pbMethodName.equals(methodName)) {
                 return mItem;
             }
         }

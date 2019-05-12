@@ -40,7 +40,7 @@ public class SysRoleController {
         JSONResult result = new JSONResult();
         SysRoleOuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(inputDTO, SysRoleOuterClass.GetListReq.class);
         SysRoleResponseDTO responseDTO = grpcSysRoleClient.getRoleList(getListReq);
-        result.setData(responseDTO.getSysRole());
+        result.setData(responseDTO.getSysRoles());
         result.setTotalCount(responseDTO.getTotal());
         return result;
     }

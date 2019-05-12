@@ -493,22 +493,27 @@ public final class SysRoleOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string query = 1;</code>
+     * <code>int32 lang_id = 1;</code>
+     */
+    int getLangId();
+
+    /**
+     * <code>string query = 2;</code>
      */
     java.lang.String getQuery();
     /**
-     * <code>string query = 1;</code>
+     * <code>string query = 2;</code>
      */
     com.google.protobuf.ByteString
         getQueryBytes();
 
     /**
-     * <code>int32 page_size = 2;</code>
+     * <code>int32 page_size = 3;</code>
      */
     int getPageSize();
 
     /**
-     * <code>int32 page = 3;</code>
+     * <code>int32 page = 4;</code>
      */
     int getPage();
   }
@@ -552,18 +557,23 @@ public final class SysRoleOuterClass {
             case 0:
               done = true;
               break;
-            case 10: {
+            case 8: {
+
+              langId_ = input.readInt32();
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               query_ = s;
               break;
             }
-            case 16: {
+            case 24: {
 
               pageSize_ = input.readInt32();
               break;
             }
-            case 24: {
+            case 32: {
 
               page_ = input.readInt32();
               break;
@@ -600,10 +610,19 @@ public final class SysRoleOuterClass {
               com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq.class, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq.Builder.class);
     }
 
-    public static final int QUERY_FIELD_NUMBER = 1;
+    public static final int LANG_ID_FIELD_NUMBER = 1;
+    private int langId_;
+    /**
+     * <code>int32 lang_id = 1;</code>
+     */
+    public int getLangId() {
+      return langId_;
+    }
+
+    public static final int QUERY_FIELD_NUMBER = 2;
     private volatile java.lang.Object query_;
     /**
-     * <code>string query = 1;</code>
+     * <code>string query = 2;</code>
      */
     public java.lang.String getQuery() {
       java.lang.Object ref = query_;
@@ -618,7 +637,7 @@ public final class SysRoleOuterClass {
       }
     }
     /**
-     * <code>string query = 1;</code>
+     * <code>string query = 2;</code>
      */
     public com.google.protobuf.ByteString
         getQueryBytes() {
@@ -634,19 +653,19 @@ public final class SysRoleOuterClass {
       }
     }
 
-    public static final int PAGE_SIZE_FIELD_NUMBER = 2;
+    public static final int PAGE_SIZE_FIELD_NUMBER = 3;
     private int pageSize_;
     /**
-     * <code>int32 page_size = 2;</code>
+     * <code>int32 page_size = 3;</code>
      */
     public int getPageSize() {
       return pageSize_;
     }
 
-    public static final int PAGE_FIELD_NUMBER = 3;
+    public static final int PAGE_FIELD_NUMBER = 4;
     private int page_;
     /**
-     * <code>int32 page = 3;</code>
+     * <code>int32 page = 4;</code>
      */
     public int getPage() {
       return page_;
@@ -666,14 +685,17 @@ public final class SysRoleOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (langId_ != 0) {
+        output.writeInt32(1, langId_);
+      }
       if (!getQueryBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, query_);
       }
       if (pageSize_ != 0) {
-        output.writeInt32(2, pageSize_);
+        output.writeInt32(3, pageSize_);
       }
       if (page_ != 0) {
-        output.writeInt32(3, page_);
+        output.writeInt32(4, page_);
       }
       unknownFields.writeTo(output);
     }
@@ -684,16 +706,20 @@ public final class SysRoleOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (langId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, langId_);
+      }
       if (!getQueryBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, query_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, query_);
       }
       if (pageSize_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, pageSize_);
+          .computeInt32Size(3, pageSize_);
       }
       if (page_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, page_);
+          .computeInt32Size(4, page_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -710,6 +736,8 @@ public final class SysRoleOuterClass {
       }
       com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq other = (com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq) obj;
 
+      if (getLangId()
+          != other.getLangId()) return false;
       if (!getQuery()
           .equals(other.getQuery())) return false;
       if (getPageSize()
@@ -727,6 +755,8 @@ public final class SysRoleOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getLangId();
       hash = (37 * hash) + QUERY_FIELD_NUMBER;
       hash = (53 * hash) + getQuery().hashCode();
       hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
@@ -866,6 +896,8 @@ public final class SysRoleOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        langId_ = 0;
+
         query_ = "";
 
         pageSize_ = 0;
@@ -898,6 +930,7 @@ public final class SysRoleOuterClass {
       @java.lang.Override
       public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq buildPartial() {
         com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq result = new com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq(this);
+        result.langId_ = langId_;
         result.query_ = query_;
         result.pageSize_ = pageSize_;
         result.page_ = page_;
@@ -949,6 +982,9 @@ public final class SysRoleOuterClass {
 
       public Builder mergeFrom(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq other) {
         if (other == com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.GetListReq.getDefaultInstance()) return this;
+        if (other.getLangId() != 0) {
+          setLangId(other.getLangId());
+        }
         if (!other.getQuery().isEmpty()) {
           query_ = other.query_;
           onChanged();
@@ -988,9 +1024,35 @@ public final class SysRoleOuterClass {
         return this;
       }
 
+      private int langId_ ;
+      /**
+       * <code>int32 lang_id = 1;</code>
+       */
+      public int getLangId() {
+        return langId_;
+      }
+      /**
+       * <code>int32 lang_id = 1;</code>
+       */
+      public Builder setLangId(int value) {
+        
+        langId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 lang_id = 1;</code>
+       */
+      public Builder clearLangId() {
+        
+        langId_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object query_ = "";
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public java.lang.String getQuery() {
         java.lang.Object ref = query_;
@@ -1005,7 +1067,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public com.google.protobuf.ByteString
           getQueryBytes() {
@@ -1021,7 +1083,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public Builder setQuery(
           java.lang.String value) {
@@ -1034,7 +1096,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public Builder clearQuery() {
         
@@ -1043,7 +1105,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public Builder setQueryBytes(
           com.google.protobuf.ByteString value) {
@@ -1059,13 +1121,13 @@ public final class SysRoleOuterClass {
 
       private int pageSize_ ;
       /**
-       * <code>int32 page_size = 2;</code>
+       * <code>int32 page_size = 3;</code>
        */
       public int getPageSize() {
         return pageSize_;
       }
       /**
-       * <code>int32 page_size = 2;</code>
+       * <code>int32 page_size = 3;</code>
        */
       public Builder setPageSize(int value) {
         
@@ -1074,7 +1136,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>int32 page_size = 2;</code>
+       * <code>int32 page_size = 3;</code>
        */
       public Builder clearPageSize() {
         
@@ -1085,13 +1147,13 @@ public final class SysRoleOuterClass {
 
       private int page_ ;
       /**
-       * <code>int32 page = 3;</code>
+       * <code>int32 page = 4;</code>
        */
       public int getPage() {
         return page_;
       }
       /**
-       * <code>int32 page = 3;</code>
+       * <code>int32 page = 4;</code>
        */
       public Builder setPage(int value) {
         
@@ -1100,7 +1162,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>int32 page = 3;</code>
+       * <code>int32 page = 4;</code>
        */
       public Builder clearPage() {
         
@@ -3936,27 +3998,27 @@ public final class SysRoleOuterClass {
     int getTotal();
 
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
     java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> 
-        getSysRoleList();
+        getSysRolesList();
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
-    com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getSysRole(int index);
+    com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getSysRoles(int index);
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
-    int getSysRoleCount();
+    int getSysRolesCount();
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
     java.util.List<? extends com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> 
-        getSysRoleOrBuilderList();
+        getSysRolesOrBuilderList();
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
-    com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getSysRoleOrBuilder(
+    com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getSysRolesOrBuilder(
         int index);
   }
   /**
@@ -3972,7 +4034,7 @@ public final class SysRoleOuterClass {
       super(builder);
     }
     private PageList() {
-      sysRole_ = java.util.Collections.emptyList();
+      sysRoles_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -4006,10 +4068,10 @@ public final class SysRoleOuterClass {
             }
             case 18: {
               if (!((mutable_bitField0_ & 0x00000002) != 0)) {
-                sysRole_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole>();
+                sysRoles_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              sysRole_.add(
+              sysRoles_.add(
                   input.readMessage(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.parser(), extensionRegistry));
               break;
             }
@@ -4029,7 +4091,7 @@ public final class SysRoleOuterClass {
             e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) != 0)) {
-          sysRole_ = java.util.Collections.unmodifiableList(sysRole_);
+          sysRoles_ = java.util.Collections.unmodifiableList(sysRoles_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -4058,39 +4120,39 @@ public final class SysRoleOuterClass {
       return total_;
     }
 
-    public static final int SYS_ROLE_FIELD_NUMBER = 2;
-    private java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> sysRole_;
+    public static final int SYS_ROLES_FIELD_NUMBER = 2;
+    private java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> sysRoles_;
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
-    public java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> getSysRoleList() {
-      return sysRole_;
+    public java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> getSysRolesList() {
+      return sysRoles_;
     }
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
     public java.util.List<? extends com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> 
-        getSysRoleOrBuilderList() {
-      return sysRole_;
+        getSysRolesOrBuilderList() {
+      return sysRoles_;
     }
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
-    public int getSysRoleCount() {
-      return sysRole_.size();
+    public int getSysRolesCount() {
+      return sysRoles_.size();
     }
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
-    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getSysRole(int index) {
-      return sysRole_.get(index);
+    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getSysRoles(int index) {
+      return sysRoles_.get(index);
     }
     /**
-     * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+     * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
      */
-    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getSysRoleOrBuilder(
+    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getSysRolesOrBuilder(
         int index) {
-      return sysRole_.get(index);
+      return sysRoles_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -4110,8 +4172,8 @@ public final class SysRoleOuterClass {
       if (total_ != 0) {
         output.writeInt32(1, total_);
       }
-      for (int i = 0; i < sysRole_.size(); i++) {
-        output.writeMessage(2, sysRole_.get(i));
+      for (int i = 0; i < sysRoles_.size(); i++) {
+        output.writeMessage(2, sysRoles_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -4126,9 +4188,9 @@ public final class SysRoleOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, total_);
       }
-      for (int i = 0; i < sysRole_.size(); i++) {
+      for (int i = 0; i < sysRoles_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, sysRole_.get(i));
+          .computeMessageSize(2, sysRoles_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4147,8 +4209,8 @@ public final class SysRoleOuterClass {
 
       if (getTotal()
           != other.getTotal()) return false;
-      if (!getSysRoleList()
-          .equals(other.getSysRoleList())) return false;
+      if (!getSysRolesList()
+          .equals(other.getSysRolesList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -4162,9 +4224,9 @@ public final class SysRoleOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + TOTAL_FIELD_NUMBER;
       hash = (53 * hash) + getTotal();
-      if (getSysRoleCount() > 0) {
-        hash = (37 * hash) + SYS_ROLE_FIELD_NUMBER;
-        hash = (53 * hash) + getSysRoleList().hashCode();
+      if (getSysRolesCount() > 0) {
+        hash = (37 * hash) + SYS_ROLES_FIELD_NUMBER;
+        hash = (53 * hash) + getSysRolesList().hashCode();
       }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
@@ -4294,7 +4356,7 @@ public final class SysRoleOuterClass {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
-          getSysRoleFieldBuilder();
+          getSysRolesFieldBuilder();
         }
       }
       @java.lang.Override
@@ -4302,11 +4364,11 @@ public final class SysRoleOuterClass {
         super.clear();
         total_ = 0;
 
-        if (sysRoleBuilder_ == null) {
-          sysRole_ = java.util.Collections.emptyList();
+        if (sysRolesBuilder_ == null) {
+          sysRoles_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
         } else {
-          sysRoleBuilder_.clear();
+          sysRolesBuilder_.clear();
         }
         return this;
       }
@@ -4337,14 +4399,14 @@ public final class SysRoleOuterClass {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         result.total_ = total_;
-        if (sysRoleBuilder_ == null) {
+        if (sysRolesBuilder_ == null) {
           if (((bitField0_ & 0x00000002) != 0)) {
-            sysRole_ = java.util.Collections.unmodifiableList(sysRole_);
+            sysRoles_ = java.util.Collections.unmodifiableList(sysRoles_);
             bitField0_ = (bitField0_ & ~0x00000002);
           }
-          result.sysRole_ = sysRole_;
+          result.sysRoles_ = sysRoles_;
         } else {
-          result.sysRole_ = sysRoleBuilder_.build();
+          result.sysRoles_ = sysRolesBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -4398,29 +4460,29 @@ public final class SysRoleOuterClass {
         if (other.getTotal() != 0) {
           setTotal(other.getTotal());
         }
-        if (sysRoleBuilder_ == null) {
-          if (!other.sysRole_.isEmpty()) {
-            if (sysRole_.isEmpty()) {
-              sysRole_ = other.sysRole_;
+        if (sysRolesBuilder_ == null) {
+          if (!other.sysRoles_.isEmpty()) {
+            if (sysRoles_.isEmpty()) {
+              sysRoles_ = other.sysRoles_;
               bitField0_ = (bitField0_ & ~0x00000002);
             } else {
-              ensureSysRoleIsMutable();
-              sysRole_.addAll(other.sysRole_);
+              ensureSysRolesIsMutable();
+              sysRoles_.addAll(other.sysRoles_);
             }
             onChanged();
           }
         } else {
-          if (!other.sysRole_.isEmpty()) {
-            if (sysRoleBuilder_.isEmpty()) {
-              sysRoleBuilder_.dispose();
-              sysRoleBuilder_ = null;
-              sysRole_ = other.sysRole_;
+          if (!other.sysRoles_.isEmpty()) {
+            if (sysRolesBuilder_.isEmpty()) {
+              sysRolesBuilder_.dispose();
+              sysRolesBuilder_ = null;
+              sysRoles_ = other.sysRoles_;
               bitField0_ = (bitField0_ & ~0x00000002);
-              sysRoleBuilder_ = 
+              sysRolesBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                   getSysRoleFieldBuilder() : null;
+                   getSysRolesFieldBuilder() : null;
             } else {
-              sysRoleBuilder_.addAllMessages(other.sysRole_);
+              sysRolesBuilder_.addAllMessages(other.sysRoles_);
             }
           }
         }
@@ -4480,244 +4542,244 @@ public final class SysRoleOuterClass {
         return this;
       }
 
-      private java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> sysRole_ =
+      private java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> sysRoles_ =
         java.util.Collections.emptyList();
-      private void ensureSysRoleIsMutable() {
+      private void ensureSysRolesIsMutable() {
         if (!((bitField0_ & 0x00000002) != 0)) {
-          sysRole_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole>(sysRole_);
+          sysRoles_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole>(sysRoles_);
           bitField0_ |= 0x00000002;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilderV3<
-          com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> sysRoleBuilder_;
+          com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> sysRolesBuilder_;
 
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> getSysRoleList() {
-        if (sysRoleBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(sysRole_);
+      public java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> getSysRolesList() {
+        if (sysRolesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(sysRoles_);
         } else {
-          return sysRoleBuilder_.getMessageList();
+          return sysRolesBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public int getSysRoleCount() {
-        if (sysRoleBuilder_ == null) {
-          return sysRole_.size();
+      public int getSysRolesCount() {
+        if (sysRolesBuilder_ == null) {
+          return sysRoles_.size();
         } else {
-          return sysRoleBuilder_.getCount();
+          return sysRolesBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getSysRole(int index) {
-        if (sysRoleBuilder_ == null) {
-          return sysRole_.get(index);
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getSysRoles(int index) {
+        if (sysRolesBuilder_ == null) {
+          return sysRoles_.get(index);
         } else {
-          return sysRoleBuilder_.getMessage(index);
+          return sysRolesBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder setSysRole(
+      public Builder setSysRoles(
           int index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole value) {
-        if (sysRoleBuilder_ == null) {
+        if (sysRolesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSysRoleIsMutable();
-          sysRole_.set(index, value);
+          ensureSysRolesIsMutable();
+          sysRoles_.set(index, value);
           onChanged();
         } else {
-          sysRoleBuilder_.setMessage(index, value);
+          sysRolesBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder setSysRole(
+      public Builder setSysRoles(
           int index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder builderForValue) {
-        if (sysRoleBuilder_ == null) {
-          ensureSysRoleIsMutable();
-          sysRole_.set(index, builderForValue.build());
+        if (sysRolesBuilder_ == null) {
+          ensureSysRolesIsMutable();
+          sysRoles_.set(index, builderForValue.build());
           onChanged();
         } else {
-          sysRoleBuilder_.setMessage(index, builderForValue.build());
+          sysRolesBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder addSysRole(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole value) {
-        if (sysRoleBuilder_ == null) {
+      public Builder addSysRoles(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole value) {
+        if (sysRolesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSysRoleIsMutable();
-          sysRole_.add(value);
+          ensureSysRolesIsMutable();
+          sysRoles_.add(value);
           onChanged();
         } else {
-          sysRoleBuilder_.addMessage(value);
+          sysRolesBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder addSysRole(
+      public Builder addSysRoles(
           int index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole value) {
-        if (sysRoleBuilder_ == null) {
+        if (sysRolesBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureSysRoleIsMutable();
-          sysRole_.add(index, value);
+          ensureSysRolesIsMutable();
+          sysRoles_.add(index, value);
           onChanged();
         } else {
-          sysRoleBuilder_.addMessage(index, value);
+          sysRolesBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder addSysRole(
+      public Builder addSysRoles(
           com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder builderForValue) {
-        if (sysRoleBuilder_ == null) {
-          ensureSysRoleIsMutable();
-          sysRole_.add(builderForValue.build());
+        if (sysRolesBuilder_ == null) {
+          ensureSysRolesIsMutable();
+          sysRoles_.add(builderForValue.build());
           onChanged();
         } else {
-          sysRoleBuilder_.addMessage(builderForValue.build());
+          sysRolesBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder addSysRole(
+      public Builder addSysRoles(
           int index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder builderForValue) {
-        if (sysRoleBuilder_ == null) {
-          ensureSysRoleIsMutable();
-          sysRole_.add(index, builderForValue.build());
+        if (sysRolesBuilder_ == null) {
+          ensureSysRolesIsMutable();
+          sysRoles_.add(index, builderForValue.build());
           onChanged();
         } else {
-          sysRoleBuilder_.addMessage(index, builderForValue.build());
+          sysRolesBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder addAllSysRole(
+      public Builder addAllSysRoles(
           java.lang.Iterable<? extends com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> values) {
-        if (sysRoleBuilder_ == null) {
-          ensureSysRoleIsMutable();
+        if (sysRolesBuilder_ == null) {
+          ensureSysRolesIsMutable();
           com.google.protobuf.AbstractMessageLite.Builder.addAll(
-              values, sysRole_);
+              values, sysRoles_);
           onChanged();
         } else {
-          sysRoleBuilder_.addAllMessages(values);
+          sysRolesBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder clearSysRole() {
-        if (sysRoleBuilder_ == null) {
-          sysRole_ = java.util.Collections.emptyList();
+      public Builder clearSysRoles() {
+        if (sysRolesBuilder_ == null) {
+          sysRoles_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000002);
           onChanged();
         } else {
-          sysRoleBuilder_.clear();
+          sysRolesBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public Builder removeSysRole(int index) {
-        if (sysRoleBuilder_ == null) {
-          ensureSysRoleIsMutable();
-          sysRole_.remove(index);
+      public Builder removeSysRoles(int index) {
+        if (sysRolesBuilder_ == null) {
+          ensureSysRolesIsMutable();
+          sysRoles_.remove(index);
           onChanged();
         } else {
-          sysRoleBuilder_.remove(index);
+          sysRolesBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder getSysRoleBuilder(
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder getSysRolesBuilder(
           int index) {
-        return getSysRoleFieldBuilder().getBuilder(index);
+        return getSysRolesFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getSysRoleOrBuilder(
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getSysRolesOrBuilder(
           int index) {
-        if (sysRoleBuilder_ == null) {
-          return sysRole_.get(index);  } else {
-          return sysRoleBuilder_.getMessageOrBuilder(index);
+        if (sysRolesBuilder_ == null) {
+          return sysRoles_.get(index);  } else {
+          return sysRolesBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
       public java.util.List<? extends com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> 
-           getSysRoleOrBuilderList() {
-        if (sysRoleBuilder_ != null) {
-          return sysRoleBuilder_.getMessageOrBuilderList();
+           getSysRolesOrBuilderList() {
+        if (sysRolesBuilder_ != null) {
+          return sysRolesBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(sysRole_);
+          return java.util.Collections.unmodifiableList(sysRoles_);
         }
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder addSysRoleBuilder() {
-        return getSysRoleFieldBuilder().addBuilder(
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder addSysRolesBuilder() {
+        return getSysRolesFieldBuilder().addBuilder(
             com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.getDefaultInstance());
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
-      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder addSysRoleBuilder(
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder addSysRolesBuilder(
           int index) {
-        return getSysRoleFieldBuilder().addBuilder(
+        return getSysRolesFieldBuilder().addBuilder(
             index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.getDefaultInstance());
       }
       /**
-       * <code>repeated .sysRole.SysRole sys_role = 2;</code>
+       * <code>repeated .sysRole.SysRole sys_roles = 2;</code>
        */
       public java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder> 
-           getSysRoleBuilderList() {
-        return getSysRoleFieldBuilder().getBuilderList();
+           getSysRolesBuilderList() {
+        return getSysRolesFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilderV3<
           com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> 
-          getSysRoleFieldBuilder() {
-        if (sysRoleBuilder_ == null) {
-          sysRoleBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+          getSysRolesFieldBuilder() {
+        if (sysRolesBuilder_ == null) {
+          sysRolesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder>(
-                  sysRole_,
+                  sysRoles_,
                   ((bitField0_ & 0x00000002) != 0),
                   getParentForChildren(),
                   isClean());
-          sysRole_ = null;
+          sysRoles_ = null;
         }
-        return sysRoleBuilder_;
+        return sysRolesBuilder_;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -4813,25 +4875,26 @@ public final class SysRoleOuterClass {
     java.lang.String[] descriptorData = {
       "\n\016sys_role.proto\022\007sysRole\032\037google/protob" +
       "uf/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
-      "\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_s" +
-      "ize\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"\031\n\006Result\022\017\n\007suc" +
-      "cess\030\001 \001(\010\"R\n\013BaseSysRole\022\017\n\007lang_id\030\002 \001" +
-      "(\005\022\014\n\004name\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\022\021\n\tr" +
-      "ole_desc\030\005 \001(\t\"\313\001\n\007SysRole\022\n\n\002id\030\001 \001(\005\022\017" +
-      "\n\007lang_id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\021\n\trole_co" +
-      "de\030\004 \001(\t\022\021\n\trole_desc\030\005 \001(\t\022.\n\ncreated_a" +
-      "t\030\006 \001(\0132\032.google.protobuf.Timestamp\022.\n\nu" +
-      "pdated_at\030\007 \001(\0132\032.google.protobuf.Timest" +
-      "amp\022\017\n\007deleted\030\010 \001(\005\"=\n\010PageList\022\r\n\005tota" +
-      "l\030\001 \001(\005\022\"\n\010sys_role\030\002 \003(\0132\020.sysRole.SysR" +
-      "ole2\207\002\n\016SysRoleService\022/\n\007GetById\022\020.sysR" +
-      "ole.ByIdReq\032\020.sysRole.SysRole\"\000\0223\n\007GetLi" +
-      "st\022\023.sysRole.GetListReq\032\021.sysRole.PageLi" +
-      "st\"\000\0221\n\006Insert\022\024.sysRole.BaseSysRole\032\017.s" +
-      "ysRole.Result\"\000\022-\n\006Update\022\020.sysRole.SysR" +
-      "ole\032\017.sysRole.Result\"\000\022-\n\006Delete\022\020.sysRo" +
-      "le.ByIdReq\032\017.sysRole.Result\"\000B\036\n\034com.qia" +
-      "nxun.grpc.lib.sysRoleP\000b\006proto3"
+      "\005\"M\n\nGetListReq\022\017\n\007lang_id\030\001 \001(\005\022\r\n\005quer" +
+      "y\030\002 \001(\t\022\021\n\tpage_size\030\003 \001(\005\022\014\n\004page\030\004 \001(\005" +
+      "\"\031\n\006Result\022\017\n\007success\030\001 \001(\010\"R\n\013BaseSysRo" +
+      "le\022\017\n\007lang_id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\021\n\trol" +
+      "e_code\030\004 \001(\t\022\021\n\trole_desc\030\005 \001(\t\"\313\001\n\007SysR" +
+      "ole\022\n\n\002id\030\001 \001(\005\022\017\n\007lang_id\030\002 \001(\005\022\014\n\004name" +
+      "\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\022\021\n\trole_desc\030\005" +
+      " \001(\t\022.\n\ncreated_at\030\006 \001(\0132\032.google.protob" +
+      "uf.Timestamp\022.\n\nupdated_at\030\007 \001(\0132\032.googl" +
+      "e.protobuf.Timestamp\022\017\n\007deleted\030\010 \001(\005\">\n" +
+      "\010PageList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_roles\030\002 " +
+      "\003(\0132\020.sysRole.SysRole2\207\002\n\016SysRoleService" +
+      "\022/\n\007GetById\022\020.sysRole.ByIdReq\032\020.sysRole." +
+      "SysRole\"\000\0223\n\007GetList\022\023.sysRole.GetListRe" +
+      "q\032\021.sysRole.PageList\"\000\0221\n\006Insert\022\024.sysRo" +
+      "le.BaseSysRole\032\017.sysRole.Result\"\000\022-\n\006Upd" +
+      "ate\022\020.sysRole.SysRole\032\017.sysRole.Result\"\000" +
+      "\022-\n\006Delete\022\020.sysRole.ByIdReq\032\017.sysRole.R" +
+      "esult\"\000B\036\n\034com.qianxun.grpc.lib.sysRoleP" +
+      "\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4857,7 +4920,7 @@ public final class SysRoleOuterClass {
     internal_static_sysRole_GetListReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_GetListReq_descriptor,
-        new java.lang.String[] { "Query", "PageSize", "Page", });
+        new java.lang.String[] { "LangId", "Query", "PageSize", "Page", });
     internal_static_sysRole_Result_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_sysRole_Result_fieldAccessorTable = new
@@ -4881,7 +4944,7 @@ public final class SysRoleOuterClass {
     internal_static_sysRole_PageList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_PageList_descriptor,
-        new java.lang.String[] { "Total", "SysRole", });
+        new java.lang.String[] { "Total", "SysRoles", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 
