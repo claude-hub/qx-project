@@ -54,6 +54,9 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
     @Transactional(rollbackFor = Exception.class)
     @Override
     public Boolean updateRole(SysRoleDTO sysRoleDTO) {
+        if (sysRoleDTO.getUpdatedAt() == null){
+            return false;
+        }
         SysRole sysRole = new SysRole();
         BeanUtils.copyProperties(sysRoleDTO, sysRole);
         if (baseMapper.updateById(sysRole) > 0) {

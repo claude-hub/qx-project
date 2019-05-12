@@ -9,10 +9,9 @@
         <result column="role_desc" javaType="java.lang.String" jdbcType="VARCHAR" property="roleDesc"/>
         <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
         <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
-        <result column="deleted" javaType="java.lang.Integer" jdbcType="INTEGER" property="deleted"/>
     </resultMap>
     <sql id="roleWithLangSql">
-        r.id, r.role_code, r.created_at, r.updated_at, r.deleted,
+        r.id, r.role_code, r.created_at, r.updated_at,
         rl.name AS `name`, rl.role_desc AS role_desc, rl.lang_id AS lang_id
         from sys_role AS r LEFT JOIN sys_role_lang AS rl ON r.id = rl.role_id
     </sql>
@@ -20,9 +19,10 @@
         select
           <include refid="roleWithLangSql"/>
         <where>
-            AND rl.lang_id = #{inputDTO.langId}
+            AND rl.lang_id = #{inputDTO.langId} AND r.deleted != -1
             <if test="inputDTO.query != null and inputDTO.query != ''">
                 AND rl.`name` LIKE CONCAT('%',#{inputDTO.query},'%')
+                OR r.role_code LIKE CONCAT('%',#{inputDTO.query},'%')
             </if>
         </where>
         ORDER BY r.created_at DESC
