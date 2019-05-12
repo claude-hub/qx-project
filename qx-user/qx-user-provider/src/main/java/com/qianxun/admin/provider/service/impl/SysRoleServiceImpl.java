@@ -36,10 +36,8 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
         BeanUtils.copyProperties(roleDTO, sysRole);
         baseMapper.insert(sysRole);
         SysRoleLang roleLang = new SysRoleLang();
-        roleLang.setLangId(roleDTO.getLangId());
+        BeanUtils.copyProperties(roleDTO, roleLang);
         roleLang.setRoleId(sysRole.getId());
-        roleLang.setName(roleDTO.getName());
-        roleLang.setRoleDesc(roleDTO.getRoleDesc());
         return roleLangService.save(roleLang);
     }
 }
