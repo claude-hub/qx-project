@@ -1,4 +1,4 @@
-package com.qianxun.admin.api.dto;
+package com.qianxun.admin.api.dto.base;
 
 import lombok.Data;
 import java.io.Serializable;

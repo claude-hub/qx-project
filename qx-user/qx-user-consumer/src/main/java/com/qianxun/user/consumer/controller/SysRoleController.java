@@ -1,6 +1,6 @@
 package com.qianxun.user.consumer.controller;
 
-import com.qianxun.admin.api.dto.SearchByIdInputDTO;
+import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleAddInputDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleDeleteInputDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
@@ -48,8 +48,8 @@ public class SysRoleController {
     @PostMapping(value = "/add")
     public JSONResult addRole(@Valid SysRoleAddInputDTO inputDTO) {
         JSONResult result = new JSONResult();
-        SysRoleOuterClass.SysRole sysRole = ProtoBufUtils.toProtoBuffer(inputDTO, SysRoleOuterClass.SysRole.class);
-        result.setData(grpcSysRoleClient.addRole(sysRole));
+        SysRoleOuterClass.BaseSysRole baseSysRole = ProtoBufUtils.toProtoBuffer(inputDTO, SysRoleOuterClass.BaseSysRole.class);
+        result.setData(grpcSysRoleClient.addRole(baseSysRole));
         return result;
     }
 

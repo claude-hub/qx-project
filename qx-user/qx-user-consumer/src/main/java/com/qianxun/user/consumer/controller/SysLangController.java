@@ -1,6 +1,6 @@
 package com.qianxun.user.consumer.controller;
 
-import com.qianxun.admin.api.dto.SearchByIdInputDTO;
+import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
 import com.qianxun.admin.api.dto.sysLang.request.SysLangAddInputDTO;
 import com.qianxun.admin.api.dto.sysLang.request.SysLangDeleteInputDTO;
 import com.qianxun.admin.api.dto.sysLang.request.SysLangQueryInputDTO;

@@ -7,7 +7,8 @@ package com.qianxun.admin.provider.grpc.service.sysRole;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.qianxun.admin.api.dto.UpdateDBResponseDTO;
+import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
+import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
 import com.qianxun.admin.api.entity.SysRole;
@@ -18,8 +19,6 @@ import com.qianxun.grpc.lib.sysRole.SysRoleServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import lombok.AllArgsConstructor;
 import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
-
-import java.util.List;
 
 
 @GrpcService(SysRoleOuterClass.class)
@@ -52,10 +51,10 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
     }
 
     @Override
-    public void insert(SysRoleOuterClass.SysRole request,
+    public void insert(SysRoleOuterClass.BaseSysRole request,
                        StreamObserver<SysRoleOuterClass.Result> responseObserver) {
-        SysRole sysRole = ProtoBufUtils.fromProtoBuffer(request, SysRole.class);
-        responseDTO.setSuccess(sysRoleService.save(sysRole));
+        SysRoleDTO sysRoleDTO = ProtoBufUtils.fromProtoBuffer(request, SysRoleDTO.class);
+        responseDTO.setSuccess(sysRoleService.saveRole(sysRoleDTO));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysRoleOuterClass.Result.class));
         responseObserver.onCompleted();
     }

@@ -30,15 +30,15 @@ public class GrpcSysRoleClient {
         return ProtoBufUtils.fromProtoBuffer(pageList, SysRoleResponseDTO.class);
     }
 
-    public Boolean addRole(SysRoleOuterClass.SysRole Role) {
+    public Boolean addRole(SysRoleOuterClass.BaseSysRole baseSysRole) {
         SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
-        SysRoleOuterClass.Result res = stub.insert(Role);
+        SysRoleOuterClass.Result res = stub.insert(baseSysRole);
         return res.getSuccess();
     }
 
-    public Boolean updateRole(SysRoleOuterClass.SysRole Role) {
+    public Boolean updateRole(SysRoleOuterClass.SysRole role) {
         SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
-        SysRoleOuterClass.Result res = stub.update(Role);
+        SysRoleOuterClass.Result res = stub.update(role);
         return res.getSuccess();
     }
 

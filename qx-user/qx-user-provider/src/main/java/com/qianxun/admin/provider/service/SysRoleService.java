@@ -1,6 +1,7 @@
 package com.qianxun.admin.provider.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.entity.SysRole;
 
 /**
@@ -10,4 +11,5 @@ import com.qianxun.admin.api.entity.SysRole;
  */
 public interface SysRoleService extends IService<SysRole> {
 
+    Boolean saveRole(SysRoleDTO sysRoleDTO);
 }

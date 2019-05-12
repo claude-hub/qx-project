@@ -91,28 +91,28 @@ public final class SysRoleServiceGrpc {
      return getGetListMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole,
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole,
       com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> getInsertMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Insert",
-      requestType = com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.class,
+      requestType = com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole.class,
       responseType = com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole,
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole,
       com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> getInsertMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> getInsertMethod;
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> getInsertMethod;
     if ((getInsertMethod = SysRoleServiceGrpc.getInsertMethod) == null) {
       synchronized (SysRoleServiceGrpc.class) {
         if ((getInsertMethod = SysRoleServiceGrpc.getInsertMethod) == null) {
           SysRoleServiceGrpc.getInsertMethod = getInsertMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>newBuilder()
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "sysRole.SysRoleService", "Insert"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.getDefaultInstance()))
+                  com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result.getDefaultInstance()))
                   .setSchemaDescriptor(new SysRoleServiceMethodDescriptorSupplier("Insert"))
@@ -230,7 +230,7 @@ public final class SysRoleServiceGrpc {
 
     /**
      */
-    public void insert(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole request,
+    public void insert(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> responseObserver) {
       asyncUnimplementedUnaryCall(getInsertMethod(), responseObserver);
     }
@@ -269,7 +269,7 @@ public final class SysRoleServiceGrpc {
             getInsertMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole,
+                com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole,
                 com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>(
                   this, METHODID_INSERT)))
           .addMethod(
@@ -326,7 +326,7 @@ public final class SysRoleServiceGrpc {
 
     /**
      */
-    public void insert(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole request,
+    public void insert(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getInsertMethod(), getCallOptions()), request, responseObserver);
@@ -383,7 +383,7 @@ public final class SysRoleServiceGrpc {
 
     /**
      */
-    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result insert(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole request) {
+    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result insert(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole request) {
       return blockingUnaryCall(
           getChannel(), getInsertMethod(), getCallOptions(), request);
     }
@@ -440,7 +440,7 @@ public final class SysRoleServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> insert(
-        com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole request) {
+        com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole request) {
       return futureUnaryCall(
           getChannel().newCall(getInsertMethod(), getCallOptions()), request);
     }
@@ -494,7 +494,7 @@ public final class SysRoleServiceGrpc {
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.PageList>) responseObserver);
           break;
         case METHODID_INSERT:
-          serviceImpl.insert((com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole) request,
+          serviceImpl.insert((com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>) responseObserver);
           break;
         case METHODID_UPDATE:

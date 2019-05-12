@@ -5,7 +5,7 @@ package com.qianxun.admin.provider.grpc.service.sysLang;
  * Date: 2019/5/7 21:58
  */
 
-import com.qianxun.admin.api.dto.UpdateDBResponseDTO;
+import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.sysLang.request.SysLangQueryInputDTO;
 import com.qianxun.admin.api.entity.SysLang;
 import com.qianxun.admin.provider.service.SysLangService;

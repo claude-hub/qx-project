@@ -25,6 +25,12 @@ public class SysLang implements Serializable {
      * 语言名
      */
     private String name;
+
+    /**
+     * 语言标识码
+     */
+    private String langCode;
+
     /**
      * 创建时间
      */

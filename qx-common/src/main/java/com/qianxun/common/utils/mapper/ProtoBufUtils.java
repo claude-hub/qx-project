@@ -1,5 +1,6 @@
 package com.qianxun.common.utils.mapper;
 
+import cn.hutool.core.util.ArrayUtil;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.Timestamp;
@@ -29,9 +30,9 @@ public class ProtoBufUtils {
         try {
             model = modelClass.newInstance();
             Field[] modelFields = modelClass.getDeclaredFields();
-            if (modelFields == null || modelFields.length == 0) {
-                modelFields = model.getClass().getSuperclass().getDeclaredFields();
-            }
+            Field[] superModelFields = model.getClass().getSuperclass().getDeclaredFields();
+            modelFields = ArrayUtil.addAll(modelFields ,superModelFields);
+            Method[] methods = pbObject.getClass().getMethods();
             if (modelFields != null && modelFields.length > 0) {
                 for (Field modelField : modelFields) {
                     String fieldName = modelField.getName();
@@ -47,7 +48,10 @@ public class ProtoBufUtils {
                         Object value;
                         // 判断是否是repeated类型
                         if (fd != null && fd.isRepeated()) {
-                            pbGetMethod = pbObject.getClass().getMethod("get" + upperName + "List");
+                            pbGetMethod = pbGetMethod(methods, "get" + upperName + "List");
+                            if(pbGetMethod == null){
+                                continue;
+                            }
                             Object pbValue = pbGetMethod.invoke(pbObject);
                             // 嵌套数组转化为java的pojo
                             Class<?> classType = Class.forName("com.qianxun.admin.api.entity." + upperName);
@@ -60,7 +64,10 @@ public class ProtoBufUtils {
                             value = pojo;
 
                         } else {
-                            pbGetMethod = pbObject.getClass().getMethod("get" + upperName);
+                            pbGetMethod = pbGetMethod(methods, "get" + upperName);
+                            if(pbGetMethod == null){
+                                continue;
+                            }
                             value = pbGetMethod.invoke(pbObject);
                         }
                         String str = value == null ? "" : value.toString();
@@ -99,9 +106,8 @@ public class ProtoBufUtils {
             Descriptors.Descriptor descriptor = (Descriptors.Descriptor) getDescriptorForType.invoke(pbBuilder);
 
             Field[] modelFields = model.getClass().getDeclaredFields();
-            if (modelFields == null || modelFields.length == 0) {
-                modelFields = model.getClass().getSuperclass().getDeclaredFields();
-            }
+            Field[] superModelFields = model.getClass().getSuperclass().getDeclaredFields();
+            modelFields = ArrayUtil.addAll(modelFields ,superModelFields);
             if (modelFields != null && modelFields.length > 0) {
                 for (Field modelField : modelFields) {
                     // 小驼峰命名
@@ -141,25 +147,10 @@ public class ProtoBufUtils {
                                     }
                                 }
                             } else {
-//                                if (fieldType == Integer.class) {
-//                                    fieldType = int.class;
-//                                }
-//                                if (fieldType == Date.class) {
-//                                    fieldType = Timestamp.class;
-//                                    // object直接setDate会报错
-//                                    value = Timestamps.fromMillis(((Date)value).getTime());
-//                                }
-//                                if (fieldType == Boolean.class){
-//                                    fieldType = boolean.class;
-//                                }
-//                                Method pbBuilderSetMethod = pbBuilder.getClass().getMethod("set" + upperName, fieldType);
-//                                pbBuilderSetMethod.invoke(pbBuilder, value);
-
                                 if (fieldType == Date.class) {
                                     // 直接设置Date会报错
                                     value = Timestamps.fromMillis(((Date) value).getTime());
                                 }
-//                                采用下面的方法，set出来的字段是proto文件定义的字段命名规范。即：字段名采用下划线命名
                                 Method me = pbBuilder.getClass().getMethod("setField", Descriptors.FieldDescriptor.class, Object.class);
                                 me.invoke(pbBuilder, fd, value);
                             }
@@ -194,5 +185,21 @@ public class ProtoBufUtils {
             }
         }
         return sb.toString().toLowerCase();
+    }
+
+    /**
+     * 判断pb中是否有该get方法
+     * @param methods
+     * @param methodName
+     * @return
+     */
+    private static Method pbGetMethod(Method[] methods, String methodName){
+        for (Method mItem : methods) {
+            String pbMethodName = mItem.getName();
+            if(pbMethodName.equals(methodName)){
+                return mItem;
+            }
+        }
+        return null;
     }
 }

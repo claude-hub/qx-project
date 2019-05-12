@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/5/11 22:43:02                           */
+/* Created on:     2019/5/11 23:47:54                           */
 /*==============================================================*/
 
 
@@ -53,8 +53,6 @@ create table sys_dept_lang
    dept_id              int not null,
    lang_id              int not null,
    name                 varchar(64) not null,
-   created_at           timestamp not null default CURRENT_TIMESTAMP,
-   updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    primary key (id)
 );
 
@@ -66,8 +64,6 @@ create table sys_dept_role
    id                   int not null auto_increment,
    dept_id              int not null,
    role_id              int not null,
-   created_at           timestamp not null default CURRENT_TIMESTAMP,
-   updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    primary key (id)
 );
 
@@ -134,8 +130,6 @@ create table sys_menu_lang
    menu_id              int not null comment '菜单ID',
    lang_id              int not null comment '语言ID',
    name                 varchar(32) not null comment '菜单名',
-   created_at           timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
-   updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '更新时间',
    primary key (id)
 );
 
@@ -181,8 +175,6 @@ create table sys_role_lang
    lang_id              int not null,
    name                 varchar(64) not null comment '角色名',
    role_desc            varchar(255) comment '角色描述',
-   created_at           timestamp not null default CURRENT_TIMESTAMP,
-   updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    primary key (id)
 );
 
@@ -194,8 +186,6 @@ create table sys_role_menu
    id                   int not null auto_increment,
    role_id              int not null,
    menu_id              int not null,
-   created_at           timestamp not null default CURRENT_TIMESTAMP,
-   updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    primary key (id)
 );
 
@@ -235,8 +225,6 @@ create table sys_user_menu
    id                   int not null auto_increment,
    user_id              int not null,
    menu_id              int not null,
-   created_at           timestamp not null default CURRENT_TIMESTAMP,
-   updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
    primary key (id)
 );
 

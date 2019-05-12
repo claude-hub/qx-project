@@ -1,6 +1,6 @@
 package com.qianxun.admin.api.dto.sysLang.request;
 
-import com.qianxun.admin.api.dto.BaseQueryInputDTO;
+import com.qianxun.admin.api.dto.base.BaseQueryInputDTO;
 import java.io.Serializable;
 
 /**
