@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 public interface ${className}Mapper extends BaseMapper<${className}> {
    IPage get${className}sWithLang(Page page, @Param("inputDTO")${className}QueryInputDTO inputDTO);

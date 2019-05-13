@@ -5,7 +5,7 @@ import ${package}.${moduleName}.api.entity.${className}Lang;
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 public interface ${className}LangMapper extends BaseMapper<${className}Lang> {
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 @Service
 public class ${className}LangServiceImpl extends ServiceImpl<${className}LangMapper, ${className}Lang> implements ${className}LangService {

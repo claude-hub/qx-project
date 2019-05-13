@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 @Service
 public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {

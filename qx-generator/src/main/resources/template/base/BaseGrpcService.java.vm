@@ -17,7 +17,7 @@ import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 @GrpcService(${className}OuterClass.class)
 @AllArgsConstructor

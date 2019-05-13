@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 @Data
 public class ${className}UpdateInputDTO implements Serializable {

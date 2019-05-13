@@ -5,7 +5,7 @@ import lombok.Data;
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 @Data
 public class ${className}DTO extends ${className} {

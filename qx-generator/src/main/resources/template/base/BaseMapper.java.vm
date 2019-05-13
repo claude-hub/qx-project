@@ -5,7 +5,7 @@ import ${package}.${moduleName}.api.entity.${className};
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 public interface ${className}Mapper extends BaseMapper<${className}> {
 

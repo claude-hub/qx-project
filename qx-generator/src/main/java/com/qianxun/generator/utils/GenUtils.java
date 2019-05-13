@@ -175,9 +175,9 @@ public class GenUtils {
     //admin/provider/
     private static final String PROVIDER = "admin" + File.separator + "provider" + File.separator;
     //src/main/proto/
-    private static final String PROTO = "src" + File.separator + "admin" + File.separator + "proto" + File.separator;
-    //mapper.xml
-    private static final String MAPPER = "src" + File.separator + "admin" + File.separator + "resources" + File.separator;
+    private static final String PROTO = "src" + File.separator + "main" + File.separator + "proto" + File.separator;
+    //src/main/resources
+    private static final String MAPPER = "src" + File.separator + "main" + File.separator + "resources" + File.separator;
     //qx-use/
     private static final String QX_USER = "qx-user" + File.separator;
     //qx-user-api/
@@ -228,10 +228,10 @@ public class GenUtils {
             return apiPath + DTO + classname + File.separator + REQUEST + className + "QueryInputDTO.java";
         }
         if (template.contains("UpdateInputDTO.java.vm")) {
-            return apiPath + DTO + classname + File.separator + REQUEST + className + className + "UpdateInputDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + "UpdateInputDTO.java";
         }
         if (template.contains("ResponseDTO.java.vm")) {
-            return apiPath + DTO + classname + File.separator + REQUEST + className + className + "ResponseDTO.java";
+            return apiPath + DTO + classname + File.separator +"response" + File.separator + className + "ResponseDTO.java";
         }
 
         //服务提供者

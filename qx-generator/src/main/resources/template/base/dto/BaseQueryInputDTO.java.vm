@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * @author ${author}
- * Date ${datetime}
+ * ##Date ${datetime}
  */
 public class ${className}QueryInputDTO extends BaseQueryInputDTO implements Serializable{
 
