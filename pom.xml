@@ -8,7 +8,6 @@
     <version>1.0.0</version>
     <modules>
         <module>qx-config</module>
-        <module>qx-config-client</module>
         <module>qx-user</module>
         <module>qx-eureka</module>
         <module>qx-generator</module>
