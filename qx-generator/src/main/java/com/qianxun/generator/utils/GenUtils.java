@@ -166,8 +166,17 @@ public class GenUtils {
         if (template.contains("Controller.java.vm")) {
             return packagePath + "controller" + File.separator + className + "Controller.java";
         }
+        if (template.contains("ExtendDTO.java.vm")) {
+            return packagePath + "model" + File.separator + "extend" + File.separator + className + "DTO.java";
+        }
+        if (template.contains("LangEntity.java.vm")) {
+            return packagePath + "model" + File.separator + "entity" + File.separator + className + "Lang.java";
+        }
         if (template.contains("Entity.java.vm")) {
             return packagePath + "model" + File.separator + "entity" + File.separator + className + ".java";
+        }
+        if (template.contains("LangMapper.java.vm")) {
+            return packagePath + "mapper" + File.separator + className + "LangMapper.java";
         }
         if (template.contains("Mapper.java.vm")) {
             return packagePath + "mapper" + File.separator + className + "Mapper.java";
@@ -180,6 +189,12 @@ public class GenUtils {
         }
         if (template.contains("GrpcService.java.vm")) {
             return packagePath + "grpc" + File.separator + "service" + File.separator  + "Grpc"+ className + "Service.java";
+        }
+        if (template.contains("LangService.java.vm")) {
+            return packagePath + "service" + File.separator + className + "LangService.java";
+        }
+        if (template.contains("LangServiceImpl.java.vm")) {
+            return packagePath + "service" + File.separator + "impl" + File.separator + className + "LangServiceImpl.java";
         }
         if (template.contains("Service.java.vm")) {
             return packagePath + "service" + File.separator + className + "Service.java";
@@ -198,6 +213,9 @@ public class GenUtils {
         }
         if (template.contains("UpdateInputDTO.java.vm")) {
             return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
+        }
+        if (template.contains("ResponseDTO.java.vm")) {
+            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "response" + File.separator + className + "ResponseDTO.java";
         }
         if (template.contains("proto.vm")) {
             return packagePath + "proto" + File.separator + tableName + ".proto";

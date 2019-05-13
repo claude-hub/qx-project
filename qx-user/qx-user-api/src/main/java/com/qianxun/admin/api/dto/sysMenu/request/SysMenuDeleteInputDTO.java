@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.api.dto.${classname}.requset;
+package com.qianxun.admin.api.dto.sysMenu.request;
 
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotNull;
@@ -6,11 +6,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author ${author}
- * Date ${datetime}
+ * @author cloudy
+ * Date 2019-05-13 14:37:45
  */
 @Data
-public class ${className}DeleteInputDTO implements Serializable{
+public class SysMenuDeleteInputDTO implements Serializable{
     @NotNull(message = "id不能为空")
     @ApiModelProperty(value = "id", required = true)
     private Integer id;

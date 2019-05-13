@@ -63,11 +63,15 @@ public class GeneratorController {
     private static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
         templates.add("temp/model/entity/Entity.java.vm");
+        templates.add("temp/model/entity/LangEntity.java.vm");
         templates.add("temp/Mapper.java.vm");
         templates.add("temp/Mapper.xml.vm");
+        templates.add("temp/LangMapper.java.vm");
         templates.add("temp/Controller.java.vm");
         templates.add("temp/Service.java.vm");
         templates.add("temp/ServiceImpl.java.vm");
+        templates.add("temp/LangService.java.vm");
+        templates.add("temp/LangServiceImpl.java.vm");
         templates.add("temp/GrpcClient.java.vm");
         templates.add("temp/GrpcService.java.vm");
         templates.add("temp/proto.vm");
@@ -75,6 +79,8 @@ public class GeneratorController {
         templates.add("temp/model/dto/request/DeleteInputDTO.java.vm");
         templates.add("temp/model/dto/request/QueryInputDTO.java.vm");
         templates.add("temp/model/dto/request/UpdateInputDTO.java.vm");
+        templates.add("temp/model/dto/response/ResponseDTO.java.vm");
+        templates.add("temp/model/dto/extend/ExtendDTO.java.vm");
         return templates;
     }
 }

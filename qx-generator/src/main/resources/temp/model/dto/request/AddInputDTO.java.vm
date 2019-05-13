@@ -29,8 +29,8 @@ public class ${className}AddInputDTO implements Serializable {
                 #else
                 @ApiModelProperty(value = "$column.comments")
                 #end
-
             private ${column.attrType} $column.attrname;
+
             #end
         #end
     #end
