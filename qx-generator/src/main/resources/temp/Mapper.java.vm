@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ${package}.${moduleName}.api.dto.extend.${className}DTO;
 import ${package}.${moduleName}.api.dto.${classname}.request.${className}QueryInputDTO;
+import ${package}.${moduleName}.api.dto.${classname}.request.${className}SearchByIdDTO;
 import ${package}.${moduleName}.api.entity.${className};
 import org.apache.ibatis.annotations.Param;
 

@@ -9,17 +9,16 @@ import com.qianxun.admin.api.dto.sysRole.request.SysRoleSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysRole;
 
 /**
- * author: Claude
- * email: 314705487@qq.com
- * create date: 05/10/19 9:31
+ * @author Cloudy
+ * Date 2019-05-13 19:35:18
  */
 public interface SysRoleService extends IService<SysRole> {
 
     SysRoleDTO searchById(SysRoleSearchByIdDTO inputDTO);
 
-    Boolean saveRole(SysRoleDTO sysRoleDTO);
+    Boolean saveSysRole(SysRoleDTO sysRoleDTO);
 
-    IPage getRoles(Page page, SysRoleQueryInputDTO inputDTO);
+    IPage getSysRoles(Page page, SysRoleQueryInputDTO inputDTO);
 
-    Boolean updateRole(SysRoleDTO sysRoleDTO);
+    Boolean updateSysRole(SysRoleDTO sysRoleDTO);
 }

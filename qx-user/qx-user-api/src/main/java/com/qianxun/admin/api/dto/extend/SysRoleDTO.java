@@ -5,12 +5,12 @@ import lombok.Data;
 
 /**
  * @author Cloudy
- * Date: 2019/5/12 10:14
+ * Date 2019-05-13 19:35:18
  */
 @Data
 public class SysRoleDTO extends SysRole {
     /**
-     * 角色名
+     * 国际化名称
      */
     private String name;
 

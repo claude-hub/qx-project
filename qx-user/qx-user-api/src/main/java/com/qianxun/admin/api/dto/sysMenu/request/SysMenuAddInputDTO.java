@@ -1,18 +1,14 @@
 package com.qianxun.admin.api.dto.sysMenu.request;
 
-import java.util.Date;
-
 import lombok.Data;
-
 import javax.validation.constraints.NotNull;
-
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * Date 2019-05-13 14:37:45
  */
 @Data

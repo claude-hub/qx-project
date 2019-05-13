@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.qianxun.admin.api.entity.SysLang;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * @date 2019-05-07 21:51:21
  */
 

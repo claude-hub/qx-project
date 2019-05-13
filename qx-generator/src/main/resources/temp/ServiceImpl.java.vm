@@ -1,16 +1,17 @@
-package com.qianxun.admin.provider.service.impl;
+package ${package}.${moduleName}.provider.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qianxun.admin.api.dto.extend.${className}DTO;
-import com.qianxun.admin.api.dto.${classname}.request.${className}QueryInputDTO;
-import com.qianxun.admin.api.entity.${className};
-import com.qianxun.admin.api.entity.${className}Lang;
-import com.qianxun.admin.provider.mapper.${className}Mapper;
-import com.qianxun.admin.provider.service.${className}LangService;
-import com.qianxun.admin.provider.service.${className}Service;
+import ${package}.${moduleName}.api.dto.extend.${className}DTO;
+import ${package}.${moduleName}.api.dto.${classname}.request.${className}QueryInputDTO;
+import ${package}.${moduleName}.api.dto.${classname}.request.${className}SearchByIdDTO;
+import ${package}.${moduleName}.api.entity.${className};
+import ${package}.${moduleName}.api.entity.${className}Lang;
+import ${package}.${moduleName}.provider.mapper.${className}Mapper;
+import ${package}.${moduleName}.provider.service.${className}LangService;
+import ${package}.${moduleName}.provider.service.${className}Service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;

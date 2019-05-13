@@ -9,11 +9,10 @@ import java.util.List;
 
 /**
  * @author Cloudy
- * Date: 2019/5/9 20:59
+ * Date 2019-05-13 19:35:18
  */
-
 @Data
-public class SysRoleResponseDTO  implements Serializable {
+public class SysRoleResponseDTO implements Serializable {
     /**
      * 总记录数
      * 需要加上默认为0，避免传回前端连字段都没有

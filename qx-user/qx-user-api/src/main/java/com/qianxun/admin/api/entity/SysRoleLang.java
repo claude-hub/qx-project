@@ -8,10 +8,10 @@ import java.io.Serializable;
 
 /**
  * @author Cloudy
- * Date: 2019/5/12 10:27
+ * Date 2019-05-13 19:35:18
  */
 @Data
-public class SysRoleLang  implements Serializable {
+public class SysRoleLang implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 

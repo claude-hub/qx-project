@@ -8,7 +8,7 @@ import com.qianxun.admin.api.dto.sysMenu.request.SysMenuQueryInputDTO;
 import com.qianxun.admin.api.entity.SysMenu;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * Date 2019-05-13 14:37:45
  */
 public interface SysMenuService extends IService<SysMenu> {

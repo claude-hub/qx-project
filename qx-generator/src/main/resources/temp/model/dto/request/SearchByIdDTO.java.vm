@@ -3,7 +3,6 @@ package ${package}.${moduleName}.api.dto.sysRole.request;
 import ${package}.${moduleName}.api.dto.base.SearchByIdInputDTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
 import javax.validation.constraints.NotNull;
 
 /**

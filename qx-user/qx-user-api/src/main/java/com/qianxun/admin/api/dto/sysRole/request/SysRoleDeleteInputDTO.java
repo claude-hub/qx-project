@@ -6,10 +6,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * 
- *
- * @author cloudy
- * @date 2019-05-10 09:27:45
+ * @author Cloudy
+ * Date 2019-05-13 19:35:18
  */
 @Data
 public class SysRoleDeleteInputDTO implements Serializable{

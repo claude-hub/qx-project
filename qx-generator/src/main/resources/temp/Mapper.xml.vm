@@ -44,9 +44,9 @@ from ${tableName} LEFT JOIN ${tableName}_lang ON ${tableName}.id =
 
 <select id="searchById" resultMap="BaseResultMap">
     select
-    <include refid="roleWithLangSql"/>
+    <include refid="${classname}WithLangSql"/>
     <where>
-        AND ${tableName}.lang_id = #{inputDTO.langId} AND ${tableName}.deleted != -1
+        AND ${tableName}_lang.lang_id = #{inputDTO.langId} AND ${tableName}.deleted != -1
         AND ${tableName}.id = #{inputDTO.id}
     </where>
 </select>

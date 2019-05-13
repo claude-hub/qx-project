@@ -3,7 +3,6 @@ package ${package}.${moduleName}.api.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
-
 import java.io.Serializable;
 
 /**
@@ -15,7 +14,7 @@ public class ${className}Lang implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    private Integer ${className.substring(3)}Id;
+    private Integer ${className.substring(3).toLowerCase()}Id;
 
     private Integer langId;
 

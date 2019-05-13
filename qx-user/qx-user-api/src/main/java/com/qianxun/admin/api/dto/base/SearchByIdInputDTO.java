@@ -2,7 +2,6 @@ package com.qianxun.admin.api.dto.base;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 

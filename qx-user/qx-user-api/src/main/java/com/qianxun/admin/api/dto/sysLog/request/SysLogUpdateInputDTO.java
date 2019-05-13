@@ -7,14 +7,12 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 
 import io.swagger.annotations.ApiModelProperty;
-
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * Date 2019-05-13 17:03:04
  */
 @Data

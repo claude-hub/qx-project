@@ -7,7 +7,6 @@ import ${package}.${moduleName}.api.dto.extend.${className}DTO;
 import ${package}.${moduleName}.api.dto.${classname}.request.${className}SearchByIdDTO;
 import ${package}.${moduleName}.api.dto.${classname}.request.${className}QueryInputDTO;
 import ${package}.${moduleName}.api.dto.${classname}.response.${className}ResponseDTO;
-import ${package}.${moduleName}.api.entity.${className};
 import ${package}.${moduleName}.provider.service.${className}Service;
 import ${package}.common.utils.mapper.ProtoBufUtils;
 import ${package}.grpc.lib.${classname}.${className}OuterClass;

@@ -10,12 +10,12 @@ import com.qianxun.admin.api.entity.SysRole;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * author: Claude
- * email: 314705487@qq.com
- * create date: 05/10/19 9:30
+ * @author Cloudy
+ * Date 2019-05-13 19:35:18
  */
 public interface SysRoleMapper extends BaseMapper<SysRole> {
-    IPage getRolesWithLang(Page page, @Param("inputDTO")SysRoleQueryInputDTO inputDTO);
+   IPage getSysRolesWithLang(Page page, @Param("inputDTO") SysRoleQueryInputDTO inputDTO);
 
-    SysRoleDTO searchById(@Param("inputDTO")SysRoleSearchByIdDTO inputDTO);
+   SysRoleDTO searchById(@Param("inputDTO") SysRoleSearchByIdDTO inputDTO);
 }
+

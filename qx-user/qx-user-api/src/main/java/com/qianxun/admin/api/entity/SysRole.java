@@ -12,8 +12,8 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * @author cloudy
- * @date 2019-05-09 21:05:02
+ * @author Cloudy
+ * Date 2019-05-13 19:35:18
  */
 @Data
 public class SysRole implements Serializable {
@@ -39,7 +39,6 @@ public class SysRole implements Serializable {
     @Version
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedAt;
-
     /**
      * 1-正常，-1-删除
      */

@@ -5,14 +5,13 @@ import java.util.Date;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * @date 2019-05-13 00:37:19
  */
 @Data

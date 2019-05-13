@@ -8,7 +8,7 @@ import com.qianxun.admin.api.entity.SysMenu;
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * Date 2019-05-13 14:37:45
  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {

@@ -10,7 +10,7 @@ import net.devh.springboot.autoconfigure.grpc.client.GrpcClient;
 import org.springframework.stereotype.Service;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * Date 2019-05-13 14:37:45
  */
 @Service

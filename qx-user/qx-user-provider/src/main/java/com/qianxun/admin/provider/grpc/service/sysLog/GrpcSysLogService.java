@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * Date 2019-05-13 17:03:04
  */
 @GrpcService(SysLogOuterClass.class)

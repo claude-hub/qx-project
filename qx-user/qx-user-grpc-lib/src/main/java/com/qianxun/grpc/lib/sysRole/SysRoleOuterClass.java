@@ -1765,6 +1765,16 @@ public final class SysRoleOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>string role_code = 1;</code>
+     */
+    java.lang.String getRoleCode();
+    /**
+     * <code>string role_code = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getRoleCodeBytes();
+
+    /**
      * <code>int32 lang_id = 2;</code>
      */
     int getLangId();
@@ -1780,21 +1790,11 @@ public final class SysRoleOuterClass {
         getNameBytes();
 
     /**
-     * <code>string role_code = 4;</code>
-     */
-    java.lang.String getRoleCode();
-    /**
-     * <code>string role_code = 4;</code>
-     */
-    com.google.protobuf.ByteString
-        getRoleCodeBytes();
-
-    /**
-     * <code>string role_desc = 5;</code>
+     * <code>string role_desc = 4;</code>
      */
     java.lang.String getRoleDesc();
     /**
-     * <code>string role_desc = 5;</code>
+     * <code>string role_desc = 4;</code>
      */
     com.google.protobuf.ByteString
         getRoleDescBytes();
@@ -1816,8 +1816,8 @@ public final class SysRoleOuterClass {
       super(builder);
     }
     private BaseSysRole() {
-      name_ = "";
       roleCode_ = "";
+      name_ = "";
       roleDesc_ = "";
     }
 
@@ -1845,6 +1845,12 @@ public final class SysRoleOuterClass {
             case 0:
               done = true;
               break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              roleCode_ = s;
+              break;
+            }
             case 16: {
 
               langId_ = input.readInt32();
@@ -1857,12 +1863,6 @@ public final class SysRoleOuterClass {
               break;
             }
             case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              roleCode_ = s;
-              break;
-            }
-            case 42: {
               java.lang.String s = input.readStringRequireUtf8();
 
               roleDesc_ = s;
@@ -1898,6 +1898,40 @@ public final class SysRoleOuterClass {
       return com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.internal_static_sysRole_BaseSysRole_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole.class, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole.Builder.class);
+    }
+
+    public static final int ROLE_CODE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object roleCode_;
+    /**
+     * <code>string role_code = 1;</code>
+     */
+    public java.lang.String getRoleCode() {
+      java.lang.Object ref = roleCode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        roleCode_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string role_code = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getRoleCodeBytes() {
+      java.lang.Object ref = roleCode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        roleCode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int LANG_ID_FIELD_NUMBER = 2;
@@ -1943,44 +1977,10 @@ public final class SysRoleOuterClass {
       }
     }
 
-    public static final int ROLE_CODE_FIELD_NUMBER = 4;
-    private volatile java.lang.Object roleCode_;
-    /**
-     * <code>string role_code = 4;</code>
-     */
-    public java.lang.String getRoleCode() {
-      java.lang.Object ref = roleCode_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        roleCode_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string role_code = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getRoleCodeBytes() {
-      java.lang.Object ref = roleCode_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        roleCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int ROLE_DESC_FIELD_NUMBER = 5;
+    public static final int ROLE_DESC_FIELD_NUMBER = 4;
     private volatile java.lang.Object roleDesc_;
     /**
-     * <code>string role_desc = 5;</code>
+     * <code>string role_desc = 4;</code>
      */
     public java.lang.String getRoleDesc() {
       java.lang.Object ref = roleDesc_;
@@ -1995,7 +1995,7 @@ public final class SysRoleOuterClass {
       }
     }
     /**
-     * <code>string role_desc = 5;</code>
+     * <code>string role_desc = 4;</code>
      */
     public com.google.protobuf.ByteString
         getRoleDescBytes() {
@@ -2025,17 +2025,17 @@ public final class SysRoleOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!getRoleCodeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, roleCode_);
+      }
       if (langId_ != 0) {
         output.writeInt32(2, langId_);
       }
       if (!getNameBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
       }
-      if (!getRoleCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, roleCode_);
-      }
       if (!getRoleDescBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, roleDesc_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, roleDesc_);
       }
       unknownFields.writeTo(output);
     }
@@ -2046,6 +2046,9 @@ public final class SysRoleOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (!getRoleCodeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, roleCode_);
+      }
       if (langId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, langId_);
@@ -2053,11 +2056,8 @@ public final class SysRoleOuterClass {
       if (!getNameBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
       }
-      if (!getRoleCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, roleCode_);
-      }
       if (!getRoleDescBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, roleDesc_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, roleDesc_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2074,12 +2074,12 @@ public final class SysRoleOuterClass {
       }
       com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole other = (com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole) obj;
 
+      if (!getRoleCode()
+          .equals(other.getRoleCode())) return false;
       if (getLangId()
           != other.getLangId()) return false;
       if (!getName()
           .equals(other.getName())) return false;
-      if (!getRoleCode()
-          .equals(other.getRoleCode())) return false;
       if (!getRoleDesc()
           .equals(other.getRoleDesc())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -2093,12 +2093,12 @@ public final class SysRoleOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ROLE_CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getRoleCode().hashCode();
       hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
       hash = (53 * hash) + getLangId();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
-      hash = (37 * hash) + ROLE_CODE_FIELD_NUMBER;
-      hash = (53 * hash) + getRoleCode().hashCode();
       hash = (37 * hash) + ROLE_DESC_FIELD_NUMBER;
       hash = (53 * hash) + getRoleDesc().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -2238,11 +2238,11 @@ public final class SysRoleOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        roleCode_ = "";
+
         langId_ = 0;
 
         name_ = "";
-
-        roleCode_ = "";
 
         roleDesc_ = "";
 
@@ -2272,9 +2272,9 @@ public final class SysRoleOuterClass {
       @java.lang.Override
       public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole buildPartial() {
         com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole result = new com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole(this);
+        result.roleCode_ = roleCode_;
         result.langId_ = langId_;
         result.name_ = name_;
-        result.roleCode_ = roleCode_;
         result.roleDesc_ = roleDesc_;
         onBuilt();
         return result;
@@ -2324,15 +2324,15 @@ public final class SysRoleOuterClass {
 
       public Builder mergeFrom(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole other) {
         if (other == com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.BaseSysRole.getDefaultInstance()) return this;
+        if (!other.getRoleCode().isEmpty()) {
+          roleCode_ = other.roleCode_;
+          onChanged();
+        }
         if (other.getLangId() != 0) {
           setLangId(other.getLangId());
         }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
-          onChanged();
-        }
-        if (!other.getRoleCode().isEmpty()) {
-          roleCode_ = other.roleCode_;
           onChanged();
         }
         if (!other.getRoleDesc().isEmpty()) {
@@ -2365,6 +2365,75 @@ public final class SysRoleOuterClass {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private java.lang.Object roleCode_ = "";
+      /**
+       * <code>string role_code = 1;</code>
+       */
+      public java.lang.String getRoleCode() {
+        java.lang.Object ref = roleCode_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          roleCode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string role_code = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRoleCodeBytes() {
+        java.lang.Object ref = roleCode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          roleCode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string role_code = 1;</code>
+       */
+      public Builder setRoleCode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        roleCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string role_code = 1;</code>
+       */
+      public Builder clearRoleCode() {
+        
+        roleCode_ = getDefaultInstance().getRoleCode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string role_code = 1;</code>
+       */
+      public Builder setRoleCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        roleCode_ = value;
+        onChanged();
         return this;
       }
 
@@ -2463,78 +2532,9 @@ public final class SysRoleOuterClass {
         return this;
       }
 
-      private java.lang.Object roleCode_ = "";
-      /**
-       * <code>string role_code = 4;</code>
-       */
-      public java.lang.String getRoleCode() {
-        java.lang.Object ref = roleCode_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          roleCode_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string role_code = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getRoleCodeBytes() {
-        java.lang.Object ref = roleCode_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          roleCode_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string role_code = 4;</code>
-       */
-      public Builder setRoleCode(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        roleCode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string role_code = 4;</code>
-       */
-      public Builder clearRoleCode() {
-        
-        roleCode_ = getDefaultInstance().getRoleCode();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string role_code = 4;</code>
-       */
-      public Builder setRoleCodeBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        roleCode_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object roleDesc_ = "";
       /**
-       * <code>string role_desc = 5;</code>
+       * <code>string role_desc = 4;</code>
        */
       public java.lang.String getRoleDesc() {
         java.lang.Object ref = roleDesc_;
@@ -2549,7 +2549,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>string role_desc = 5;</code>
+       * <code>string role_desc = 4;</code>
        */
       public com.google.protobuf.ByteString
           getRoleDescBytes() {
@@ -2565,7 +2565,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>string role_desc = 5;</code>
+       * <code>string role_desc = 4;</code>
        */
       public Builder setRoleDesc(
           java.lang.String value) {
@@ -2578,7 +2578,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>string role_desc = 5;</code>
+       * <code>string role_desc = 4;</code>
        */
       public Builder clearRoleDesc() {
         
@@ -2587,7 +2587,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>string role_desc = 5;</code>
+       * <code>string role_desc = 4;</code>
        */
       public Builder setRoleDescBytes(
           com.google.protobuf.ByteString value) {
@@ -2663,70 +2663,70 @@ public final class SysRoleOuterClass {
     int getId();
 
     /**
-     * <code>int32 lang_id = 2;</code>
-     */
-    int getLangId();
-
-    /**
-     * <code>string name = 3;</code>
-     */
-    java.lang.String getName();
-    /**
-     * <code>string name = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getNameBytes();
-
-    /**
-     * <code>string role_code = 4;</code>
+     * <code>string role_code = 2;</code>
      */
     java.lang.String getRoleCode();
     /**
-     * <code>string role_code = 4;</code>
+     * <code>string role_code = 2;</code>
      */
     com.google.protobuf.ByteString
         getRoleCodeBytes();
 
     /**
-     * <code>string role_desc = 5;</code>
-     */
-    java.lang.String getRoleDesc();
-    /**
-     * <code>string role_desc = 5;</code>
-     */
-    com.google.protobuf.ByteString
-        getRoleDescBytes();
-
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
+     * <code>.google.protobuf.Timestamp created_at = 3;</code>
      */
     boolean hasCreatedAt();
     /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
+     * <code>.google.protobuf.Timestamp created_at = 3;</code>
      */
     com.google.protobuf.Timestamp getCreatedAt();
     /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
+     * <code>.google.protobuf.Timestamp created_at = 3;</code>
      */
     com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder();
 
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
      */
     boolean hasUpdatedAt();
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
      */
     com.google.protobuf.Timestamp getUpdatedAt();
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
      */
     com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
 
     /**
-     * <code>int32 deleted = 8;</code>
+     * <code>int32 deleted = 5;</code>
      */
     int getDeleted();
+
+    /**
+     * <code>int32 lang_id = 6;</code>
+     */
+    int getLangId();
+
+    /**
+     * <code>string name = 7;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 7;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
+
+    /**
+     * <code>string role_desc = 8;</code>
+     */
+    java.lang.String getRoleDesc();
+    /**
+     * <code>string role_desc = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getRoleDescBytes();
   }
   /**
    * Protobuf type {@code sysRole.SysRole}
@@ -2741,8 +2741,8 @@ public final class SysRoleOuterClass {
       super(builder);
     }
     private SysRole() {
-      name_ = "";
       roleCode_ = "";
+      name_ = "";
       roleDesc_ = "";
     }
 
@@ -2775,30 +2775,13 @@ public final class SysRoleOuterClass {
               id_ = input.readInt32();
               break;
             }
-            case 16: {
-
-              langId_ = input.readInt32();
-              break;
-            }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
-            case 34: {
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               roleCode_ = s;
               break;
             }
-            case 42: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              roleDesc_ = s;
-              break;
-            }
-            case 50: {
+            case 26: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (createdAt_ != null) {
                 subBuilder = createdAt_.toBuilder();
@@ -2811,7 +2794,7 @@ public final class SysRoleOuterClass {
 
               break;
             }
-            case 58: {
+            case 34: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (updatedAt_ != null) {
                 subBuilder = updatedAt_.toBuilder();
@@ -2824,9 +2807,26 @@ public final class SysRoleOuterClass {
 
               break;
             }
-            case 64: {
+            case 40: {
 
               deleted_ = input.readInt32();
+              break;
+            }
+            case 48: {
+
+              langId_ = input.readInt32();
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              roleDesc_ = s;
               break;
             }
             default: {
@@ -2870,53 +2870,10 @@ public final class SysRoleOuterClass {
       return id_;
     }
 
-    public static final int LANG_ID_FIELD_NUMBER = 2;
-    private int langId_;
-    /**
-     * <code>int32 lang_id = 2;</code>
-     */
-    public int getLangId() {
-      return langId_;
-    }
-
-    public static final int NAME_FIELD_NUMBER = 3;
-    private volatile java.lang.Object name_;
-    /**
-     * <code>string name = 3;</code>
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string name = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int ROLE_CODE_FIELD_NUMBER = 4;
+    public static final int ROLE_CODE_FIELD_NUMBER = 2;
     private volatile java.lang.Object roleCode_;
     /**
-     * <code>string role_code = 4;</code>
+     * <code>string role_code = 2;</code>
      */
     public java.lang.String getRoleCode() {
       java.lang.Object ref = roleCode_;
@@ -2931,7 +2888,7 @@ public final class SysRoleOuterClass {
       }
     }
     /**
-     * <code>string role_code = 4;</code>
+     * <code>string role_code = 2;</code>
      */
     public com.google.protobuf.ByteString
         getRoleCodeBytes() {
@@ -2947,10 +2904,104 @@ public final class SysRoleOuterClass {
       }
     }
 
-    public static final int ROLE_DESC_FIELD_NUMBER = 5;
+    public static final int CREATED_AT_FIELD_NUMBER = 3;
+    private com.google.protobuf.Timestamp createdAt_;
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 3;</code>
+     */
+    public boolean hasCreatedAt() {
+      return createdAt_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 3;</code>
+     */
+    public com.google.protobuf.Timestamp getCreatedAt() {
+      return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 3;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
+      return getCreatedAt();
+    }
+
+    public static final int UPDATED_AT_FIELD_NUMBER = 4;
+    private com.google.protobuf.Timestamp updatedAt_;
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+     */
+    public boolean hasUpdatedAt() {
+      return updatedAt_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+     */
+    public com.google.protobuf.Timestamp getUpdatedAt() {
+      return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 4;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
+      return getUpdatedAt();
+    }
+
+    public static final int DELETED_FIELD_NUMBER = 5;
+    private int deleted_;
+    /**
+     * <code>int32 deleted = 5;</code>
+     */
+    public int getDeleted() {
+      return deleted_;
+    }
+
+    public static final int LANG_ID_FIELD_NUMBER = 6;
+    private int langId_;
+    /**
+     * <code>int32 lang_id = 6;</code>
+     */
+    public int getLangId() {
+      return langId_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 7;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 7;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 7;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ROLE_DESC_FIELD_NUMBER = 8;
     private volatile java.lang.Object roleDesc_;
     /**
-     * <code>string role_desc = 5;</code>
+     * <code>string role_desc = 8;</code>
      */
     public java.lang.String getRoleDesc() {
       java.lang.Object ref = roleDesc_;
@@ -2965,7 +3016,7 @@ public final class SysRoleOuterClass {
       }
     }
     /**
-     * <code>string role_desc = 5;</code>
+     * <code>string role_desc = 8;</code>
      */
     public com.google.protobuf.ByteString
         getRoleDescBytes() {
@@ -2979,57 +3030,6 @@ public final class SysRoleOuterClass {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
-    }
-
-    public static final int CREATED_AT_FIELD_NUMBER = 6;
-    private com.google.protobuf.Timestamp createdAt_;
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
-     */
-    public boolean hasCreatedAt() {
-      return createdAt_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
-     */
-    public com.google.protobuf.Timestamp getCreatedAt() {
-      return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
-      return getCreatedAt();
-    }
-
-    public static final int UPDATED_AT_FIELD_NUMBER = 7;
-    private com.google.protobuf.Timestamp updatedAt_;
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
-     */
-    public boolean hasUpdatedAt() {
-      return updatedAt_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
-     */
-    public com.google.protobuf.Timestamp getUpdatedAt() {
-      return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
-      return getUpdatedAt();
-    }
-
-    public static final int DELETED_FIELD_NUMBER = 8;
-    private int deleted_;
-    /**
-     * <code>int32 deleted = 8;</code>
-     */
-    public int getDeleted() {
-      return deleted_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3049,26 +3049,26 @@ public final class SysRoleOuterClass {
       if (id_ != 0) {
         output.writeInt32(1, id_);
       }
-      if (langId_ != 0) {
-        output.writeInt32(2, langId_);
-      }
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
-      }
       if (!getRoleCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, roleCode_);
-      }
-      if (!getRoleDescBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, roleDesc_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, roleCode_);
       }
       if (createdAt_ != null) {
-        output.writeMessage(6, getCreatedAt());
+        output.writeMessage(3, getCreatedAt());
       }
       if (updatedAt_ != null) {
-        output.writeMessage(7, getUpdatedAt());
+        output.writeMessage(4, getUpdatedAt());
       }
       if (deleted_ != 0) {
-        output.writeInt32(8, deleted_);
+        output.writeInt32(5, deleted_);
+      }
+      if (langId_ != 0) {
+        output.writeInt32(6, langId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, name_);
+      }
+      if (!getRoleDescBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, roleDesc_);
       }
       unknownFields.writeTo(output);
     }
@@ -3083,30 +3083,30 @@ public final class SysRoleOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      if (langId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, langId_);
-      }
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
-      }
       if (!getRoleCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, roleCode_);
-      }
-      if (!getRoleDescBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, roleDesc_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, roleCode_);
       }
       if (createdAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getCreatedAt());
+          .computeMessageSize(3, getCreatedAt());
       }
       if (updatedAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, getUpdatedAt());
+          .computeMessageSize(4, getUpdatedAt());
       }
       if (deleted_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, deleted_);
+          .computeInt32Size(5, deleted_);
+      }
+      if (langId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, langId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, name_);
+      }
+      if (!getRoleDescBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, roleDesc_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3125,14 +3125,8 @@ public final class SysRoleOuterClass {
 
       if (getId()
           != other.getId()) return false;
-      if (getLangId()
-          != other.getLangId()) return false;
-      if (!getName()
-          .equals(other.getName())) return false;
       if (!getRoleCode()
           .equals(other.getRoleCode())) return false;
-      if (!getRoleDesc()
-          .equals(other.getRoleDesc())) return false;
       if (hasCreatedAt() != other.hasCreatedAt()) return false;
       if (hasCreatedAt()) {
         if (!getCreatedAt()
@@ -3145,6 +3139,12 @@ public final class SysRoleOuterClass {
       }
       if (getDeleted()
           != other.getDeleted()) return false;
+      if (getLangId()
+          != other.getLangId()) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!getRoleDesc()
+          .equals(other.getRoleDesc())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3158,14 +3158,8 @@ public final class SysRoleOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId();
-      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getLangId();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + ROLE_CODE_FIELD_NUMBER;
       hash = (53 * hash) + getRoleCode().hashCode();
-      hash = (37 * hash) + ROLE_DESC_FIELD_NUMBER;
-      hash = (53 * hash) + getRoleDesc().hashCode();
       if (hasCreatedAt()) {
         hash = (37 * hash) + CREATED_AT_FIELD_NUMBER;
         hash = (53 * hash) + getCreatedAt().hashCode();
@@ -3176,6 +3170,12 @@ public final class SysRoleOuterClass {
       }
       hash = (37 * hash) + DELETED_FIELD_NUMBER;
       hash = (53 * hash) + getDeleted();
+      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getLangId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (37 * hash) + ROLE_DESC_FIELD_NUMBER;
+      hash = (53 * hash) + getRoleDesc().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3311,13 +3311,7 @@ public final class SysRoleOuterClass {
         super.clear();
         id_ = 0;
 
-        langId_ = 0;
-
-        name_ = "";
-
         roleCode_ = "";
-
-        roleDesc_ = "";
 
         if (createdAtBuilder_ == null) {
           createdAt_ = null;
@@ -3332,6 +3326,12 @@ public final class SysRoleOuterClass {
           updatedAtBuilder_ = null;
         }
         deleted_ = 0;
+
+        langId_ = 0;
+
+        name_ = "";
+
+        roleDesc_ = "";
 
         return this;
       }
@@ -3360,10 +3360,7 @@ public final class SysRoleOuterClass {
       public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole buildPartial() {
         com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole result = new com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole(this);
         result.id_ = id_;
-        result.langId_ = langId_;
-        result.name_ = name_;
         result.roleCode_ = roleCode_;
-        result.roleDesc_ = roleDesc_;
         if (createdAtBuilder_ == null) {
           result.createdAt_ = createdAt_;
         } else {
@@ -3375,6 +3372,9 @@ public final class SysRoleOuterClass {
           result.updatedAt_ = updatedAtBuilder_.build();
         }
         result.deleted_ = deleted_;
+        result.langId_ = langId_;
+        result.name_ = name_;
+        result.roleDesc_ = roleDesc_;
         onBuilt();
         return result;
       }
@@ -3426,19 +3426,8 @@ public final class SysRoleOuterClass {
         if (other.getId() != 0) {
           setId(other.getId());
         }
-        if (other.getLangId() != 0) {
-          setLangId(other.getLangId());
-        }
-        if (!other.getName().isEmpty()) {
-          name_ = other.name_;
-          onChanged();
-        }
         if (!other.getRoleCode().isEmpty()) {
           roleCode_ = other.roleCode_;
-          onChanged();
-        }
-        if (!other.getRoleDesc().isEmpty()) {
-          roleDesc_ = other.roleDesc_;
           onChanged();
         }
         if (other.hasCreatedAt()) {
@@ -3449,6 +3438,17 @@ public final class SysRoleOuterClass {
         }
         if (other.getDeleted() != 0) {
           setDeleted(other.getDeleted());
+        }
+        if (other.getLangId() != 0) {
+          setLangId(other.getLangId());
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        if (!other.getRoleDesc().isEmpty()) {
+          roleDesc_ = other.roleDesc_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3505,104 +3505,9 @@ public final class SysRoleOuterClass {
         return this;
       }
 
-      private int langId_ ;
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public int getLangId() {
-        return langId_;
-      }
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public Builder setLangId(int value) {
-        
-        langId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public Builder clearLangId() {
-        
-        langId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private java.lang.Object name_ = "";
-      /**
-       * <code>string name = 3;</code>
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string name = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string name = 3;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 3;</code>
-       */
-      public Builder clearName() {
-        
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 3;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        name_ = value;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object roleCode_ = "";
       /**
-       * <code>string role_code = 4;</code>
+       * <code>string role_code = 2;</code>
        */
       public java.lang.String getRoleCode() {
         java.lang.Object ref = roleCode_;
@@ -3617,7 +3522,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>string role_code = 4;</code>
+       * <code>string role_code = 2;</code>
        */
       public com.google.protobuf.ByteString
           getRoleCodeBytes() {
@@ -3633,7 +3538,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>string role_code = 4;</code>
+       * <code>string role_code = 2;</code>
        */
       public Builder setRoleCode(
           java.lang.String value) {
@@ -3646,7 +3551,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>string role_code = 4;</code>
+       * <code>string role_code = 2;</code>
        */
       public Builder clearRoleCode() {
         
@@ -3655,7 +3560,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>string role_code = 4;</code>
+       * <code>string role_code = 2;</code>
        */
       public Builder setRoleCodeBytes(
           com.google.protobuf.ByteString value) {
@@ -3669,86 +3574,17 @@ public final class SysRoleOuterClass {
         return this;
       }
 
-      private java.lang.Object roleDesc_ = "";
-      /**
-       * <code>string role_desc = 5;</code>
-       */
-      public java.lang.String getRoleDesc() {
-        java.lang.Object ref = roleDesc_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          roleDesc_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string role_desc = 5;</code>
-       */
-      public com.google.protobuf.ByteString
-          getRoleDescBytes() {
-        java.lang.Object ref = roleDesc_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          roleDesc_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string role_desc = 5;</code>
-       */
-      public Builder setRoleDesc(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        roleDesc_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string role_desc = 5;</code>
-       */
-      public Builder clearRoleDesc() {
-        
-        roleDesc_ = getDefaultInstance().getRoleDesc();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string role_desc = 5;</code>
-       */
-      public Builder setRoleDescBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        roleDesc_ = value;
-        onChanged();
-        return this;
-      }
-
       private com.google.protobuf.Timestamp createdAt_;
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> createdAtBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       public boolean hasCreatedAt() {
         return createdAtBuilder_ != null || createdAt_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       public com.google.protobuf.Timestamp getCreatedAt() {
         if (createdAtBuilder_ == null) {
@@ -3758,7 +3594,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       public Builder setCreatedAt(com.google.protobuf.Timestamp value) {
         if (createdAtBuilder_ == null) {
@@ -3774,7 +3610,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       public Builder setCreatedAt(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -3788,7 +3624,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       public Builder mergeCreatedAt(com.google.protobuf.Timestamp value) {
         if (createdAtBuilder_ == null) {
@@ -3806,7 +3642,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       public Builder clearCreatedAt() {
         if (createdAtBuilder_ == null) {
@@ -3820,7 +3656,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       public com.google.protobuf.Timestamp.Builder getCreatedAtBuilder() {
         
@@ -3828,7 +3664,7 @@ public final class SysRoleOuterClass {
         return getCreatedAtFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
         if (createdAtBuilder_ != null) {
@@ -3839,7 +3675,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -3859,13 +3695,13 @@ public final class SysRoleOuterClass {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> updatedAtBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       public boolean hasUpdatedAt() {
         return updatedAtBuilder_ != null || updatedAt_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       public com.google.protobuf.Timestamp getUpdatedAt() {
         if (updatedAtBuilder_ == null) {
@@ -3875,7 +3711,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       public Builder setUpdatedAt(com.google.protobuf.Timestamp value) {
         if (updatedAtBuilder_ == null) {
@@ -3891,7 +3727,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       public Builder setUpdatedAt(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -3905,7 +3741,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       public Builder mergeUpdatedAt(com.google.protobuf.Timestamp value) {
         if (updatedAtBuilder_ == null) {
@@ -3923,7 +3759,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       public Builder clearUpdatedAt() {
         if (updatedAtBuilder_ == null) {
@@ -3937,7 +3773,7 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       public com.google.protobuf.Timestamp.Builder getUpdatedAtBuilder() {
         
@@ -3945,7 +3781,7 @@ public final class SysRoleOuterClass {
         return getUpdatedAtFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
         if (updatedAtBuilder_ != null) {
@@ -3956,7 +3792,7 @@ public final class SysRoleOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -3974,13 +3810,13 @@ public final class SysRoleOuterClass {
 
       private int deleted_ ;
       /**
-       * <code>int32 deleted = 8;</code>
+       * <code>int32 deleted = 5;</code>
        */
       public int getDeleted() {
         return deleted_;
       }
       /**
-       * <code>int32 deleted = 8;</code>
+       * <code>int32 deleted = 5;</code>
        */
       public Builder setDeleted(int value) {
         
@@ -3989,11 +3825,175 @@ public final class SysRoleOuterClass {
         return this;
       }
       /**
-       * <code>int32 deleted = 8;</code>
+       * <code>int32 deleted = 5;</code>
        */
       public Builder clearDeleted() {
         
         deleted_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int langId_ ;
+      /**
+       * <code>int32 lang_id = 6;</code>
+       */
+      public int getLangId() {
+        return langId_;
+      }
+      /**
+       * <code>int32 lang_id = 6;</code>
+       */
+      public Builder setLangId(int value) {
+        
+        langId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 lang_id = 6;</code>
+       */
+      public Builder clearLangId() {
+        
+        langId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 7;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 7;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 7;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 7;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 7;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object roleDesc_ = "";
+      /**
+       * <code>string role_desc = 8;</code>
+       */
+      public java.lang.String getRoleDesc() {
+        java.lang.Object ref = roleDesc_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          roleDesc_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string role_desc = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getRoleDescBytes() {
+        java.lang.Object ref = roleDesc_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          roleDesc_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string role_desc = 8;</code>
+       */
+      public Builder setRoleDesc(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        roleDesc_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string role_desc = 8;</code>
+       */
+      public Builder clearRoleDesc() {
+        
+        roleDesc_ = getDefaultInstance().getRoleDesc();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string role_desc = 8;</code>
+       */
+      public Builder setRoleDescBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        roleDesc_ = value;
         onChanged();
         return this;
       }
@@ -4940,14 +4940,14 @@ public final class SysRoleOuterClass {
       "\005\022\017\n\007lang_id\030\002 \001(\005\"M\n\nGetListReq\022\017\n\007lang" +
       "_id\030\001 \001(\005\022\r\n\005query\030\002 \001(\t\022\021\n\tpage_size\030\003 " +
       "\001(\005\022\014\n\004page\030\004 \001(\005\"\031\n\006Result\022\017\n\007success\030\001" +
-      " \001(\010\"R\n\013BaseSysRole\022\017\n\007lang_id\030\002 \001(\005\022\014\n\004" +
-      "name\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\022\021\n\trole_de" +
-      "sc\030\005 \001(\t\"\313\001\n\007SysRole\022\n\n\002id\030\001 \001(\005\022\017\n\007lang" +
-      "_id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\021\n\trole_code\030\004 \001" +
-      "(\t\022\021\n\trole_desc\030\005 \001(\t\022.\n\ncreated_at\030\006 \001(" +
-      "\0132\032.google.protobuf.Timestamp\022.\n\nupdated" +
-      "_at\030\007 \001(\0132\032.google.protobuf.Timestamp\022\017\n" +
-      "\007deleted\030\010 \001(\005\">\n\010PageList\022\r\n\005total\030\001 \001(" +
+      " \001(\010\"R\n\013BaseSysRole\022\021\n\trole_code\030\001 \001(\t\022\017" +
+      "\n\007lang_id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\021\n\trole_de" +
+      "sc\030\004 \001(\t\"\313\001\n\007SysRole\022\n\n\002id\030\001 \001(\005\022\021\n\trole" +
+      "_code\030\002 \001(\t\022.\n\ncreated_at\030\003 \001(\0132\032.google" +
+      ".protobuf.Timestamp\022.\n\nupdated_at\030\004 \001(\0132" +
+      "\032.google.protobuf.Timestamp\022\017\n\007deleted\030\005" +
+      " \001(\005\022\017\n\007lang_id\030\006 \001(\005\022\014\n\004name\030\007 \001(\t\022\021\n\tr" +
+      "ole_desc\030\010 \001(\t\">\n\010PageList\022\r\n\005total\030\001 \001(" +
       "\005\022#\n\tsys_roles\030\002 \003(\0132\020.sysRole.SysRole2\207" +
       "\002\n\016SysRoleService\022/\n\007GetById\022\020.sysRole.B" +
       "yIdReq\032\020.sysRole.SysRole\"\000\0223\n\007GetList\022\023." +
@@ -4994,13 +4994,13 @@ public final class SysRoleOuterClass {
     internal_static_sysRole_BaseSysRole_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_BaseSysRole_descriptor,
-        new java.lang.String[] { "LangId", "Name", "RoleCode", "RoleDesc", });
+        new java.lang.String[] { "RoleCode", "LangId", "Name", "RoleDesc", });
     internal_static_sysRole_SysRole_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_sysRole_SysRole_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_SysRole_descriptor,
-        new java.lang.String[] { "Id", "LangId", "Name", "RoleCode", "RoleDesc", "CreatedAt", "UpdatedAt", "Deleted", });
+        new java.lang.String[] { "Id", "RoleCode", "CreatedAt", "UpdatedAt", "Deleted", "LangId", "Name", "RoleDesc", });
     internal_static_sysRole_PageList_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_sysRole_PageList_fieldAccessorTable = new

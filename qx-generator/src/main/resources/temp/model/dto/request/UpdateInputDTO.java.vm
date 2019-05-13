@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.api.dto.${classname}.requset;
+package ${package}.${moduleName}.api.dto.${classname}.request;
 
 import java.util.Date;
 import lombok.Data;
@@ -23,13 +23,13 @@ public class ${className}UpdateInputDTO implements Serializable {
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
             @ApiModelProperty(value = "$column.comments", required = true)
             #else
-                #if($column.nullable == "NO")
+                #if($column.columnName == $pk.columnName)
                     #if($column.attrType == "Integer" || $column.attrType == "Long")
-                    @NotNull(message = "${column.comments}不能为空")
+                    @NotNull(message = "主键不能为空")
                     #else
-                    @NotBlank(message = "${column.comments}不能为空")
+                    @NotBlank(message = "主键不能为空")
                     #end
-                @ApiModelProperty(value = "$column.comments", required = true)
+                @ApiModelProperty(value = "主键ID", required = true)
                 #else
                 @ApiModelProperty(value = "$column.comments")
                 #end
@@ -42,7 +42,6 @@ public class ${className}UpdateInputDTO implements Serializable {
     @ApiModelProperty(value = "语言id", required = true)
     private Integer langId;
 
-    @NotBlank(message = "${className}名称不能为空")
-    @ApiModelProperty(value = "${className}名称", required = true)
+    @ApiModelProperty(value = "${className}名称")
     private String name;
 }

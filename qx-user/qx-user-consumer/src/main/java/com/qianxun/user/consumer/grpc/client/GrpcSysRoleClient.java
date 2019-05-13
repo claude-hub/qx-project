@@ -1,7 +1,7 @@
 package com.qianxun.user.consumer.grpc.client;
 
-import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
+import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysRole.SysRoleOuterClass;
 import com.qianxun.grpc.lib.sysRole.SysRoleServiceGrpc;
@@ -11,38 +11,38 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author Cloudy
- * Date: 2019/5/7 22:14
+ * Date 2019-05-13 19:35:18
  */
 @Service
 public class GrpcSysRoleClient {
     @GrpcClient("qx-user-provider")
     private Channel serverChannel;
 
-    public SysRoleDTO getRoleById(SysRoleOuterClass.ByIdReq getByIdReq) {
+    public SysRoleDTO getSysRoleById(SysRoleOuterClass.ByIdReq getByIdReq) {
         SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
         SysRoleOuterClass.SysRole res = stub.getById(getByIdReq);
         return ProtoBufUtils.fromProtoBuffer(res, SysRoleDTO.class);
     }
 
-    public SysRoleResponseDTO getRoleList(SysRoleOuterClass.GetListReq getListReq) {
+    public SysRoleResponseDTO getSysRoleList(SysRoleOuterClass.GetListReq getListReq) {
         SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
         SysRoleOuterClass.PageList pageList = stub.getList(getListReq);
         return ProtoBufUtils.fromProtoBuffer(pageList, SysRoleResponseDTO.class);
     }
 
-    public Boolean addRole(SysRoleOuterClass.BaseSysRole baseSysRole) {
+    public Boolean addSysRole(SysRoleOuterClass.BaseSysRole baseSysRole) {
         SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
         SysRoleOuterClass.Result res = stub.insert(baseSysRole);
         return res.getSuccess();
     }
 
-    public Boolean updateRole(SysRoleOuterClass.SysRole role) {
+    public Boolean updateSysRole(SysRoleOuterClass.SysRole role) {
         SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
         SysRoleOuterClass.Result res = stub.update(role);
         return res.getSuccess();
     }
 
-    public Boolean deleteRole(SysRoleOuterClass.ByIdReq req) {
+    public Boolean deleteSysRole(SysRoleOuterClass.ByIdReq req) {
         SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
         SysRoleOuterClass.Result res = stub.delete(req);
         return res.getSuccess();

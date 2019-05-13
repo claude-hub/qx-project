@@ -1,16 +1,11 @@
 package com.qianxun.admin.provider.grpc.service;
 
-/**
- * @author Cloudy
- * Date: 2019/5/7 21:58
- */
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.extend.SysRoleDTO;
-import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleSearchByIdDTO;
+import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
 import com.qianxun.admin.provider.service.SysRoleService;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
@@ -20,7 +15,10 @@ import io.grpc.stub.StreamObserver;
 import lombok.AllArgsConstructor;
 import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
-
+/**
+ * @author Cloudy
+ * Date 2019-05-13 19:35:18
+ */
 @GrpcService(SysRoleOuterClass.class)
 @AllArgsConstructor
 public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBase {
@@ -42,7 +40,7 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
                         StreamObserver<SysRoleOuterClass.PageList> responseObserver) {
         SysRoleQueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysRoleQueryInputDTO.class);
         Page page = new Page(inputDTO.getPage(),inputDTO.getPageSize());
-        IPage pageList = sysRoleService.getRoles(page, inputDTO);
+        IPage pageList = sysRoleService.getSysRoles(page, inputDTO);
         SysRoleResponseDTO dto = new SysRoleResponseDTO();
         dto.setTotal((int) pageList.getTotal());
         dto.setSysRoles(pageList.getRecords());
@@ -55,7 +53,7 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
     public void insert(SysRoleOuterClass.BaseSysRole request,
                        StreamObserver<SysRoleOuterClass.Result> responseObserver) {
         SysRoleDTO sysRoleDTO = ProtoBufUtils.fromProtoBuffer(request, SysRoleDTO.class);
-        responseDTO.setSuccess(sysRoleService.saveRole(sysRoleDTO));
+        responseDTO.setSuccess(sysRoleService.saveSysRole(sysRoleDTO));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysRoleOuterClass.Result.class));
         responseObserver.onCompleted();
     }
@@ -64,7 +62,7 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
     public void update(SysRoleOuterClass.SysRole request,
                        StreamObserver<SysRoleOuterClass.Result> responseObserver) {
         SysRoleDTO sysRoleDTO = ProtoBufUtils.fromProtoBuffer(request, SysRoleDTO.class);
-        responseDTO.setSuccess(sysRoleService.updateRole(sysRoleDTO));
+        responseDTO.setSuccess(sysRoleService.updateSysRole(sysRoleDTO));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysRoleOuterClass.Result.class));
         responseObserver.onCompleted();
     }

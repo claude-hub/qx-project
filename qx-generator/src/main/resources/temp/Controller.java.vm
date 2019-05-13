@@ -27,9 +27,9 @@ public class ${className}Controller {
     * @return
     */
     @GetMapping(value = "/{id}")
-    public JSONResult get${className}Id(@Valid ${className}SearchByIdDTO inputDTO) {
+    public JSONResult get${className}Id(@Valid ${className}SearchByIdDTO input) {
         JSONResult result = new JSONResult();
-        ${className}OuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(inputDTO, ${className}OuterClass.ByIdReq.class);
+        ${className}OuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, ${className}OuterClass.ByIdReq.class);
         ${className}DTO ${classname}DTO = grpc${className}Client.get${className}ById(getByIdReq);
         result.setData(${classname}DTO.getId() != null ? ${classname}DTO : "");
         return result;

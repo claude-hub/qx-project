@@ -5,7 +5,7 @@ import com.qianxun.admin.api.dto.base.BaseQueryInputDTO;
 import java.io.Serializable;
 
 /**
- * @author cloudy
+ * @author Cloudy
  * Date 2019-05-13 17:03:04
  */
 public class SysLogQueryInputDTO extends BaseQueryInputDTO implements Serializable {
