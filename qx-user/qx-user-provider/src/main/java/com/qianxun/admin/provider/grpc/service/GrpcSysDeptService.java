@@ -1,17 +1,12 @@
 package com.qianxun.admin.provider.grpc.service;
 
-/**
- * @author Cloudy
- * Date: 2019-05-13 00:37:19
- */
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.extend.SysDeptDTO;
+import com.qianxun.admin.api.dto.sysDept.request.SysDeptSearchByIdDTO;
 import com.qianxun.admin.api.dto.sysDept.request.SysDeptQueryInputDTO;
 import com.qianxun.admin.api.dto.sysDept.response.SysDeptResponseDTO;
-import com.qianxun.admin.api.entity.SysDept;
 import com.qianxun.admin.provider.service.SysDeptService;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysDept.SysDeptOuterClass;
@@ -22,7 +17,7 @@ import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
 /**
  * @author Cloudy
- * Date: 2019-05-13 00:37:19
+ * Date 2019-05-13 22:13:53
  */
 @GrpcService(SysDeptOuterClass.class)
 @AllArgsConstructor
@@ -33,8 +28,9 @@ public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBas
     @Override
     public void getById(SysDeptOuterClass.ByIdReq request,
                         StreamObserver<SysDeptOuterClass.SysDept> responseObserver) {
-        SysDept sysDept = sysDeptService.getById(request.getId());
-        SysDeptOuterClass.SysDept res = ProtoBufUtils.toProtoBuffer(sysDept, SysDeptOuterClass.SysDept.class);
+        SysDeptSearchByIdDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysDeptSearchByIdDTO.class);
+        SysDeptDTO sysDeptDTO = sysDeptService.searchById(inputDTO);
+        SysDeptOuterClass.SysDept res = ProtoBufUtils.toProtoBuffer(sysDeptDTO, SysDeptOuterClass.SysDept.class);
         responseObserver.onNext(res);
         responseObserver.onCompleted();
     }
@@ -43,7 +39,7 @@ public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBas
     public void getList(SysDeptOuterClass.GetListReq request,
                         StreamObserver<SysDeptOuterClass.PageList> responseObserver) {
         SysDeptQueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysDeptQueryInputDTO.class);
-        Page page = new Page(inputDTO.getPage(), inputDTO.getPageSize());
+        Page page = new Page(inputDTO.getPage(),inputDTO.getPageSize());
         IPage pageList = sysDeptService.getSysDepts(page, inputDTO);
         SysDeptResponseDTO dto = new SysDeptResponseDTO();
         dto.setTotal((int) pageList.getTotal());

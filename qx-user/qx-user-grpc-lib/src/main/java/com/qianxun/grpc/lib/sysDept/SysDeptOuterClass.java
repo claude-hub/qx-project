@@ -22,6 +22,11 @@ public final class SysDeptOuterClass {
      * <code>int32 id = 1;</code>
      */
     int getId();
+
+    /**
+     * <code>int32 lang_id = 2;</code>
+     */
+    int getLangId();
   }
   /**
    * Protobuf type {@code sysDept.ByIdReq}
@@ -67,6 +72,11 @@ public final class SysDeptOuterClass {
               id_ = input.readInt32();
               break;
             }
+            case 16: {
+
+              langId_ = input.readInt32();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -108,6 +118,15 @@ public final class SysDeptOuterClass {
       return id_;
     }
 
+    public static final int LANG_ID_FIELD_NUMBER = 2;
+    private int langId_;
+    /**
+     * <code>int32 lang_id = 2;</code>
+     */
+    public int getLangId() {
+      return langId_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -125,6 +144,9 @@ public final class SysDeptOuterClass {
       if (id_ != 0) {
         output.writeInt32(1, id_);
       }
+      if (langId_ != 0) {
+        output.writeInt32(2, langId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -137,6 +159,10 @@ public final class SysDeptOuterClass {
       if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
+      }
+      if (langId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, langId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -155,6 +181,8 @@ public final class SysDeptOuterClass {
 
       if (getId()
           != other.getId()) return false;
+      if (getLangId()
+          != other.getLangId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -168,6 +196,8 @@ public final class SysDeptOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId();
+      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getLangId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -303,6 +333,8 @@ public final class SysDeptOuterClass {
         super.clear();
         id_ = 0;
 
+        langId_ = 0;
+
         return this;
       }
 
@@ -330,6 +362,7 @@ public final class SysDeptOuterClass {
       public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq buildPartial() {
         com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq result = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq(this);
         result.id_ = id_;
+        result.langId_ = langId_;
         onBuilt();
         return result;
       }
@@ -380,6 +413,9 @@ public final class SysDeptOuterClass {
         if (other == com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.getDefaultInstance()) return this;
         if (other.getId() != 0) {
           setId(other.getId());
+        }
+        if (other.getLangId() != 0) {
+          setLangId(other.getLangId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -432,6 +468,32 @@ public final class SysDeptOuterClass {
       public Builder clearId() {
         
         id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int langId_ ;
+      /**
+       * <code>int32 lang_id = 2;</code>
+       */
+      public int getLangId() {
+        return langId_;
+      }
+      /**
+       * <code>int32 lang_id = 2;</code>
+       */
+      public Builder setLangId(int value) {
+        
+        langId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 lang_id = 2;</code>
+       */
+      public Builder clearLangId() {
+        
+        langId_ = 0;
         onChanged();
         return this;
       }
@@ -1703,26 +1765,26 @@ public final class SysDeptOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 parent_id = 1;</code>
+     * <code>int32 parent_id = 2;</code>
      */
     int getParentId();
 
     /**
-     * <code>int32 sort = 2;</code>
+     * <code>int32 sort = 3;</code>
      */
     int getSort();
 
     /**
-     * <code>int32 lang_id = 3;</code>
+     * <code>int32 lang_id = 7;</code>
      */
     int getLangId();
 
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 8;</code>
      */
     java.lang.String getName();
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 8;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -1771,22 +1833,22 @@ public final class SysDeptOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 16: {
 
               parentId_ = input.readInt32();
               break;
             }
-            case 16: {
+            case 24: {
 
               sort_ = input.readInt32();
               break;
             }
-            case 24: {
+            case 56: {
 
               langId_ = input.readInt32();
               break;
             }
-            case 34: {
+            case 66: {
               java.lang.String s = input.readStringRequireUtf8();
 
               name_ = s;
@@ -1824,37 +1886,37 @@ public final class SysDeptOuterClass {
               com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.Builder.class);
     }
 
-    public static final int PARENT_ID_FIELD_NUMBER = 1;
+    public static final int PARENT_ID_FIELD_NUMBER = 2;
     private int parentId_;
     /**
-     * <code>int32 parent_id = 1;</code>
+     * <code>int32 parent_id = 2;</code>
      */
     public int getParentId() {
       return parentId_;
     }
 
-    public static final int SORT_FIELD_NUMBER = 2;
+    public static final int SORT_FIELD_NUMBER = 3;
     private int sort_;
     /**
-     * <code>int32 sort = 2;</code>
+     * <code>int32 sort = 3;</code>
      */
     public int getSort() {
       return sort_;
     }
 
-    public static final int LANG_ID_FIELD_NUMBER = 3;
+    public static final int LANG_ID_FIELD_NUMBER = 7;
     private int langId_;
     /**
-     * <code>int32 lang_id = 3;</code>
+     * <code>int32 lang_id = 7;</code>
      */
     public int getLangId() {
       return langId_;
     }
 
-    public static final int NAME_FIELD_NUMBER = 4;
+    public static final int NAME_FIELD_NUMBER = 8;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 8;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -1869,7 +1931,7 @@ public final class SysDeptOuterClass {
       }
     }
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 8;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -1900,16 +1962,16 @@ public final class SysDeptOuterClass {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (parentId_ != 0) {
-        output.writeInt32(1, parentId_);
+        output.writeInt32(2, parentId_);
       }
       if (sort_ != 0) {
-        output.writeInt32(2, sort_);
+        output.writeInt32(3, sort_);
       }
       if (langId_ != 0) {
-        output.writeInt32(3, langId_);
+        output.writeInt32(7, langId_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, name_);
       }
       unknownFields.writeTo(output);
     }
@@ -1922,18 +1984,18 @@ public final class SysDeptOuterClass {
       size = 0;
       if (parentId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, parentId_);
+          .computeInt32Size(2, parentId_);
       }
       if (sort_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, sort_);
+          .computeInt32Size(3, sort_);
       }
       if (langId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, langId_);
+          .computeInt32Size(7, langId_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, name_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2244,13 +2306,13 @@ public final class SysDeptOuterClass {
 
       private int parentId_ ;
       /**
-       * <code>int32 parent_id = 1;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public int getParentId() {
         return parentId_;
       }
       /**
-       * <code>int32 parent_id = 1;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public Builder setParentId(int value) {
         
@@ -2259,7 +2321,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>int32 parent_id = 1;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public Builder clearParentId() {
         
@@ -2270,13 +2332,13 @@ public final class SysDeptOuterClass {
 
       private int sort_ ;
       /**
-       * <code>int32 sort = 2;</code>
+       * <code>int32 sort = 3;</code>
        */
       public int getSort() {
         return sort_;
       }
       /**
-       * <code>int32 sort = 2;</code>
+       * <code>int32 sort = 3;</code>
        */
       public Builder setSort(int value) {
         
@@ -2285,7 +2347,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>int32 sort = 2;</code>
+       * <code>int32 sort = 3;</code>
        */
       public Builder clearSort() {
         
@@ -2296,13 +2358,13 @@ public final class SysDeptOuterClass {
 
       private int langId_ ;
       /**
-       * <code>int32 lang_id = 3;</code>
+       * <code>int32 lang_id = 7;</code>
        */
       public int getLangId() {
         return langId_;
       }
       /**
-       * <code>int32 lang_id = 3;</code>
+       * <code>int32 lang_id = 7;</code>
        */
       public Builder setLangId(int value) {
         
@@ -2311,7 +2373,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>int32 lang_id = 3;</code>
+       * <code>int32 lang_id = 7;</code>
        */
       public Builder clearLangId() {
         
@@ -2322,7 +2384,7 @@ public final class SysDeptOuterClass {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 4;</code>
+       * <code>string name = 8;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -2337,7 +2399,7 @@ public final class SysDeptOuterClass {
         }
       }
       /**
-       * <code>string name = 4;</code>
+       * <code>string name = 8;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -2353,7 +2415,7 @@ public final class SysDeptOuterClass {
         }
       }
       /**
-       * <code>string name = 4;</code>
+       * <code>string name = 8;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -2366,7 +2428,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>string name = 4;</code>
+       * <code>string name = 8;</code>
        */
       public Builder clearName() {
         
@@ -2375,7 +2437,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>string name = 4;</code>
+       * <code>string name = 8;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -4574,26 +4636,27 @@ public final class SysDeptOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\016sys_dept.proto\022\007sysDept\032\037google/protob" +
-      "uf/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
-      "\005\"M\n\nGetListReq\022\017\n\007lang_id\030\001 \001(\005\022\r\n\005quer" +
-      "y\030\002 \001(\t\022\021\n\tpage_size\030\003 \001(\005\022\014\n\004page\030\004 \001(\005" +
-      "\"\031\n\006Result\022\017\n\007success\030\001 \001(\010\"M\n\013BaseSysDe" +
-      "pt\022\021\n\tparent_id\030\001 \001(\005\022\014\n\004sort\030\002 \001(\005\022\017\n\007l" +
-      "ang_id\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\"\306\001\n\007SysDept\022\n" +
-      "\n\002id\030\001 \001(\005\022\021\n\tparent_id\030\002 \001(\005\022\014\n\004sort\030\003 " +
-      "\001(\005\022.\n\ncreated_at\030\004 \001(\0132\032.google.protobu" +
-      "f.Timestamp\022.\n\nupdated_at\030\005 \001(\0132\032.google" +
-      ".protobuf.Timestamp\022\017\n\007deleted\030\006 \001(\005\022\017\n\007" +
-      "lang_id\030\007 \001(\005\022\014\n\004name\030\010 \001(\t\">\n\010PageList\022" +
-      "\r\n\005total\030\001 \001(\005\022#\n\tsys_depts\030\002 \003(\0132\020.sysD" +
-      "ept.SysDept2\207\002\n\016SysDeptService\022/\n\007GetByI" +
-      "d\022\020.sysDept.ByIdReq\032\020.sysDept.SysDept\"\000\022" +
-      "3\n\007GetList\022\023.sysDept.GetListReq\032\021.sysDep" +
-      "t.PageList\"\000\0221\n\006Insert\022\024.sysDept.BaseSys" +
-      "Dept\032\017.sysDept.Result\"\000\022-\n\006Update\022\020.sysD" +
-      "ept.SysDept\032\017.sysDept.Result\"\000\022-\n\006Delete" +
-      "\022\020.sysDept.ByIdReq\032\017.sysDept.Result\"\000B\036\n" +
-      "\034com.qianxun.grpc.lib.sysDeptP\000b\006proto3"
+      "uf/timestamp.proto\"&\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
+      "\005\022\017\n\007lang_id\030\002 \001(\005\"M\n\nGetListReq\022\017\n\007lang" +
+      "_id\030\001 \001(\005\022\r\n\005query\030\002 \001(\t\022\021\n\tpage_size\030\003 " +
+      "\001(\005\022\014\n\004page\030\004 \001(\005\"\031\n\006Result\022\017\n\007success\030\001" +
+      " \001(\010\"M\n\013BaseSysDept\022\021\n\tparent_id\030\002 \001(\005\022\014" +
+      "\n\004sort\030\003 \001(\005\022\017\n\007lang_id\030\007 \001(\005\022\014\n\004name\030\010 " +
+      "\001(\t\"\306\001\n\007SysDept\022\n\n\002id\030\001 \001(\005\022\021\n\tparent_id" +
+      "\030\002 \001(\005\022\014\n\004sort\030\003 \001(\005\022.\n\ncreated_at\030\004 \001(\013" +
+      "2\032.google.protobuf.Timestamp\022.\n\nupdated_" +
+      "at\030\005 \001(\0132\032.google.protobuf.Timestamp\022\017\n\007" +
+      "deleted\030\006 \001(\005\022\017\n\007lang_id\030\007 \001(\005\022\014\n\004name\030\010" +
+      " \001(\t\">\n\010PageList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_d" +
+      "epts\030\002 \003(\0132\020.sysDept.SysDept2\207\002\n\016SysDept" +
+      "Service\022/\n\007GetById\022\020.sysDept.ByIdReq\032\020.s" +
+      "ysDept.SysDept\"\000\0223\n\007GetList\022\023.sysDept.Ge" +
+      "tListReq\032\021.sysDept.PageList\"\000\0221\n\006Insert\022" +
+      "\024.sysDept.BaseSysDept\032\017.sysDept.Result\"\000" +
+      "\022-\n\006Update\022\020.sysDept.SysDept\032\017.sysDept.R" +
+      "esult\"\000\022-\n\006Delete\022\020.sysDept.ByIdReq\032\017.sy" +
+      "sDept.Result\"\000B\036\n\034com.qianxun.grpc.lib.s" +
+      "ysDeptP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4613,7 +4676,7 @@ public final class SysDeptOuterClass {
     internal_static_sysDept_ByIdReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysDept_ByIdReq_descriptor,
-        new java.lang.String[] { "Id", });
+        new java.lang.String[] { "Id", "LangId", });
     internal_static_sysDept_GetListReq_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_sysDept_GetListReq_fieldAccessorTable = new

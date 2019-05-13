@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianxun.admin.api.dto.extend.SysDeptDTO;
 import com.qianxun.admin.api.dto.sysDept.request.SysDeptQueryInputDTO;
+import com.qianxun.admin.api.dto.sysDept.request.SysDeptSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysDept;
 import com.qianxun.admin.api.entity.SysDeptLang;
 import com.qianxun.admin.provider.mapper.SysDeptMapper;
@@ -16,12 +17,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Date;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 00:37:19
+ * Date 2019-05-13 22:13:53
  */
 @Slf4j
 @Service
@@ -29,8 +29,13 @@ import java.util.Date;
 public class SysDeptServiceImpl extends ServiceImpl<SysDeptMapper, SysDept> implements SysDeptService {
     private final SysDeptLangService sysDeptLangService;
 
+    @Override
+    public SysDeptDTO searchById(SysDeptSearchByIdDTO input){
+        return baseMapper.searchById(input);
+    }
+
     /**
-     * 保存部门信息
+     * 保存信息
      *
      * @param sysDeptDTO
      * @return

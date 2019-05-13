@@ -2,14 +2,13 @@ package com.qianxun.admin.api.dto.sysMenu.response;
 
 import com.qianxun.admin.api.dto.extend.SysMenuDTO;
 import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 14:37:45
+ * Date 2019-05-13 22:03:31
  */
 @Data
 public class SysMenuResponseDTO implements Serializable {

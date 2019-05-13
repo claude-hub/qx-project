@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.api.dto.sysRole.request;
+package ${package}.${moduleName}.api.dto.${classname}.request;
 
 import ${package}.${moduleName}.api.dto.base.SearchByIdInputDTO;
 import io.swagger.annotations.ApiModelProperty;

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianxun.admin.api.dto.extend.SysMenuDTO;
 import com.qianxun.admin.api.dto.sysMenu.request.SysMenuQueryInputDTO;
+import com.qianxun.admin.api.dto.sysMenu.request.SysMenuSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysMenu;
 import com.qianxun.admin.api.entity.SysMenuLang;
 import com.qianxun.admin.provider.mapper.SysMenuMapper;
@@ -20,13 +21,18 @@ import java.util.Date;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 14:37:45
+ * Date 2019-05-13 22:13:53
  */
 @Slf4j
 @Service
 @AllArgsConstructor
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService {
     private final SysMenuLangService sysMenuLangService;
+
+    @Override
+    public SysMenuDTO searchById(SysMenuSearchByIdDTO input){
+        return baseMapper.searchById(input);
+    }
 
     /**
      * 保存信息
@@ -38,8 +44,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     @Override
     public Boolean saveSysMenu(SysMenuDTO sysMenuDTO) {
         SysMenu sysMenu = new SysMenu();
-        sysMenu.setCreatedAt(new Date());
         BeanUtils.copyProperties(sysMenuDTO, sysMenu);
+        sysMenu.setCreatedAt(new Date());
         baseMapper.insert(sysMenu);
         SysMenuLang sysMenuLang = new SysMenuLang();
         BeanUtils.copyProperties(sysMenuDTO, sysMenuLang);

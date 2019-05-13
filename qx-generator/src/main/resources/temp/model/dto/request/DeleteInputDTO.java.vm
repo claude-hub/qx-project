@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.api.dto.${classname}.requset;
+package ${package}.${moduleName}.api.dto.${classname}.request;
 
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotNull;

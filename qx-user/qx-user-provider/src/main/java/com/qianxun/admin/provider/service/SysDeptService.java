@@ -5,14 +5,16 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qianxun.admin.api.dto.extend.SysDeptDTO;
 import com.qianxun.admin.api.dto.sysDept.request.SysDeptQueryInputDTO;
+import com.qianxun.admin.api.dto.sysDept.request.SysDeptSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysDept;
 
 /**
- * author: Claude
- * email: 314705487@qq.com
- * create date: 05/10/19 9:31
+ * @author Cloudy
+ * Date 2019-05-13 22:13:53
  */
 public interface SysDeptService extends IService<SysDept> {
+
+    SysDeptDTO searchById(SysDeptSearchByIdDTO inputDTO);
 
     Boolean saveSysDept(SysDeptDTO sysDeptDTO);
 

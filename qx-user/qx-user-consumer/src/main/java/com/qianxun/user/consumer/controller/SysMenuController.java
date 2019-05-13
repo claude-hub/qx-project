@@ -1,9 +1,8 @@
 package com.qianxun.user.consumer.controller;
 
-import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
 import com.qianxun.admin.api.dto.sysMenu.request.*;
 import com.qianxun.admin.api.dto.sysMenu.response.SysMenuResponseDTO;
-import com.qianxun.admin.api.entity.SysMenu;
+import com.qianxun.admin.api.dto.extend.SysMenuDTO;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass;
@@ -14,7 +13,7 @@ import javax.validation.Valid;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 14:37:45
+ * Date 2019-05-13 21:52:31
  */
 @RestController
 @AllArgsConstructor
@@ -28,11 +27,11 @@ public class SysMenuController {
     * @return
     */
     @GetMapping(value = "/{id}")
-    public JSONResult getSysMenuId(@Valid SearchByIdInputDTO input) {
+    public JSONResult getSysMenuId(@Valid SysMenuSearchByIdDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);
-        SysMenu sysMenu = grpcSysMenuClient.getSysMenuById(getByIdReq);
-        result.setData(sysMenu.getId() != null ? sysMenu : "");
+        SysMenuDTO sysMenuDTO = grpcSysMenuClient.getSysMenuById(getByIdReq);
+        result.setData(sysMenuDTO.getId() != null ? sysMenuDTO : "");
         return result;
     }
 

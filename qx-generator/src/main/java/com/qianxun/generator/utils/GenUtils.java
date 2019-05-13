@@ -161,101 +161,141 @@ public class GenUtils {
     /**
      * 获取文件名
      */
+    //src/main/java/com/qianxun/
+    private static final String BASE_PACKAGE = "src" + File.separator + "main" + File.separator + "java"
+            + File.separator + "com" + File.separator + "qianxun" + File.separator;
+    //admin/api/
+    private static final String API = "admin" + File.separator + "api" + File.separator;
+    //dto/
+    private static final String DTO = "dto" + File.separator;
+    //request/
+    private static final String REQUEST = "request" + File.separator;
+    //user/consumer/
+    private static final String CONSUMER = "user" + File.separator + "consumer" + File.separator;
+    //admin/provider/
+    private static final String PROVIDER = "admin" + File.separator + "provider" + File.separator;
+    //src/main/proto/
+    private static final String PROTO = "src" + File.separator + "admin" + File.separator + "proto" + File.separator;
+    //mapper.xml
+    private static final String MAPPER = "src" + File.separator + "admin" + File.separator + "resources" + File.separator;
+    //qx-use/
+    private static final String QX_USER = "qx-user" + File.separator;
+    //qx-user-api/
+    private static final String QX_USER_API = "qx-user-api" + File.separator;
+    //qx-user-provider/
+    private static final String QX_USER_PROVIDER = "qx-user-provider" + File.separator;
+    //qx-user-consumer/
+    private static final String QX_USER_CONSUMER = "qx-user-consumer" + File.separator;
+    //qx-user-grpc-lib
+    private static final String QX_USER_GRPC_LIB = "qx-user-grpc-lib" + File.separator;
+
+
     private static String getFileName(String template, String className, String classname, String tableName, String moduleName) {
-        String packagePath = "main" + File.separator + "java" + File.separator;
+        //qx-user/qx-user-api/src/main/java/com/qianxun/admin/api/
+        String apiPath = QX_USER + QX_USER_API + BASE_PACKAGE + API;
         if (template.contains("BaseAddInputDTO.java.vm")) {
-            return packagePath + "model" + File.separator + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "AddInputDTO.java";
+            //qx-user/qx-user-api/src/main/java/com/qianxun/admin/api/dto/{className}/request/AddInputDTO.java
+            return apiPath + DTO + classname + File.separator + REQUEST + className + "AddInputDTO.java";
         }
         if (template.contains("BaseQueryInputDTO.java.vm")) {
-            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "QueryInputDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + "QueryInputDTO.java";
         }
         if (template.contains("BaseUpdateInputDTO.java.vm")) {
-            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + "UpdateInputDTO.java";
         }
         if (template.contains("BaseResponseDTO.java.vm")) {
-            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "response" + File.separator + className + "ResponseDTO.java";
-        }
-        if (template.contains("BaseGrpcService.java.vm")) {
-            return packagePath + "grpc" + File.separator + "service" + File.separator  + "Grpc"+ className + "Service.java";
-        }
-        if (template.contains("BaseMapper.java.vm")) {
-            return packagePath + "mapper" + File.separator + className + "Mapper.java";
-        }
-        if (template.contains("BaseService.java.vm")) {
-            return packagePath + "service" + File.separator + className + "Service.java";
-        }
-        if (template.contains("BaseServiceImpl.java.vm")) {
-            return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
-        }
-        if (template.contains("BaseProto.vm")) {
-            return packagePath + "proto" + File.separator + tableName + ".proto";
-        }
-        if (template.contains("BaseController.java.vm")) {
-            return packagePath + "controller" + File.separator + className + "Controller.java";
-        }
-        if (template.contains("BaseGrpcClient.java.vm")) {
-            return packagePath + "grpc" + File.separator + "client" + File.separator + "Grpc"+ className + "Client.java";
-        }
-
-        if (template.contains("Controller.java.vm")) {
-            return packagePath + "controller" + File.separator + className + "Controller.java";
+            return apiPath + DTO + classname + File.separator +"response" + File.separator + className + "ResponseDTO.java";
         }
         if (template.contains("ExtendDTO.java.vm")) {
-            return packagePath + "model" + File.separator + "extend" + File.separator + className + "DTO.java";
+            return apiPath + DTO + "extend" + File.separator + className + "DTO.java";
         }
         if (template.contains("LangEntity.java.vm")) {
-            return packagePath + "model" + File.separator + "entity" + File.separator + className + "Lang.java";
+            return apiPath + "entity" + File.separator + className + "Lang.java";
         }
         if (template.contains("Entity.java.vm")) {
-            return packagePath + "model" + File.separator + "entity" + File.separator + className + ".java";
-        }
-        if (template.contains("LangMapper.java.vm")) {
-            return packagePath + "mapper" + File.separator + className + "LangMapper.java";
-        }
-        if (template.contains("Mapper.java.vm")) {
-            return packagePath + "mapper" + File.separator + className + "Mapper.java";
-        }
-        if (template.contains("Mapper.xml.vm")) {
-            return "main" + File.separator + "resources" + File.separator + "mapper" + File.separator + moduleName + File.separator + className + "Mapper.xml";
-        }
-        if (template.contains("GrpcClient.java.vm")) {
-            return packagePath + "grpc" + File.separator + "client" + File.separator + "Grpc"+ className + "Client.java";
-        }
-        if (template.contains("GrpcService.java.vm")) {
-            return packagePath + "grpc" + File.separator + "service" + File.separator  + "Grpc"+ className + "Service.java";
-        }
-        if (template.contains("LangService.java.vm")) {
-            return packagePath + "service" + File.separator + className + "LangService.java";
-        }
-        if (template.contains("LangServiceImpl.java.vm")) {
-            return packagePath + "service" + File.separator + "impl" + File.separator + className + "LangServiceImpl.java";
-        }
-        if (template.contains("Service.java.vm")) {
-            return packagePath + "service" + File.separator + className + "Service.java";
-        }
-        if (template.contains("ServiceImpl.java.vm")) {
-            return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
+            return apiPath + "entity" + File.separator + className + ".java";
         }
         if (template.contains("SearchByIdDTO.java.vm")) {
-            return packagePath + "model" + File.separator + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "SearchByIdDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + "SearchByIdDTO.java";
         }
         if (template.contains("AddInputDTO.java.vm")) {
-            return packagePath + "model" + File.separator + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "AddInputDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + "AddInputDTO.java";
         }
         if (template.contains("DeleteInputDTO.java.vm")) {
-            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "DeleteInputDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + "DeleteInputDTO.java";
         }
         if (template.contains("QueryInputDTO.java.vm")) {
-            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "QueryInputDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + "QueryInputDTO.java";
         }
         if (template.contains("UpdateInputDTO.java.vm")) {
-            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + className + "UpdateInputDTO.java";
         }
         if (template.contains("ResponseDTO.java.vm")) {
-            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "response" + File.separator + className + "ResponseDTO.java";
+            return apiPath + DTO + classname + File.separator + REQUEST + className + className + "ResponseDTO.java";
+        }
+
+        //服务提供者
+        String providerPath = QX_USER + QX_USER_PROVIDER + BASE_PACKAGE + PROVIDER;
+        if (template.contains("BaseGrpcService.java.vm")) {
+            return providerPath + "grpc" + File.separator + "service" + File.separator + "Grpc" + className + "Service.java";
+        }
+        if (template.contains("BaseMapper.java.vm")) {
+            return providerPath + "mapper" + File.separator + className + "Mapper.java";
+        }
+        if (template.contains("BaseService.java.vm")) {
+            return providerPath + "service" + File.separator + className + "Service.java";
+        }
+        if (template.contains("BaseServiceImpl.java.vm")) {
+            return providerPath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
+        }
+        if (template.contains("LangMapper.java.vm")) {
+            return providerPath + "mapper" + File.separator + className + "LangMapper.java";
+        }
+        if (template.contains("Mapper.java.vm")) {
+            return providerPath + "mapper" + File.separator + className + "Mapper.java";
+        }
+        if (template.contains("GrpcService.java.vm")) {
+            return providerPath + "grpc" + File.separator + "service" + File.separator + "Grpc" + className + "Service.java";
+        }
+        if (template.contains("LangService.java.vm")) {
+            return providerPath + "service" + File.separator + className + "LangService.java";
+        }
+        if (template.contains("LangServiceImpl.java.vm")) {
+            return providerPath + "service" + File.separator + "impl" + File.separator + className + "LangServiceImpl.java";
+        }
+        if (template.contains("Service.java.vm")) {
+            return providerPath + "service" + File.separator + className + "Service.java";
+        }
+        if (template.contains("ServiceImpl.java.vm")) {
+            return providerPath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
+        }
+
+        if (template.contains("Mapper.xml.vm")) {
+            return QX_USER + QX_USER_PROVIDER + MAPPER + "mapper" + File.separator + moduleName + File.separator + className + "Mapper.xml";
+        }
+
+        //消费者
+        String consumerPath = QX_USER + QX_USER_CONSUMER + BASE_PACKAGE + CONSUMER;
+        if (template.contains("BaseController.java.vm")) {
+            return consumerPath + "controller" + File.separator + className + "Controller.java";
+        }
+        if (template.contains("BaseGrpcClient.java.vm")) {
+            return consumerPath + "grpc" + File.separator + "client" + File.separator + "Grpc" + className + "Client.java";
+        }
+        if (template.contains("Controller.java.vm")) {
+            return consumerPath + "controller" + File.separator + className + "Controller.java";
+        }
+        if (template.contains("GrpcClient.java.vm")) {
+            return consumerPath + "grpc" + File.separator + "client" + File.separator + "Grpc" + className + "Client.java";
+        }
+
+        // grpc-lib
+        String protoPath = QX_USER + QX_USER_GRPC_LIB + PROTO;
+        if (template.contains("BaseProto.vm")) {
+            return protoPath + tableName + ".proto";
         }
         if (template.contains("proto.vm")) {
-            return packagePath + "proto" + File.separator + tableName + ".proto";
+            return protoPath + tableName + ".proto";
         }
         return null;
     }

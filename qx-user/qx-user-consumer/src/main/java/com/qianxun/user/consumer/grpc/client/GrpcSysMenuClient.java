@@ -1,7 +1,7 @@
 package com.qianxun.user.consumer.grpc.client;
 
 import com.qianxun.admin.api.dto.sysMenu.response.SysMenuResponseDTO;
-import com.qianxun.admin.api.entity.SysMenu;
+import com.qianxun.admin.api.dto.extend.SysMenuDTO;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass;
 import com.qianxun.grpc.lib.sysMenu.SysMenuServiceGrpc;
@@ -11,17 +11,17 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 14:37:45
+ * Date 2019-05-13 21:52:31
  */
 @Service
 public class GrpcSysMenuClient {
     @GrpcClient("qx-user-provider")
     private Channel serverChannel;
 
-    public SysMenu getSysMenuById(SysMenuOuterClass.ByIdReq getByIdReq) {
+    public SysMenuDTO getSysMenuById(SysMenuOuterClass.ByIdReq getByIdReq) {
         SysMenuServiceGrpc.SysMenuServiceBlockingStub stub = SysMenuServiceGrpc.newBlockingStub(serverChannel);
         SysMenuOuterClass.SysMenu res = stub.getById(getByIdReq);
-        return ProtoBufUtils.fromProtoBuffer(res, SysMenu.class);
+        return ProtoBufUtils.fromProtoBuffer(res, SysMenuDTO.class);
     }
 
     public SysMenuResponseDTO getSysMenuList(SysMenuOuterClass.GetListReq getListReq) {

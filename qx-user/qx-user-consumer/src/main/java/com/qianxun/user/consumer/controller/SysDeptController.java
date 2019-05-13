@@ -1,21 +1,19 @@
 package com.qianxun.user.consumer.controller;
 
-import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
 import com.qianxun.admin.api.dto.sysDept.request.*;
 import com.qianxun.admin.api.dto.sysDept.response.SysDeptResponseDTO;
-import com.qianxun.admin.api.entity.SysDept;
+import com.qianxun.admin.api.dto.extend.SysDeptDTO;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysDept.SysDeptOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysDeptClient;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 00:37:19
+ * Date 2019-05-13 21:52:31
  */
 @RestController
 @AllArgsConstructor
@@ -24,26 +22,24 @@ public class SysDeptController {
     private final GrpcSysDeptClient grpcSysDeptClient;
 
     /**
-     * selectById
-     *
-     * @param input
-     * @return
-     */
+    * selectById
+    * @param input
+    * @return
+    */
     @GetMapping(value = "/{id}")
-    public JSONResult getSysDeptId(@Valid SearchByIdInputDTO input) {
+    public JSONResult getSysDeptId(@Valid SysDeptSearchByIdDTO input) {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.ByIdReq.class);
-        SysDept sysDept = grpcSysDeptClient.getSysDeptById(getByIdReq);
-        result.setData(sysDept.getId() != null ? sysDept : "");
+        SysDeptDTO sysDeptDTO = grpcSysDeptClient.getSysDeptById(getByIdReq);
+        result.setData(sysDeptDTO.getId() != null ? sysDeptDTO : "");
         return result;
     }
 
     /**
-     * 根据语言分页查询
-     *
-     * @param input
-     * @return
-     */
+    * 根据语言分页查询
+    * @param input
+    * @return
+    */
     @GetMapping(value = "/list")
     public JSONResult getSysDeptList(@Valid SysDeptQueryInputDTO input) {
         JSONResult result = new JSONResult();
@@ -55,11 +51,10 @@ public class SysDeptController {
     }
 
     /**
-     * 根据语言新增
-     *
-     * @param input
-     * @return
-     */
+    * 根据语言新增
+    * @param input
+    * @return
+    */
     @PostMapping(value = "/add")
     public JSONResult addSysDept(@Valid SysDeptAddInputDTO input) {
         JSONResult result = new JSONResult();
@@ -69,11 +64,10 @@ public class SysDeptController {
     }
 
     /**
-     * 更新
-     *
-     * @param input
-     * @return
-     */
+    * 更新
+    * @param input
+    * @return
+    */
     @PutMapping(value = "/update")
     public JSONResult updateSysDept(@Valid SysDeptUpdateInputDTO input) {
         JSONResult result = new JSONResult();
@@ -83,11 +77,10 @@ public class SysDeptController {
     }
 
     /**
-     * 逻辑删除
-     *
-     * @param input
-     * @return
-     */
+    * 逻辑删除
+    * @param input
+    * @return
+    */
     @DeleteMapping(value = "/{id}")
     public JSONResult deleteSysDept(@Valid SysDeptDeleteInputDTO input) {
         JSONResult result = new JSONResult();

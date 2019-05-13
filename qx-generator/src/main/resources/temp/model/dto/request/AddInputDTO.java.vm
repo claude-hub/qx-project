@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.api.dto.${classname}.requset;
+package ${package}.${moduleName}.api.dto.${classname}.request;
 
 import java.util.Date;
 import lombok.Data;

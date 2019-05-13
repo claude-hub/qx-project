@@ -44,8 +44,8 @@ public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${c
     @Override
     public Boolean save${className}(${className}DTO ${classname}DTO) {
         ${className} ${classname} = new ${className}();
-        ${classname}.setCreatedAt(new Date());
         BeanUtils.copyProperties(${classname}DTO, ${classname});
+        ${classname}.setCreatedAt(new Date());
         baseMapper.insert(${classname});
         ${className}Lang ${classname}Lang = new ${className}Lang();
         BeanUtils.copyProperties(${classname}DTO, ${classname}Lang);

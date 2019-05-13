@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qianxun.admin.provider.mapper.SysMenuMapper">
-    <resultMap id="BaseResultMap" type="com.qianxun.admin.api.dto.extend.SysMenuDTO">
-        <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id"/>
-        <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
-        <result column="menu_code" javaType="java.lang.String" jdbcType="VARCHAR" property="menuCode"/>
-        <result column="path" javaType="java.lang.String" jdbcType="VARCHAR" property="path"/>
-        <result column="icon" javaType="java.lang.String" jdbcType="VARCHAR" property="icon"/>
-        <result column="sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sort"/>
-        <result column="type" javaType="java.lang.Integer" jdbcType="INTEGER" property="type"/>
-        <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
-        <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
-        <result column="deleted" javaType="java.lang.Integer" jdbcType="INTEGER" property="deleted"/>
-    </resultMap>
-    <sql id="sysMenuWithLangSql">
+<resultMap id="BaseResultMap" type="com.qianxun.admin.api.dto.extend.SysMenuDTO">
+                                        <id column="id" javaType="java.lang.Integer" jdbcType="INTEGER" property="id"/>
+                                                            <result column="parent_id" javaType="java.lang.Integer" jdbcType="INTEGER" property="parentId"/>
+                                                            <result column="menu_code" javaType="java.lang.String" jdbcType="VARCHAR" property="menuCode"/>
+                                                            <result column="path" javaType="java.lang.String" jdbcType="VARCHAR" property="path"/>
+                                                            <result column="icon" javaType="java.lang.String" jdbcType="VARCHAR" property="icon"/>
+                                                            <result column="sort" javaType="java.lang.Integer" jdbcType="INTEGER" property="sort"/>
+                                                            <result column="type" javaType="java.lang.Integer" jdbcType="INTEGER" property="type"/>
+                                                            <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
+                                                            <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
+                                                            <result column="deleted" javaType="java.lang.Integer" jdbcType="INTEGER" property="deleted"/>
+                        </resultMap>
+<sql id="sysMenuWithLangSql">
         sys_menu.id,
         sys_menu.parent_id,
         sys_menu.menu_code,
@@ -28,15 +28,24 @@
 from sys_menu LEFT JOIN sys_menu_lang ON sys_menu.id =
             sys_menu_lang.menu_id
         </sql>
-    <select id="getSysMenusWithLang" resultMap="BaseResultMap">
-        select
-        <include refid="sysMenuWithLangSql"/>
-        <where>
-            AND sys_menu_lang.lang_id = #{inputDTO.langId} AND sys_menu.deleted != -1
-            <if test="inputDTO.query != null and inputDTO.query != ''">
-                AND sys_menu_lang.`name` LIKE CONCAT('%',#{inputDTO.query},'%')
-            </if>
-        </where>
-        ORDER BY sys_menu.created_at DESC
-    </select>
+<select id="getSysMenusWithLang" resultMap="BaseResultMap">
+    select
+    <include refid="sysMenuWithLangSql"/>
+    <where>
+        AND sys_menu_lang.lang_id = #{inputDTO.langId} AND sys_menu.deleted != -1
+        <if test="inputDTO.query != null and inputDTO.query != ''">
+            AND sys_menu_lang.`name` LIKE CONCAT('%',#{inputDTO.query},'%')
+        </if>
+    </where>
+    ORDER BY sys_menu.created_at DESC
+</select>
+
+<select id="searchById" resultMap="BaseResultMap">
+    select
+    <include refid="sysMenuWithLangSql"/>
+    <where>
+        AND sys_menu_lang.lang_id = #{inputDTO.langId} AND sys_menu.deleted != -1
+        AND sys_menu.id = #{inputDTO.id}
+    </where>
+</select>
 </mapper>

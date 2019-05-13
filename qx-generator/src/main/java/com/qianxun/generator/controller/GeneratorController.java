@@ -53,7 +53,7 @@ public class GeneratorController {
             return;
         }
         response.reset();
-        response.setHeader("Content-Disposition", "attachment; filename=\"qianxun.zip\"");
+        response.setHeader("Content-Disposition", "attachment; filename=\"qx-project.zip\"");
         response.addHeader("Content-Length", "" + data.length);
         response.setContentType("application/octet-stream; charset=UTF-8");
 

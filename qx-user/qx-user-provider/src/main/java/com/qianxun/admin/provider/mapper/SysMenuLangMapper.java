@@ -5,7 +5,7 @@ import com.qianxun.admin.api.entity.SysMenuLang;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 14:37:45
+ * Date 2019-05-13 22:13:53
  */
 public interface SysMenuLangMapper extends BaseMapper<SysMenuLang> {
 

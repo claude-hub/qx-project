@@ -1,17 +1,12 @@
 package com.qianxun.admin.provider.grpc.service;
 
-/**
- * @author Cloudy
- * Date: 2019-05-13 14:37:45
- */
-
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.extend.SysMenuDTO;
+import com.qianxun.admin.api.dto.sysMenu.request.SysMenuSearchByIdDTO;
 import com.qianxun.admin.api.dto.sysMenu.request.SysMenuQueryInputDTO;
 import com.qianxun.admin.api.dto.sysMenu.response.SysMenuResponseDTO;
-import com.qianxun.admin.api.entity.SysMenu;
 import com.qianxun.admin.provider.service.SysMenuService;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass;
@@ -22,7 +17,7 @@ import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 14:37:45
+ * Date 2019-05-13 22:13:53
  */
 @GrpcService(SysMenuOuterClass.class)
 @AllArgsConstructor
@@ -33,8 +28,9 @@ public class GrpcSysMenuService extends SysMenuServiceGrpc.SysMenuServiceImplBas
     @Override
     public void getById(SysMenuOuterClass.ByIdReq request,
                         StreamObserver<SysMenuOuterClass.SysMenu> responseObserver) {
-        SysMenu sysMenu = sysMenuService.getById(request.getId());
-        SysMenuOuterClass.SysMenu res = ProtoBufUtils.toProtoBuffer(sysMenu, SysMenuOuterClass.SysMenu.class);
+        SysMenuSearchByIdDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysMenuSearchByIdDTO.class);
+        SysMenuDTO sysMenuDTO = sysMenuService.searchById(inputDTO);
+        SysMenuOuterClass.SysMenu res = ProtoBufUtils.toProtoBuffer(sysMenuDTO, SysMenuOuterClass.SysMenu.class);
         responseObserver.onNext(res);
         responseObserver.onCompleted();
     }

@@ -22,6 +22,11 @@ public final class SysMenuOuterClass {
      * <code>int32 id = 1;</code>
      */
     int getId();
+
+    /**
+     * <code>int32 lang_id = 2;</code>
+     */
+    int getLangId();
   }
   /**
    * Protobuf type {@code sysMenu.ByIdReq}
@@ -67,6 +72,11 @@ public final class SysMenuOuterClass {
               id_ = input.readInt32();
               break;
             }
+            case 16: {
+
+              langId_ = input.readInt32();
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -108,6 +118,15 @@ public final class SysMenuOuterClass {
       return id_;
     }
 
+    public static final int LANG_ID_FIELD_NUMBER = 2;
+    private int langId_;
+    /**
+     * <code>int32 lang_id = 2;</code>
+     */
+    public int getLangId() {
+      return langId_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -125,6 +144,9 @@ public final class SysMenuOuterClass {
       if (id_ != 0) {
         output.writeInt32(1, id_);
       }
+      if (langId_ != 0) {
+        output.writeInt32(2, langId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -137,6 +159,10 @@ public final class SysMenuOuterClass {
       if (id_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
+      }
+      if (langId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, langId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -155,6 +181,8 @@ public final class SysMenuOuterClass {
 
       if (getId()
           != other.getId()) return false;
+      if (getLangId()
+          != other.getLangId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -168,6 +196,8 @@ public final class SysMenuOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId();
+      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getLangId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -303,6 +333,8 @@ public final class SysMenuOuterClass {
         super.clear();
         id_ = 0;
 
+        langId_ = 0;
+
         return this;
       }
 
@@ -330,6 +362,7 @@ public final class SysMenuOuterClass {
       public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq buildPartial() {
         com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq result = new com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq(this);
         result.id_ = id_;
+        result.langId_ = langId_;
         onBuilt();
         return result;
       }
@@ -380,6 +413,9 @@ public final class SysMenuOuterClass {
         if (other == com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq.getDefaultInstance()) return this;
         if (other.getId() != 0) {
           setId(other.getId());
+        }
+        if (other.getLangId() != 0) {
+          setLangId(other.getLangId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -432,6 +468,32 @@ public final class SysMenuOuterClass {
       public Builder clearId() {
         
         id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int langId_ ;
+      /**
+       * <code>int32 lang_id = 2;</code>
+       */
+      public int getLangId() {
+        return langId_;
+      }
+      /**
+       * <code>int32 lang_id = 2;</code>
+       */
+      public Builder setLangId(int value) {
+        
+        langId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 lang_id = 2;</code>
+       */
+      public Builder clearLangId() {
+        
+        langId_ = 0;
         onChanged();
         return this;
       }
@@ -1703,61 +1765,61 @@ public final class SysMenuOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 parent_id = 1;</code>
+     * <code>int32 parent_id = 2;</code>
      */
     int getParentId();
 
     /**
-     * <code>string menu_code = 2;</code>
+     * <code>string menu_code = 3;</code>
      */
     java.lang.String getMenuCode();
     /**
-     * <code>string menu_code = 2;</code>
+     * <code>string menu_code = 3;</code>
      */
     com.google.protobuf.ByteString
         getMenuCodeBytes();
 
     /**
-     * <code>string path = 3;</code>
+     * <code>string path = 4;</code>
      */
     java.lang.String getPath();
     /**
-     * <code>string path = 3;</code>
+     * <code>string path = 4;</code>
      */
     com.google.protobuf.ByteString
         getPathBytes();
 
     /**
-     * <code>string icon = 4;</code>
+     * <code>string icon = 5;</code>
      */
     java.lang.String getIcon();
     /**
-     * <code>string icon = 4;</code>
+     * <code>string icon = 5;</code>
      */
     com.google.protobuf.ByteString
         getIconBytes();
 
     /**
-     * <code>int32 sort = 5;</code>
+     * <code>int32 sort = 6;</code>
      */
     int getSort();
 
     /**
-     * <code>int32 type = 6;</code>
+     * <code>int32 type = 7;</code>
      */
     int getType();
 
     /**
-     * <code>int32 lang_id = 7;</code>
+     * <code>int32 lang_id = 11;</code>
      */
     int getLangId();
 
     /**
-     * <code>string name = 8;</code>
+     * <code>string name = 12;</code>
      */
     java.lang.String getName();
     /**
-     * <code>string name = 8;</code>
+     * <code>string name = 12;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
@@ -1809,45 +1871,45 @@ public final class SysMenuOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
+            case 16: {
 
               parentId_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              menuCode_ = s;
               break;
             }
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              path_ = s;
+              menuCode_ = s;
               break;
             }
             case 34: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              icon_ = s;
+              path_ = s;
               break;
             }
-            case 40: {
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
 
-              sort_ = input.readInt32();
+              icon_ = s;
               break;
             }
             case 48: {
 
-              type_ = input.readInt32();
+              sort_ = input.readInt32();
               break;
             }
             case 56: {
 
+              type_ = input.readInt32();
+              break;
+            }
+            case 88: {
+
               langId_ = input.readInt32();
               break;
             }
-            case 66: {
+            case 98: {
               java.lang.String s = input.readStringRequireUtf8();
 
               name_ = s;
@@ -1885,19 +1947,19 @@ public final class SysMenuOuterClass {
               com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.BaseSysMenu.class, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.BaseSysMenu.Builder.class);
     }
 
-    public static final int PARENT_ID_FIELD_NUMBER = 1;
+    public static final int PARENT_ID_FIELD_NUMBER = 2;
     private int parentId_;
     /**
-     * <code>int32 parent_id = 1;</code>
+     * <code>int32 parent_id = 2;</code>
      */
     public int getParentId() {
       return parentId_;
     }
 
-    public static final int MENU_CODE_FIELD_NUMBER = 2;
+    public static final int MENU_CODE_FIELD_NUMBER = 3;
     private volatile java.lang.Object menuCode_;
     /**
-     * <code>string menu_code = 2;</code>
+     * <code>string menu_code = 3;</code>
      */
     public java.lang.String getMenuCode() {
       java.lang.Object ref = menuCode_;
@@ -1912,7 +1974,7 @@ public final class SysMenuOuterClass {
       }
     }
     /**
-     * <code>string menu_code = 2;</code>
+     * <code>string menu_code = 3;</code>
      */
     public com.google.protobuf.ByteString
         getMenuCodeBytes() {
@@ -1928,10 +1990,10 @@ public final class SysMenuOuterClass {
       }
     }
 
-    public static final int PATH_FIELD_NUMBER = 3;
+    public static final int PATH_FIELD_NUMBER = 4;
     private volatile java.lang.Object path_;
     /**
-     * <code>string path = 3;</code>
+     * <code>string path = 4;</code>
      */
     public java.lang.String getPath() {
       java.lang.Object ref = path_;
@@ -1946,7 +2008,7 @@ public final class SysMenuOuterClass {
       }
     }
     /**
-     * <code>string path = 3;</code>
+     * <code>string path = 4;</code>
      */
     public com.google.protobuf.ByteString
         getPathBytes() {
@@ -1962,10 +2024,10 @@ public final class SysMenuOuterClass {
       }
     }
 
-    public static final int ICON_FIELD_NUMBER = 4;
+    public static final int ICON_FIELD_NUMBER = 5;
     private volatile java.lang.Object icon_;
     /**
-     * <code>string icon = 4;</code>
+     * <code>string icon = 5;</code>
      */
     public java.lang.String getIcon() {
       java.lang.Object ref = icon_;
@@ -1980,7 +2042,7 @@ public final class SysMenuOuterClass {
       }
     }
     /**
-     * <code>string icon = 4;</code>
+     * <code>string icon = 5;</code>
      */
     public com.google.protobuf.ByteString
         getIconBytes() {
@@ -1996,37 +2058,37 @@ public final class SysMenuOuterClass {
       }
     }
 
-    public static final int SORT_FIELD_NUMBER = 5;
+    public static final int SORT_FIELD_NUMBER = 6;
     private int sort_;
     /**
-     * <code>int32 sort = 5;</code>
+     * <code>int32 sort = 6;</code>
      */
     public int getSort() {
       return sort_;
     }
 
-    public static final int TYPE_FIELD_NUMBER = 6;
+    public static final int TYPE_FIELD_NUMBER = 7;
     private int type_;
     /**
-     * <code>int32 type = 6;</code>
+     * <code>int32 type = 7;</code>
      */
     public int getType() {
       return type_;
     }
 
-    public static final int LANG_ID_FIELD_NUMBER = 7;
+    public static final int LANG_ID_FIELD_NUMBER = 11;
     private int langId_;
     /**
-     * <code>int32 lang_id = 7;</code>
+     * <code>int32 lang_id = 11;</code>
      */
     public int getLangId() {
       return langId_;
     }
 
-    public static final int NAME_FIELD_NUMBER = 8;
+    public static final int NAME_FIELD_NUMBER = 12;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 8;</code>
+     * <code>string name = 12;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -2041,7 +2103,7 @@ public final class SysMenuOuterClass {
       }
     }
     /**
-     * <code>string name = 8;</code>
+     * <code>string name = 12;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -2072,28 +2134,28 @@ public final class SysMenuOuterClass {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (parentId_ != 0) {
-        output.writeInt32(1, parentId_);
+        output.writeInt32(2, parentId_);
       }
       if (!getMenuCodeBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, menuCode_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, menuCode_);
       }
       if (!getPathBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, path_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, path_);
       }
       if (!getIconBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, icon_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, icon_);
       }
       if (sort_ != 0) {
-        output.writeInt32(5, sort_);
+        output.writeInt32(6, sort_);
       }
       if (type_ != 0) {
-        output.writeInt32(6, type_);
+        output.writeInt32(7, type_);
       }
       if (langId_ != 0) {
-        output.writeInt32(7, langId_);
+        output.writeInt32(11, langId_);
       }
       if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, name_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 12, name_);
       }
       unknownFields.writeTo(output);
     }
@@ -2106,31 +2168,31 @@ public final class SysMenuOuterClass {
       size = 0;
       if (parentId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, parentId_);
+          .computeInt32Size(2, parentId_);
       }
       if (!getMenuCodeBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, menuCode_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, menuCode_);
       }
       if (!getPathBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, path_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, path_);
       }
       if (!getIconBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, icon_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, icon_);
       }
       if (sort_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, sort_);
+          .computeInt32Size(6, sort_);
       }
       if (type_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, type_);
+          .computeInt32Size(7, type_);
       }
       if (langId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, langId_);
+          .computeInt32Size(11, langId_);
       }
       if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, name_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, name_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2484,13 +2546,13 @@ public final class SysMenuOuterClass {
 
       private int parentId_ ;
       /**
-       * <code>int32 parent_id = 1;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public int getParentId() {
         return parentId_;
       }
       /**
-       * <code>int32 parent_id = 1;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public Builder setParentId(int value) {
         
@@ -2499,7 +2561,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>int32 parent_id = 1;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public Builder clearParentId() {
         
@@ -2510,7 +2572,7 @@ public final class SysMenuOuterClass {
 
       private java.lang.Object menuCode_ = "";
       /**
-       * <code>string menu_code = 2;</code>
+       * <code>string menu_code = 3;</code>
        */
       public java.lang.String getMenuCode() {
         java.lang.Object ref = menuCode_;
@@ -2525,7 +2587,7 @@ public final class SysMenuOuterClass {
         }
       }
       /**
-       * <code>string menu_code = 2;</code>
+       * <code>string menu_code = 3;</code>
        */
       public com.google.protobuf.ByteString
           getMenuCodeBytes() {
@@ -2541,7 +2603,7 @@ public final class SysMenuOuterClass {
         }
       }
       /**
-       * <code>string menu_code = 2;</code>
+       * <code>string menu_code = 3;</code>
        */
       public Builder setMenuCode(
           java.lang.String value) {
@@ -2554,7 +2616,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>string menu_code = 2;</code>
+       * <code>string menu_code = 3;</code>
        */
       public Builder clearMenuCode() {
         
@@ -2563,7 +2625,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>string menu_code = 2;</code>
+       * <code>string menu_code = 3;</code>
        */
       public Builder setMenuCodeBytes(
           com.google.protobuf.ByteString value) {
@@ -2579,7 +2641,7 @@ public final class SysMenuOuterClass {
 
       private java.lang.Object path_ = "";
       /**
-       * <code>string path = 3;</code>
+       * <code>string path = 4;</code>
        */
       public java.lang.String getPath() {
         java.lang.Object ref = path_;
@@ -2594,7 +2656,7 @@ public final class SysMenuOuterClass {
         }
       }
       /**
-       * <code>string path = 3;</code>
+       * <code>string path = 4;</code>
        */
       public com.google.protobuf.ByteString
           getPathBytes() {
@@ -2610,7 +2672,7 @@ public final class SysMenuOuterClass {
         }
       }
       /**
-       * <code>string path = 3;</code>
+       * <code>string path = 4;</code>
        */
       public Builder setPath(
           java.lang.String value) {
@@ -2623,7 +2685,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>string path = 3;</code>
+       * <code>string path = 4;</code>
        */
       public Builder clearPath() {
         
@@ -2632,7 +2694,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>string path = 3;</code>
+       * <code>string path = 4;</code>
        */
       public Builder setPathBytes(
           com.google.protobuf.ByteString value) {
@@ -2648,7 +2710,7 @@ public final class SysMenuOuterClass {
 
       private java.lang.Object icon_ = "";
       /**
-       * <code>string icon = 4;</code>
+       * <code>string icon = 5;</code>
        */
       public java.lang.String getIcon() {
         java.lang.Object ref = icon_;
@@ -2663,7 +2725,7 @@ public final class SysMenuOuterClass {
         }
       }
       /**
-       * <code>string icon = 4;</code>
+       * <code>string icon = 5;</code>
        */
       public com.google.protobuf.ByteString
           getIconBytes() {
@@ -2679,7 +2741,7 @@ public final class SysMenuOuterClass {
         }
       }
       /**
-       * <code>string icon = 4;</code>
+       * <code>string icon = 5;</code>
        */
       public Builder setIcon(
           java.lang.String value) {
@@ -2692,7 +2754,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>string icon = 4;</code>
+       * <code>string icon = 5;</code>
        */
       public Builder clearIcon() {
         
@@ -2701,7 +2763,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>string icon = 4;</code>
+       * <code>string icon = 5;</code>
        */
       public Builder setIconBytes(
           com.google.protobuf.ByteString value) {
@@ -2717,13 +2779,13 @@ public final class SysMenuOuterClass {
 
       private int sort_ ;
       /**
-       * <code>int32 sort = 5;</code>
+       * <code>int32 sort = 6;</code>
        */
       public int getSort() {
         return sort_;
       }
       /**
-       * <code>int32 sort = 5;</code>
+       * <code>int32 sort = 6;</code>
        */
       public Builder setSort(int value) {
         
@@ -2732,7 +2794,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>int32 sort = 5;</code>
+       * <code>int32 sort = 6;</code>
        */
       public Builder clearSort() {
         
@@ -2743,13 +2805,13 @@ public final class SysMenuOuterClass {
 
       private int type_ ;
       /**
-       * <code>int32 type = 6;</code>
+       * <code>int32 type = 7;</code>
        */
       public int getType() {
         return type_;
       }
       /**
-       * <code>int32 type = 6;</code>
+       * <code>int32 type = 7;</code>
        */
       public Builder setType(int value) {
         
@@ -2758,7 +2820,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>int32 type = 6;</code>
+       * <code>int32 type = 7;</code>
        */
       public Builder clearType() {
         
@@ -2769,13 +2831,13 @@ public final class SysMenuOuterClass {
 
       private int langId_ ;
       /**
-       * <code>int32 lang_id = 7;</code>
+       * <code>int32 lang_id = 11;</code>
        */
       public int getLangId() {
         return langId_;
       }
       /**
-       * <code>int32 lang_id = 7;</code>
+       * <code>int32 lang_id = 11;</code>
        */
       public Builder setLangId(int value) {
         
@@ -2784,7 +2846,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>int32 lang_id = 7;</code>
+       * <code>int32 lang_id = 11;</code>
        */
       public Builder clearLangId() {
         
@@ -2795,7 +2857,7 @@ public final class SysMenuOuterClass {
 
       private java.lang.Object name_ = "";
       /**
-       * <code>string name = 8;</code>
+       * <code>string name = 12;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
@@ -2810,7 +2872,7 @@ public final class SysMenuOuterClass {
         }
       }
       /**
-       * <code>string name = 8;</code>
+       * <code>string name = 12;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -2826,7 +2888,7 @@ public final class SysMenuOuterClass {
         }
       }
       /**
-       * <code>string name = 8;</code>
+       * <code>string name = 12;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -2839,7 +2901,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>string name = 8;</code>
+       * <code>string name = 12;</code>
        */
       public Builder clearName() {
         
@@ -2848,7 +2910,7 @@ public final class SysMenuOuterClass {
         return this;
       }
       /**
-       * <code>string name = 8;</code>
+       * <code>string name = 12;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -5520,30 +5582,30 @@ public final class SysMenuOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\016sys_menu.proto\022\007sysMenu\032\037google/protob" +
-      "uf/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
-      "\005\"M\n\nGetListReq\022\017\n\007lang_id\030\001 \001(\005\022\r\n\005quer" +
-      "y\030\002 \001(\t\022\021\n\tpage_size\030\003 \001(\005\022\014\n\004page\030\004 \001(\005" +
-      "\"\031\n\006Result\022\017\n\007success\030\001 \001(\010\"\212\001\n\013BaseSysM" +
-      "enu\022\021\n\tparent_id\030\001 \001(\005\022\021\n\tmenu_code\030\002 \001(" +
-      "\t\022\014\n\004path\030\003 \001(\t\022\014\n\004icon\030\004 \001(\t\022\014\n\004sort\030\005 " +
-      "\001(\005\022\014\n\004type\030\006 \001(\005\022\017\n\007lang_id\030\007 \001(\005\022\014\n\004na" +
-      "me\030\010 \001(\t\"\203\002\n\007SysMenu\022\n\n\002id\030\001 \001(\005\022\021\n\tpare" +
-      "nt_id\030\002 \001(\005\022\021\n\tmenu_code\030\003 \001(\t\022\014\n\004path\030\004" +
-      " \001(\t\022\014\n\004icon\030\005 \001(\t\022\014\n\004sort\030\006 \001(\005\022\014\n\004type" +
-      "\030\007 \001(\005\022.\n\ncreated_at\030\010 \001(\0132\032.google.prot" +
-      "obuf.Timestamp\022.\n\nupdated_at\030\t \001(\0132\032.goo" +
-      "gle.protobuf.Timestamp\022\017\n\007deleted\030\n \001(\005\022" +
-      "\017\n\007lang_id\030\013 \001(\005\022\014\n\004name\030\014 \001(\t\">\n\010PageLi" +
-      "st\022\r\n\005total\030\001 \001(\005\022#\n\tsys_menus\030\002 \003(\0132\020.s" +
-      "ysMenu.SysMenu2\207\002\n\016SysMenuService\022/\n\007Get" +
-      "ById\022\020.sysMenu.ByIdReq\032\020.sysMenu.SysMenu" +
-      "\"\000\0223\n\007GetList\022\023.sysMenu.GetListReq\032\021.sys" +
-      "Menu.PageList\"\000\0221\n\006Insert\022\024.sysMenu.Base" +
-      "SysMenu\032\017.sysMenu.Result\"\000\022-\n\006Update\022\020.s" +
-      "ysMenu.SysMenu\032\017.sysMenu.Result\"\000\022-\n\006Del" +
-      "ete\022\020.sysMenu.ByIdReq\032\017.sysMenu.Result\"\000" +
-      "B\036\n\034com.qianxun.grpc.lib.sysMenuP\000b\006prot" +
-      "o3"
+      "uf/timestamp.proto\"&\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
+      "\005\022\017\n\007lang_id\030\002 \001(\005\"M\n\nGetListReq\022\017\n\007lang" +
+      "_id\030\001 \001(\005\022\r\n\005query\030\002 \001(\t\022\021\n\tpage_size\030\003 " +
+      "\001(\005\022\014\n\004page\030\004 \001(\005\"\031\n\006Result\022\017\n\007success\030\001" +
+      " \001(\010\"\212\001\n\013BaseSysMenu\022\021\n\tparent_id\030\002 \001(\005\022" +
+      "\021\n\tmenu_code\030\003 \001(\t\022\014\n\004path\030\004 \001(\t\022\014\n\004icon" +
+      "\030\005 \001(\t\022\014\n\004sort\030\006 \001(\005\022\014\n\004type\030\007 \001(\005\022\017\n\007la" +
+      "ng_id\030\013 \001(\005\022\014\n\004name\030\014 \001(\t\"\203\002\n\007SysMenu\022\n\n" +
+      "\002id\030\001 \001(\005\022\021\n\tparent_id\030\002 \001(\005\022\021\n\tmenu_cod" +
+      "e\030\003 \001(\t\022\014\n\004path\030\004 \001(\t\022\014\n\004icon\030\005 \001(\t\022\014\n\004s" +
+      "ort\030\006 \001(\005\022\014\n\004type\030\007 \001(\005\022.\n\ncreated_at\030\010 " +
+      "\001(\0132\032.google.protobuf.Timestamp\022.\n\nupdat" +
+      "ed_at\030\t \001(\0132\032.google.protobuf.Timestamp\022" +
+      "\017\n\007deleted\030\n \001(\005\022\017\n\007lang_id\030\013 \001(\005\022\014\n\004nam" +
+      "e\030\014 \001(\t\">\n\010PageList\022\r\n\005total\030\001 \001(\005\022#\n\tsy" +
+      "s_menus\030\002 \003(\0132\020.sysMenu.SysMenu2\207\002\n\016SysM" +
+      "enuService\022/\n\007GetById\022\020.sysMenu.ByIdReq\032" +
+      "\020.sysMenu.SysMenu\"\000\0223\n\007GetList\022\023.sysMenu" +
+      ".GetListReq\032\021.sysMenu.PageList\"\000\0221\n\006Inse" +
+      "rt\022\024.sysMenu.BaseSysMenu\032\017.sysMenu.Resul" +
+      "t\"\000\022-\n\006Update\022\020.sysMenu.SysMenu\032\017.sysMen" +
+      "u.Result\"\000\022-\n\006Delete\022\020.sysMenu.ByIdReq\032\017" +
+      ".sysMenu.Result\"\000B\036\n\034com.qianxun.grpc.li" +
+      "b.sysMenuP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5563,7 +5625,7 @@ public final class SysMenuOuterClass {
     internal_static_sysMenu_ByIdReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysMenu_ByIdReq_descriptor,
-        new java.lang.String[] { "Id", });
+        new java.lang.String[] { "Id", "LangId", });
     internal_static_sysMenu_GetListReq_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_sysMenu_GetListReq_fieldAccessorTable = new

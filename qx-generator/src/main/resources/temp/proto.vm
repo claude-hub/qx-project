@@ -31,52 +31,47 @@ message Result {
 }
 
 // 新增时,使用的message,以保证用户不传入多余信息
+#set($i = 1)
 message Base${className} {
 #foreach ($column in $columns)
 ##排除主键
-    #if($column.columnName != $pk.columnName)
-    ##排除created_at字段
-        #if($column.columnName != "created_at")
-        ##排除updated_at字段
-            #if($column.columnName != "updated_at")
-            ##排除deleted字段
-                #if($column.columnName != "deleted")
-                    #if($column.attrType == "Integer")
-                    int32 ${column.columnName} = 1;
-                    #end
-                    #if($column.attrType == "String")
-                    string ${column.columnName} = 1;
-                    #end
-                    #if($column.attrType == "Date")
-                    google.protobuf.Timestamp ${column.columnName} = 1;
-                    #end
-                #end
-            #end
-        #end
+    #if($column.columnName != $pk.columnName && $column.columnName != "created_at"
+    &&$column.columnName != "updated_at"&&$column.columnName != "deleted")
+    #if($column.attrType == "Integer")
+    int32 ${column.columnName} = ${i};
     #end
+    #if($column.attrType == "String")
+    string ${column.columnName} = ${i};
+    #end
+    #if($column.attrType == "Date")
+    google.protobuf.Timestamp ${column.columnName} = ${i};
+    #end
+    #end
+    #set($i=$i+1)
 #end
-
-    int32 lang_id = 1;
-    string name = 2;
+    int32 lang_id = ${i};#set($i=$i+1)
+    string name = ${i};
 }
 
+#set($j = 1)
 message ${className} {
 #foreach ($column in $columns)
     #if($column.attrType == "Integer")
-    int32 ${column.columnName} = 1;
+    int32 ${column.columnName} = ${j};
     #end
     #if($column.attrType == "Long")
-    int64 ${column.columnName} = 1;
+    int64 ${column.columnName} = ${j};
     #end
     #if($column.attrType == "String")
-    string ${column.columnName} = 1;
+    string ${column.columnName} = ${j};
     #end
     #if($column.attrType == "Date")
-    google.protobuf.Timestamp ${column.columnName} = 1;
+    google.protobuf.Timestamp ${column.columnName} = ${j};
     #end
+    #set($j=$j+1)
 #end
-    int32 lang_id = 2;
-    string name = 3;
+    int32 lang_id = ${j};#set($j=$j+1)
+    string name = ${j};
 }
 
 message PageList {
