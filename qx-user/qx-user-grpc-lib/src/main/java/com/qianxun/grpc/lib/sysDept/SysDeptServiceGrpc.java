@@ -20,38 +20,38 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.20.0)",
     comments = "Source: sys_dept.proto")
-public final class sysDeptServiceGrpc {
+public final class SysDeptServiceGrpc {
 
-  private sysDeptServiceGrpc() {}
+  private SysDeptServiceGrpc() {}
 
-  public static final String SERVICE_NAME = "sysDept.sysDeptService";
+  public static final String SERVICE_NAME = "sysDept.SysDeptService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq,
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq,
       com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetByIdMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetById",
-      requestType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.class,
+      requestType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.class,
       responseType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq,
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq,
       com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetByIdMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetByIdMethod;
-    if ((getGetByIdMethod = sysDeptServiceGrpc.getGetByIdMethod) == null) {
-      synchronized (sysDeptServiceGrpc.class) {
-        if ((getGetByIdMethod = sysDeptServiceGrpc.getGetByIdMethod) == null) {
-          sysDeptServiceGrpc.getGetByIdMethod = getGetByIdMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>newBuilder()
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetByIdMethod;
+    if ((getGetByIdMethod = SysDeptServiceGrpc.getGetByIdMethod) == null) {
+      synchronized (SysDeptServiceGrpc.class) {
+        if ((getGetByIdMethod = SysDeptServiceGrpc.getGetByIdMethod) == null) {
+          SysDeptServiceGrpc.getGetByIdMethod = getGetByIdMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "sysDept.sysDeptService", "GetById"))
+                  "sysDept.SysDeptService", "GetById"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.getDefaultInstance()))
+                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.getDefaultInstance()))
-                  .setSchemaDescriptor(new sysDeptServiceMethodDescriptorSupplier("GetById"))
+                  .setSchemaDescriptor(new SysDeptServiceMethodDescriptorSupplier("GetById"))
                   .build();
           }
         }
@@ -60,30 +60,30 @@ public final class sysDeptServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq,
-      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetListMethod;
+      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList> getGetListMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetList",
       requestType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq.class,
-      responseType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+      responseType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq,
-      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetListMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetListMethod;
-    if ((getGetListMethod = sysDeptServiceGrpc.getGetListMethod) == null) {
-      synchronized (sysDeptServiceGrpc.class) {
-        if ((getGetListMethod = sysDeptServiceGrpc.getGetListMethod) == null) {
-          sysDeptServiceGrpc.getGetListMethod = getGetListMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList> getGetListMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList> getGetListMethod;
+    if ((getGetListMethod = SysDeptServiceGrpc.getGetListMethod) == null) {
+      synchronized (SysDeptServiceGrpc.class) {
+        if ((getGetListMethod = SysDeptServiceGrpc.getGetListMethod) == null) {
+          SysDeptServiceGrpc.getGetListMethod = getGetListMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "sysDept.sysDeptService", "GetList"))
+                  "sysDept.SysDeptService", "GetList"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.getDefaultInstance()))
-                  .setSchemaDescriptor(new sysDeptServiceMethodDescriptorSupplier("GetList"))
+                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.getDefaultInstance()))
+                  .setSchemaDescriptor(new SysDeptServiceMethodDescriptorSupplier("GetList"))
                   .build();
           }
         }
@@ -91,31 +91,31 @@ public final class sysDeptServiceGrpc {
      return getGetListMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept,
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept,
       com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getInsertMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Insert",
-      requestType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.class,
+      requestType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.class,
       responseType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept,
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept,
       com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getInsertMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getInsertMethod;
-    if ((getInsertMethod = sysDeptServiceGrpc.getInsertMethod) == null) {
-      synchronized (sysDeptServiceGrpc.class) {
-        if ((getInsertMethod = sysDeptServiceGrpc.getInsertMethod) == null) {
-          sysDeptServiceGrpc.getInsertMethod = getInsertMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>newBuilder()
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getInsertMethod;
+    if ((getInsertMethod = SysDeptServiceGrpc.getInsertMethod) == null) {
+      synchronized (SysDeptServiceGrpc.class) {
+        if ((getInsertMethod = SysDeptServiceGrpc.getInsertMethod) == null) {
+          SysDeptServiceGrpc.getInsertMethod = getInsertMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "sysDept.sysDeptService", "Insert"))
+                  "sysDept.SysDeptService", "Insert"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.getDefaultInstance()))
+                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result.getDefaultInstance()))
-                  .setSchemaDescriptor(new sysDeptServiceMethodDescriptorSupplier("Insert"))
+                  .setSchemaDescriptor(new SysDeptServiceMethodDescriptorSupplier("Insert"))
                   .build();
           }
         }
@@ -134,20 +134,20 @@ public final class sysDeptServiceGrpc {
   public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept,
       com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getUpdateMethod() {
     io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getUpdateMethod;
-    if ((getUpdateMethod = sysDeptServiceGrpc.getUpdateMethod) == null) {
-      synchronized (sysDeptServiceGrpc.class) {
-        if ((getUpdateMethod = sysDeptServiceGrpc.getUpdateMethod) == null) {
-          sysDeptServiceGrpc.getUpdateMethod = getUpdateMethod = 
+    if ((getUpdateMethod = SysDeptServiceGrpc.getUpdateMethod) == null) {
+      synchronized (SysDeptServiceGrpc.class) {
+        if ((getUpdateMethod = SysDeptServiceGrpc.getUpdateMethod) == null) {
+          SysDeptServiceGrpc.getUpdateMethod = getUpdateMethod = 
               io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "sysDept.sysDeptService", "Update"))
+                  "sysDept.SysDeptService", "Update"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result.getDefaultInstance()))
-                  .setSchemaDescriptor(new sysDeptServiceMethodDescriptorSupplier("Update"))
+                  .setSchemaDescriptor(new SysDeptServiceMethodDescriptorSupplier("Update"))
                   .build();
           }
         }
@@ -155,31 +155,31 @@ public final class sysDeptServiceGrpc {
      return getUpdateMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept,
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq,
       com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getDeleteMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Delete",
-      requestType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.class,
+      requestType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.class,
       responseType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept,
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq,
       com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getDeleteMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getDeleteMethod;
-    if ((getDeleteMethod = sysDeptServiceGrpc.getDeleteMethod) == null) {
-      synchronized (sysDeptServiceGrpc.class) {
-        if ((getDeleteMethod = sysDeptServiceGrpc.getDeleteMethod) == null) {
-          sysDeptServiceGrpc.getDeleteMethod = getDeleteMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>newBuilder()
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> getDeleteMethod;
+    if ((getDeleteMethod = SysDeptServiceGrpc.getDeleteMethod) == null) {
+      synchronized (SysDeptServiceGrpc.class) {
+        if ((getDeleteMethod = SysDeptServiceGrpc.getDeleteMethod) == null) {
+          SysDeptServiceGrpc.getDeleteMethod = getDeleteMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "sysDept.sysDeptService", "Delete"))
+                  "sysDept.SysDeptService", "Delete"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.getDefaultInstance()))
+                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result.getDefaultInstance()))
-                  .setSchemaDescriptor(new sysDeptServiceMethodDescriptorSupplier("Delete"))
+                  .setSchemaDescriptor(new SysDeptServiceMethodDescriptorSupplier("Delete"))
                   .build();
           }
         }
@@ -190,33 +190,33 @@ public final class sysDeptServiceGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static sysDeptServiceStub newStub(io.grpc.Channel channel) {
-    return new sysDeptServiceStub(channel);
+  public static SysDeptServiceStub newStub(io.grpc.Channel channel) {
+    return new SysDeptServiceStub(channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static sysDeptServiceBlockingStub newBlockingStub(
+  public static SysDeptServiceBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    return new sysDeptServiceBlockingStub(channel);
+    return new SysDeptServiceBlockingStub(channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static sysDeptServiceFutureStub newFutureStub(
+  public static SysDeptServiceFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    return new sysDeptServiceFutureStub(channel);
+    return new SysDeptServiceFutureStub(channel);
   }
 
   /**
    */
-  public static abstract class sysDeptServiceImplBase implements io.grpc.BindableService {
+  public static abstract class SysDeptServiceImplBase implements io.grpc.BindableService {
 
     /**
      */
-    public void getById(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq request,
+    public void getById(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> responseObserver) {
       asyncUnimplementedUnaryCall(getGetByIdMethod(), responseObserver);
     }
@@ -224,13 +224,13 @@ public final class sysDeptServiceGrpc {
     /**
      */
     public void getList(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> responseObserver) {
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList> responseObserver) {
       asyncUnimplementedUnaryCall(getGetListMethod(), responseObserver);
     }
 
     /**
      */
-    public void insert(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept request,
+    public void insert(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> responseObserver) {
       asyncUnimplementedUnaryCall(getInsertMethod(), responseObserver);
     }
@@ -244,7 +244,7 @@ public final class sysDeptServiceGrpc {
 
     /**
      */
-    public void delete(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept request,
+    public void delete(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> responseObserver) {
       asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
     }
@@ -255,21 +255,21 @@ public final class sysDeptServiceGrpc {
             getGetByIdMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq,
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq,
                 com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>(
                   this, METHODID_GET_BY_ID)))
           .addMethod(
             getGetListMethod(),
-            asyncServerStreamingCall(
+            asyncUnaryCall(
               new MethodHandlers<
                 com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq,
-                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>(
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList>(
                   this, METHODID_GET_LIST)))
           .addMethod(
             getInsertMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept,
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept,
                 com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>(
                   this, METHODID_INSERT)))
           .addMethod(
@@ -283,7 +283,7 @@ public final class sysDeptServiceGrpc {
             getDeleteMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept,
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq,
                 com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>(
                   this, METHODID_DELETE)))
           .build();
@@ -292,25 +292,25 @@ public final class sysDeptServiceGrpc {
 
   /**
    */
-  public static final class sysDeptServiceStub extends io.grpc.stub.AbstractStub<sysDeptServiceStub> {
-    private sysDeptServiceStub(io.grpc.Channel channel) {
+  public static final class SysDeptServiceStub extends io.grpc.stub.AbstractStub<SysDeptServiceStub> {
+    private SysDeptServiceStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private sysDeptServiceStub(io.grpc.Channel channel,
+    private SysDeptServiceStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected sysDeptServiceStub build(io.grpc.Channel channel,
+    protected SysDeptServiceStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new sysDeptServiceStub(channel, callOptions);
+      return new SysDeptServiceStub(channel, callOptions);
     }
 
     /**
      */
-    public void getById(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq request,
+    public void getById(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getGetByIdMethod(), getCallOptions()), request, responseObserver);
@@ -319,14 +319,14 @@ public final class sysDeptServiceGrpc {
     /**
      */
     public void getList(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq request,
-        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> responseObserver) {
-      asyncServerStreamingCall(
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList> responseObserver) {
+      asyncUnaryCall(
           getChannel().newCall(getGetListMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void insert(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept request,
+    public void insert(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getInsertMethod(), getCallOptions()), request, responseObserver);
@@ -342,7 +342,7 @@ public final class sysDeptServiceGrpc {
 
     /**
      */
-    public void delete(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept request,
+    public void delete(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request, responseObserver);
@@ -351,40 +351,39 @@ public final class sysDeptServiceGrpc {
 
   /**
    */
-  public static final class sysDeptServiceBlockingStub extends io.grpc.stub.AbstractStub<sysDeptServiceBlockingStub> {
-    private sysDeptServiceBlockingStub(io.grpc.Channel channel) {
+  public static final class SysDeptServiceBlockingStub extends io.grpc.stub.AbstractStub<SysDeptServiceBlockingStub> {
+    private SysDeptServiceBlockingStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private sysDeptServiceBlockingStub(io.grpc.Channel channel,
+    private SysDeptServiceBlockingStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected sysDeptServiceBlockingStub build(io.grpc.Channel channel,
+    protected SysDeptServiceBlockingStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new sysDeptServiceBlockingStub(channel, callOptions);
+      return new SysDeptServiceBlockingStub(channel, callOptions);
     }
 
     /**
      */
-    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept getById(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq request) {
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept getById(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request) {
       return blockingUnaryCall(
           getChannel(), getGetByIdMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public java.util.Iterator<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getList(
-        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq request) {
-      return blockingServerStreamingCall(
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList getList(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq request) {
+      return blockingUnaryCall(
           getChannel(), getGetListMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result insert(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept request) {
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result insert(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept request) {
       return blockingUnaryCall(
           getChannel(), getInsertMethod(), getCallOptions(), request);
     }
@@ -398,7 +397,7 @@ public final class sysDeptServiceGrpc {
 
     /**
      */
-    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result delete(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept request) {
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result delete(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteMethod(), getCallOptions(), request);
     }
@@ -406,34 +405,42 @@ public final class sysDeptServiceGrpc {
 
   /**
    */
-  public static final class sysDeptServiceFutureStub extends io.grpc.stub.AbstractStub<sysDeptServiceFutureStub> {
-    private sysDeptServiceFutureStub(io.grpc.Channel channel) {
+  public static final class SysDeptServiceFutureStub extends io.grpc.stub.AbstractStub<SysDeptServiceFutureStub> {
+    private SysDeptServiceFutureStub(io.grpc.Channel channel) {
       super(channel);
     }
 
-    private sysDeptServiceFutureStub(io.grpc.Channel channel,
+    private SysDeptServiceFutureStub(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected sysDeptServiceFutureStub build(io.grpc.Channel channel,
+    protected SysDeptServiceFutureStub build(io.grpc.Channel channel,
         io.grpc.CallOptions callOptions) {
-      return new sysDeptServiceFutureStub(channel, callOptions);
+      return new SysDeptServiceFutureStub(channel, callOptions);
     }
 
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getById(
-        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq request) {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request) {
       return futureUnaryCall(
           getChannel().newCall(getGetByIdMethod(), getCallOptions()), request);
     }
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList> getList(
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetListMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> insert(
-        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept request) {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept request) {
       return futureUnaryCall(
           getChannel().newCall(getInsertMethod(), getCallOptions()), request);
     }
@@ -449,7 +456,7 @@ public final class sysDeptServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result> delete(
-        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept request) {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request) {
       return futureUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request);
     }
@@ -466,10 +473,10 @@ public final class sysDeptServiceGrpc {
       io.grpc.stub.ServerCalls.ServerStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.ClientStreamingMethod<Req, Resp>,
       io.grpc.stub.ServerCalls.BidiStreamingMethod<Req, Resp> {
-    private final sysDeptServiceImplBase serviceImpl;
+    private final SysDeptServiceImplBase serviceImpl;
     private final int methodId;
 
-    MethodHandlers(sysDeptServiceImplBase serviceImpl, int methodId) {
+    MethodHandlers(SysDeptServiceImplBase serviceImpl, int methodId) {
       this.serviceImpl = serviceImpl;
       this.methodId = methodId;
     }
@@ -479,15 +486,15 @@ public final class sysDeptServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_BY_ID:
-          serviceImpl.getById((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq) request,
+          serviceImpl.getById((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>) responseObserver);
           break;
         case METHODID_GET_LIST:
           serviceImpl.getList((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq) request,
-              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList>) responseObserver);
           break;
         case METHODID_INSERT:
-          serviceImpl.insert((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept) request,
+          serviceImpl.insert((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>) responseObserver);
           break;
         case METHODID_UPDATE:
@@ -495,7 +502,7 @@ public final class sysDeptServiceGrpc {
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>) responseObserver);
           break;
         case METHODID_DELETE:
-          serviceImpl.delete((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept) request,
+          serviceImpl.delete((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>) responseObserver);
           break;
         default:
@@ -514,9 +521,9 @@ public final class sysDeptServiceGrpc {
     }
   }
 
-  private static abstract class sysDeptServiceBaseDescriptorSupplier
+  private static abstract class SysDeptServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    sysDeptServiceBaseDescriptorSupplier() {}
+    SysDeptServiceBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
@@ -525,21 +532,21 @@ public final class sysDeptServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("sysDeptService");
+      return getFileDescriptor().findServiceByName("SysDeptService");
     }
   }
 
-  private static final class sysDeptServiceFileDescriptorSupplier
-      extends sysDeptServiceBaseDescriptorSupplier {
-    sysDeptServiceFileDescriptorSupplier() {}
+  private static final class SysDeptServiceFileDescriptorSupplier
+      extends SysDeptServiceBaseDescriptorSupplier {
+    SysDeptServiceFileDescriptorSupplier() {}
   }
 
-  private static final class sysDeptServiceMethodDescriptorSupplier
-      extends sysDeptServiceBaseDescriptorSupplier
+  private static final class SysDeptServiceMethodDescriptorSupplier
+      extends SysDeptServiceBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final String methodName;
 
-    sysDeptServiceMethodDescriptorSupplier(String methodName) {
+    SysDeptServiceMethodDescriptorSupplier(String methodName) {
       this.methodName = methodName;
     }
 
@@ -554,11 +561,11 @@ public final class sysDeptServiceGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (sysDeptServiceGrpc.class) {
+      synchronized (SysDeptServiceGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new sysDeptServiceFileDescriptorSupplier())
+              .setSchemaDescriptor(new SysDeptServiceFileDescriptorSupplier())
               .addMethod(getGetByIdMethod())
               .addMethod(getGetListMethod())
               .addMethod(getInsertMethod())

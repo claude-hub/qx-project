@@ -20,12 +20,12 @@
 </resultMap>
 <sql id="${classname}WithLangSql">
     #foreach($column in $columns)
-      ${column.columnName},
+    ${tableName}.${column.columnName},
     #end
 ${tableName}_lang.name AS `name`, ${tableName}_lang.lang_id AS lang_id
 from ${tableName} LEFT JOIN ${tableName}_lang ON ${tableName}.id =
     #if($tableName.startsWith('sys_'))
-        ${tableName}_lang.${tableName.substring(5)}_id
+        ${tableName}_lang.${tableName.substring(4)}_id
     #else
         ${tableName}_lang.${tableName}_id
     #end

@@ -14,33 +14,28 @@ public final class SysDeptOuterClass {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface GetByIdReqOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:sysDept.GetByIdReq)
+  public interface ByIdReqOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sysDept.ByIdReq)
       com.google.protobuf.MessageOrBuilder {
 
     /**
      * <code>int32 id = 1;</code>
      */
     int getId();
-
-    /**
-     * <code>int32 lang_id = 2;</code>
-     */
-    int getLangId();
   }
   /**
-   * Protobuf type {@code sysDept.GetByIdReq}
+   * Protobuf type {@code sysDept.ByIdReq}
    */
-  public  static final class GetByIdReq extends
+  public  static final class ByIdReq extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:sysDept.GetByIdReq)
-      GetByIdReqOrBuilder {
+      // @@protoc_insertion_point(message_implements:sysDept.ByIdReq)
+      ByIdReqOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use GetByIdReq.newBuilder() to construct.
-    private GetByIdReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use ByIdReq.newBuilder() to construct.
+    private ByIdReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private GetByIdReq() {
+    private ByIdReq() {
     }
 
     @java.lang.Override
@@ -48,7 +43,7 @@ public final class SysDeptOuterClass {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private GetByIdReq(
+    private ByIdReq(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -72,11 +67,6 @@ public final class SysDeptOuterClass {
               id_ = input.readInt32();
               break;
             }
-            case 16: {
-
-              langId_ = input.readInt32();
-              break;
-            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -98,15 +88,15 @@ public final class SysDeptOuterClass {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_GetByIdReq_descriptor;
+      return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_ByIdReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_GetByIdReq_fieldAccessorTable
+      return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_ByIdReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.Builder.class);
+              com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.Builder.class);
     }
 
     public static final int ID_FIELD_NUMBER = 1;
@@ -116,15 +106,6 @@ public final class SysDeptOuterClass {
      */
     public int getId() {
       return id_;
-    }
-
-    public static final int LANG_ID_FIELD_NUMBER = 2;
-    private int langId_;
-    /**
-     * <code>int32 lang_id = 2;</code>
-     */
-    public int getLangId() {
-      return langId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -144,9 +125,6 @@ public final class SysDeptOuterClass {
       if (id_ != 0) {
         output.writeInt32(1, id_);
       }
-      if (langId_ != 0) {
-        output.writeInt32(2, langId_);
-      }
       unknownFields.writeTo(output);
     }
 
@@ -160,10 +138,6 @@ public final class SysDeptOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      if (langId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, langId_);
-      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -174,15 +148,13 @@ public final class SysDeptOuterClass {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq)) {
+      if (!(obj instanceof com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq)) {
         return super.equals(obj);
       }
-      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq other = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq) obj;
+      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq other = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq) obj;
 
       if (getId()
           != other.getId()) return false;
-      if (getLangId()
-          != other.getLangId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -196,76 +168,74 @@ public final class SysDeptOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId();
-      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getLangId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(byte[] data)
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(java.io.InputStream input)
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseDelimitedFrom(java.io.InputStream input)
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseDelimitedFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parseFrom(
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -278,7 +248,7 @@ public final class SysDeptOuterClass {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq prototype) {
+    public static Builder newBuilder(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -294,26 +264,26 @@ public final class SysDeptOuterClass {
       return builder;
     }
     /**
-     * Protobuf type {@code sysDept.GetByIdReq}
+     * Protobuf type {@code sysDept.ByIdReq}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:sysDept.GetByIdReq)
-        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReqOrBuilder {
+        // @@protoc_insertion_point(builder_implements:sysDept.ByIdReq)
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReqOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_GetByIdReq_descriptor;
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_ByIdReq_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_GetByIdReq_fieldAccessorTable
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_ByIdReq_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.Builder.class);
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.Builder.class);
       }
 
-      // Construct using com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.newBuilder()
+      // Construct using com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -333,25 +303,23 @@ public final class SysDeptOuterClass {
         super.clear();
         id_ = 0;
 
-        langId_ = 0;
-
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_GetByIdReq_descriptor;
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_ByIdReq_descriptor;
       }
 
       @java.lang.Override
-      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq getDefaultInstanceForType() {
-        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.getDefaultInstance();
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq getDefaultInstanceForType() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq build() {
-        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq result = buildPartial();
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq build() {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -359,10 +327,9 @@ public final class SysDeptOuterClass {
       }
 
       @java.lang.Override
-      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq buildPartial() {
-        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq result = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq(this);
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq buildPartial() {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq result = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq(this);
         result.id_ = id_;
-        result.langId_ = langId_;
         onBuilt();
         return result;
       }
@@ -401,21 +368,18 @@ public final class SysDeptOuterClass {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq) {
-          return mergeFrom((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq)other);
+        if (other instanceof com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq) {
+          return mergeFrom((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq other) {
-        if (other == com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq other) {
+        if (other == com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq.getDefaultInstance()) return this;
         if (other.getId() != 0) {
           setId(other.getId());
-        }
-        if (other.getLangId() != 0) {
-          setLangId(other.getLangId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -432,11 +396,11 @@ public final class SysDeptOuterClass {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq parsedMessage = null;
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq) e.getUnfinishedMessage();
+          parsedMessage = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -471,32 +435,6 @@ public final class SysDeptOuterClass {
         onChanged();
         return this;
       }
-
-      private int langId_ ;
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public int getLangId() {
-        return langId_;
-      }
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public Builder setLangId(int value) {
-        
-        langId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public Builder clearLangId() {
-        
-        langId_ = 0;
-        onChanged();
-        return this;
-      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -510,41 +448,41 @@ public final class SysDeptOuterClass {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:sysDept.GetByIdReq)
+      // @@protoc_insertion_point(builder_scope:sysDept.ByIdReq)
     }
 
-    // @@protoc_insertion_point(class_scope:sysDept.GetByIdReq)
-    private static final com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:sysDept.ByIdReq)
+    private static final com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq();
+      DEFAULT_INSTANCE = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq();
     }
 
-    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq getDefaultInstance() {
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<GetByIdReq>
-        PARSER = new com.google.protobuf.AbstractParser<GetByIdReq>() {
+    private static final com.google.protobuf.Parser<ByIdReq>
+        PARSER = new com.google.protobuf.AbstractParser<ByIdReq>() {
       @java.lang.Override
-      public GetByIdReq parsePartialFrom(
+      public ByIdReq parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new GetByIdReq(input, extensionRegistry);
+        return new ByIdReq(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<GetByIdReq> parser() {
+    public static com.google.protobuf.Parser<ByIdReq> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<GetByIdReq> getParserForType() {
+    public com.google.protobuf.Parser<ByIdReq> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetByIdReq getDefaultInstanceForType() {
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -555,29 +493,29 @@ public final class SysDeptOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string query = 1;</code>
+     * <code>int32 lang_id = 1;</code>
+     */
+    int getLangId();
+
+    /**
+     * <code>string query = 2;</code>
      */
     java.lang.String getQuery();
     /**
-     * <code>string query = 1;</code>
+     * <code>string query = 2;</code>
      */
     com.google.protobuf.ByteString
         getQueryBytes();
 
     /**
-     * <code>int32 page_size = 2;</code>
+     * <code>int32 page_size = 3;</code>
      */
     int getPageSize();
 
     /**
-     * <code>int32 page = 3;</code>
+     * <code>int32 page = 4;</code>
      */
     int getPage();
-
-    /**
-     * <code>int32 lang_id = 4;</code>
-     */
-    int getLangId();
   }
   /**
    * Protobuf type {@code sysDept.GetListReq}
@@ -619,25 +557,25 @@ public final class SysDeptOuterClass {
             case 0:
               done = true;
               break;
-            case 10: {
+            case 8: {
+
+              langId_ = input.readInt32();
+              break;
+            }
+            case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
               query_ = s;
               break;
             }
-            case 16: {
+            case 24: {
 
               pageSize_ = input.readInt32();
               break;
             }
-            case 24: {
-
-              page_ = input.readInt32();
-              break;
-            }
             case 32: {
 
-              langId_ = input.readInt32();
+              page_ = input.readInt32();
               break;
             }
             default: {
@@ -672,10 +610,19 @@ public final class SysDeptOuterClass {
               com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq.Builder.class);
     }
 
-    public static final int QUERY_FIELD_NUMBER = 1;
+    public static final int LANG_ID_FIELD_NUMBER = 1;
+    private int langId_;
+    /**
+     * <code>int32 lang_id = 1;</code>
+     */
+    public int getLangId() {
+      return langId_;
+    }
+
+    public static final int QUERY_FIELD_NUMBER = 2;
     private volatile java.lang.Object query_;
     /**
-     * <code>string query = 1;</code>
+     * <code>string query = 2;</code>
      */
     public java.lang.String getQuery() {
       java.lang.Object ref = query_;
@@ -690,7 +637,7 @@ public final class SysDeptOuterClass {
       }
     }
     /**
-     * <code>string query = 1;</code>
+     * <code>string query = 2;</code>
      */
     public com.google.protobuf.ByteString
         getQueryBytes() {
@@ -706,31 +653,22 @@ public final class SysDeptOuterClass {
       }
     }
 
-    public static final int PAGE_SIZE_FIELD_NUMBER = 2;
+    public static final int PAGE_SIZE_FIELD_NUMBER = 3;
     private int pageSize_;
     /**
-     * <code>int32 page_size = 2;</code>
+     * <code>int32 page_size = 3;</code>
      */
     public int getPageSize() {
       return pageSize_;
     }
 
-    public static final int PAGE_FIELD_NUMBER = 3;
+    public static final int PAGE_FIELD_NUMBER = 4;
     private int page_;
     /**
-     * <code>int32 page = 3;</code>
+     * <code>int32 page = 4;</code>
      */
     public int getPage() {
       return page_;
-    }
-
-    public static final int LANG_ID_FIELD_NUMBER = 4;
-    private int langId_;
-    /**
-     * <code>int32 lang_id = 4;</code>
-     */
-    public int getLangId() {
-      return langId_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -747,17 +685,17 @@ public final class SysDeptOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (langId_ != 0) {
+        output.writeInt32(1, langId_);
+      }
       if (!getQueryBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, query_);
       }
       if (pageSize_ != 0) {
-        output.writeInt32(2, pageSize_);
+        output.writeInt32(3, pageSize_);
       }
       if (page_ != 0) {
-        output.writeInt32(3, page_);
-      }
-      if (langId_ != 0) {
-        output.writeInt32(4, langId_);
+        output.writeInt32(4, page_);
       }
       unknownFields.writeTo(output);
     }
@@ -768,20 +706,20 @@ public final class SysDeptOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (langId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, langId_);
+      }
       if (!getQueryBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, query_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, query_);
       }
       if (pageSize_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, pageSize_);
+          .computeInt32Size(3, pageSize_);
       }
       if (page_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, page_);
-      }
-      if (langId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, langId_);
+          .computeInt32Size(4, page_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -798,14 +736,14 @@ public final class SysDeptOuterClass {
       }
       com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq other = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq) obj;
 
+      if (getLangId()
+          != other.getLangId()) return false;
       if (!getQuery()
           .equals(other.getQuery())) return false;
       if (getPageSize()
           != other.getPageSize()) return false;
       if (getPage()
           != other.getPage()) return false;
-      if (getLangId()
-          != other.getLangId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -817,14 +755,14 @@ public final class SysDeptOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getLangId();
       hash = (37 * hash) + QUERY_FIELD_NUMBER;
       hash = (53 * hash) + getQuery().hashCode();
       hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
       hash = (53 * hash) + getPageSize();
       hash = (37 * hash) + PAGE_FIELD_NUMBER;
       hash = (53 * hash) + getPage();
-      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getLangId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -958,13 +896,13 @@ public final class SysDeptOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        langId_ = 0;
+
         query_ = "";
 
         pageSize_ = 0;
 
         page_ = 0;
-
-        langId_ = 0;
 
         return this;
       }
@@ -992,10 +930,10 @@ public final class SysDeptOuterClass {
       @java.lang.Override
       public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq buildPartial() {
         com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq result = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq(this);
+        result.langId_ = langId_;
         result.query_ = query_;
         result.pageSize_ = pageSize_;
         result.page_ = page_;
-        result.langId_ = langId_;
         onBuilt();
         return result;
       }
@@ -1044,6 +982,9 @@ public final class SysDeptOuterClass {
 
       public Builder mergeFrom(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq other) {
         if (other == com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq.getDefaultInstance()) return this;
+        if (other.getLangId() != 0) {
+          setLangId(other.getLangId());
+        }
         if (!other.getQuery().isEmpty()) {
           query_ = other.query_;
           onChanged();
@@ -1053,9 +994,6 @@ public final class SysDeptOuterClass {
         }
         if (other.getPage() != 0) {
           setPage(other.getPage());
-        }
-        if (other.getLangId() != 0) {
-          setLangId(other.getLangId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1086,9 +1024,35 @@ public final class SysDeptOuterClass {
         return this;
       }
 
+      private int langId_ ;
+      /**
+       * <code>int32 lang_id = 1;</code>
+       */
+      public int getLangId() {
+        return langId_;
+      }
+      /**
+       * <code>int32 lang_id = 1;</code>
+       */
+      public Builder setLangId(int value) {
+        
+        langId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 lang_id = 1;</code>
+       */
+      public Builder clearLangId() {
+        
+        langId_ = 0;
+        onChanged();
+        return this;
+      }
+
       private java.lang.Object query_ = "";
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public java.lang.String getQuery() {
         java.lang.Object ref = query_;
@@ -1103,7 +1067,7 @@ public final class SysDeptOuterClass {
         }
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public com.google.protobuf.ByteString
           getQueryBytes() {
@@ -1119,7 +1083,7 @@ public final class SysDeptOuterClass {
         }
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public Builder setQuery(
           java.lang.String value) {
@@ -1132,7 +1096,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public Builder clearQuery() {
         
@@ -1141,7 +1105,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>string query = 1;</code>
+       * <code>string query = 2;</code>
        */
       public Builder setQueryBytes(
           com.google.protobuf.ByteString value) {
@@ -1157,13 +1121,13 @@ public final class SysDeptOuterClass {
 
       private int pageSize_ ;
       /**
-       * <code>int32 page_size = 2;</code>
+       * <code>int32 page_size = 3;</code>
        */
       public int getPageSize() {
         return pageSize_;
       }
       /**
-       * <code>int32 page_size = 2;</code>
+       * <code>int32 page_size = 3;</code>
        */
       public Builder setPageSize(int value) {
         
@@ -1172,7 +1136,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>int32 page_size = 2;</code>
+       * <code>int32 page_size = 3;</code>
        */
       public Builder clearPageSize() {
         
@@ -1183,13 +1147,13 @@ public final class SysDeptOuterClass {
 
       private int page_ ;
       /**
-       * <code>int32 page = 3;</code>
+       * <code>int32 page = 4;</code>
        */
       public int getPage() {
         return page_;
       }
       /**
-       * <code>int32 page = 3;</code>
+       * <code>int32 page = 4;</code>
        */
       public Builder setPage(int value) {
         
@@ -1198,37 +1162,11 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>int32 page = 3;</code>
+       * <code>int32 page = 4;</code>
        */
       public Builder clearPage() {
         
         page_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int langId_ ;
-      /**
-       * <code>int32 lang_id = 4;</code>
-       */
-      public int getLangId() {
-        return langId_;
-      }
-      /**
-       * <code>int32 lang_id = 4;</code>
-       */
-      public Builder setLangId(int value) {
-        
-        langId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 lang_id = 4;</code>
-       */
-      public Builder clearLangId() {
-        
-        langId_ = 0;
         onChanged();
         return this;
       }
@@ -1760,24 +1698,24 @@ public final class SysDeptOuterClass {
 
   }
 
-  public interface SysDeptOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:sysDept.SysDept)
+  public interface BaseSysDeptOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sysDept.BaseSysDept)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 id = 1;</code>
-     */
-    int getId();
-
-    /**
-     * <code>int32 lang_id = 2;</code>
-     */
-    int getLangId();
-
-    /**
-     * <code>int32 parent_id = 3;</code>
+     * <code>int32 parent_id = 1;</code>
      */
     int getParentId();
+
+    /**
+     * <code>int32 sort = 2;</code>
+     */
+    int getSort();
+
+    /**
+     * <code>int32 lang_id = 3;</code>
+     */
+    int getLangId();
 
     /**
      * <code>string name = 4;</code>
@@ -1788,42 +1726,785 @@ public final class SysDeptOuterClass {
      */
     com.google.protobuf.ByteString
         getNameBytes();
+  }
+  /**
+   * <pre>
+   * 新增时,使用的message,以保证用户不传入多余信息
+   * </pre>
+   *
+   * Protobuf type {@code sysDept.BaseSysDept}
+   */
+  public  static final class BaseSysDept extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:sysDept.BaseSysDept)
+      BaseSysDeptOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use BaseSysDept.newBuilder() to construct.
+    private BaseSysDept(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private BaseSysDept() {
+      name_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private BaseSysDept(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              parentId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              sort_ = input.readInt32();
+              break;
+            }
+            case 24: {
+
+              langId_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_BaseSysDept_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_BaseSysDept_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.Builder.class);
+    }
+
+    public static final int PARENT_ID_FIELD_NUMBER = 1;
+    private int parentId_;
+    /**
+     * <code>int32 parent_id = 1;</code>
+     */
+    public int getParentId() {
+      return parentId_;
+    }
+
+    public static final int SORT_FIELD_NUMBER = 2;
+    private int sort_;
+    /**
+     * <code>int32 sort = 2;</code>
+     */
+    public int getSort() {
+      return sort_;
+    }
+
+    public static final int LANG_ID_FIELD_NUMBER = 3;
+    private int langId_;
+    /**
+     * <code>int32 lang_id = 3;</code>
+     */
+    public int getLangId() {
+      return langId_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object name_;
+    /**
+     * <code>string name = 4;</code>
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string name = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (parentId_ != 0) {
+        output.writeInt32(1, parentId_);
+      }
+      if (sort_ != 0) {
+        output.writeInt32(2, sort_);
+      }
+      if (langId_ != 0) {
+        output.writeInt32(3, langId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (parentId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, parentId_);
+      }
+      if (sort_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, sort_);
+      }
+      if (langId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, langId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept)) {
+        return super.equals(obj);
+      }
+      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept other = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept) obj;
+
+      if (getParentId()
+          != other.getParentId()) return false;
+      if (getSort()
+          != other.getSort()) return false;
+      if (getLangId()
+          != other.getLangId()) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PARENT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getParentId();
+      hash = (37 * hash) + SORT_FIELD_NUMBER;
+      hash = (53 * hash) + getSort();
+      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getLangId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * 新增时,使用的message,以保证用户不传入多余信息
+     * </pre>
+     *
+     * Protobuf type {@code sysDept.BaseSysDept}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:sysDept.BaseSysDept)
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDeptOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_BaseSysDept_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_BaseSysDept_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.Builder.class);
+      }
+
+      // Construct using com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        parentId_ = 0;
+
+        sort_ = 0;
+
+        langId_ = 0;
+
+        name_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_BaseSysDept_descriptor;
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept getDefaultInstanceForType() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept build() {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept buildPartial() {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept result = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept(this);
+        result.parentId_ = parentId_;
+        result.sort_ = sort_;
+        result.langId_ = langId_;
+        result.name_ = name_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept) {
+          return mergeFrom((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept other) {
+        if (other == com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept.getDefaultInstance()) return this;
+        if (other.getParentId() != 0) {
+          setParentId(other.getParentId());
+        }
+        if (other.getSort() != 0) {
+          setSort(other.getSort());
+        }
+        if (other.getLangId() != 0) {
+          setLangId(other.getLangId());
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int parentId_ ;
+      /**
+       * <code>int32 parent_id = 1;</code>
+       */
+      public int getParentId() {
+        return parentId_;
+      }
+      /**
+       * <code>int32 parent_id = 1;</code>
+       */
+      public Builder setParentId(int value) {
+        
+        parentId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 parent_id = 1;</code>
+       */
+      public Builder clearParentId() {
+        
+        parentId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int sort_ ;
+      /**
+       * <code>int32 sort = 2;</code>
+       */
+      public int getSort() {
+        return sort_;
+      }
+      /**
+       * <code>int32 sort = 2;</code>
+       */
+      public Builder setSort(int value) {
+        
+        sort_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 sort = 2;</code>
+       */
+      public Builder clearSort() {
+        
+        sort_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int langId_ ;
+      /**
+       * <code>int32 lang_id = 3;</code>
+       */
+      public int getLangId() {
+        return langId_;
+      }
+      /**
+       * <code>int32 lang_id = 3;</code>
+       */
+      public Builder setLangId(int value) {
+        
+        langId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 lang_id = 3;</code>
+       */
+      public Builder clearLangId() {
+        
+        langId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 4;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 4;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 4;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 4;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 4;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:sysDept.BaseSysDept)
+    }
+
+    // @@protoc_insertion_point(class_scope:sysDept.BaseSysDept)
+    private static final com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept();
+    }
+
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<BaseSysDept>
+        PARSER = new com.google.protobuf.AbstractParser<BaseSysDept>() {
+      @java.lang.Override
+      public BaseSysDept parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new BaseSysDept(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<BaseSysDept> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<BaseSysDept> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.BaseSysDept getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SysDeptOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sysDept.SysDept)
+      com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 sort = 5;</code>
+     * <code>int32 id = 1;</code>
+     */
+    int getId();
+
+    /**
+     * <code>int32 parent_id = 2;</code>
+     */
+    int getParentId();
+
+    /**
+     * <code>int32 sort = 3;</code>
      */
     int getSort();
 
     /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
      */
     boolean hasCreatedAt();
     /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
      */
     com.google.protobuf.Timestamp getCreatedAt();
     /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
      */
     com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder();
 
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
      */
     boolean hasUpdatedAt();
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
      */
     com.google.protobuf.Timestamp getUpdatedAt();
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
      */
     com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
 
     /**
-     * <code>int32 deleted = 8;</code>
+     * <code>int32 deleted = 6;</code>
      */
     int getDeleted();
+
+    /**
+     * <code>int32 lang_id = 7;</code>
+     */
+    int getLangId();
+
+    /**
+     * <code>string name = 8;</code>
+     */
+    java.lang.String getName();
+    /**
+     * <code>string name = 8;</code>
+     */
+    com.google.protobuf.ByteString
+        getNameBytes();
   }
   /**
    * Protobuf type {@code sysDept.SysDept}
@@ -1872,26 +2553,15 @@ public final class SysDeptOuterClass {
             }
             case 16: {
 
-              langId_ = input.readInt32();
+              parentId_ = input.readInt32();
               break;
             }
             case 24: {
 
-              parentId_ = input.readInt32();
-              break;
-            }
-            case 34: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              name_ = s;
-              break;
-            }
-            case 40: {
-
               sort_ = input.readInt32();
               break;
             }
-            case 50: {
+            case 34: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (createdAt_ != null) {
                 subBuilder = createdAt_.toBuilder();
@@ -1904,7 +2574,7 @@ public final class SysDeptOuterClass {
 
               break;
             }
-            case 58: {
+            case 42: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (updatedAt_ != null) {
                 subBuilder = updatedAt_.toBuilder();
@@ -1917,9 +2587,20 @@ public final class SysDeptOuterClass {
 
               break;
             }
-            case 64: {
+            case 48: {
 
               deleted_ = input.readInt32();
+              break;
+            }
+            case 56: {
+
+              langId_ = input.readInt32();
+              break;
+            }
+            case 66: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              name_ = s;
               break;
             }
             default: {
@@ -1963,28 +2644,88 @@ public final class SysDeptOuterClass {
       return id_;
     }
 
-    public static final int LANG_ID_FIELD_NUMBER = 2;
-    private int langId_;
-    /**
-     * <code>int32 lang_id = 2;</code>
-     */
-    public int getLangId() {
-      return langId_;
-    }
-
-    public static final int PARENT_ID_FIELD_NUMBER = 3;
+    public static final int PARENT_ID_FIELD_NUMBER = 2;
     private int parentId_;
     /**
-     * <code>int32 parent_id = 3;</code>
+     * <code>int32 parent_id = 2;</code>
      */
     public int getParentId() {
       return parentId_;
     }
 
-    public static final int NAME_FIELD_NUMBER = 4;
+    public static final int SORT_FIELD_NUMBER = 3;
+    private int sort_;
+    /**
+     * <code>int32 sort = 3;</code>
+     */
+    public int getSort() {
+      return sort_;
+    }
+
+    public static final int CREATED_AT_FIELD_NUMBER = 4;
+    private com.google.protobuf.Timestamp createdAt_;
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
+     */
+    public boolean hasCreatedAt() {
+      return createdAt_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
+     */
+    public com.google.protobuf.Timestamp getCreatedAt() {
+      return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp created_at = 4;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
+      return getCreatedAt();
+    }
+
+    public static final int UPDATED_AT_FIELD_NUMBER = 5;
+    private com.google.protobuf.Timestamp updatedAt_;
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
+     */
+    public boolean hasUpdatedAt() {
+      return updatedAt_ != null;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
+     */
+    public com.google.protobuf.Timestamp getUpdatedAt() {
+      return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5;</code>
+     */
+    public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
+      return getUpdatedAt();
+    }
+
+    public static final int DELETED_FIELD_NUMBER = 6;
+    private int deleted_;
+    /**
+     * <code>int32 deleted = 6;</code>
+     */
+    public int getDeleted() {
+      return deleted_;
+    }
+
+    public static final int LANG_ID_FIELD_NUMBER = 7;
+    private int langId_;
+    /**
+     * <code>int32 lang_id = 7;</code>
+     */
+    public int getLangId() {
+      return langId_;
+    }
+
+    public static final int NAME_FIELD_NUMBER = 8;
     private volatile java.lang.Object name_;
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 8;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -1999,7 +2740,7 @@ public final class SysDeptOuterClass {
       }
     }
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 8;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -2013,66 +2754,6 @@ public final class SysDeptOuterClass {
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
-    }
-
-    public static final int SORT_FIELD_NUMBER = 5;
-    private int sort_;
-    /**
-     * <code>int32 sort = 5;</code>
-     */
-    public int getSort() {
-      return sort_;
-    }
-
-    public static final int CREATED_AT_FIELD_NUMBER = 6;
-    private com.google.protobuf.Timestamp createdAt_;
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
-     */
-    public boolean hasCreatedAt() {
-      return createdAt_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
-     */
-    public com.google.protobuf.Timestamp getCreatedAt() {
-      return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 6;</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
-      return getCreatedAt();
-    }
-
-    public static final int UPDATED_AT_FIELD_NUMBER = 7;
-    private com.google.protobuf.Timestamp updatedAt_;
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
-     */
-    public boolean hasUpdatedAt() {
-      return updatedAt_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
-     */
-    public com.google.protobuf.Timestamp getUpdatedAt() {
-      return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 7;</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
-      return getUpdatedAt();
-    }
-
-    public static final int DELETED_FIELD_NUMBER = 8;
-    private int deleted_;
-    /**
-     * <code>int32 deleted = 8;</code>
-     */
-    public int getDeleted() {
-      return deleted_;
     }
 
     private byte memoizedIsInitialized = -1;
@@ -2092,26 +2773,26 @@ public final class SysDeptOuterClass {
       if (id_ != 0) {
         output.writeInt32(1, id_);
       }
-      if (langId_ != 0) {
-        output.writeInt32(2, langId_);
-      }
       if (parentId_ != 0) {
-        output.writeInt32(3, parentId_);
-      }
-      if (!getNameBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
+        output.writeInt32(2, parentId_);
       }
       if (sort_ != 0) {
-        output.writeInt32(5, sort_);
+        output.writeInt32(3, sort_);
       }
       if (createdAt_ != null) {
-        output.writeMessage(6, getCreatedAt());
+        output.writeMessage(4, getCreatedAt());
       }
       if (updatedAt_ != null) {
-        output.writeMessage(7, getUpdatedAt());
+        output.writeMessage(5, getUpdatedAt());
       }
       if (deleted_ != 0) {
-        output.writeInt32(8, deleted_);
+        output.writeInt32(6, deleted_);
+      }
+      if (langId_ != 0) {
+        output.writeInt32(7, langId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 8, name_);
       }
       unknownFields.writeTo(output);
     }
@@ -2126,32 +2807,32 @@ public final class SysDeptOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, id_);
       }
-      if (langId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, langId_);
-      }
       if (parentId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, parentId_);
-      }
-      if (!getNameBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
+          .computeInt32Size(2, parentId_);
       }
       if (sort_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, sort_);
+          .computeInt32Size(3, sort_);
       }
       if (createdAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, getCreatedAt());
+          .computeMessageSize(4, getCreatedAt());
       }
       if (updatedAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, getUpdatedAt());
+          .computeMessageSize(5, getUpdatedAt());
       }
       if (deleted_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, deleted_);
+          .computeInt32Size(6, deleted_);
+      }
+      if (langId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, langId_);
+      }
+      if (!getNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, name_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2170,12 +2851,8 @@ public final class SysDeptOuterClass {
 
       if (getId()
           != other.getId()) return false;
-      if (getLangId()
-          != other.getLangId()) return false;
       if (getParentId()
           != other.getParentId()) return false;
-      if (!getName()
-          .equals(other.getName())) return false;
       if (getSort()
           != other.getSort()) return false;
       if (hasCreatedAt() != other.hasCreatedAt()) return false;
@@ -2190,6 +2867,10 @@ public final class SysDeptOuterClass {
       }
       if (getDeleted()
           != other.getDeleted()) return false;
+      if (getLangId()
+          != other.getLangId()) return false;
+      if (!getName()
+          .equals(other.getName())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2203,12 +2884,8 @@ public final class SysDeptOuterClass {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
       hash = (53 * hash) + getId();
-      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getLangId();
       hash = (37 * hash) + PARENT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getParentId();
-      hash = (37 * hash) + NAME_FIELD_NUMBER;
-      hash = (53 * hash) + getName().hashCode();
       hash = (37 * hash) + SORT_FIELD_NUMBER;
       hash = (53 * hash) + getSort();
       if (hasCreatedAt()) {
@@ -2221,6 +2898,10 @@ public final class SysDeptOuterClass {
       }
       hash = (37 * hash) + DELETED_FIELD_NUMBER;
       hash = (53 * hash) + getDeleted();
+      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getLangId();
+      hash = (37 * hash) + NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2356,11 +3037,7 @@ public final class SysDeptOuterClass {
         super.clear();
         id_ = 0;
 
-        langId_ = 0;
-
         parentId_ = 0;
-
-        name_ = "";
 
         sort_ = 0;
 
@@ -2377,6 +3054,10 @@ public final class SysDeptOuterClass {
           updatedAtBuilder_ = null;
         }
         deleted_ = 0;
+
+        langId_ = 0;
+
+        name_ = "";
 
         return this;
       }
@@ -2405,9 +3086,7 @@ public final class SysDeptOuterClass {
       public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept buildPartial() {
         com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept result = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept(this);
         result.id_ = id_;
-        result.langId_ = langId_;
         result.parentId_ = parentId_;
-        result.name_ = name_;
         result.sort_ = sort_;
         if (createdAtBuilder_ == null) {
           result.createdAt_ = createdAt_;
@@ -2420,6 +3099,8 @@ public final class SysDeptOuterClass {
           result.updatedAt_ = updatedAtBuilder_.build();
         }
         result.deleted_ = deleted_;
+        result.langId_ = langId_;
+        result.name_ = name_;
         onBuilt();
         return result;
       }
@@ -2471,15 +3152,8 @@ public final class SysDeptOuterClass {
         if (other.getId() != 0) {
           setId(other.getId());
         }
-        if (other.getLangId() != 0) {
-          setLangId(other.getLangId());
-        }
         if (other.getParentId() != 0) {
           setParentId(other.getParentId());
-        }
-        if (!other.getName().isEmpty()) {
-          name_ = other.name_;
-          onChanged();
         }
         if (other.getSort() != 0) {
           setSort(other.getSort());
@@ -2492,6 +3166,13 @@ public final class SysDeptOuterClass {
         }
         if (other.getDeleted() != 0) {
           setDeleted(other.getDeleted());
+        }
+        if (other.getLangId() != 0) {
+          setLangId(other.getLangId());
+        }
+        if (!other.getName().isEmpty()) {
+          name_ = other.name_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2548,41 +3229,15 @@ public final class SysDeptOuterClass {
         return this;
       }
 
-      private int langId_ ;
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public int getLangId() {
-        return langId_;
-      }
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public Builder setLangId(int value) {
-        
-        langId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 lang_id = 2;</code>
-       */
-      public Builder clearLangId() {
-        
-        langId_ = 0;
-        onChanged();
-        return this;
-      }
-
       private int parentId_ ;
       /**
-       * <code>int32 parent_id = 3;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public int getParentId() {
         return parentId_;
       }
       /**
-       * <code>int32 parent_id = 3;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public Builder setParentId(int value) {
         
@@ -2591,7 +3246,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>int32 parent_id = 3;</code>
+       * <code>int32 parent_id = 2;</code>
        */
       public Builder clearParentId() {
         
@@ -2600,84 +3255,15 @@ public final class SysDeptOuterClass {
         return this;
       }
 
-      private java.lang.Object name_ = "";
-      /**
-       * <code>string name = 4;</code>
-       */
-      public java.lang.String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string name = 4;</code>
-       */
-      public com.google.protobuf.ByteString
-          getNameBytes() {
-        java.lang.Object ref = name_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          name_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string name = 4;</code>
-       */
-      public Builder setName(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 4;</code>
-       */
-      public Builder clearName() {
-        
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string name = 4;</code>
-       */
-      public Builder setNameBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        name_ = value;
-        onChanged();
-        return this;
-      }
-
       private int sort_ ;
       /**
-       * <code>int32 sort = 5;</code>
+       * <code>int32 sort = 3;</code>
        */
       public int getSort() {
         return sort_;
       }
       /**
-       * <code>int32 sort = 5;</code>
+       * <code>int32 sort = 3;</code>
        */
       public Builder setSort(int value) {
         
@@ -2686,7 +3272,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>int32 sort = 5;</code>
+       * <code>int32 sort = 3;</code>
        */
       public Builder clearSort() {
         
@@ -2699,13 +3285,13 @@ public final class SysDeptOuterClass {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> createdAtBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public boolean hasCreatedAt() {
         return createdAtBuilder_ != null || createdAt_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public com.google.protobuf.Timestamp getCreatedAt() {
         if (createdAtBuilder_ == null) {
@@ -2715,7 +3301,7 @@ public final class SysDeptOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public Builder setCreatedAt(com.google.protobuf.Timestamp value) {
         if (createdAtBuilder_ == null) {
@@ -2731,7 +3317,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public Builder setCreatedAt(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -2745,7 +3331,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public Builder mergeCreatedAt(com.google.protobuf.Timestamp value) {
         if (createdAtBuilder_ == null) {
@@ -2763,7 +3349,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public Builder clearCreatedAt() {
         if (createdAtBuilder_ == null) {
@@ -2777,7 +3363,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public com.google.protobuf.Timestamp.Builder getCreatedAtBuilder() {
         
@@ -2785,7 +3371,7 @@ public final class SysDeptOuterClass {
         return getCreatedAtFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
         if (createdAtBuilder_ != null) {
@@ -2796,7 +3382,7 @@ public final class SysDeptOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 6;</code>
+       * <code>.google.protobuf.Timestamp created_at = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -2816,13 +3402,13 @@ public final class SysDeptOuterClass {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> updatedAtBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public boolean hasUpdatedAt() {
         return updatedAtBuilder_ != null || updatedAt_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public com.google.protobuf.Timestamp getUpdatedAt() {
         if (updatedAtBuilder_ == null) {
@@ -2832,7 +3418,7 @@ public final class SysDeptOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public Builder setUpdatedAt(com.google.protobuf.Timestamp value) {
         if (updatedAtBuilder_ == null) {
@@ -2848,7 +3434,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public Builder setUpdatedAt(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -2862,7 +3448,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public Builder mergeUpdatedAt(com.google.protobuf.Timestamp value) {
         if (updatedAtBuilder_ == null) {
@@ -2880,7 +3466,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public Builder clearUpdatedAt() {
         if (updatedAtBuilder_ == null) {
@@ -2894,7 +3480,7 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public com.google.protobuf.Timestamp.Builder getUpdatedAtBuilder() {
         
@@ -2902,7 +3488,7 @@ public final class SysDeptOuterClass {
         return getUpdatedAtFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
         if (updatedAtBuilder_ != null) {
@@ -2913,7 +3499,7 @@ public final class SysDeptOuterClass {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 7;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -2931,13 +3517,13 @@ public final class SysDeptOuterClass {
 
       private int deleted_ ;
       /**
-       * <code>int32 deleted = 8;</code>
+       * <code>int32 deleted = 6;</code>
        */
       public int getDeleted() {
         return deleted_;
       }
       /**
-       * <code>int32 deleted = 8;</code>
+       * <code>int32 deleted = 6;</code>
        */
       public Builder setDeleted(int value) {
         
@@ -2946,11 +3532,106 @@ public final class SysDeptOuterClass {
         return this;
       }
       /**
-       * <code>int32 deleted = 8;</code>
+       * <code>int32 deleted = 6;</code>
        */
       public Builder clearDeleted() {
         
         deleted_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int langId_ ;
+      /**
+       * <code>int32 lang_id = 7;</code>
+       */
+      public int getLangId() {
+        return langId_;
+      }
+      /**
+       * <code>int32 lang_id = 7;</code>
+       */
+      public Builder setLangId(int value) {
+        
+        langId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 lang_id = 7;</code>
+       */
+      public Builder clearLangId() {
+        
+        langId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object name_ = "";
+      /**
+       * <code>string name = 8;</code>
+       */
+      public java.lang.String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string name = 8;</code>
+       */
+      public com.google.protobuf.ByteString
+          getNameBytes() {
+        java.lang.Object ref = name_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          name_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string name = 8;</code>
+       */
+      public Builder setName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 8;</code>
+       */
+      public Builder clearName() {
+        
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string name = 8;</code>
+       */
+      public Builder setNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        name_ = value;
         onChanged();
         return this;
       }
@@ -3007,11 +3688,857 @@ public final class SysDeptOuterClass {
 
   }
 
+  public interface PageListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sysDept.PageList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 total = 1;</code>
+     */
+    int getTotal();
+
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    java.util.List<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> 
+        getSysDeptsList();
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept getSysDepts(int index);
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    int getSysDeptsCount();
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    java.util.List<? extends com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder> 
+        getSysDeptsOrBuilderList();
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder getSysDeptsOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code sysDept.PageList}
+   */
+  public  static final class PageList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:sysDept.PageList)
+      PageListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use PageList.newBuilder() to construct.
+    private PageList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private PageList() {
+      sysDepts_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private PageList(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              total_ = input.readInt32();
+              break;
+            }
+            case 18: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                sysDepts_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              sysDepts_.add(
+                  input.readMessage(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          sysDepts_ = java.util.Collections.unmodifiableList(sysDepts_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_PageList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_PageList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TOTAL_FIELD_NUMBER = 1;
+    private int total_;
+    /**
+     * <code>int32 total = 1;</code>
+     */
+    public int getTotal() {
+      return total_;
+    }
+
+    public static final int SYS_DEPTS_FIELD_NUMBER = 2;
+    private java.util.List<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> sysDepts_;
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    public java.util.List<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getSysDeptsList() {
+      return sysDepts_;
+    }
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    public java.util.List<? extends com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder> 
+        getSysDeptsOrBuilderList() {
+      return sysDepts_;
+    }
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    public int getSysDeptsCount() {
+      return sysDepts_.size();
+    }
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept getSysDepts(int index) {
+      return sysDepts_.get(index);
+    }
+    /**
+     * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+     */
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder getSysDeptsOrBuilder(
+        int index) {
+      return sysDepts_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (total_ != 0) {
+        output.writeInt32(1, total_);
+      }
+      for (int i = 0; i < sysDepts_.size(); i++) {
+        output.writeMessage(2, sysDepts_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (total_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, total_);
+      }
+      for (int i = 0; i < sysDepts_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, sysDepts_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList)) {
+        return super.equals(obj);
+      }
+      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList other = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList) obj;
+
+      if (getTotal()
+          != other.getTotal()) return false;
+      if (!getSysDeptsList()
+          .equals(other.getSysDeptsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TOTAL_FIELD_NUMBER;
+      hash = (53 * hash) + getTotal();
+      if (getSysDeptsCount() > 0) {
+        hash = (37 * hash) + SYS_DEPTS_FIELD_NUMBER;
+        hash = (53 * hash) + getSysDeptsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code sysDept.PageList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:sysDept.PageList)
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_PageList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_PageList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.class, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.Builder.class);
+      }
+
+      // Construct using com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getSysDeptsFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        total_ = 0;
+
+        if (sysDeptsBuilder_ == null) {
+          sysDepts_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          sysDeptsBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.internal_static_sysDept_PageList_descriptor;
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList getDefaultInstanceForType() {
+        return com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList build() {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList buildPartial() {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList result = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.total_ = total_;
+        if (sysDeptsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            sysDepts_ = java.util.Collections.unmodifiableList(sysDepts_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.sysDepts_ = sysDepts_;
+        } else {
+          result.sysDepts_ = sysDeptsBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList) {
+          return mergeFrom((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList other) {
+        if (other == com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList.getDefaultInstance()) return this;
+        if (other.getTotal() != 0) {
+          setTotal(other.getTotal());
+        }
+        if (sysDeptsBuilder_ == null) {
+          if (!other.sysDepts_.isEmpty()) {
+            if (sysDepts_.isEmpty()) {
+              sysDepts_ = other.sysDepts_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureSysDeptsIsMutable();
+              sysDepts_.addAll(other.sysDepts_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.sysDepts_.isEmpty()) {
+            if (sysDeptsBuilder_.isEmpty()) {
+              sysDeptsBuilder_.dispose();
+              sysDeptsBuilder_ = null;
+              sysDepts_ = other.sysDepts_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              sysDeptsBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getSysDeptsFieldBuilder() : null;
+            } else {
+              sysDeptsBuilder_.addAllMessages(other.sysDepts_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int total_ ;
+      /**
+       * <code>int32 total = 1;</code>
+       */
+      public int getTotal() {
+        return total_;
+      }
+      /**
+       * <code>int32 total = 1;</code>
+       */
+      public Builder setTotal(int value) {
+        
+        total_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 total = 1;</code>
+       */
+      public Builder clearTotal() {
+        
+        total_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> sysDepts_ =
+        java.util.Collections.emptyList();
+      private void ensureSysDeptsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          sysDepts_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>(sysDepts_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder> sysDeptsBuilder_;
+
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public java.util.List<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getSysDeptsList() {
+        if (sysDeptsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(sysDepts_);
+        } else {
+          return sysDeptsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public int getSysDeptsCount() {
+        if (sysDeptsBuilder_ == null) {
+          return sysDepts_.size();
+        } else {
+          return sysDeptsBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept getSysDepts(int index) {
+        if (sysDeptsBuilder_ == null) {
+          return sysDepts_.get(index);
+        } else {
+          return sysDeptsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder setSysDepts(
+          int index, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept value) {
+        if (sysDeptsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSysDeptsIsMutable();
+          sysDepts_.set(index, value);
+          onChanged();
+        } else {
+          sysDeptsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder setSysDepts(
+          int index, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder builderForValue) {
+        if (sysDeptsBuilder_ == null) {
+          ensureSysDeptsIsMutable();
+          sysDepts_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          sysDeptsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder addSysDepts(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept value) {
+        if (sysDeptsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSysDeptsIsMutable();
+          sysDepts_.add(value);
+          onChanged();
+        } else {
+          sysDeptsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder addSysDepts(
+          int index, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept value) {
+        if (sysDeptsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSysDeptsIsMutable();
+          sysDepts_.add(index, value);
+          onChanged();
+        } else {
+          sysDeptsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder addSysDepts(
+          com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder builderForValue) {
+        if (sysDeptsBuilder_ == null) {
+          ensureSysDeptsIsMutable();
+          sysDepts_.add(builderForValue.build());
+          onChanged();
+        } else {
+          sysDeptsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder addSysDepts(
+          int index, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder builderForValue) {
+        if (sysDeptsBuilder_ == null) {
+          ensureSysDeptsIsMutable();
+          sysDepts_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          sysDeptsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder addAllSysDepts(
+          java.lang.Iterable<? extends com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> values) {
+        if (sysDeptsBuilder_ == null) {
+          ensureSysDeptsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, sysDepts_);
+          onChanged();
+        } else {
+          sysDeptsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder clearSysDepts() {
+        if (sysDeptsBuilder_ == null) {
+          sysDepts_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          sysDeptsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public Builder removeSysDepts(int index) {
+        if (sysDeptsBuilder_ == null) {
+          ensureSysDeptsIsMutable();
+          sysDepts_.remove(index);
+          onChanged();
+        } else {
+          sysDeptsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder getSysDeptsBuilder(
+          int index) {
+        return getSysDeptsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder getSysDeptsOrBuilder(
+          int index) {
+        if (sysDeptsBuilder_ == null) {
+          return sysDepts_.get(index);  } else {
+          return sysDeptsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public java.util.List<? extends com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder> 
+           getSysDeptsOrBuilderList() {
+        if (sysDeptsBuilder_ != null) {
+          return sysDeptsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(sysDepts_);
+        }
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder addSysDeptsBuilder() {
+        return getSysDeptsFieldBuilder().addBuilder(
+            com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder addSysDeptsBuilder(
+          int index) {
+        return getSysDeptsFieldBuilder().addBuilder(
+            index, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .sysDept.SysDept sys_depts = 2;</code>
+       */
+      public java.util.List<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder> 
+           getSysDeptsBuilderList() {
+        return getSysDeptsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder> 
+          getSysDeptsFieldBuilder() {
+        if (sysDeptsBuilder_ == null) {
+          sysDeptsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.Builder, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDeptOrBuilder>(
+                  sysDepts_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          sysDepts_ = null;
+        }
+        return sysDeptsBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:sysDept.PageList)
+    }
+
+    // @@protoc_insertion_point(class_scope:sysDept.PageList)
+    private static final com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList();
+    }
+
+    public static com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PageList>
+        PARSER = new com.google.protobuf.AbstractParser<PageList>() {
+      @java.lang.Override
+      public PageList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new PageList(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<PageList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PageList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.PageList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_sysDept_GetByIdReq_descriptor;
+    internal_static_sysDept_ByIdReq_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_sysDept_GetByIdReq_fieldAccessorTable;
+      internal_static_sysDept_ByIdReq_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_sysDept_GetListReq_descriptor;
   private static final 
@@ -3023,10 +4550,20 @@ public final class SysDeptOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_sysDept_Result_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_sysDept_BaseSysDept_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_sysDept_BaseSysDept_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_sysDept_SysDept_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_sysDept_SysDept_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_sysDept_PageList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_sysDept_PageList_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3037,23 +4574,26 @@ public final class SysDeptOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\016sys_dept.proto\022\007sysDept\032\037google/protob" +
-      "uf/timestamp.proto\")\n\nGetByIdReq\022\n\n\002id\030\001" +
-      " \001(\005\022\017\n\007lang_id\030\002 \001(\005\"M\n\nGetListReq\022\r\n\005q" +
-      "uery\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004page\030\003 " +
-      "\001(\005\022\017\n\007lang_id\030\004 \001(\005\"\031\n\006Result\022\017\n\007succes" +
-      "s\030\001 \001(\010\"\306\001\n\007SysDept\022\n\n\002id\030\001 \001(\005\022\017\n\007lang_" +
-      "id\030\002 \001(\005\022\021\n\tparent_id\030\003 \001(\005\022\014\n\004name\030\004 \001(" +
-      "\t\022\014\n\004sort\030\005 \001(\005\022.\n\ncreated_at\030\006 \001(\0132\032.go" +
-      "ogle.protobuf.Timestamp\022.\n\nupdated_at\030\007 " +
-      "\001(\0132\032.google.protobuf.Timestamp\022\017\n\007delet" +
-      "ed\030\010 \001(\0052\207\002\n\016sysDeptService\0222\n\007GetById\022\023" +
-      ".sysDept.GetByIdReq\032\020.sysDept.SysDept\"\000\022" +
-      "4\n\007GetList\022\023.sysDept.GetListReq\032\020.sysDep" +
-      "t.SysDept\"\0000\001\022-\n\006Insert\022\020.sysDept.SysDep" +
-      "t\032\017.sysDept.Result\"\000\022-\n\006Update\022\020.sysDept" +
-      ".SysDept\032\017.sysDept.Result\"\000\022-\n\006Delete\022\020." +
-      "sysDept.SysDept\032\017.sysDept.Result\"\000B\036\n\034co" +
-      "m.qianxun.grpc.lib.sysDeptP\000b\006proto3"
+      "uf/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
+      "\005\"M\n\nGetListReq\022\017\n\007lang_id\030\001 \001(\005\022\r\n\005quer" +
+      "y\030\002 \001(\t\022\021\n\tpage_size\030\003 \001(\005\022\014\n\004page\030\004 \001(\005" +
+      "\"\031\n\006Result\022\017\n\007success\030\001 \001(\010\"M\n\013BaseSysDe" +
+      "pt\022\021\n\tparent_id\030\001 \001(\005\022\014\n\004sort\030\002 \001(\005\022\017\n\007l" +
+      "ang_id\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\"\306\001\n\007SysDept\022\n" +
+      "\n\002id\030\001 \001(\005\022\021\n\tparent_id\030\002 \001(\005\022\014\n\004sort\030\003 " +
+      "\001(\005\022.\n\ncreated_at\030\004 \001(\0132\032.google.protobu" +
+      "f.Timestamp\022.\n\nupdated_at\030\005 \001(\0132\032.google" +
+      ".protobuf.Timestamp\022\017\n\007deleted\030\006 \001(\005\022\017\n\007" +
+      "lang_id\030\007 \001(\005\022\014\n\004name\030\010 \001(\t\">\n\010PageList\022" +
+      "\r\n\005total\030\001 \001(\005\022#\n\tsys_depts\030\002 \003(\0132\020.sysD" +
+      "ept.SysDept2\207\002\n\016SysDeptService\022/\n\007GetByI" +
+      "d\022\020.sysDept.ByIdReq\032\020.sysDept.SysDept\"\000\022" +
+      "3\n\007GetList\022\023.sysDept.GetListReq\032\021.sysDep" +
+      "t.PageList\"\000\0221\n\006Insert\022\024.sysDept.BaseSys" +
+      "Dept\032\017.sysDept.Result\"\000\022-\n\006Update\022\020.sysD" +
+      "ept.SysDept\032\017.sysDept.Result\"\000\022-\n\006Delete" +
+      "\022\020.sysDept.ByIdReq\032\017.sysDept.Result\"\000B\036\n" +
+      "\034com.qianxun.grpc.lib.sysDeptP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3068,30 +4608,42 @@ public final class SysDeptOuterClass {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
         }, assigner);
-    internal_static_sysDept_GetByIdReq_descriptor =
+    internal_static_sysDept_ByIdReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_sysDept_GetByIdReq_fieldAccessorTable = new
+    internal_static_sysDept_ByIdReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_sysDept_GetByIdReq_descriptor,
-        new java.lang.String[] { "Id", "LangId", });
+        internal_static_sysDept_ByIdReq_descriptor,
+        new java.lang.String[] { "Id", });
     internal_static_sysDept_GetListReq_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_sysDept_GetListReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysDept_GetListReq_descriptor,
-        new java.lang.String[] { "Query", "PageSize", "Page", "LangId", });
+        new java.lang.String[] { "LangId", "Query", "PageSize", "Page", });
     internal_static_sysDept_Result_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_sysDept_Result_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysDept_Result_descriptor,
         new java.lang.String[] { "Success", });
-    internal_static_sysDept_SysDept_descriptor =
+    internal_static_sysDept_BaseSysDept_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_sysDept_BaseSysDept_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_sysDept_BaseSysDept_descriptor,
+        new java.lang.String[] { "ParentId", "Sort", "LangId", "Name", });
+    internal_static_sysDept_SysDept_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_sysDept_SysDept_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysDept_SysDept_descriptor,
-        new java.lang.String[] { "Id", "LangId", "ParentId", "Name", "Sort", "CreatedAt", "UpdatedAt", "Deleted", });
+        new java.lang.String[] { "Id", "ParentId", "Sort", "CreatedAt", "UpdatedAt", "Deleted", "LangId", "Name", });
+    internal_static_sysDept_PageList_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_sysDept_PageList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_sysDept_PageList_descriptor,
+        new java.lang.String[] { "Total", "SysDepts", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

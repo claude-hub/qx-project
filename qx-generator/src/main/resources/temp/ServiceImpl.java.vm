@@ -28,7 +28,7 @@ public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${c
     private final ${className}LangService ${classname}LangService;
 
     /**
-     * 保存角色信息
+     * 保存信息
      *
      * @param ${classname}DTO
      * @return
@@ -37,11 +37,12 @@ public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${c
     @Override
     public Boolean save${className}(${className}DTO ${classname}DTO) {
         ${className} ${classname} = new ${className}();
+        ${classname}.setCreatedAt(new Date());
         BeanUtils.copyProperties(${classname}DTO, ${classname});
         baseMapper.insert(${classname});
         ${className}Lang ${classname}Lang = new ${className}Lang();
         BeanUtils.copyProperties(${classname}DTO, ${classname}Lang);
-        ${classname}Lang.set${className}Id(${classname}.getId());
+        ${classname}Lang.set${className.substring(3)}Id(${classname}.getId());
         return ${classname}LangService.save(${classname}Lang);
     }
 
@@ -60,9 +61,9 @@ public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${c
         BeanUtils.copyProperties(${classname}DTO, ${classname});
         if (baseMapper.updateById(${classname}) > 0) {
             ${classname}LangService.remove(Wrappers.<${className}Lang>update().lambda()
-                    .eq(${className}Lang::get${className}Id, ${classname}.getId()));
+                    .eq(${className}Lang::get${className.substring(3)}Id, ${classname}.getId()));
             ${className}Lang ${classname}Lang = new ${className}Lang();
-            ${classname}Lang.set${className}Id(${classname}DTO.getId());
+            ${classname}Lang.set${className.substring(3)}Id(${classname}DTO.getId());
             ${classname}Lang.setLangId(${classname}DTO.getLangId());
             ${classname}Lang.setName(${classname}DTO.getName());
             return ${classname}LangService.save(${classname}Lang);

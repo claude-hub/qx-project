@@ -1,16 +1,22 @@
 package com.qianxun.admin.provider.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.qianxun.admin.api.dto.extend.SysDeptDTO;
+import com.qianxun.admin.api.dto.sysDept.request.SysDeptQueryInputDTO;
 import com.qianxun.admin.api.entity.SysDept;
-import java.util.List;
 
-public interface SysDeptService{
-    boolean addSysDept(SysDept sysDept);
+/**
+ * author: Claude
+ * email: 314705487@qq.com
+ * create date: 05/10/19 9:31
+ */
+public interface SysDeptService extends IService<SysDept> {
 
-    boolean editSysDept(SysDept sysDept);
+    Boolean saveSysDept(SysDeptDTO sysDeptDTO);
 
-    List<SysDept> findAllSysDepts();
+    IPage getSysDepts(Page page, SysDeptQueryInputDTO inputDTO);
 
-    SysDept getSysDept(int id);
-
-    boolean deleteSysDept(int id);
+    Boolean updateSysDept(SysDeptDTO sysDeptDTO);
 }

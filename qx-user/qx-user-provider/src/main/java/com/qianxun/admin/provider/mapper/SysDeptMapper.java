@@ -1,25 +1,17 @@
 package com.qianxun.admin.provider.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.qianxun.admin.api.dto.sysDept.request.SysDeptQueryInputDTO;
 import com.qianxun.admin.api.entity.SysDept;
-import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
+import org.apache.ibatis.annotations.Param;
 
 /**
- * @author cloudy
- * @date 2019-04-27 14:07:32
+ * @author: Claude
+ * email: 314705487@qq.com
+ * Date: 05/10/19 9:30
  */
-@Mapper
-public interface SysDeptMapper {
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(SysDept record);
-
-    SysDept selectByPrimaryKey(Integer id);
-
-    List<SysDept> selectAll();
-
-    int updateByPrimaryKey(SysDept record);
-
+public interface SysDeptMapper extends BaseMapper<SysDept> {
+    IPage getSysDeptsWithLang(Page page, @Param("inputDTO") SysDeptQueryInputDTO inputDTO);
 }

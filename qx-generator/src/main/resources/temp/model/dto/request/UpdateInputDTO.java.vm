@@ -6,20 +6,19 @@ import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
- * ${comments}
- *
  * @author ${author}
- * @date ${datetime}
+ * Date ${datetime}
  */
 @Data
 public class ${className}UpdateInputDTO implements Serializable {
     #foreach ($column in $columns)
     ##排除created_at字段
         #if($column.columnName != "created_at")
-        ##排除updated_at字段
-            #if($column.columnName == "updated_at")
+        ##排除updated_at,deleted字段
+            #if($column.columnName == "updated_at" && $column.columnName == "deleted")
             @NotNull(message = "上此更新的时间不能为空")
             @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
             @ApiModelProperty(value = "$column.comments", required = true)
@@ -38,4 +37,11 @@ public class ${className}UpdateInputDTO implements Serializable {
         private ${column.attrType} $column.attrname;
         #end
     #end
+    @NotNull(message = "语言Id不能为空")
+    @ApiModelProperty(value = "语言id", required = true)
+    private Integer langId;
+
+    @NotBlank(message = "${className}名称不能为空")
+    @ApiModelProperty(value = "${className}名称", required = true)
+    private String name;
 }

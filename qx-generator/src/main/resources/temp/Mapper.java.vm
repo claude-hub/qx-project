@@ -8,9 +8,8 @@ import ${package}.${moduleName}.api.entity.${className};
 import org.apache.ibatis.annotations.Param;
 
 /**
- * @author: Claude
- * email: 314705487@qq.com
- * Date: 05/10/19 9:30
+ * @author ${author}
+ * Date ${datetime}
  */
 public interface ${className}Mapper extends BaseMapper<${className}> {
    IPage get${className}sWithLang(Page page, @Param("inputDTO")${className}QueryInputDTO inputDTO);

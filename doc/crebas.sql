@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/5/11 23:47:54                           */
+/* Created on:     2019/5/13 1:28:52                            */
 /*==============================================================*/
 
 
@@ -36,7 +36,7 @@ drop table if exists sys_user_menu;
 create table sys_dept
 (
    id                   int not null auto_increment,
-   parent_id            int not null default 0,
+   parent_id            int default 0,
    sort                 int,
    created_at           timestamp not null default CURRENT_TIMESTAMP,
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,

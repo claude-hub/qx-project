@@ -26,8 +26,6 @@ import java.util.zip.ZipOutputStream;
 public class GenUtils {
     public static List<String> getTemplates() {
         List<String> templates = new ArrayList<String>();
-        templates.add("temp/GrpcService.java.vm");
-
         templates.add("temp/model/entity/Entity.java.vm");
         templates.add("temp/Mapper.java.vm");
         templates.add("temp/Mapper.xml.vm");
@@ -36,7 +34,7 @@ public class GenUtils {
         templates.add("temp/ServiceImpl.java.vm");
 
         templates.add("temp/GrpcClient.java.vm");
-
+        templates.add("temp/GrpcService.java.vm");
         templates.add("temp/proto.vm");
 
         templates.add("temp/model/dto/request/AddInputDTO.java.vm");
@@ -142,6 +140,7 @@ public class GenUtils {
                 //添加到zip
                 String name = getFileName(template, tableEntity.getClassName(),
                         tableEntity.getClassname(),
+                        tableEntity.getTableName(),
                         config.getString("package"),
                         config.getString("moduleName"));
                 zip.putNextEntry(new ZipEntry(name));
@@ -184,7 +183,7 @@ public class GenUtils {
     /**
      * 获取文件名
      */
-    private static String getFileName(String template, String className, String classname,
+    private static String getFileName(String template, String className, String classname, String tableName,
                                       String packageName, String moduleName) {
         String packagePath = "main" + File.separator + "java" + File.separator;
         if (template.contains("Controller.java.vm")) {
@@ -224,7 +223,7 @@ public class GenUtils {
             return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
         }
         if (template.contains("proto.vm")) {
-            return packagePath + "proto" + File.separator + classname + ".proto";
+            return packagePath + "proto" + File.separator + tableName + ".proto";
         }
         return null;
     }

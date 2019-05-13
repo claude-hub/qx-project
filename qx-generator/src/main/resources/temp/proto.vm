@@ -41,13 +41,13 @@ message Base${className} {
             ##排除deleted字段
                 #if($column.columnName != "deleted")
                     #if($column.attrType == "Integer")
-                    int32 ${columnName} = 1;
+                    int32 ${column.columnName} = 1;
                     #end
                     #if($column.attrType == "String")
-                    string ${columnName} = 1;
+                    string ${column.columnName} = 1;
                     #end
                     #if($column.attrType == "Date")
-                    google.protobuf.Timestamp ${columnName} = 1;
+                    google.protobuf.Timestamp ${column.columnName} = 1;
                     #end
                 #end
             #end
@@ -62,13 +62,13 @@ message Base${className} {
 message ${className} {
 #foreach ($column in $columns)
     #if($column.attrType == "Integer")
-    int32 ${columnName} = 1;
+    int32 ${column.columnName} = 1;
     #end
     #if($column.attrType == "String")
-    string ${columnName} = 1;
+    string ${column.columnName} = 1;
     #end
     #if($column.attrType == "Date")
-    google.protobuf.Timestamp ${columnName} = 1;
+    google.protobuf.Timestamp ${column.columnName} = 1;
     #end
 #end
     int32 lang_id = 2;

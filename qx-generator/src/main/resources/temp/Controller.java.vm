@@ -2,7 +2,7 @@ package ${package}.user.consumer.controller;
 
 import ${package}.${moduleName}.api.dto.base.SearchByIdInputDTO;
 import ${package}.${moduleName}.api.dto.${classname}.request.*;
-import ${package}.${moduleName}.api.dto.${classname}.response.${className}ResponseDTO};
+import ${package}.${moduleName}.api.dto.${classname}.response.${className}ResponseDTO;
 import ${package}.${moduleName}.api.entity.${className};
 import ${package}.common.utils.mapper.ProtoBufUtils;
 import ${package}.common.utils.result.JSONResult;
@@ -13,15 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 /**
- * ${comments}
- *
  * @author ${author}
  * Date ${datetime}
  */
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/${classname}")
-public class ${className}Controller extends BaseController {
+public class ${className}Controller {
     private final Grpc${className}Client grpc${className}Client;
 
     /**

@@ -1,12 +1,15 @@
 package ${package}.${moduleName}.api.entity;
 
 import java.util.Date;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.Version;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import java.io.Serializable;
 
 /**
- * ${comments}
- *
  * @author ${author}
  * Date ${datetime}
  */
@@ -17,7 +20,7 @@ public class ${className} implements Serializable {
      * $column.comments
      */
     #if($column.columnName == $pk.columnName)
-    @TableId(value = $columnName, type = IdType.AUTO)
+    @TableId(value = "$column.columnName", type = IdType.AUTO)
     #end
     #if($column.attrType == "Date")
     #if($column.columnName == "updated_at")

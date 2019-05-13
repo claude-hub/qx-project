@@ -4,10 +4,8 @@ import ${package}.${moduleName}.api.dto.base.BaseQueryInputDTO;
 import java.io.Serializable;
 
 /**
- * ${comments}
- *
  * @author ${author}
- * @date ${datetime}
+ * Date ${datetime}
  */
 public class ${className}QueryInputDTO extends BaseQueryInputDTO implements Serializable{
 

@@ -1,0 +1,21 @@
+package ${package}.${moduleName}.api.dto.extend;
+
+import ${package}.${moduleName}.api.entity.${className};
+import lombok.Data;
+
+/**
+ * @author ${author}
+ * Date ${datetime}
+ */
+@Data
+public class ${className}DTO extends ${className} {
+    /**
+     * 国际化名称
+     */
+    private String name;
+
+    /**
+     * 语言Id
+     */
+    private Integer langId;
+}

@@ -8,9 +8,8 @@ import ${package}.${moduleName}.api.dto.${classname}.request.${className}QueryIn
 import ${package}.${moduleName}.api.entity.${className};
 
 /**
- * author: Claude
- * email: 314705487@qq.com
- * create date: 05/10/19 9:31
+ * @author ${author}
+ * Date ${datetime}
  */
 public interface ${className}Service extends IService<${className}> {
 
