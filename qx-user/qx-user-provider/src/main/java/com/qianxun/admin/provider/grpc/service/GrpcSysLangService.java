@@ -1,4 +1,4 @@
-package com.qianxun.admin.provider.grpc.service.sysLang;
+package com.qianxun.admin.provider.grpc.service;
 
 /**
  * @author Cloudy

@@ -1,4 +1,4 @@
-package com.qianxun.admin.provider.grpc.service.sysLog;
+package com.qianxun.admin.provider.grpc.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;

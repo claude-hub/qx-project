@@ -1,4 +1,4 @@
-package com.qianxun.admin.provider.grpc.service.sysMenu;
+package com.qianxun.admin.provider.grpc.service;
 
 /**
  * @author Cloudy
