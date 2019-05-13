@@ -10,5 +10,5 @@ public interface GeneratorService {
      */
     List<Map<String, Object>> getTables();
 
-    byte[] generatorCode(String[] tableNames);
+    byte[] generatorCode(String[] tableNames, List<String> templates);
 }

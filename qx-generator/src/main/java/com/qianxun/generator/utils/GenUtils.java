@@ -24,31 +24,12 @@ import java.util.zip.ZipOutputStream;
  * 代码生成器   工具类
  */
 public class GenUtils {
-    public static List<String> getTemplates() {
-        List<String> templates = new ArrayList<String>();
-        templates.add("temp/model/entity/Entity.java.vm");
-        templates.add("temp/Mapper.java.vm");
-        templates.add("temp/Mapper.xml.vm");
-        templates.add("temp/Controller.java.vm");
-        templates.add("temp/Service.java.vm");
-        templates.add("temp/ServiceImpl.java.vm");
-
-        templates.add("temp/GrpcClient.java.vm");
-        templates.add("temp/GrpcService.java.vm");
-        templates.add("temp/proto.vm");
-
-        templates.add("temp/model/dto/request/AddInputDTO.java.vm");
-        templates.add("temp/model/dto/request/DeleteInputDTO.java.vm");
-        templates.add("temp/model/dto/request/QueryInputDTO.java.vm");
-        templates.add("temp/model/dto/request/UpdateInputDTO.java.vm");
-        return templates;
-    }
-
     /**
      * 生成代码
      */
     public static void generatorCode(Map<String, String> table,
                                      List<Map<String, String>> columns,
+                                     List<String> templates,
                                      ZipOutputStream zip) {
         //配置信息
         Configuration config = getConfig();
@@ -128,8 +109,6 @@ public class GenUtils {
         map.put("datetime", DateUtils.format(new Date(), DateUtils.DATE_TIME_PATTERN));
         VelocityContext context = new VelocityContext(map);
 
-        //获取模板列表
-        List<String> templates = getTemplates();
         for (String template : templates) {
             //渲染模板
             StringWriter sw = new StringWriter();
@@ -141,7 +120,6 @@ public class GenUtils {
                 String name = getFileName(template, tableEntity.getClassName(),
                         tableEntity.getClassname(),
                         tableEntity.getTableName(),
-                        config.getString("package"),
                         config.getString("moduleName"));
                 zip.putNextEntry(new ZipEntry(name));
                 IOUtils.write(sw.toString(), zip, "UTF-8");
@@ -183,8 +161,7 @@ public class GenUtils {
     /**
      * 获取文件名
      */
-    private static String getFileName(String template, String className, String classname, String tableName,
-                                      String packageName, String moduleName) {
+    private static String getFileName(String template, String className, String classname, String tableName, String moduleName) {
         String packagePath = "main" + File.separator + "java" + File.separator;
         if (template.contains("Controller.java.vm")) {
             return packagePath + "controller" + File.separator + className + "Controller.java";

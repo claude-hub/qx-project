@@ -1,28 +1,27 @@
 package com.qianxun.generator.controller;
 
-
-import com.alibaba.fastjson.JSON;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.generator.service.GeneratorService;
+import lombok.AllArgsConstructor;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 代码生成器
  */
 @RestController
-@RequestMapping(value = "/api/admin/generator")
+@RequestMapping(value = "/api/generator")
+@AllArgsConstructor
 public class GeneratorController {
-
-    @Autowired
-    private GeneratorService generatorService;
+    private final GeneratorService generatorService;
 
     /**
      * 获取数据库所有表
@@ -38,22 +37,44 @@ public class GeneratorController {
     /**
      * 生成代码
      */
-    @RequestMapping("/code")
-    public void code(HttpServletRequest request, HttpServletResponse response) throws IOException {
-//        String[] tableNames = new String[]{};
-//        String tables = request.getParameter("tables");
-//        tableNames = JSON.parseArray(tables).toArray(tableNames);
+    @GetMapping("/code/{type}/{tables}")
+    public void code(@Valid @PathVariable("type") int type,@Valid @PathVariable("tables") String[] tables,
+                     HttpServletResponse response) throws IOException {
 //        String[] tableNames = {"sys_dept","sys_menu","sys_role_menu","sys_user_menu"
 //        ,"sys_role_lang","sys_role","sys_user","sys_lang","sys_menu_lang"
 //        ,"sys_dept_role","sys_dept_lang"};
-        String[] tableNames = {"sys_dept"};
-        byte[] data = generatorService.generatorCode(tableNames);
 
+        byte[] data;
+        if (type == 0){
+            data = generatorService.generatorCode(tables, getTemplates());
+        }else if(type == 1){
+            data = generatorService.generatorCode(tables, getTemplates());
+        } else {
+            return;
+        }
         response.reset();
         response.setHeader("Content-Disposition", "attachment; filename=\"qianxun.zip\"");
         response.addHeader("Content-Length", "" + data.length);
         response.setContentType("application/octet-stream; charset=UTF-8");
 
         IOUtils.write(data, response.getOutputStream());
+    }
+
+    private static List<String> getTemplates() {
+        List<String> templates = new ArrayList<String>();
+        templates.add("temp/model/entity/Entity.java.vm");
+        templates.add("temp/Mapper.java.vm");
+        templates.add("temp/Mapper.xml.vm");
+        templates.add("temp/Controller.java.vm");
+        templates.add("temp/Service.java.vm");
+        templates.add("temp/ServiceImpl.java.vm");
+        templates.add("temp/GrpcClient.java.vm");
+        templates.add("temp/GrpcService.java.vm");
+        templates.add("temp/proto.vm");
+        templates.add("temp/model/dto/request/AddInputDTO.java.vm");
+        templates.add("temp/model/dto/request/DeleteInputDTO.java.vm");
+        templates.add("temp/model/dto/request/QueryInputDTO.java.vm");
+        templates.add("temp/model/dto/request/UpdateInputDTO.java.vm");
+        return templates;
     }
 }
