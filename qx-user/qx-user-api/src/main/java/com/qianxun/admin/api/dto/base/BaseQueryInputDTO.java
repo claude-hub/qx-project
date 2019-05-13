@@ -11,10 +11,6 @@ import javax.validation.constraints.NotNull;
  */
 @Data
 public class BaseQueryInputDTO {
-    @NotNull(message = "语言ID不能为空")
-    @ApiModelProperty(value = "语言ID", required = true)
-    private Integer langId;
-
     @ApiModelProperty(value = "搜索内容")
     private String query;
 
