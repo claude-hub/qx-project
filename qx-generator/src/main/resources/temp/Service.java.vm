@@ -13,6 +13,8 @@ import ${package}.${moduleName}.api.entity.${className};
  */
 public interface ${className}Service extends IService<${className}> {
 
+    ${className}DTO searchById(${className}SearchByIdDTO inputDTO);
+
     Boolean save${className}(${className}DTO ${classname}DTO);
 
     IPage get${className}s(Page page, ${className}QueryInputDTO inputDTO);

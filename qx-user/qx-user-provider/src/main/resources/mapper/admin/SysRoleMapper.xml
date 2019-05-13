@@ -27,4 +27,14 @@
         </where>
         ORDER BY r.created_at DESC
     </select>
+
+    <select id="searchById" resultMap="BaseResultMap">
+        select
+        <include refid="roleWithLangSql"/>
+        <where>
+            AND rl.lang_id = #{inputDTO.langId} AND r.deleted != -1
+            AND r.id = #{inputDTO.id}
+        </where>
+    </select>
+
 </mapper>

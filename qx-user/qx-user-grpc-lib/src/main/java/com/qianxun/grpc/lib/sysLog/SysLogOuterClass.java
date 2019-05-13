@@ -493,27 +493,22 @@ public final class SysLogOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 lang_id = 1;</code>
-     */
-    int getLangId();
-
-    /**
-     * <code>string query = 2;</code>
+     * <code>string query = 1;</code>
      */
     java.lang.String getQuery();
     /**
-     * <code>string query = 2;</code>
+     * <code>string query = 1;</code>
      */
     com.google.protobuf.ByteString
         getQueryBytes();
 
     /**
-     * <code>int32 page_size = 3;</code>
+     * <code>int32 page_size = 2;</code>
      */
     int getPageSize();
 
     /**
-     * <code>int32 page = 4;</code>
+     * <code>int32 page = 3;</code>
      */
     int getPage();
   }
@@ -557,23 +552,18 @@ public final class SysLogOuterClass {
             case 0:
               done = true;
               break;
-            case 8: {
-
-              langId_ = input.readInt32();
-              break;
-            }
-            case 18: {
+            case 10: {
               java.lang.String s = input.readStringRequireUtf8();
 
               query_ = s;
               break;
             }
-            case 24: {
+            case 16: {
 
               pageSize_ = input.readInt32();
               break;
             }
-            case 32: {
+            case 24: {
 
               page_ = input.readInt32();
               break;
@@ -610,19 +600,10 @@ public final class SysLogOuterClass {
               com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq.class, com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq.Builder.class);
     }
 
-    public static final int LANG_ID_FIELD_NUMBER = 1;
-    private int langId_;
-    /**
-     * <code>int32 lang_id = 1;</code>
-     */
-    public int getLangId() {
-      return langId_;
-    }
-
-    public static final int QUERY_FIELD_NUMBER = 2;
+    public static final int QUERY_FIELD_NUMBER = 1;
     private volatile java.lang.Object query_;
     /**
-     * <code>string query = 2;</code>
+     * <code>string query = 1;</code>
      */
     public java.lang.String getQuery() {
       java.lang.Object ref = query_;
@@ -637,7 +618,7 @@ public final class SysLogOuterClass {
       }
     }
     /**
-     * <code>string query = 2;</code>
+     * <code>string query = 1;</code>
      */
     public com.google.protobuf.ByteString
         getQueryBytes() {
@@ -653,19 +634,19 @@ public final class SysLogOuterClass {
       }
     }
 
-    public static final int PAGE_SIZE_FIELD_NUMBER = 3;
+    public static final int PAGE_SIZE_FIELD_NUMBER = 2;
     private int pageSize_;
     /**
-     * <code>int32 page_size = 3;</code>
+     * <code>int32 page_size = 2;</code>
      */
     public int getPageSize() {
       return pageSize_;
     }
 
-    public static final int PAGE_FIELD_NUMBER = 4;
+    public static final int PAGE_FIELD_NUMBER = 3;
     private int page_;
     /**
-     * <code>int32 page = 4;</code>
+     * <code>int32 page = 3;</code>
      */
     public int getPage() {
       return page_;
@@ -685,17 +666,14 @@ public final class SysLogOuterClass {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (langId_ != 0) {
-        output.writeInt32(1, langId_);
-      }
       if (!getQueryBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, query_);
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, query_);
       }
       if (pageSize_ != 0) {
-        output.writeInt32(3, pageSize_);
+        output.writeInt32(2, pageSize_);
       }
       if (page_ != 0) {
-        output.writeInt32(4, page_);
+        output.writeInt32(3, page_);
       }
       unknownFields.writeTo(output);
     }
@@ -706,20 +684,16 @@ public final class SysLogOuterClass {
       if (size != -1) return size;
 
       size = 0;
-      if (langId_ != 0) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, langId_);
-      }
       if (!getQueryBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, query_);
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, query_);
       }
       if (pageSize_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, pageSize_);
+          .computeInt32Size(2, pageSize_);
       }
       if (page_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, page_);
+          .computeInt32Size(3, page_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -736,8 +710,6 @@ public final class SysLogOuterClass {
       }
       com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq other = (com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq) obj;
 
-      if (getLangId()
-          != other.getLangId()) return false;
       if (!getQuery()
           .equals(other.getQuery())) return false;
       if (getPageSize()
@@ -755,8 +727,6 @@ public final class SysLogOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + LANG_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getLangId();
       hash = (37 * hash) + QUERY_FIELD_NUMBER;
       hash = (53 * hash) + getQuery().hashCode();
       hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
@@ -896,8 +866,6 @@ public final class SysLogOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        langId_ = 0;
-
         query_ = "";
 
         pageSize_ = 0;
@@ -930,7 +898,6 @@ public final class SysLogOuterClass {
       @java.lang.Override
       public com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq buildPartial() {
         com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq result = new com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq(this);
-        result.langId_ = langId_;
         result.query_ = query_;
         result.pageSize_ = pageSize_;
         result.page_ = page_;
@@ -982,9 +949,6 @@ public final class SysLogOuterClass {
 
       public Builder mergeFrom(com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq other) {
         if (other == com.qianxun.grpc.lib.sysLog.SysLogOuterClass.GetListReq.getDefaultInstance()) return this;
-        if (other.getLangId() != 0) {
-          setLangId(other.getLangId());
-        }
         if (!other.getQuery().isEmpty()) {
           query_ = other.query_;
           onChanged();
@@ -1024,35 +988,9 @@ public final class SysLogOuterClass {
         return this;
       }
 
-      private int langId_ ;
-      /**
-       * <code>int32 lang_id = 1;</code>
-       */
-      public int getLangId() {
-        return langId_;
-      }
-      /**
-       * <code>int32 lang_id = 1;</code>
-       */
-      public Builder setLangId(int value) {
-        
-        langId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>int32 lang_id = 1;</code>
-       */
-      public Builder clearLangId() {
-        
-        langId_ = 0;
-        onChanged();
-        return this;
-      }
-
       private java.lang.Object query_ = "";
       /**
-       * <code>string query = 2;</code>
+       * <code>string query = 1;</code>
        */
       public java.lang.String getQuery() {
         java.lang.Object ref = query_;
@@ -1067,7 +1005,7 @@ public final class SysLogOuterClass {
         }
       }
       /**
-       * <code>string query = 2;</code>
+       * <code>string query = 1;</code>
        */
       public com.google.protobuf.ByteString
           getQueryBytes() {
@@ -1083,7 +1021,7 @@ public final class SysLogOuterClass {
         }
       }
       /**
-       * <code>string query = 2;</code>
+       * <code>string query = 1;</code>
        */
       public Builder setQuery(
           java.lang.String value) {
@@ -1096,7 +1034,7 @@ public final class SysLogOuterClass {
         return this;
       }
       /**
-       * <code>string query = 2;</code>
+       * <code>string query = 1;</code>
        */
       public Builder clearQuery() {
         
@@ -1105,7 +1043,7 @@ public final class SysLogOuterClass {
         return this;
       }
       /**
-       * <code>string query = 2;</code>
+       * <code>string query = 1;</code>
        */
       public Builder setQueryBytes(
           com.google.protobuf.ByteString value) {
@@ -1121,13 +1059,13 @@ public final class SysLogOuterClass {
 
       private int pageSize_ ;
       /**
-       * <code>int32 page_size = 3;</code>
+       * <code>int32 page_size = 2;</code>
        */
       public int getPageSize() {
         return pageSize_;
       }
       /**
-       * <code>int32 page_size = 3;</code>
+       * <code>int32 page_size = 2;</code>
        */
       public Builder setPageSize(int value) {
         
@@ -1136,7 +1074,7 @@ public final class SysLogOuterClass {
         return this;
       }
       /**
-       * <code>int32 page_size = 3;</code>
+       * <code>int32 page_size = 2;</code>
        */
       public Builder clearPageSize() {
         
@@ -1147,13 +1085,13 @@ public final class SysLogOuterClass {
 
       private int page_ ;
       /**
-       * <code>int32 page = 4;</code>
+       * <code>int32 page = 3;</code>
        */
       public int getPage() {
         return page_;
       }
       /**
-       * <code>int32 page = 4;</code>
+       * <code>int32 page = 3;</code>
        */
       public Builder setPage(int value) {
         
@@ -1162,7 +1100,7 @@ public final class SysLogOuterClass {
         return this;
       }
       /**
-       * <code>int32 page = 4;</code>
+       * <code>int32 page = 3;</code>
        */
       public Builder clearPage() {
         
@@ -6459,30 +6397,30 @@ public final class SysLogOuterClass {
     java.lang.String[] descriptorData = {
       "\n\rsys_log.proto\022\006sysLog\032\037google/protobuf" +
       "/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(\005\"" +
-      "M\n\nGetListReq\022\017\n\007lang_id\030\001 \001(\005\022\r\n\005query\030" +
-      "\002 \001(\t\022\021\n\tpage_size\030\003 \001(\005\022\014\n\004page\030\004 \001(\005\"\031" +
-      "\n\006Result\022\017\n\007success\030\001 \001(\010\"\251\001\n\nBaseSysLog" +
-      "\022\014\n\004type\030\001 \001(\t\022\r\n\005title\030\002 \001(\t\022\022\n\nservice" +
-      "_id\030\003 \001(\t\022\021\n\tcreate_by\030\004 \001(\t\022\017\n\007ip_addr\030" +
-      "\005 \001(\t\022\023\n\013request_uri\030\006 \001(\t\022\016\n\006method\030\007 \001" +
-      "(\t\022\016\n\006params\030\010 \001(\t\022\021\n\texception\030\t \001(\t\"\260\002" +
-      "\n\006SysLog\022\n\n\002id\030\001 \001(\003\022\014\n\004type\030\002 \001(\t\022\r\n\005ti" +
-      "tle\030\003 \001(\t\022\022\n\nservice_id\030\004 \001(\t\022\021\n\tcreate_" +
-      "by\030\005 \001(\t\022.\n\ncreated_at\030\006 \001(\0132\032.google.pr" +
-      "otobuf.Timestamp\022.\n\nupdated_at\030\007 \001(\0132\032.g" +
-      "oogle.protobuf.Timestamp\022\017\n\007ip_addr\030\010 \001(" +
-      "\t\022\023\n\013request_uri\030\t \001(\t\022\016\n\006method\030\n \001(\t\022\016" +
-      "\n\006params\030\013 \001(\t\022\014\n\004time\030\014 \001(\003\022\021\n\texceptio" +
-      "n\030\r \001(\t\022\017\n\007deleted\030\016 \001(\005\";\n\010PageList\022\r\n\005" +
-      "total\030\001 \001(\005\022 \n\010sys_logs\030\002 \003(\0132\016.sysLog.S" +
-      "ysLog2\371\001\n\rSysLogService\022,\n\007GetById\022\017.sys" +
-      "Log.ByIdReq\032\016.sysLog.SysLog\"\000\0221\n\007GetList" +
-      "\022\022.sysLog.GetListReq\032\020.sysLog.PageList\"\000" +
-      "\022.\n\006Insert\022\022.sysLog.BaseSysLog\032\016.sysLog." +
-      "Result\"\000\022*\n\006Update\022\016.sysLog.SysLog\032\016.sys" +
-      "Log.Result\"\000\022+\n\006Delete\022\017.sysLog.ByIdReq\032" +
-      "\016.sysLog.Result\"\000B\035\n\033com.qianxun.grpc.li" +
-      "b.sysLogP\000b\006proto3"
+      "<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_siz" +
+      "e\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"\031\n\006Result\022\017\n\007succe" +
+      "ss\030\001 \001(\010\"\251\001\n\nBaseSysLog\022\014\n\004type\030\001 \001(\t\022\r\n" +
+      "\005title\030\002 \001(\t\022\022\n\nservice_id\030\003 \001(\t\022\021\n\tcrea" +
+      "te_by\030\004 \001(\t\022\017\n\007ip_addr\030\005 \001(\t\022\023\n\013request_" +
+      "uri\030\006 \001(\t\022\016\n\006method\030\007 \001(\t\022\016\n\006params\030\010 \001(" +
+      "\t\022\021\n\texception\030\t \001(\t\"\260\002\n\006SysLog\022\n\n\002id\030\001 " +
+      "\001(\003\022\014\n\004type\030\002 \001(\t\022\r\n\005title\030\003 \001(\t\022\022\n\nserv" +
+      "ice_id\030\004 \001(\t\022\021\n\tcreate_by\030\005 \001(\t\022.\n\ncreat" +
+      "ed_at\030\006 \001(\0132\032.google.protobuf.Timestamp\022" +
+      ".\n\nupdated_at\030\007 \001(\0132\032.google.protobuf.Ti" +
+      "mestamp\022\017\n\007ip_addr\030\010 \001(\t\022\023\n\013request_uri\030" +
+      "\t \001(\t\022\016\n\006method\030\n \001(\t\022\016\n\006params\030\013 \001(\t\022\014\n" +
+      "\004time\030\014 \001(\003\022\021\n\texception\030\r \001(\t\022\017\n\007delete" +
+      "d\030\016 \001(\005\";\n\010PageList\022\r\n\005total\030\001 \001(\005\022 \n\010sy" +
+      "s_logs\030\002 \003(\0132\016.sysLog.SysLog2\371\001\n\rSysLogS" +
+      "ervice\022,\n\007GetById\022\017.sysLog.ByIdReq\032\016.sys" +
+      "Log.SysLog\"\000\0221\n\007GetList\022\022.sysLog.GetList" +
+      "Req\032\020.sysLog.PageList\"\000\022.\n\006Insert\022\022.sysL" +
+      "og.BaseSysLog\032\016.sysLog.Result\"\000\022*\n\006Updat" +
+      "e\022\016.sysLog.SysLog\032\016.sysLog.Result\"\000\022+\n\006D" +
+      "elete\022\017.sysLog.ByIdReq\032\016.sysLog.Result\"\000" +
+      "B\035\n\033com.qianxun.grpc.lib.sysLogP\000b\006proto" +
+      "3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6508,7 +6446,7 @@ public final class SysLogOuterClass {
     internal_static_sysLog_GetListReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysLog_GetListReq_descriptor,
-        new java.lang.String[] { "LangId", "Query", "PageSize", "Page", });
+        new java.lang.String[] { "Query", "PageSize", "Page", });
     internal_static_sysLog_Result_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_sysLog_Result_fieldAccessorTable = new

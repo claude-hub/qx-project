@@ -1,7 +1,7 @@
 package ${package}.user.consumer.grpc.client;
 
 import ${package}.${moduleName}.api.dto.${classname}.response.${className}ResponseDTO;
-import ${package}.${moduleName}.api.dto.extend.${className}DTO;
+import ${package}.${moduleName}.api.entity.${className};
 import ${package}.common.utils.mapper.ProtoBufUtils;
 import ${package}.grpc.lib.${classname}.${className}OuterClass;
 import ${package}.grpc.lib.${classname}.${className}ServiceGrpc;
@@ -18,10 +18,10 @@ public class Grpc${className}Client {
     @GrpcClient("qx-user-provider")
     private Channel serverChannel;
 
-    public ${className}DTO get${className}ById(${className}OuterClass.ByIdReq getByIdReq) {
+    public ${className} get${className}ById(${className}OuterClass.ByIdReq getByIdReq) {
         ${className}ServiceGrpc.${className}ServiceBlockingStub stub = ${className}ServiceGrpc.newBlockingStub(serverChannel);
         ${className}OuterClass.${className} res = stub.getById(getByIdReq);
-        return ProtoBufUtils.fromProtoBuffer(res, ${className}DTO.class);
+        return ProtoBufUtils.fromProtoBuffer(res, ${className}.class);
     }
 
     public ${className}ResponseDTO get${className}List(${className}OuterClass.GetListReq getListReq) {

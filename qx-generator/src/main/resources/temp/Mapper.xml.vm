@@ -41,4 +41,13 @@ from ${tableName} LEFT JOIN ${tableName}_lang ON ${tableName}.id =
     </where>
     ORDER BY ${tableName}.created_at DESC
 </select>
+
+<select id="searchById" resultMap="BaseResultMap">
+    select
+    <include refid="roleWithLangSql"/>
+    <where>
+        AND ${tableName}.lang_id = #{inputDTO.langId} AND ${tableName}.deleted != -1
+        AND ${tableName}.id = #{inputDTO.id}
+    </where>
+</select>
 </mapper>

@@ -1,9 +1,8 @@
 package com.qianxun.user.consumer.controller;
 
-import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
+import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.sysRole.request.*;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
-import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysRole.SysRoleOuterClass;
@@ -24,11 +23,11 @@ public class SysRoleController {
     private final GrpcSysRoleClient grpcSysRoleClient;
 
     @GetMapping(value = "/{id}")
-    public JSONResult getRoleId(@Valid SearchByIdInputDTO inputDTO) {
+    public JSONResult getRoleId(@Valid SysRoleSearchByIdDTO inputDTO) {
         JSONResult result = new JSONResult();
         SysRoleOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(inputDTO, SysRoleOuterClass.ByIdReq.class);
-        SysRole sysRole = grpcSysRoleClient.getRoleById(getByIdReq);
-        result.setData(sysRole.getId() != null ? sysRole : "");
+        SysRoleDTO sysRoleDTO = grpcSysRoleClient.getRoleById(getByIdReq);
+        result.setData(sysRoleDTO.getId() != null ? sysRoleDTO : "");
         return result;
     }
 

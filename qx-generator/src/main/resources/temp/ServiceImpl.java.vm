@@ -28,6 +28,11 @@ import java.util.Date;
 public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service {
     private final ${className}LangService ${classname}LangService;
 
+    @Override
+    public ${className}DTO searchById(${className}SearchByIdDTO input){
+        return baseMapper.searchById(input);
+    }
+
     /**
      * 保存信息
      *

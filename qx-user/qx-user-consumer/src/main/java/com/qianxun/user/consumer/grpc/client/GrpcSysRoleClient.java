@@ -1,7 +1,7 @@
 package com.qianxun.user.consumer.grpc.client;
 
+import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
-import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysRole.SysRoleOuterClass;
 import com.qianxun.grpc.lib.sysRole.SysRoleServiceGrpc;
@@ -18,10 +18,10 @@ public class GrpcSysRoleClient {
     @GrpcClient("qx-user-provider")
     private Channel serverChannel;
 
-    public SysRole getRoleById(SysRoleOuterClass.ByIdReq getByIdReq) {
+    public SysRoleDTO getRoleById(SysRoleOuterClass.ByIdReq getByIdReq) {
         SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
         SysRoleOuterClass.SysRole res = stub.getById(getByIdReq);
-        return ProtoBufUtils.fromProtoBuffer(res, SysRole.class);
+        return ProtoBufUtils.fromProtoBuffer(res, SysRoleDTO.class);
     }
 
     public SysRoleResponseDTO getRoleList(SysRoleOuterClass.GetListReq getListReq) {

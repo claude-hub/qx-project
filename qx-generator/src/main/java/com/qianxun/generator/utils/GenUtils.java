@@ -190,6 +190,12 @@ public class GenUtils {
         if (template.contains("BaseProto.vm")) {
             return packagePath + "proto" + File.separator + tableName + ".proto";
         }
+        if (template.contains("BaseController.java.vm")) {
+            return packagePath + "controller" + File.separator + className + "Controller.java";
+        }
+        if (template.contains("BaseGrpcClient.java.vm")) {
+            return packagePath + "grpc" + File.separator + "client" + File.separator + "Grpc"+ className + "Client.java";
+        }
 
         if (template.contains("Controller.java.vm")) {
             return packagePath + "controller" + File.separator + className + "Controller.java";
@@ -229,6 +235,9 @@ public class GenUtils {
         }
         if (template.contains("ServiceImpl.java.vm")) {
             return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
+        }
+        if (template.contains("SearchByIdDTO.java.vm")) {
+            return packagePath + "model" + File.separator + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "SearchByIdDTO.java";
         }
         if (template.contains("AddInputDTO.java.vm")) {
             return packagePath + "model" + File.separator + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "AddInputDTO.java";

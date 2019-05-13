@@ -1,8 +1,9 @@
 package ${package}.user.consumer.controller;
 
+import ${package}.${moduleName}.api.dto.base.SearchByIdInputDTO;
 import ${package}.${moduleName}.api.dto.${classname}.request.*;
 import ${package}.${moduleName}.api.dto.${classname}.response.${className}ResponseDTO;
-import ${package}.${moduleName}.api.dto.extend.${className}DTO;
+import ${package}.${moduleName}.api.entity.${className};
 import ${package}.common.utils.mapper.ProtoBufUtils;
 import ${package}.common.utils.result.JSONResult;
 import ${package}.grpc.lib.${classname}.${className}OuterClass;
@@ -27,11 +28,11 @@ public class ${className}Controller {
     * @return
     */
     @GetMapping(value = "/{id}")
-    public JSONResult get${className}Id(@Valid ${className}SearchByIdDTO inputDTO) {
+    public JSONResult get${className}Id(@Valid SearchByIdInputDTO input) {
         JSONResult result = new JSONResult();
-        ${className}OuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(inputDTO, ${className}OuterClass.ByIdReq.class);
-        ${className}DTO ${classname}DTO = grpc${className}Client.get${className}ById(getByIdReq);
-        result.setData(${classname}DTO.getId() != null ? ${classname}DTO : "");
+        ${className}OuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, ${className}OuterClass.ByIdReq.class);
+        ${className} ${classname} = grpc${className}Client.get${className}ById(getByIdReq);
+        result.setData(${classname}.getId() != null ? ${classname} : "");
         return result;
     }
 

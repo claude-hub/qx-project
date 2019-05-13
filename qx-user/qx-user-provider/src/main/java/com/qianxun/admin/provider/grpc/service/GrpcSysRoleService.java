@@ -1,4 +1,4 @@
-package com.qianxun.admin.provider.grpc.service.sysRole;
+package com.qianxun.admin.provider.grpc.service;
 
 /**
  * @author Cloudy
@@ -10,8 +10,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
+import com.qianxun.admin.api.dto.sysRole.request.SysRoleSearchByIdDTO;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
-import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.admin.provider.service.SysRoleService;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysRole.SysRoleOuterClass;
@@ -30,8 +30,9 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
     @Override
     public void getById(SysRoleOuterClass.ByIdReq request,
                         StreamObserver<SysRoleOuterClass.SysRole> responseObserver) {
-        SysRole sysRole = sysRoleService.getById(request.getId());
-        SysRoleOuterClass.SysRole res = ProtoBufUtils.toProtoBuffer(sysRole, SysRoleOuterClass.SysRole.class);
+        SysRoleSearchByIdDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysRoleSearchByIdDTO.class);
+        SysRoleDTO sysRoleDTO = sysRoleService.searchById(inputDTO);
+        SysRoleOuterClass.SysRole res = ProtoBufUtils.toProtoBuffer(sysRoleDTO, SysRoleOuterClass.SysRole.class);
         responseObserver.onNext(res);
         responseObserver.onCompleted();
     }

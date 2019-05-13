@@ -3,6 +3,7 @@ package ${package}.${moduleName}.provider.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${package}.${moduleName}.api.dto.extend.${className}DTO;
 import ${package}.${moduleName}.api.dto.${classname}.request.${className}QueryInputDTO;
 import ${package}.${moduleName}.api.entity.${className};
 import org.apache.ibatis.annotations.Param;
@@ -13,5 +14,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ${className}Mapper extends BaseMapper<${className}> {
    IPage get${className}sWithLang(Page page, @Param("inputDTO")${className}QueryInputDTO inputDTO);
+
+   ${className}DTO searchById(@Param("inputDTO")${className}SearchByIdDTO inputDTO);
 }
 

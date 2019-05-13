@@ -4,8 +4,10 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
 import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
+import com.qianxun.admin.api.dto.sysRole.request.SysRoleSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.admin.api.entity.SysRoleLang;
 import com.qianxun.admin.provider.mapper.SysRoleMapper;
@@ -28,6 +30,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> implements SysRoleService {
     private final SysRoleLangService roleLangService;
 
+    /**
+     * 根据当前语言，获取当前角色信息
+     * @param inputDTO
+     * @return
+     */
+    @Override
+    public SysRoleDTO searchById(SysRoleSearchByIdDTO inputDTO){
+        return baseMapper.searchById(inputDTO);
+    }
     /**
      * 保存角色信息
      *

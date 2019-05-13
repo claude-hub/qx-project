@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
+import com.qianxun.admin.api.dto.sysRole.request.SysRoleSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysRole;
 
 /**
@@ -13,6 +14,8 @@ import com.qianxun.admin.api.entity.SysRole;
  * create date: 05/10/19 9:31
  */
 public interface SysRoleService extends IService<SysRole> {
+
+    SysRoleDTO searchById(SysRoleSearchByIdDTO inputDTO);
 
     Boolean saveRole(SysRoleDTO sysRoleDTO);
 

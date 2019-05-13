@@ -1,14 +1,10 @@
-package ${package}.${moduleName}.provider.grpc.service.${classname};
-
-/**
- * @author Cloudy
- * Date: ${datetime}
- */
+package ${package}.${moduleName}.provider.grpc.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import ${package}.${moduleName}.api.dto.base.UpdateDBResponseDTO;
 import ${package}.${moduleName}.api.dto.extend.${className}DTO;
+import ${package}.${moduleName}.api.dto.${classname}.request.${className}SearchByIdDTO;
 import ${package}.${moduleName}.api.dto.${classname}.request.${className}QueryInputDTO;
 import ${package}.${moduleName}.api.dto.${classname}.response.${className}ResponseDTO;
 import ${package}.${moduleName}.api.entity.${className};
@@ -33,8 +29,9 @@ public class Grpc${className}Service extends ${className}ServiceGrpc.${className
     @Override
     public void getById(${className}OuterClass.ByIdReq request,
                         StreamObserver<${className}OuterClass.${className}> responseObserver) {
-        ${className} ${classname} = ${classname}Service.getById(request.getId());
-        ${className}OuterClass.${className} res = ProtoBufUtils.toProtoBuffer(${classname}, ${className}OuterClass.${className}.class);
+        ${className}SearchByIdDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, ${className}SearchByIdDTO.class);
+        ${className}DTO ${classname}DTO = ${classname}Service.searchById(inputDTO);
+        ${className}OuterClass.${className} res = ProtoBufUtils.toProtoBuffer(${classname}DTO, ${className}OuterClass.${className}.class);
         responseObserver.onNext(res);
         responseObserver.onCompleted();
     }
