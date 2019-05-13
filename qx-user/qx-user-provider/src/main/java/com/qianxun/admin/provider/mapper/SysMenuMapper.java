@@ -11,8 +11,7 @@ import org.apache.ibatis.annotations.Param;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 22:13:53
- */
+ *  */
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
    IPage getSysMenusWithLang(Page page, @Param("inputDTO")SysMenuQueryInputDTO inputDTO);
 

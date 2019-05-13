@@ -9,8 +9,7 @@ import java.io.Serializable;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 22:03:31
- */
+ *  */
 @Data
 public class SysDeptAddInputDTO implements Serializable {
                                                                                     @ApiModelProperty(value = "")

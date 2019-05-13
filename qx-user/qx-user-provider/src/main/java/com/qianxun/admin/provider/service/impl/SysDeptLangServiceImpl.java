@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 22:13:53
- */
+ *  */
 @Service
 public class SysDeptLangServiceImpl extends ServiceImpl<SysDeptLangMapper, SysDeptLang> implements SysDeptLangService {
 

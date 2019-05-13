@@ -17,8 +17,7 @@ import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 22:13:53
- */
+ *  */
 @GrpcService(SysMenuOuterClass.class)
 @AllArgsConstructor
 public class GrpcSysMenuService extends SysMenuServiceGrpc.SysMenuServiceImplBase {

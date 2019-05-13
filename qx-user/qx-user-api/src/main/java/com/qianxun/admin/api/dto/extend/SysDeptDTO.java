@@ -5,8 +5,7 @@ import lombok.Data;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 22:03:31
- */
+ *  */
 @Data
 public class SysDeptDTO extends SysDept {
     /**

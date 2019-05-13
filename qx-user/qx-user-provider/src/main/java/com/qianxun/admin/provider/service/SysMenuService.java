@@ -10,8 +10,7 @@ import com.qianxun.admin.api.entity.SysMenu;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 22:13:53
- */
+ *  */
 public interface SysMenuService extends IService<SysMenu> {
 
     SysMenuDTO searchById(SysMenuSearchByIdDTO inputDTO);

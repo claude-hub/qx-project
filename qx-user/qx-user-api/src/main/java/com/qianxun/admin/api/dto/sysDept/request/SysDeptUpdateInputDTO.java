@@ -10,8 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 22:03:31
- */
+ *  */
 @Data
 public class SysDeptUpdateInputDTO implements Serializable {
                                                                                             @NotNull(message = "主键不能为空")

@@ -7,8 +7,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 22:03:31
- */
+ *  */
 @Data
 public class SysMenuSearchByIdDTO extends SearchByIdInputDTO {
     @NotNull(message = "语言ID不能为空")
