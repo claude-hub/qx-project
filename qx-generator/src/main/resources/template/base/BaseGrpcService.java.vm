@@ -44,9 +44,12 @@ public class Grpc${className}Service extends ${className}ServiceGrpc.${className
             pageList = ${classname}Service.page(page);
         }else {
             pageList = ${classname}Service.page(page, Wrappers.<${className}>query().lambda()
-                    .like(${className}::getException, inputDTO.getQuery())
-                    .or()
-                    .like(${className}::getUpdatedAt, inputDTO.getQuery())
+                    .and(item -> item
+                            .like(${className}::getException, inputDTO.getQuery())
+                            .or()
+                            .like(${className}::getUpdatedAt, inputDTO.getQuery())
+                    )
+
             );
         }
         ${className}ResponseDTO dto = new ${className}ResponseDTO();

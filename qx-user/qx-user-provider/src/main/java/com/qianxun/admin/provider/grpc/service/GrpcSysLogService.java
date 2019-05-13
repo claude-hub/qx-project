@@ -1,4 +1,4 @@
-package com.qianxun.admin.provider.grpc.service;
+package com.qianxun.admin.provider.grpc.service.sysLog;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -17,8 +17,7 @@ import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 17:03:04
- */
+ *  */
 @GrpcService(SysLogOuterClass.class)
 @AllArgsConstructor
 public class GrpcSysLogService extends SysLogServiceGrpc.SysLogServiceImplBase {
@@ -38,15 +37,18 @@ public class GrpcSysLogService extends SysLogServiceGrpc.SysLogServiceImplBase {
     public void getList(SysLogOuterClass.GetListReq request,
                         StreamObserver<SysLogOuterClass.PageList> responseObserver) {
         SysLogQueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysLogQueryInputDTO.class);
-        IPage<SysLog> page = new Page<SysLog>(inputDTO.getPage(), inputDTO.getPageSize());
+        IPage<SysLog> page = new Page<SysLog>(inputDTO.getPage(),inputDTO.getPageSize());
         IPage pageList;
-        if (inputDTO.getQuery() == null || inputDTO.getQuery().equals("")) {
+        if(inputDTO.getQuery() == null || inputDTO.getQuery().equals("")){
             pageList = sysLogService.page(page);
-        } else {
+        }else {
             pageList = sysLogService.page(page, Wrappers.<SysLog>query().lambda()
-                    .like(SysLog::getException, inputDTO.getQuery())
-                    .or()
-                    .like(SysLog::getUpdatedAt, inputDTO.getQuery())
+                    .and(item -> item
+                            .like(SysLog::getException, inputDTO.getQuery())
+                            .or()
+                            .like(SysLog::getUpdatedAt, inputDTO.getQuery())
+                    )
+
             );
         }
         SysLogResponseDTO dto = new SysLogResponseDTO();

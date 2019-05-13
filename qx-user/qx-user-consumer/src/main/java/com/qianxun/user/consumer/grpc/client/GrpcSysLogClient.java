@@ -11,8 +11,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 17:03:04
- */
+ *  */
 @Service
 public class GrpcSysLogClient {
     @GrpcClient("qx-user-provider")

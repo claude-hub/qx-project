@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 17:13:37
- */
+ *  */
 @Service
 public class SysLogServiceImpl extends ServiceImpl<SysLogMapper, SysLog> implements SysLogService {
 
