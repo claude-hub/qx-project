@@ -38,11 +38,4 @@ public class ${className}UpdateInputDTO implements Serializable {
 
         #end
     #end
-    @NotNull(message = "语言Id不能为空")
-    @ApiModelProperty(value = "语言id", required = true)
-    private Integer langId;
-
-    @NotBlank(message = "${className}名称不能为空")
-    @ApiModelProperty(value = "${className}名称", required = true)
-    private String name;
 }

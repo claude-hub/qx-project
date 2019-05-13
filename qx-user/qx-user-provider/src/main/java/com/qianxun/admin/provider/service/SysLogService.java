@@ -4,8 +4,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.qianxun.admin.api.entity.SysLog;
 
 /**
- * @author Cloudy
- * Date: 2019/5/12 10:35
+ * @author cloudy
+ * Date 2019-05-13 17:13:37
  */
 public interface SysLogService extends IService<SysLog> {
 

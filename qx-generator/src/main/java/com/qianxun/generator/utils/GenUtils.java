@@ -163,6 +163,34 @@ public class GenUtils {
      */
     private static String getFileName(String template, String className, String classname, String tableName, String moduleName) {
         String packagePath = "main" + File.separator + "java" + File.separator;
+        if (template.contains("BaseAddInputDTO.java.vm")) {
+            return packagePath + "model" + File.separator + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "AddInputDTO.java";
+        }
+        if (template.contains("BaseQueryInputDTO.java.vm")) {
+            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "QueryInputDTO.java";
+        }
+        if (template.contains("BaseUpdateInputDTO.java.vm")) {
+            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "request" + File.separator + className + "UpdateInputDTO.java";
+        }
+        if (template.contains("BaseResponseDTO.java.vm")) {
+            return packagePath + "model" + File.separator  + "dto" + File.separator + classname + File.separator + "response" + File.separator + className + "ResponseDTO.java";
+        }
+        if (template.contains("BaseGrpcService.java.vm")) {
+            return packagePath + "grpc" + File.separator + "service" + File.separator  + "Grpc"+ className + "Service.java";
+        }
+        if (template.contains("BaseMapper.java.vm")) {
+            return packagePath + "mapper" + File.separator + className + "Mapper.java";
+        }
+        if (template.contains("BaseService.java.vm")) {
+            return packagePath + "service" + File.separator + className + "Service.java";
+        }
+        if (template.contains("BaseServiceImpl.java.vm")) {
+            return packagePath + "service" + File.separator + "impl" + File.separator + className + "ServiceImpl.java";
+        }
+        if (template.contains("BaseProto.vm")) {
+            return packagePath + "proto" + File.separator + tableName + ".proto";
+        }
+
         if (template.contains("Controller.java.vm")) {
             return packagePath + "controller" + File.separator + className + "Controller.java";
         }

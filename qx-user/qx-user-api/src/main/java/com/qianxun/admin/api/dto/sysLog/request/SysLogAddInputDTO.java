@@ -13,7 +13,7 @@ import java.io.Serializable;
 
 /**
  * @author cloudy
- * Date 2019-05-13 15:37:01
+ * Date 2019-05-13 17:03:04
  */
 @Data
 public class SysLogAddInputDTO implements Serializable {
@@ -46,4 +46,5 @@ public class SysLogAddInputDTO implements Serializable {
 
     @ApiModelProperty(value = "异常信息")
     private String exception;
+
 }

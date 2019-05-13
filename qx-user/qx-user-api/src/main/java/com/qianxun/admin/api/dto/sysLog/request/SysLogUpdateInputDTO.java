@@ -15,7 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * @author cloudy
- * Date 2019-05-13 15:37:01
+ * Date 2019-05-13 17:03:04
  */
 @Data
 public class SysLogUpdateInputDTO implements Serializable {
@@ -57,4 +57,5 @@ public class SysLogUpdateInputDTO implements Serializable {
 
     @ApiModelProperty(value = "异常信息")
     private String exception;
+
 }

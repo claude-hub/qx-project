@@ -1,0 +1,37 @@
+package ${package}.${moduleName}.api.dto.${classname}.requset;
+
+import java.util.Date;
+import lombok.Data;
+import javax.validation.constraints.NotNull;
+import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.NotBlank;
+import java.io.Serializable;
+
+/**
+ * @author ${author}
+ * Date ${datetime}
+ */
+@Data
+public class ${className}AddInputDTO implements Serializable {
+    #foreach ($column in $columns)
+    ##排除主键
+        #if($column.columnName != $pk.columnName)
+        ##排除created_at,updated_at,deleted字段
+            #if($column.columnName != "created_at" && $column.columnName != "updated_at"
+            && $column.columnName != "deleted")
+                #if($column.nullable == "NO")
+                    #if($column.attrType == "Integer")
+                    @NotNull(message = "${column.comments}不能为空")
+                    #else
+                    @NotBlank(message = "${column.comments}不能为空")
+                    @ApiModelProperty(value = "$column.comments", required = true)
+                    #end
+                #else
+                @ApiModelProperty(value = "$column.comments")
+                #end
+            private ${column.attrType} $column.attrname;
+
+            #end
+        #end
+    #end
+}

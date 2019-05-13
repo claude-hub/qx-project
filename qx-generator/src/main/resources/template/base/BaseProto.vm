@@ -19,10 +19,9 @@ message ByIdReq {
 }
 
 message GetListReq {
-    int32 lang_id = 1;
-    string query = 2;
-    int32 page_size = 3;
-    int32 page = 4;
+    string query = 1;
+    int32 page_size = 2;
+    int32 page = 3;
 }
 
 message Result {
@@ -54,9 +53,6 @@ message Base${className} {
         #end
     #end
 #end
-
-    int32 lang_id = 1;
-    string name = 2;
 }
 
 message ${className} {
@@ -74,8 +70,6 @@ message ${className} {
     google.protobuf.Timestamp ${column.columnName} = 1;
     #end
 #end
-    int32 lang_id = 2;
-    string name = 3;
 }
 
 message PageList {

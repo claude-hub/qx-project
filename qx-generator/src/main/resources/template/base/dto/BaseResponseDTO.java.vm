@@ -1,6 +1,6 @@
-package com.qianxun.admin.api.dto.sysLog.response;
+package ${package}.${moduleName}.api.dto.${classname}.response;
 
-import com.qianxun.admin.api.entity.SysLog;
+import ${package}.${moduleName}.api.entity.${className};
 import lombok.Data;
 
 import java.io.Serializable;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author cloudy
- * Date 2019-05-13 17:03:04
+ * @author ${author}
+ * Date ${datetime}
  */
 @Data
-public class SysLogResponseDTO implements Serializable {
+public class ${className}ResponseDTO implements Serializable {
     /**
      * 总记录数
      * 需要加上默认为0，避免传回前端连字段都没有
@@ -23,5 +23,5 @@ public class SysLogResponseDTO implements Serializable {
      * 分页查询结果
      * 需初始化，避免传回前端无字段
      */
-    private List<SysLog> sysLogs = new ArrayList<>();
+    private List<${className}> ${classname}s = new ArrayList<>();
 }

@@ -46,7 +46,7 @@ public class GeneratorController {
 
         byte[] data;
         if (type == 0){
-            data = generatorService.generatorCode(tables, getTemplates());
+            data = generatorService.generatorCode(tables, getBaseTemplates());
         }else if(type == 1){
             data = generatorService.generatorCode(tables, getTemplates());
         } else {
@@ -81,6 +81,25 @@ public class GeneratorController {
         templates.add("temp/model/dto/request/UpdateInputDTO.java.vm");
         templates.add("temp/model/dto/response/ResponseDTO.java.vm");
         templates.add("temp/model/dto/extend/ExtendDTO.java.vm");
+        return templates;
+    }
+
+    private static List<String> getBaseTemplates() {
+        List<String> templates = new ArrayList<String>();
+        templates.add("temp/model/entity/Entity.java.vm");
+        templates.add("temp/Controller.java.vm");
+        templates.add("temp/GrpcClient.java.vm");
+        templates.add("temp/model/dto/request/DeleteInputDTO.java.vm");
+
+        templates.add("template/base/BaseProto.vm");
+        templates.add("template/base/BaseMapper.java.vm");
+        templates.add("template/base/BaseService.java.vm");
+        templates.add("template/base/BaseServiceImpl.java.vm");
+        templates.add("template/base/BaseGrpcService.java.vm");
+        templates.add("template/base/dto/BaseAddInputDTO.java.vm");
+        templates.add("template/base/dto/BaseQueryInputDTO.java.vm");
+        templates.add("template/base/dto/BaseUpdateInputDTO.java.vm");
+        templates.add("template/base/dto/BaseResponseDTO.java.vm");
         return templates;
     }
 }
