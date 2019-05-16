@@ -25,6 +25,7 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.*;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import javax.sql.DataSource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Cloudy
@@ -75,12 +76,19 @@ public class OAuth2ServerConfig {
 
         @Override
         public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
-                    endpoints
-                    .tokenStore(tokenStore())
-                    .tokenEnhancer(tokenEnhancer())
-                    .authenticationManager(authenticationManager)
-                    .userDetailsService(userDetailsService)
-                    .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
+            endpoints.authenticationManager(authenticationManager);
+            endpoints.tokenStore(tokenStore());
+            endpoints.userDetailsService(userDetailsService);
+            endpoints.tokenEnhancer(tokenEnhancer());
+            endpoints.allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST);
+            //配置TokenServices参数
+            DefaultTokenServices tokenServices = new DefaultTokenServices();
+            tokenServices.setTokenStore(endpoints.getTokenStore());
+            tokenServices.setSupportRefreshToken(true);
+            tokenServices.setClientDetailsService(endpoints.getClientDetailsService());
+            tokenServices.setTokenEnhancer(endpoints.getTokenEnhancer());
+            tokenServices.setAccessTokenValiditySeconds((int) TimeUnit.DAYS.toSeconds(1)); // 1天
+            endpoints.tokenServices(tokenServices);
         }
 
         @Override
@@ -98,6 +106,10 @@ public class OAuth2ServerConfig {
             return tokenStore;
         }
 
+        /**
+         * 个性化Token，对密码模式(支持刷新token)有效，客户端模式(不支持token刷新)无效
+         * @return
+         */
         @Bean
         public TokenEnhancer tokenEnhancer() {
             return new CustomTokenEnhancer();
