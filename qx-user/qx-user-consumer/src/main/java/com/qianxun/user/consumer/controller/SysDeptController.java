@@ -1,5 +1,6 @@
 package com.qianxun.user.consumer.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.qianxun.admin.api.dto.sysDept.request.*;
 import com.qianxun.admin.api.dto.sysDept.response.SysDeptResponseDTO;
 import com.qianxun.admin.api.dto.extend.SysDeptDTO;
@@ -40,12 +41,20 @@ public class SysDeptController {
     * @return
     */
     @GetMapping(value = "/list")
+    @HystrixCommand(fallbackMethod = "fallbackGetList")
     public JSONResult getSysDeptList(@Valid SysDeptQueryInputDTO input) {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.GetListReq.class);
         SysDeptResponseDTO responseDTO = grpcSysDeptClient.getSysDeptList(getListReq);
         result.setData(responseDTO.getSysDepts());
         result.setTotalCount(responseDTO.getTotal());
+        return result;
+    }
+
+    public JSONResult fallbackGetList(@Valid SysDeptQueryInputDTO input){
+        JSONResult result = new JSONResult();
+        result.setErrCode("404");
+        result.setMessage("can`t found micro service");
         return result;
     }
 

@@ -12,6 +12,11 @@
     <artifactId>qx-user-consumer</artifactId>
 
     <dependencies>
+        <!--断路器hystrix-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
         <!-- 工具类-->
         <dependency>
             <groupId>com.qianxun</groupId>

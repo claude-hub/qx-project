@@ -11,5 +11,16 @@ spring:
           uri: lb://qx-auth
           predicates:
             - Path=/auth/**
+#          filters:
+#            - StripPrefix=1 #用StripPrefix的filter 在转发之前将/auth去掉
+        # user
+        - id: qx-user-consumer
+          uri: lb://qx-user-consumer
+          predicates:
+            - Path=/admin/**
           filters:
-            - StripPrefix=1 #用StripPrefix的filter 在转发之前将/auth去掉
+            # 降级配置
+            - name: Hystrix
+              args:
+                name: default
+                fallbackUri: 'forward:/fallback'
