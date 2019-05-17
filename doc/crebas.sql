@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2019/5/13 1:28:52                            */
+/* Created on:     2019/5/17 13:59:02                           */
 /*==============================================================*/
 
 
@@ -29,6 +29,8 @@ drop table if exists sys_role_menu;
 drop table if exists sys_user;
 
 drop table if exists sys_user_menu;
+
+drop table if exists sys_user_role;
 
 /*==============================================================*/
 /* Table: sys_dept                                              */
@@ -195,7 +197,6 @@ create table sys_role_menu
 create table sys_user
 (
    id                   int not null auto_increment comment '主键ID',
-   role_id              int comment '角色ID',
    dept_id              int comment '部门ID',
    name                 varchar(32) comment '姓名',
    identification       varchar(255) comment '身份证',
@@ -210,9 +211,9 @@ create table sys_user
    created_at           timestamp not null default CURRENT_TIMESTAMP comment '创建时间',
    updated_at           timestamp not null default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP comment '修改时间',
    current_token        varchar(255) comment '当前的token',
-   current_sign_in_at   timestamp not null default CURRENT_TIMESTAMP comment '当前登录时间',
+   current_sign_in_at   timestamp default CURRENT_TIMESTAMP comment '当前登录时间',
    last_sign_in_at      datetime default NULL comment '上一次登录时间',
-   sign_in_count        int not null default 0 comment '累积登录次数',
+   sign_in_count        int default 0 comment '累积登录次数',
    db_source            varchar(64),
    primary key (id)
 );
@@ -225,6 +226,17 @@ create table sys_user_menu
    id                   int not null auto_increment,
    user_id              int not null,
    menu_id              int not null,
+   primary key (id)
+);
+
+/*==============================================================*/
+/* Table: sys_user_role                                         */
+/*==============================================================*/
+create table sys_user_role
+(
+   id                   int not null auto_increment,
+   user_id              int not null,
+   role_id              int not null,
    primary key (id)
 );
 

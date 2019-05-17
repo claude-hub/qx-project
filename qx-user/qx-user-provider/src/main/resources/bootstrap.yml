@@ -25,7 +25,7 @@ spring:
 # 注册中心配置
 eureka:
   instance:
-    instance-id: qx-user-provider-8001
+    instance-id: qx-user-provider
     prefer-ip-address: true     #访问路径可以显示IP地址
   client:
     service-url:

@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: qx-auth
   redis:
     password:
     host: 123.207.242.177
@@ -18,3 +20,12 @@ ignore:
     - /user/info/*
     - /log/**
     - /product/**
+
+# 注册中心配置
+eureka:
+  instance:
+    instance-id: qx-auth
+    prefer-ip-address: true     #访问路径可以显示IP地址
+  client:
+    service-url:
+      defaultZone: http://qx:qx@localhost:7001/eureka/

@@ -1,4 +1,4 @@
-package ${package}.${moduleName}.provider.grpc.service.${classname};
+package ${package}.${moduleName}.provider.grpc.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;

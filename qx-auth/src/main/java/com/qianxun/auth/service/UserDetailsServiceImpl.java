@@ -1,5 +1,12 @@
 package com.qianxun.auth.service;
 
+import cn.hutool.core.util.ArrayUtil;
+import com.qianxun.admin.api.dto.authUser.AuthUserInputDTO;
+import com.qianxun.admin.api.dto.extend.SysUserDTO;
+import com.qianxun.auth.constant.SecurityConstants;
+import com.qianxun.auth.grpc.GrpcAuthUserClient;
+import com.qianxun.common.utils.mapper.ProtoBufUtils;
+import com.qianxun.grpc.lib.authUser.AuthUserOuterClass;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +16,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +31,8 @@ import java.util.Set;
 @AllArgsConstructor //替代@Autowired构造注入
 public class UserDetailsServiceImpl implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
+    private final GrpcAuthUserClient grpcAuthUserClient;
+
     /**
      * 用户密码登录
      *
@@ -31,13 +42,22 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @SneakyThrows
     public UserDetails loadUserByUsername(String username) {
+        AuthUserInputDTO input = new AuthUserInputDTO();
+        input.setAccount(username);
+        AuthUserOuterClass.ByAccountReq req = ProtoBufUtils.toProtoBuffer(input, AuthUserOuterClass.ByAccountReq.class);
+        SysUserDTO info = grpcAuthUserClient.getSysUserByAccount(req);
         Set<String> dbAuthsSet = new HashSet<>();
-        dbAuthsSet.add("ROLE_1");
-        dbAuthsSet.add("sys_del_user");
+        Integer[] roles = info.getRoles().toArray(new Integer[0]);
+        if (ArrayUtil.isNotEmpty(roles)) {
+            // 获取角色
+            Arrays.stream(roles).forEach(role -> dbAuthsSet.add(SecurityConstants.ROLE + role));
+            // 获取资源
+            dbAuthsSet.addAll(info.getPermissions());
+        }
         Collection<? extends GrantedAuthority> authorities =
                 AuthorityUtils.createAuthorityList(dbAuthsSet.toArray(new String[0]));
-        return new QxUser(1, 1,username,
-                passwordEncoder.encode("123456"),
+        return new QxUser(info.getId(), info.getDeptId(),username,
+                SecurityConstants.BCRYPT + info.getPasswordEncrypted(),
                 true,true,
                 true,true,authorities);
     }

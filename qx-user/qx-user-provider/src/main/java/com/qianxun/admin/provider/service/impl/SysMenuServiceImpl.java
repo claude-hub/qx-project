@@ -18,6 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Cloudy
@@ -75,6 +76,12 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
             return sysMenuLangService.save(sysMenuLang);
         }
         return false;
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public List<SysMenuDTO> getMenusByRoleId(Integer roleId){
+        return baseMapper.getMenusByRoleId(roleId);
     }
 }
 

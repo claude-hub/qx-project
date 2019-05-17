@@ -8,6 +8,8 @@ import com.qianxun.admin.api.dto.sysMenu.request.SysMenuQueryInputDTO;
 import com.qianxun.admin.api.dto.sysMenu.request.SysMenuSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysMenu;
 
+import java.util.List;
+
 /**
  * @author Cloudy
  *  */
@@ -20,4 +22,6 @@ public interface SysMenuService extends IService<SysMenu> {
     IPage getSysMenus(Page page, SysMenuQueryInputDTO inputDTO);
 
     Boolean updateSysMenu(SysMenuDTO sysMenuDTO);
+
+    List<SysMenuDTO> getMenusByRoleId(Integer roleId);
 }

@@ -9,6 +9,8 @@ import com.qianxun.admin.api.dto.sysMenu.request.SysMenuSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysMenu;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author Cloudy
  *  */
@@ -16,5 +18,7 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
    IPage getSysMenusWithLang(Page page, @Param("inputDTO")SysMenuQueryInputDTO inputDTO);
 
    SysMenuDTO searchById(@Param("inputDTO")SysMenuSearchByIdDTO inputDTO);
+
+   List<SysMenuDTO> getMenusByRoleId(Integer roleId);
 }
 

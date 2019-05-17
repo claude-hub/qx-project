@@ -18,6 +18,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Cloudy
@@ -76,6 +77,11 @@ public class SysRoleServiceImpl extends ServiceImpl<SysRoleMapper, SysRole> impl
             return sysRoleLangService.save(sysRoleLang);
         }
         return false;
+    }
+
+    @Override
+    public List<SysRoleDTO> getRolesByUserId(Integer userId){
+        return baseMapper.getRolesByUserId(userId);
     }
 }
 

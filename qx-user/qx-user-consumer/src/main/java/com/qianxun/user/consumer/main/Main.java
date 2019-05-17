@@ -5,6 +5,7 @@ import com.qianxun.admin.api.dto.sysRole.request.SysRoleAddInputDTO;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
 import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
+import com.qianxun.grpc.lib.authUser.AuthUserOuterClass;
 import com.qianxun.grpc.lib.sysRole.SysRoleOuterClass;
 
 import java.util.ArrayList;
@@ -70,26 +71,32 @@ public class Main {
 //
 //        System.out.println(sysRoleDTO);
 
-        SysRoleResponseDTO roleResponseDTO = new SysRoleResponseDTO();
-        roleResponseDTO.setTotal(20);
-        List<SysRoleDTO> sysRoleList = new ArrayList<>();
-        SysRoleDTO sysRole = new SysRoleDTO();
-        sysRole.setId(1);
-        sysRole.setName("role");
-        sysRole.setCreatedAt(new Date());
-        sysRole.setUpdatedAt(new Date());
-        sysRole.setRoleCode("user");
-        sysRoleList.add(sysRole);
+//        SysRoleResponseDTO roleResponseDTO = new SysRoleResponseDTO();
+//        roleResponseDTO.setTotal(20);
+//        List<SysRoleDTO> sysRoleList = new ArrayList<>();
+//        SysRoleDTO sysRole = new SysRoleDTO();
+//        sysRole.setId(1);
+//        sysRole.setName("role");
+//        sysRole.setCreatedAt(new Date());
+//        sysRole.setUpdatedAt(new Date());
+//        sysRole.setRoleCode("user");
+//        sysRoleList.add(sysRole);
+//
+//        roleResponseDTO.setSysRoles(sysRoleList);
+//
+//        SysRoleOuterClass.PageList ad = ProtoBufUtils.toProtoBuffer(roleResponseDTO, SysRoleOuterClass.PageList.class);
+//        System.out.println("11111111");
+//        System.out.println(ad);
+//
+//
+//        SysRoleResponseDTO a = ProtoBufUtils.fromProtoBuffer(ad, SysRoleResponseDTO.class);
+//        System.out.println("2222222222");
+//        System.out.println(a);
 
-        roleResponseDTO.setSysRoles(sysRoleList);
+        List a = new ArrayList<>();
 
-        SysRoleOuterClass.PageList ad = ProtoBufUtils.toProtoBuffer(roleResponseDTO, SysRoleOuterClass.PageList.class);
-        System.out.println("11111111");
-        System.out.println(ad);
+//        ((ArrayList<Integer>) a).add(1);
 
-
-        SysRoleResponseDTO a = ProtoBufUtils.fromProtoBuffer(ad, SysRoleResponseDTO.class);
-        System.out.println("2222222222");
-        System.out.println(a);
+        AuthUserOuterClass.AuthUser.newBuilder().addAllRoles(a);
     }
 }

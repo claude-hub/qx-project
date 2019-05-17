@@ -38,4 +38,11 @@
             AND sys_role.id = #{inputDTO.id}
         </where>
     </select>
+
+    <select id="getRolesByUserId" resultMap="BaseResultMap">
+      SELECT
+            r.*
+        FROM
+        sys_role r, sys_user_role ur WHERE r.id = ur.role_id AND r.deleted = 0 and ur.user_id IN (#{userId})
+    </select>
 </mapper>

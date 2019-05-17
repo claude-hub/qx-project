@@ -9,6 +9,8 @@ import com.qianxun.admin.api.dto.sysRole.request.SysRoleSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysRole;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @author Cloudy
  * Date 2019-05-13 19:35:18
@@ -17,5 +19,7 @@ public interface SysRoleMapper extends BaseMapper<SysRole> {
    IPage getSysRolesWithLang(Page page, @Param("inputDTO") SysRoleQueryInputDTO inputDTO);
 
    SysRoleDTO searchById(@Param("inputDTO") SysRoleSearchByIdDTO inputDTO);
+
+   List<SysRoleDTO> getRolesByUserId(Integer id);
 }
 

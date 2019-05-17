@@ -60,9 +60,13 @@ public class ProtoBufUtils {
                                 // 嵌套数组转化为java的pojo
                                 List<Object> pojo = new ArrayList<>();
                                 List<Object> protoList = (List<Object>) pbValue; //数据为List集合
-                                for (Object item : protoList) {
-                                    Object object = fromProtoBuffer(item, classType);
-                                    pojo.add(object);
+                                if(classType == Integer.class || classType == String.class || classType == Date.class){
+                                    pojo.addAll(protoList);
+                                }else {
+                                    for (Object item : protoList) {
+                                        Object object = fromProtoBuffer(item, classType);
+                                        pojo.add(object);
+                                    }
                                 }
                                 value = pojo;
                             }
@@ -138,12 +142,14 @@ public class ProtoBufUtils {
                                         Class paramType = mItem.getParameterTypes()[0];
                                         List<Object> pbList = new ArrayList<>();
                                         List<Object> protoList = (List<Object>) value; //数据为List集合
-
-                                        for (Object item : protoList) {
-                                            Object object = toProtoBuffer(item, paramType);
-                                            pbList.add(object);
+                                        if(paramType == int.class || paramType == String.class || paramType == Date.class){
+                                            pbList.addAll(protoList);
+                                        }else {
+                                            for (Object item : protoList) {
+                                                Object object = toProtoBuffer(item, paramType);
+                                                pbList.add(object);
+                                            }
                                         }
-
                                         // 加入外层的对象
                                         Method addAll = pbBuilder.getClass().getMethod("addAll" + upperName, Iterable.class);
                                         addAll.invoke(pbBuilder, pbList);
