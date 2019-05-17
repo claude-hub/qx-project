@@ -13,6 +13,7 @@
         <module>qx-generator</module>
         <module>qx-common</module>
         <module>qx-auth</module>
+        <module>qx-gateway</module>
     </modules>
     <packaging>pom</packaging>
 
