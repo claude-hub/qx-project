@@ -1,4 +1,4 @@
-package com.qianxun.auth.service;
+package com.qianxun.common.utils.security;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;

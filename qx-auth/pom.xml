@@ -18,6 +18,7 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
+        <!--基础模块-->
         <dependency>
             <groupId>com.qianxun</groupId>
             <artifactId>qx-common</artifactId>

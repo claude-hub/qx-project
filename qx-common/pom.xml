@@ -12,6 +12,11 @@
     <artifactId>qx-common</artifactId>
 
     <dependencies>
+        <!--security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
         <!--protobuf-->
         <dependency>
             <groupId>com.google.protobuf</groupId>
