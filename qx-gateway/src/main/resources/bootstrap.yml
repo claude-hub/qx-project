@@ -4,6 +4,10 @@ server:
 spring:
   application:
     name: qx-gateway
+  redis:
+    password:
+    host: 123.207.242.177
+    timeout: 5000
 # 配置中心
 #  cloud:
 #    config:

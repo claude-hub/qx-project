@@ -55,6 +55,9 @@
         <!-- auth -->
         <security.oauth.version>2.3.5.RELEASE</security.oauth.version>
         <oauth2-autoconfigure>2.1.0.RELEASE</oauth2-autoconfigure>
+
+        <!--gateway-->
+        <kaptcha.version>0.0.9</kaptcha.version>
     </properties>
 
     <dependencies>

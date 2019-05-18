@@ -13,6 +13,9 @@ spring:
             - Path=/auth/**
 #          filters:
 #            - StripPrefix=1 #用StripPrefix的filter 在转发之前将/auth去掉
+          filters:
+            # 验证码处理
+            - ValidateCaptchaFilter
         # user
         - id: qx-user-consumer
           uri: lb://qx-user-consumer
