@@ -6,6 +6,17 @@ server:
 spring:
   application:
     name: qx-user-consumer
+  redis:
+    password:
+    host: 123.207.242.177
+    timeout: 5000
+  datasource:
+    url: jdbc:mysql://123.207.242.177:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    #使用阿里的druid数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
   # 配置中心
 #  cloud:
 #    config:
@@ -28,10 +39,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://qx:qx@localhost:7001/eureka/
-
-security:
-  oauth2:
-    client:
-      client-id: qx
-      client-secret: qx
-      scope: server

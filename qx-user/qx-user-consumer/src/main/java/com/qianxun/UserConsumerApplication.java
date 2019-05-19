@@ -1,7 +1,9 @@
-package com.qianxun.user.consumer;
+package com.qianxun;
 
+import com.qianxun.auth.component.FilterIgnoreProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
@@ -16,7 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableEurekaClient
 @EnableDiscoveryClient
 @EnableHystrix
-@ComponentScan(basePackages = "com.qianxun") //swagger
+@EnableConfigurationProperties({FilterIgnoreProperties.class})
 public class UserConsumerApplication {
     public static void main(String[] args) {
         SpringApplication.run(UserConsumerApplication.class, args);
