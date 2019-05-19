@@ -39,3 +39,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://qx:qx@localhost:7001/eureka/
+
+# 直接放行URL
+ignore:
+  urls:
+    #swagger的资源文件
+    - /swagger-ui.html/**
+    - /webjars/**
+    - /swagger-resources/**
+    - /v2/**

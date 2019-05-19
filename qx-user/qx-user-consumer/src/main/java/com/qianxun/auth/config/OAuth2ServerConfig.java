@@ -53,7 +53,9 @@ public class OAuth2ServerConfig {
                     .authorizeRequests();
             filterIgnoreProperties.getUrls()
                     .forEach(url -> registry.antMatchers(url).permitAll()); //不验证配置文件放行的url
-            registry.anyRequest().authenticated() //验证所有url
+            registry.anyRequest()
+                    .permitAll() // 不认证所有url
+//                    .authenticated() //验证所有url
                     .and().csrf().disable();
         }
     }
