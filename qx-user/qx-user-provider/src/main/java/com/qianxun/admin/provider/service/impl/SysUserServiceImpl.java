@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 
 /**
  * @author Cloudy
- *  */
+ */
 @Service
 @AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
@@ -35,15 +35,15 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public SysUserDTO getUserInfoByAccount(String account){
+    public SysUserDTO getUserInfoByAccount(String account) {
         SysUserDTO sysRoleDTO = new SysUserDTO();
         SysUser sysUser = this.getOne(Wrappers.<SysUser>query().lambda()
-                .eq(SysUser::getPhone, account)
-                .or()
-                .eq(SysUser::getUserName, account)
-                .or()
-                .eq(SysUser::getEmail, account)
-        , true);
+                        .eq(SysUser::getPhone, account)
+                        .or()
+                        .eq(SysUser::getUserName, account)
+                        .or()
+                        .eq(SysUser::getEmail, account)
+                , true);
         BeanUtils.copyProperties(sysUser, sysRoleDTO);
         //角色列表
         List<Integer> roleIds = sysRoleService.getRolesByUserId(sysUser.getId())
@@ -51,16 +51,23 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                 .map(SysRoleDTO::getId)
                 .collect(Collectors.toList());
         sysRoleDTO.setRoles(roleIds);
-        //权限列表
+        //角色权限列表
         Set<String> permissions = new HashSet<>();
         roleIds.forEach(roleId -> {
-            List<String> permissionList = sysMenuService.getMenusByRoleId(roleId)
+            List<String> rolePermissionList = sysMenuService.getMenusByRoleId(roleId)
                     .stream()
                     .filter(sysMenuDTO -> StringUtils.isNotEmpty(sysMenuDTO.getMenuCode()))
                     .map(SysMenuDTO::getMenuCode)
                     .collect(Collectors.toList());
-            permissions.addAll(permissionList);
+            permissions.addAll(rolePermissionList);
         });
+        //用户单独的权限列表
+        List<String> userPermissionList = sysMenuService.getMenusByUserId(sysUser.getId())
+                .stream()
+                .filter(sysMenuDTO -> StringUtils.isNotEmpty(sysMenuDTO.getMenuCode()))
+                .map(SysMenuDTO::getMenuCode)
+                .collect(Collectors.toList());
+        permissions.addAll(userPermissionList);
         sysRoleDTO.setPermissions(new ArrayList<>(permissions));
         return sysRoleDTO;
     }

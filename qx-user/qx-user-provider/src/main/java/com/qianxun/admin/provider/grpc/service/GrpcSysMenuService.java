@@ -15,6 +15,8 @@ import io.grpc.stub.StreamObserver;
 import lombok.AllArgsConstructor;
 import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
+import java.util.List;
+
 /**
  * @author Cloudy
  *  */
@@ -71,6 +73,17 @@ public class GrpcSysMenuService extends SysMenuServiceGrpc.SysMenuServiceImplBas
                        StreamObserver<SysMenuOuterClass.Result> responseObserver) {
         responseDTO.setSuccess(sysMenuService.removeById(request.getId()));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysMenuOuterClass.Result.class));
+        responseObserver.onCompleted();
+    }
+
+    @Override
+    public void getUserMenus(SysMenuOuterClass.ByIdReq request,
+                        StreamObserver<SysMenuOuterClass.SysMenu> responseObserver) {
+        SysMenuSearchByIdDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysMenuSearchByIdDTO.class);
+        List<SysMenuDTO> menus = sysMenuService.getUserMenusWithLang(inputDTO.getId(),inputDTO.getLangId());
+        for (SysMenuDTO menuItem : menus) {
+            responseObserver.onNext(ProtoBufUtils.toProtoBuffer(menuItem, SysMenuOuterClass.SysMenu.class));
+        }
         responseObserver.onCompleted();
     }
 }

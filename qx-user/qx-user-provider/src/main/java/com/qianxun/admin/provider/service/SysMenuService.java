@@ -24,4 +24,20 @@ public interface SysMenuService extends IService<SysMenu> {
     Boolean updateSysMenu(SysMenuDTO sysMenuDTO);
 
     List<SysMenuDTO> getMenusByRoleId(Integer roleId);
+
+    List<SysMenuDTO> getMenusByUserId(Integer userId);
+
+    /**
+     * 获取包含国际化信息的角色权限
+     * @param roleId
+     * @return
+     */
+    List<SysMenuDTO> getMenusWithLangByRoleId(Integer roleId, Integer langId);
+
+    /**
+     * 获取用户的所有权限（自己+角色）
+     * @param userId
+     * @return
+     */
+    List<SysMenuDTO> getUserMenusWithLang(Integer userId, Integer langId);
 }

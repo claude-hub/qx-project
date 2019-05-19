@@ -20,5 +20,11 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
    SysMenuDTO searchById(@Param("inputDTO")SysMenuSearchByIdDTO inputDTO);
 
    List<SysMenuDTO> getMenusByRoleId(Integer roleId);
+
+   List<SysMenuDTO> getMenusByUserId(Integer userId);
+
+   List<SysMenuDTO> getMenusWithLangByRoleId(@Param("roleId")Integer roleId, @Param("langId")Integer langId);
+
+   List<SysMenuDTO> getMenusWithLangByUserId(@Param("userId")Integer userId, @Param("langId")Integer langId);
 }
 

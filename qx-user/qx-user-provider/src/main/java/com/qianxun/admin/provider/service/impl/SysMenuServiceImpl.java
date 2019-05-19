@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianxun.admin.api.dto.extend.SysMenuDTO;
+import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.sysMenu.request.SysMenuQueryInputDTO;
 import com.qianxun.admin.api.dto.sysMenu.request.SysMenuSearchByIdDTO;
 import com.qianxun.admin.api.entity.SysMenu;
@@ -12,13 +13,16 @@ import com.qianxun.admin.api.entity.SysMenuLang;
 import com.qianxun.admin.provider.mapper.SysMenuMapper;
 import com.qianxun.admin.provider.service.SysMenuLangService;
 import com.qianxun.admin.provider.service.SysMenuService;
+import com.qianxun.admin.provider.service.SysRoleService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Date;
-import java.util.List;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Cloudy
@@ -28,6 +32,7 @@ import java.util.List;
 @AllArgsConstructor
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService {
     private final SysMenuLangService sysMenuLangService;
+    private final SysRoleService sysRoleService;
 
     @Override
     public SysMenuDTO searchById(SysMenuSearchByIdDTO input){
@@ -82,6 +87,34 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     @Override
     public List<SysMenuDTO> getMenusByRoleId(Integer roleId){
         return baseMapper.getMenusByRoleId(roleId);
+    }
+
+    @Override
+    public List<SysMenuDTO> getMenusByUserId(Integer userId){
+        return baseMapper.getMenusByUserId(userId);
+    }
+
+    @Override
+    public List<SysMenuDTO> getMenusWithLangByRoleId(Integer roleId, Integer langId){
+        return baseMapper.getMenusWithLangByRoleId(roleId, langId);
+    }
+
+    @Override
+    public List<SysMenuDTO> getUserMenusWithLang(Integer userId, Integer langId){
+        //角色列表
+        List<Integer> roleIds = sysRoleService.getRolesByUserId(userId)
+                .stream()
+                .map(SysRoleDTO::getId)
+                .collect(Collectors.toList());
+
+        //角色权限列表
+        Set<SysMenuDTO> menus = new HashSet<>();
+        roleIds.forEach(roleId -> {
+            menus.addAll(baseMapper.getMenusWithLangByRoleId(roleId, langId));
+        });
+        //用户单独的权限列表
+        menus.addAll(baseMapper.getMenusWithLangByUserId(userId, langId));
+        return new ArrayList<>(menus);
     }
 }
 

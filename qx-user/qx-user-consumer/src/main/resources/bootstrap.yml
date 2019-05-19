@@ -28,3 +28,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://qx:qx@localhost:7001/eureka/
+
+security:
+  oauth2:
+    client:
+      client-id: qx
+      client-secret: qx
+      scope: server

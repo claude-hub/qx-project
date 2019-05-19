@@ -25,7 +25,7 @@ public class SysMenuController {
     * @param input
     * @return
     */
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/item")
     public JSONResult getSysMenuId(@Valid SysMenuSearchByIdDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);
@@ -80,11 +80,19 @@ public class SysMenuController {
     * @param input
     * @return
     */
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/delete")
     public JSONResult deleteSysMenu(@Valid SysMenuDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);
         result.setData(grpcSysMenuClient.deleteSysMenu(req));
+        return result;
+    }
+
+    @GetMapping(value = "/userMenus")
+    public JSONResult getUserMenus(@Valid SysMenuSearchByIdDTO input) {
+        JSONResult result = new JSONResult();
+        SysMenuOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);
+        result.setData(grpcSysMenuClient.getUserMenus(getByIdReq));
         return result;
     }
 }

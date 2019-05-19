@@ -187,6 +187,38 @@ public final class SysMenuServiceGrpc {
      return getDeleteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq,
+      com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getGetUserMenusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetUserMenus",
+      requestType = com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq.class,
+      responseType = com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq,
+      com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getGetUserMenusMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getGetUserMenusMethod;
+    if ((getGetUserMenusMethod = SysMenuServiceGrpc.getGetUserMenusMethod) == null) {
+      synchronized (SysMenuServiceGrpc.class) {
+        if ((getGetUserMenusMethod = SysMenuServiceGrpc.getGetUserMenusMethod) == null) {
+          SysMenuServiceGrpc.getGetUserMenusMethod = getGetUserMenusMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "sysMenu.SysMenuService", "GetUserMenus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.getDefaultInstance()))
+                  .setSchemaDescriptor(new SysMenuServiceMethodDescriptorSupplier("GetUserMenus"))
+                  .build();
+          }
+        }
+     }
+     return getGetUserMenusMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -249,6 +281,13 @@ public final class SysMenuServiceGrpc {
       asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getUserMenus(com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetUserMenusMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -286,6 +325,13 @@ public final class SysMenuServiceGrpc {
                 com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq,
                 com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.Result>(
                   this, METHODID_DELETE)))
+          .addMethod(
+            getGetUserMenusMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq,
+                com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>(
+                  this, METHODID_GET_USER_MENUS)))
           .build();
     }
   }
@@ -347,6 +393,14 @@ public final class SysMenuServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getUserMenus(com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getGetUserMenusMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -400,6 +454,14 @@ public final class SysMenuServiceGrpc {
     public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.Result delete(com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getUserMenus(
+        com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq request) {
+      return blockingServerStreamingCall(
+          getChannel(), getGetUserMenusMethod(), getCallOptions(), request);
     }
   }
 
@@ -467,6 +529,7 @@ public final class SysMenuServiceGrpc {
   private static final int METHODID_INSERT = 2;
   private static final int METHODID_UPDATE = 3;
   private static final int METHODID_DELETE = 4;
+  private static final int METHODID_GET_USER_MENUS = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -504,6 +567,10 @@ public final class SysMenuServiceGrpc {
         case METHODID_DELETE:
           serviceImpl.delete((com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.Result>) responseObserver);
+          break;
+        case METHODID_GET_USER_MENUS:
+          serviceImpl.getUserMenus((com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -571,6 +638,7 @@ public final class SysMenuServiceGrpc {
               .addMethod(getInsertMethod())
               .addMethod(getUpdateMethod())
               .addMethod(getDeleteMethod())
+              .addMethod(getGetUserMenusMethod())
               .build();
         }
       }
