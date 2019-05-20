@@ -14,6 +14,8 @@
         <module>qx-common</module>
         <module>qx-auth</module>
         <module>qx-gateway</module>
+        <module>qx-auth-sso</module>
+        <module>qx-auth-sso-ui</module>
     </modules>
     <packaging>pom</packaging>
 
