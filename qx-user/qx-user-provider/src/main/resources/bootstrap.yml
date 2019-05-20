@@ -3,7 +3,7 @@ server:
 
 grpc:
   server:
-    port: 8001
+    port: 8789
 
 spring:
   application:

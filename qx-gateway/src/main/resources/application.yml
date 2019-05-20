@@ -22,6 +22,8 @@ spring:
           predicates:
             - Path=/admin/**
           filters:
+            # 验证码处理
+            - ValidateCaptchaFilter
             # 降级配置
             - name: Hystrix
               args:
