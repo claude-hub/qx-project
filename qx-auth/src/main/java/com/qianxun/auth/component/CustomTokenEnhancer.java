@@ -1,7 +1,7 @@
 package com.qianxun.auth.component;
 
 import com.qianxun.auth.constant.SecurityConstants;
-import com.qianxun.auth.service.QxUser;
+import com.qianxun.auth.user.QxUser;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;

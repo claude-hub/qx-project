@@ -5,6 +5,7 @@ import com.qianxun.admin.api.dto.authUser.AuthUserInputDTO;
 import com.qianxun.admin.api.dto.extend.SysUserDTO;
 import com.qianxun.auth.constant.SecurityConstants;
 import com.qianxun.auth.grpc.GrpcAuthUserClient;
+import com.qianxun.auth.user.QxUser;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.authUser.AuthUserOuterClass;
 import lombok.AllArgsConstructor;
