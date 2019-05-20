@@ -1,16 +1,17 @@
-package com.qianxun.auth.service;
+package com.qianxun.auth.user;
 
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * @author Cloudy
  * Date: 2019/5/5 17:27
  */
-public class QxUser extends User {
+public class QxUser extends User implements Serializable {
     /**
      * 用户ID
      */
