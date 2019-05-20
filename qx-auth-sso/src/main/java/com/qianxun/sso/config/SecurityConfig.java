@@ -15,13 +15,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception { // @formatter:off
         http.requestMatchers()
-            .antMatchers("/login", "/oauth/authorize")
+            .antMatchers("/login", "/oauth/authorize"
+                    ,"/tiger-login.html","/authentication/form")
+                //自定义表单登录地址/authentication/form
             .and()
             .authorizeRequests()
             .anyRequest()
             .authenticated()
             .and()
             .formLogin()
+                .loginPage("/tiger-login.html")//自定义标准登录界面
+                .loginProcessingUrl("/authentication/form")//自定义表单请求路径(//此路径放行 否则会陷入死循环)
             .permitAll()
             .and().csrf().disable();
     } // @formatter:on
