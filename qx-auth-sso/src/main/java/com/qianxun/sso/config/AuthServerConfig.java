@@ -34,6 +34,4 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
         // .accessTokenValiditySeconds(3600)
         ; // 1 hour
     }
-
-
 }
