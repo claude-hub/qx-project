@@ -13,34 +13,36 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception { // @formatter:off
-        http.requestMatchers()
-            .antMatchers("/login", "/oauth/authorize"
-                    ,"/authentication/form")
-                //自定义表单登录地址/authentication/form
-            .and()
-            .authorizeRequests()
-            .anyRequest()
-            .authenticated()
-            .and()
-            .formLogin()
-                .loginPage("http://localhost:8080")
-//                .loginPage("/tiger-login.html")//自定义标准登录界面
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers(
+                        "/login",
+                        "/oauth/authorize"
+                        , "/authentication/form",
+                        "/tiger-login.html"
+                )
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/tiger-login.html")//自定义标准登录界面
                 .loginProcessingUrl("/authentication/form")//自定义表单请求路径(//此路径放行 否则会陷入死循环)
-            .permitAll()
-            .and().csrf().disable();
-    } // @formatter:on
+                .permitAll()
+                .and().csrf().disable();
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception { // @formatter:off
         auth.inMemoryAuthentication()
-            .withUser("admin")
-            .password(passwordEncoder().encode("123456"))
-            .roles("USER");
+                .withUser("admin")
+                .password(passwordEncoder().encode("123456"))
+                .roles("USER");
     } // @formatter:on
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }
