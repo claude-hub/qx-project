@@ -1,4 +1,4 @@
-package com.qianxun.sso.config;
+package com.qianxun.sso.controller;
 
 import java.security.Principal;
 
