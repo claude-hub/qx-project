@@ -3,6 +3,7 @@ package com.qianxun.sso.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,24 +14,33 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
+    @Bean
+    public AuthenticationManager authenticationManager() throws Exception {
+        return super.authenticationManager();
+    }
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers(
-                        "/login",
-                        "/oauth/authorize"
-                        , "/authentication/form",
-                        "/tiger-login.html"
+                .formLogin()
+                .loginPage("/authentication/require")
+                .loginProcessingUrl("/authentication/form")
+                .and().authorizeRequests()
+                .antMatchers("/authentication/require",
+                        "/authentication/form",
+                        "/**/*.js",
+                        "/**/*.css",
+                        "/**/*.jpg",
+                        "/**/*.png",
+                        "/**/*.woff2",
+                        "/oauth/*",
+                        "/login"
                 )
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/tiger-login.html")//自定义标准登录界面
-                .loginProcessingUrl("/authentication/form")//自定义表单请求路径(//此路径放行 否则会陷入死循环)
-                .permitAll()
-                .and().csrf().disable();
+                .csrf().disable();
     }
 
     @Override
