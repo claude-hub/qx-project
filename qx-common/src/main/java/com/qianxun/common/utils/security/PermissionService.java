@@ -1,4 +1,4 @@
-package com.qianxun.auth.service;
+package com.qianxun.common.utils.security;
 
 import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,7 @@ import java.util.Collection;
 
 /**
  * @author Cloudy
- * Date: 2019/5/5 18:21
+ * Date: 2019/5/24 0:24
  */
 @Slf4j
 @Component("qx")

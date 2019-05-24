@@ -8,6 +8,7 @@ import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysMenuClient;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
@@ -40,6 +41,7 @@ public class SysMenuController {
     * @return
     */
     @GetMapping(value = "/list")
+    @PreAuthorize("@qx.hasPermission('sys_menu_del')")
     public JSONResult getSysMenuList(@Valid SysMenuQueryInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.GetListReq.class);

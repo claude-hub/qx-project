@@ -44,25 +44,25 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     @SneakyThrows
     public UserDetails loadUserByUsername(String username) {
-//        AuthUserInputDTO input = new AuthUserInputDTO();
-//        input.setAccount(username);
-//        AuthUserOuterClass.ByAccountReq req = ProtoBufUtils.toProtoBuffer(input, AuthUserOuterClass.ByAccountReq.class);
-//        SysUserDTO info = grpcAuthUserClient.getSysUserByAccount(req);
-//        Set<String> dbAuthsSet = new HashSet<>();
-//        Integer[] roles = info.getRoles().toArray(new Integer[0]);
-//        if (ArrayUtil.isNotEmpty(roles)) {
-//            // 获取角色
-//            Arrays.stream(roles).forEach(role -> dbAuthsSet.add(SecurityConstants.ROLE + role));
-//            // 获取资源
-//            dbAuthsSet.addAll(info.getPermissions());
-//        }
-//        Collection<? extends GrantedAuthority> authorities =
-//                AuthorityUtils.createAuthorityList(dbAuthsSet.toArray(new String[0]));
-//        return  new QxUser(info.getId(), info.getDeptId(),username,
-//                info.getPasswordEncrypted(),
-//                true,true,
-//                true,true,authorities);
+        AuthUserInputDTO input = new AuthUserInputDTO();
+        input.setAccount(username);
+        AuthUserOuterClass.ByAccountReq req = ProtoBufUtils.toProtoBuffer(input, AuthUserOuterClass.ByAccountReq.class);
+        SysUserDTO info = grpcAuthUserClient.getSysUserByAccount(req);
+        Set<String> dbAuthsSet = new HashSet<>();
+        Integer[] roles = info.getRoles().toArray(new Integer[0]);
+        if (ArrayUtil.isNotEmpty(roles)) {
+            // 获取角色
+            Arrays.stream(roles).forEach(role -> dbAuthsSet.add(SecurityConstants.ROLE + role));
+            // 获取资源
+            dbAuthsSet.addAll(info.getPermissions());
+        }
+        Collection<? extends GrantedAuthority> authorities =
+                AuthorityUtils.createAuthorityList(dbAuthsSet.toArray(new String[0]));
+        return  new QxUser(info.getId(), info.getDeptId(),username,
+                info.getPasswordEncrypted(),
+                true,true,
+                true,true,authorities);
 
-        return new User(username, passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
+//        return new User(username, passwordEncoder.encode("123456"), AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER"));
     }
 }

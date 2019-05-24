@@ -30,7 +30,11 @@ public class AuthServerConfig extends AuthorizationServerConfigurerAdapter {
             .authorizedGrantTypes("authorization_code")
             .scopes("user_info")
             .autoApprove(true)
-            .redirectUris("http://localhost:8082/ui/login","http://localhost:8083/ui2/login","http://localhost:8082/login","http://www.example.com/")
+            .redirectUris("http://localhost:8082/ui/login",
+                    "http://localhost:8083/ui2/login",
+                    "http://localhost:8082/login",
+                    "http://www.example.com/",
+                    "http://localhost/admin/login")
         // .accessTokenValiditySeconds(3600)
         ; // 1 hour
     }

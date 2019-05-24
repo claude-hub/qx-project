@@ -34,7 +34,7 @@ spring:
 # 注册中心配置
 eureka:
   instance:
-    instance-id: qx-user-provider
+    instance-id: qx-user-provider-${server.port}
     prefer-ip-address: true     #访问路径可以显示IP地址
   client:
     service-url:
@@ -48,3 +48,15 @@ ignore:
     - /webjars/**
     - /swagger-resources/**
     - /v2/**
+    #login
+    - /login**
+
+security:
+  oauth2:
+    client:
+      clientId: SampleClientId
+      clientSecret: secret
+      accessTokenUri: http://localhost:8081/auth/oauth/token
+      userAuthorizationUri: http://localhost:8081/auth/oauth/authorize
+    resource:
+      userInfoUri: http://localhost:8081/auth/user/me
