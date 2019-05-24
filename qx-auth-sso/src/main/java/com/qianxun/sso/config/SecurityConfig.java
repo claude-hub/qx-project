@@ -19,14 +19,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+//        http.requestMatchers()
+//                .antMatchers("/login", "/oauth/authorize")
+//                .and()
+//                .authorizeRequests()
+//                .anyRequest()
+//                .authenticated()
+//                .and()
+//                .formLogin()
+//                .permitAll()
+//                .and().csrf().disable();
+
         http.requestMatchers()
-                .antMatchers("/login", "/oauth/authorize")
+                .antMatchers("/login",
+                        "/oauth/authorize",
+                        "/authentication/form",
+                        "/tiger-login.html")
                 .and()
                 .authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
+                .loginPage("/tiger-login.html")
+                .loginProcessingUrl("/authentication/form")
                 .permitAll()
                 .and().csrf().disable();
 
