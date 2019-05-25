@@ -41,7 +41,6 @@ public class SysMenuController {
     * @return
     */
     @GetMapping(value = "/list")
-    @PreAuthorize("@qx.hasPermission('sys_menu_del')")
     public JSONResult getSysMenuList(@Valid SysMenuQueryInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.GetListReq.class);
@@ -83,6 +82,7 @@ public class SysMenuController {
     * @return
     */
     @DeleteMapping(value = "/delete")
+    @PreAuthorize("@qx.hasPermission('sys_menu_del')")
     public JSONResult deleteSysMenu(@Valid SysMenuDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);

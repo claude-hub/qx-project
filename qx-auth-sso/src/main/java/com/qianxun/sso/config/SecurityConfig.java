@@ -89,10 +89,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated();
         http
-                .formLogin().loginPage("/authentication/require")
+                .formLogin()
+                .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
+                .defaultSuccessUrl("http://localhost:8080")
                 .and()
-                .csrf().disable();
+                .csrf()
+                .disable();
     }
 
     @Override

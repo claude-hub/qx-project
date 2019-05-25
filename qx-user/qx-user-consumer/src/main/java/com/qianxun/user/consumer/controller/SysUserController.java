@@ -6,6 +6,7 @@ import com.qianxun.admin.api.dto.sysUser.response.SysUserResponseDTO;
 import com.qianxun.admin.api.entity.SysUser;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
+import com.qianxun.common.utils.security.SecurityUtils;
 import com.qianxun.grpc.lib.sysUser.SysUserOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysUserClient;
 import lombok.AllArgsConstructor;
@@ -86,6 +87,13 @@ public class SysUserController {
         JSONResult result = new JSONResult();
         SysUserOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.ByIdReq.class);
         result.setData(grpcSysUserClient.deleteSysUser(req));
+        return result;
+    }
+
+    @GetMapping(value = {"/info"})
+    public JSONResult info() {
+        JSONResult result = new JSONResult();
+        result.setData(SecurityUtils.getUsername());
         return result;
     }
 }

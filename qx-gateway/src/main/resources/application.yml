@@ -6,24 +6,29 @@ spring:
           enabled: false #开启后，使用微服务名字也可以访问
           lowerCaseServiceId: true
       routes:
+#        # 认证中心
+#        - id: qx-auth
+#          uri: lb://qx-auth
+#          predicates:
+#            - Path=/auth/**
+##          filters:
+##            - StripPrefix=1 #用StripPrefix的filter 在转发之前将/auth去掉
+#          filters:
+#            # 验证码处理
+#            - ValidateCaptchaFilter
+
         # 认证中心
-        - id: qx-auth
-          uri: lb://qx-auth
+        - id: qx-auth-sso
+          uri: lb://qx-auth-sso
           predicates:
             - Path=/auth/**
-#          filters:
-#            - StripPrefix=1 #用StripPrefix的filter 在转发之前将/auth去掉
-          filters:
-            # 验证码处理
-            - ValidateCaptchaFilter
+
         # user
         - id: qx-user-consumer
           uri: lb://qx-user-consumer
           predicates:
             - Path=/admin/**
           filters:
-            # 验证码处理
-            - ValidateCaptchaFilter
             # 降级配置
             - name: Hystrix
               args:

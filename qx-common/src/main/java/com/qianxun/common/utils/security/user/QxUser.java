@@ -1,4 +1,4 @@
-package com.qianxun.sso.user;
+package com.qianxun.common.utils.security.user;
 
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
