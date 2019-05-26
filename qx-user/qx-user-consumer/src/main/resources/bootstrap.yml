@@ -1,62 +1,26 @@
 server:
-  port: 80
-  servlet:
-    context-path: /admin
+  port: 4000
 
 spring:
   application:
     name: qx-user-consumer
-  redis:
-    password:
-    host: 123.207.242.177
-    timeout: 5000
-  datasource:
-    url: jdbc:mysql://123.207.242.177:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
-    username: root
-    password: root
-    #使用阿里的druid数据源
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.alibaba.druid.pool.DruidDataSource
   # 配置中心
-#  cloud:
-#    config:
-#      fail-fast: true
-#      name: ${spring.application.name}
-#      profile: ${spring.profiles.active}
-#      discovery:
-#        enabled: true
-#        service-id: qx-config
-#  profiles:
-#    active: dev
-#  main:
-#    allow-bean-definition-overriding: true
-
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: qx-config
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
 # 注册中心配置
 eureka:
   instance:
-    instance-id: qx-user-consumer-${server.port}
-    prefer-ip-address: true     #访问路径可以显示IP地址
+    prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://qx:qx@localhost:7001/eureka/
-
-# 直接放行URL
-ignore:
-  urls:
-    #swagger的资源文件
-    - /swagger-ui.html/**
-    - /webjars/**
-    - /swagger-resources/**
-    - /v2/**
-    #login
-    - /login**
-
-security:
-  oauth2:
-    client:
-      clientId: SampleClientId
-      clientSecret: secret
-      accessTokenUri: http://localhost:8081/auth/oauth/token
-      userAuthorizationUri: http://localhost:8081/auth/oauth/authorize
-    resource:
-      userInfoUri: http://localhost:8081/auth/user/me
+      defaultZone: http://qx:qx@qx-eureka:8761/eureka/

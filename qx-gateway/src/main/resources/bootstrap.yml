@@ -4,29 +4,26 @@ server:
 spring:
   application:
     name: qx-gateway
-  redis:
-    password:
-    host: 123.207.242.177
-    timeout: 5000
-# 配置中心
-#  cloud:
-#    config:
-#      fail-fast: true
-#      name: ${spring.application.name}
-#      profile: ${spring.profiles.active}
-#      discovery:
-#        enabled: true
-#        service-id: pig-config
-#  profiles:
-#    active: dev
-#  main:
-#    allow-bean-definition-overriding: true
+  # 配置中心
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: qx-config
+  profiles:
+    active: dev
+  main:
+    allow-bean-definition-overriding: true
 
-# 注册中心配置
+# 注册中心
 eureka:
   instance:
-    instance-id: qx-gateway
-    prefer-ip-address: true     #访问路径可以显示IP地址
+    prefer-ip-address: true
   client:
     service-url:
-      defaultZone: http://qx:qx@localhost:7001/eureka/
+      defaultZone: http://qx:qx@qx-eureka:8761/eureka/
+
+

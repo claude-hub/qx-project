@@ -10,8 +10,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>qx-user-grpc-lib</artifactId>
-    <packaging>jar</packaging>
-    <description>protobuf 存根</description>
 
     <properties>
         <grpc.version>1.20.0</grpc.version>

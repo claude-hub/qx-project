@@ -1,47 +1,45 @@
 package com.qianxun.admin.api.entity;
 
-import java.util.Date;
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.Version;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
-/**
- * @author Cloudy
- * Date 2019-05-13 19:35:18
- */
 @Data
-public class SysRole implements Serializable {
-    /**
-     * 角色ID
-     */
-    /* 必须设置自动递增，不然底层会生成一个很大的数字，如：1126698029325058050 */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
-    /**
-     * 角色码
-     */
-    private String roleCode;
-    /**
-     * 创建时间
-     */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createdAt;
-    /**
-     * 更新时间
-     * 乐观锁
-     */
-    @Version
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date updatedAt;
-    /**
-     * 1-正常，-1-删除
-     */
-    @TableLogic
-    private Integer deleted;
+@EqualsAndHashCode(callSuper = true)
+public class SysRole extends Model<SysRole> {
+
+	private static final long serialVersionUID = 1L;
+
+	@TableId(value = "role_id", type = IdType.AUTO)
+	private Integer roleId;
+
+	@NotBlank(message = "角色名称 不能为空")
+	private String roleName;
+
+	@NotBlank(message = "角色标识 不能为空")
+	private String roleCode;
+
+	@NotBlank(message = "角色描述 不能为空")
+	private String roleDesc;
+
+	private LocalDateTime createTime;
+	private LocalDateTime updateTime;
+	/**
+	 * 删除标识（0-正常,1-删除）
+	 */
+	@TableLogic
+	private String delFlag;
+
+	@Override
+	protected Serializable pkVal() {
+		return this.roleId;
+	}
+
 }

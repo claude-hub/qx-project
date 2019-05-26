@@ -1,62 +1,80 @@
 package com.qianxun.admin.api.entity;
 
-import java.util.Date;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.Version;
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
-import java.io.Serializable;
+import lombok.EqualsAndHashCode;
 
-/**
- * @author Cloudy
- *  */
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+
 @Data
-public class SysMenu implements Serializable {
-    /**
-     * 菜单ID
-     */
-        @TableId(value = "id", type = IdType.AUTO)
-                private Integer id;
-    /**
-     * 父菜单ID
-     */
-                private Integer parentId;
-    /**
-     * 菜单权限标识
-     */
-                private String menuCode;
-    /**
-     * 前端URL
-     */
-                private String path;
-    /**
-     * 图标
-     */
-                private String icon;
-    /**
-     * 排序值
-     */
-                private Integer sort;
-    /**
-     * 菜单类型 （0菜单 1按钮）
-     */
-                private Integer type;
-    /**
-     * 创建时间
-     */
-                @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-            private Date createdAt;
-    /**
-     * 更新时间
-     */
-                @Version
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-            private Date updatedAt;
-    /**
-     * 0--正常 -1--删除
-     */
-                @TableLogic
-        private Integer deleted;
+@EqualsAndHashCode(callSuper = true)
+public class SysMenu extends Model<SysMenu> {
+
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * 菜单ID
+	 */
+	@NotNull(message = "菜单ID不能为空")
+	@TableId(value = "menu_id", type = IdType.INPUT)
+	private Integer menuId;
+	/**
+	 * 菜单名称
+	 */
+	@NotBlank(message = "菜单名称不能为空")
+	private String name;
+	/**
+	 * 菜单权限标识
+	 */
+	private String permission;
+	/**
+	 * 父菜单ID
+	 */
+	@NotNull(message = "菜单父ID不能为空")
+	private Integer parentId;
+	/**
+	 * 图标
+	 */
+	private String icon;
+	/**
+	 * VUE页面
+	 */
+	private String component;
+	/**
+	 * 排序值
+	 */
+	private Integer sort;
+	/**
+	 * 菜单类型 （0菜单 1按钮）
+	 */
+	@NotNull(message = "菜单类型不能为空")
+	private String type;
+	/**
+	 * 路由缓冲
+	 */
+	private String keepAlive;
+	/**
+	 * 创建时间
+	 */
+	private LocalDateTime createTime;
+	/**
+	 * 更新时间
+	 */
+	private LocalDateTime updateTime;
+	/**
+	 * 0--正常 1--删除
+	 */
+	@TableLogic
+	private String delFlag;
+	/**
+	 * 前端URL
+	 */
+	private String path;
+
+
 }

@@ -1,0 +1,49 @@
+spring:
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      routes:
+        # 认证中心
+        - id: qx-auth
+          uri: lb://qx-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            # 验证码处理
+            - ValidateCodeGatewayFilter
+            # 前端密码解密
+            - PasswordDecoderFilter
+        #user 模块
+        - id: qx-user-consumer
+          uri: lb://qx-user-consumer
+          predicates:
+            - Path=/admin/**
+          filters:
+            # 限流配置
+            - name: RequestRateLimiter
+              args:
+                key-resolver: '#{@remoteAddrKeyResolver}'
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+              # 降级配置
+            - name: Hystrix
+              args:
+                name: default
+                fallbackUri: 'forward:/fallback'
+        # 代码生成模块
+        - id: qx-codegen
+          uri: lb://qx-codegen
+          predicates:
+            - Path=/gen/**
+
+
+security:
+  encode:
+    # 前端密码密钥，必须16位
+    key: 'thanks,qx,claude'
+
+# 不校验验证码终端
+ignore:
+  clients:
+    - test

@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.qianxun.common.core.config.JacksonConfig,\
+  com.qianxun.common.core.config.RedisConfig,\
+  com.qianxun.common.core.config.RestTemplateConfig,\
+  com.qianxun.common.core.config.FilterIgnorePropertiesConfig,\
+  com.qianxun.common.core.exception.GlobalExceptionHandler,\
+  com.qianxun.common.core.util.SpringContextHolder
