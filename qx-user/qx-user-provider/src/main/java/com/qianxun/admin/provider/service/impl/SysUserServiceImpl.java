@@ -11,9 +11,12 @@ import com.qianxun.admin.provider.mapper.SysUserMapper;
 import com.qianxun.admin.provider.service.SysMenuService;
 import com.qianxun.admin.provider.service.SysRoleService;
 import com.qianxun.admin.provider.service.SysUserService;
+import com.qianxun.common.utils.jwt.JwtTokenUtil;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -32,25 +35,75 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     private final SysRoleService sysRoleService;
     private final SysMenuService sysMenuService;
+    private final JwtTokenUtil jwtTokenUtil;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public SysUserDTO getUserInfoByAccount(String account) {
-        SysUserDTO sysRoleDTO = new SysUserDTO();
-        SysUser sysUser = this.getOne(Wrappers.<SysUser>query().lambda()
+        SysUserDTO sysUserDTO = new SysUserDTO();
+        SysUser sysUser = getUserByAccount(account);
+        BeanUtils.copyProperties(sysUser, sysUserDTO);
+        return getUserPermissions(sysUserDTO);
+    }
+
+    @Override
+    public SysUserDTO signIn(String loginStr, String password){
+        SysUser user = getUserByAccount(loginStr);
+        if (user == null) {
+            return null;
+        }
+        if(!accountValid(user, password)){
+            return null;
+        }
+        String token = jwtTokenUtil.generateToken(user.getId(),user.getPhone());
+        user.setCurrentToken(token);
+        baseMapper.updateById(user);
+        SysUserDTO sysUserDTO = new SysUserDTO();
+        BeanUtils.copyProperties(user, sysUserDTO);
+        return getUserPermissions(sysUserDTO);
+    }
+
+    /**
+     * 通过token登录
+     * @param token 令牌
+     * @return
+     */
+    @Override
+    public SysUserDTO signIn(String token) {
+        String userId = jwtTokenUtil.getPrivateClaimFromToken(token,"user_id");
+        SysUser user = baseMapper.selectById(Integer.parseInt(userId));
+        if (!user.getCurrentToken().equals(token)) {
+            return null;
+        }
+        SysUserDTO sysUserDTO = new SysUserDTO();
+        BeanUtils.copyProperties(user, sysUserDTO);
+        return getUserPermissions(sysUserDTO);
+    }
+
+    /**
+     * 通过账号获取用户
+     * @param account
+     * @return
+     */
+    @SneakyThrows
+    private SysUser getUserByAccount(String account){
+        return this.getOne(Wrappers.<SysUser>query().lambda()
                         .eq(SysUser::getPhone, account)
                         .or()
                         .eq(SysUser::getUserName, account)
                         .or()
                         .eq(SysUser::getEmail, account)
                 , true);
-        BeanUtils.copyProperties(sysUser, sysRoleDTO);
+    }
+
+    private SysUserDTO getUserPermissions(SysUserDTO sysUserDTO){
         //角色列表
-        List<Integer> roleIds = sysRoleService.getRolesByUserId(sysUser.getId())
+        List<Integer> roleIds = sysRoleService.getRolesByUserId(sysUserDTO.getId())
                 .stream()
                 .map(SysRoleDTO::getId)
                 .collect(Collectors.toList());
-        sysRoleDTO.setRoles(roleIds);
+        sysUserDTO.setRoles(roleIds);
         //角色权限列表
         Set<String> permissions = new HashSet<>();
         roleIds.forEach(roleId -> {
@@ -62,13 +115,23 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
             permissions.addAll(rolePermissionList);
         });
         //用户单独的权限列表
-        List<String> userPermissionList = sysMenuService.getMenusByUserId(sysUser.getId())
+        List<String> userPermissionList = sysMenuService.getMenusByUserId(sysUserDTO.getId())
                 .stream()
                 .filter(sysMenuDTO -> StringUtils.isNotEmpty(sysMenuDTO.getMenuCode()))
                 .map(SysMenuDTO::getMenuCode)
                 .collect(Collectors.toList());
         permissions.addAll(userPermissionList);
-        sysRoleDTO.setPermissions(new ArrayList<>(permissions));
-        return sysRoleDTO;
+        sysUserDTO.setPermissions(new ArrayList<>(permissions));
+        return sysUserDTO;
+    }
+
+    /**
+     * 密码验证
+     * @param user
+     * @param password
+     * @return
+     */
+    private Boolean accountValid(SysUser user, String password) {
+        return passwordEncoder.matches(password, user.getPasswordEncrypted());
     }
 }

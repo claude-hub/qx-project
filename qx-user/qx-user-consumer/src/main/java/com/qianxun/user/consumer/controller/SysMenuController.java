@@ -56,6 +56,7 @@ public class SysMenuController {
     * @return
     */
     @PostMapping(value = "/add")
+    @PreAuthorize("@qx.hasPermission('sys_menu_add')")
     public JSONResult addSysMenu(@Valid SysMenuAddInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.BaseSysMenu baseSysMenu = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.BaseSysMenu.class);

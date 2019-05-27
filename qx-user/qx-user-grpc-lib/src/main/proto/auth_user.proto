@@ -8,17 +8,65 @@ import public "google/protobuf/timestamp.proto";
 
 service AuthUserService {
     rpc GetByAccount (ByAccountReq) returns (AuthUser) {}
+    rpc SignIn (SignInReq) returns (AuthUser) {}
+    rpc SignInByToken (SignInByTokenReq) returns (AuthUser) {}
 }
 
 message ByAccountReq {
     string account = 1;
 }
 
-message AuthUser {
-    repeated string permissions = 1;
-    repeated int32 roles = 2;
-    int32 dept_id = 3;
-    int32 id = 4;
-    string password_encrypted = 5;
-    int32 locked = 6;
+message SignInReq {
+    string login_str = 1;
+    string password = 2;
 }
+
+message SignInByTokenReq {
+    string token = 1;
+}
+
+message AuthUser {
+    int32 id = 1;
+    int32 dept_id = 2;
+    string name = 3;
+    string identification = 4;
+    string phone = 5;
+    string email = 6;
+    string avatar = 7;
+    int32 locked = 8;
+    int32 deleted = 9;
+    string user_name = 10;
+    string reset_password_token = 11;
+    string password_encrypted = 12;
+    google.protobuf.Timestamp created_at = 13;
+    google.protobuf.Timestamp updated_at = 14;
+    string current_token = 15;
+    google.protobuf.Timestamp current_sign_in_at = 16;
+    google.protobuf.Timestamp last_sign_in_at = 17;
+    int32 sign_in_count = 18;
+    string db_source = 19;
+    repeated string permissions = 20;
+    repeated int32 roles = 21;
+}
+
+//message SysUser {
+//    int32 id = 1;
+//    int32 dept_id = 2;
+//    string name = 3;
+//    string identification = 4;
+//    string phone = 5;
+//    string email = 6;
+//    string avatar = 7;
+//    int32 locked = 8;
+//    int32 deleted = 9;
+//    string user_name = 10;
+//    string reset_password_token = 11;
+//    string password_encrypted = 12;
+//    google.protobuf.Timestamp created_at = 13;
+//    google.protobuf.Timestamp updated_at = 14;
+//    string current_token = 15;
+//    google.protobuf.Timestamp current_sign_in_at = 16;
+//    google.protobuf.Timestamp last_sign_in_at = 17;
+//    int32 sign_in_count = 18;
+//    string db_source = 19;
+//}

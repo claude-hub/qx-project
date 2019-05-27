@@ -59,6 +59,70 @@ public final class AuthUserServiceGrpc {
      return getGetByAccountMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq,
+      com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> getSignInMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SignIn",
+      requestType = com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq.class,
+      responseType = com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq,
+      com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> getSignInMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq, com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> getSignInMethod;
+    if ((getSignInMethod = AuthUserServiceGrpc.getSignInMethod) == null) {
+      synchronized (AuthUserServiceGrpc.class) {
+        if ((getSignInMethod = AuthUserServiceGrpc.getSignInMethod) == null) {
+          AuthUserServiceGrpc.getSignInMethod = getSignInMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq, com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "authUser.AuthUserService", "SignIn"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser.getDefaultInstance()))
+                  .setSchemaDescriptor(new AuthUserServiceMethodDescriptorSupplier("SignIn"))
+                  .build();
+          }
+        }
+     }
+     return getSignInMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq,
+      com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> getSignInByTokenMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SignInByToken",
+      requestType = com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq.class,
+      responseType = com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq,
+      com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> getSignInByTokenMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq, com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> getSignInByTokenMethod;
+    if ((getSignInByTokenMethod = AuthUserServiceGrpc.getSignInByTokenMethod) == null) {
+      synchronized (AuthUserServiceGrpc.class) {
+        if ((getSignInByTokenMethod = AuthUserServiceGrpc.getSignInByTokenMethod) == null) {
+          AuthUserServiceGrpc.getSignInByTokenMethod = getSignInByTokenMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq, com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "authUser.AuthUserService", "SignInByToken"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser.getDefaultInstance()))
+                  .setSchemaDescriptor(new AuthUserServiceMethodDescriptorSupplier("SignInByToken"))
+                  .build();
+          }
+        }
+     }
+     return getSignInByTokenMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -93,6 +157,20 @@ public final class AuthUserServiceGrpc {
       asyncUnimplementedUnaryCall(getGetByAccountMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void signIn(com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> responseObserver) {
+      asyncUnimplementedUnaryCall(getSignInMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void signInByToken(com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> responseObserver) {
+      asyncUnimplementedUnaryCall(getSignInByTokenMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -102,6 +180,20 @@ public final class AuthUserServiceGrpc {
                 com.qianxun.grpc.lib.authUser.AuthUserOuterClass.ByAccountReq,
                 com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser>(
                   this, METHODID_GET_BY_ACCOUNT)))
+          .addMethod(
+            getSignInMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq,
+                com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser>(
+                  this, METHODID_SIGN_IN)))
+          .addMethod(
+            getSignInByTokenMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq,
+                com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser>(
+                  this, METHODID_SIGN_IN_BY_TOKEN)))
           .build();
     }
   }
@@ -131,6 +223,22 @@ public final class AuthUserServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getGetByAccountMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void signIn(com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getSignInMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void signInByToken(com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getSignInByTokenMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -156,6 +264,20 @@ public final class AuthUserServiceGrpc {
     public com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser getByAccount(com.qianxun.grpc.lib.authUser.AuthUserOuterClass.ByAccountReq request) {
       return blockingUnaryCall(
           getChannel(), getGetByAccountMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser signIn(com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq request) {
+      return blockingUnaryCall(
+          getChannel(), getSignInMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser signInByToken(com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq request) {
+      return blockingUnaryCall(
+          getChannel(), getSignInByTokenMethod(), getCallOptions(), request);
     }
   }
 
@@ -184,9 +306,27 @@ public final class AuthUserServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getGetByAccountMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> signIn(
+        com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getSignInMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser> signInByToken(
+        com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getSignInByTokenMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_BY_ACCOUNT = 0;
+  private static final int METHODID_SIGN_IN = 1;
+  private static final int METHODID_SIGN_IN_BY_TOKEN = 2;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -207,6 +347,14 @@ public final class AuthUserServiceGrpc {
       switch (methodId) {
         case METHODID_GET_BY_ACCOUNT:
           serviceImpl.getByAccount((com.qianxun.grpc.lib.authUser.AuthUserOuterClass.ByAccountReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser>) responseObserver);
+          break;
+        case METHODID_SIGN_IN:
+          serviceImpl.signIn((com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser>) responseObserver);
+          break;
+        case METHODID_SIGN_IN_BY_TOKEN:
+          serviceImpl.signInByToken((com.qianxun.grpc.lib.authUser.AuthUserOuterClass.SignInByTokenReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.authUser.AuthUserOuterClass.AuthUser>) responseObserver);
           break;
         default:
@@ -271,6 +419,8 @@ public final class AuthUserServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new AuthUserServiceFileDescriptorSupplier())
               .addMethod(getGetByAccountMethod())
+              .addMethod(getSignInMethod())
+              .addMethod(getSignInByTokenMethod())
               .build();
         }
       }

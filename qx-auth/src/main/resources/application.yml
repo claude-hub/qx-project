@@ -8,10 +8,10 @@ spring:
     name: qx-auth
   redis:
     password:
-    host: 123.207.242.177
+    host: 127.0.0.1
     timeout: 5000
   datasource:
-    url: jdbc:mysql://123.207.242.177:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
     username: root
     password: root
     #使用阿里的druid数据源

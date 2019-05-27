@@ -24,6 +24,9 @@ public class ProtoBufUtils {
      * 支持pojo的继承，支持嵌套repeated
      */
     public static <T> T fromProtoBuffer(Object pbObject, Class<T> modelClass) {
+        if (pbObject == null) {
+            return null;
+        }
         T model = null;
         try {
             model = modelClass.newInstance();
@@ -103,6 +106,9 @@ public class ProtoBufUtils {
      * 支持pojo的继承，支持嵌套repeated
      */
     public static <T> T toProtoBuffer(Object model, Class<T> pbClass) {
+        if (model == null) {
+            return null;
+        }
         if (!GeneratedMessageV3.class.isAssignableFrom(pbClass)) {
             throw new RuntimeException("Not ProtoBuffer message type");
         }
