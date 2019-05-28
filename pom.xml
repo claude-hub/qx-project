@@ -60,6 +60,8 @@
 
         <!--gateway-->
         <kaptcha.version>0.0.9</kaptcha.version>
+
+        <jasypt.version>2.0.0</jasypt.version>
     </properties>
 
     <dependencies>
@@ -74,6 +76,12 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+        <!--配置文件加密-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
         </dependency>
         <!--test-->
         <dependency>
@@ -110,7 +118,6 @@
                 <artifactId>grpc-server-spring-boot-starter</artifactId>
                 <version>${net-devh-grpc.version}</version>
             </dependency>
-
             <!--稳定版本，替代spring security bom内置-->
             <dependency>
                 <groupId>org.springframework.security.oauth</groupId>

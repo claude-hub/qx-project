@@ -6,14 +6,14 @@ spring:
   application:
     name: qx-user-consumer
   # 配置中心
-#  cloud:
-#    config:
-#      fail-fast: true
-#      name: ${spring.application.name}
-#      profile: ${spring.profiles.active}
-#      discovery:
-#        enabled: true
-#        service-id: qx-config
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: qx-config
   profiles:
     active: 7101
   main:

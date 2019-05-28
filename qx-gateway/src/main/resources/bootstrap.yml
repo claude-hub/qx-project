@@ -1,35 +1,63 @@
-server:
-  port: 9999
-
 spring:
   application:
     name: qx-gateway
-  redis:
-    password:
-    host: 123.207.242.177
-    timeout: 5000
 # 配置中心
-#  cloud:
-#    config:
-#      fail-fast: true
-#      name: ${spring.application.name}
-#      profile: ${spring.profiles.active}
-#      discovery:
-#        enabled: true
-#        service-id: pig-config
-#  profiles:
-#    active: dev
-#  main:
-#    allow-bean-definition-overriding: true
+  cloud:
+    config:
+      fail-fast: true
+      name: ${spring.application.name}
+      profile: ${spring.profiles.active}
+      discovery:
+        enabled: true
+        service-id: qx-config
+    gateway:
+      discovery:
+        locator:
+          enabled: false #开启后，使用微服务名字也可以访问
+          lowerCaseServiceId: true
+      routes:
+        #        # 认证中心
+        #        - id: qx-auth
+        #          uri: lb://qx-auth
+        #          predicates:
+        #            - Path=/auth/**
+        #          filters:
+        #            - StripPrefix=1 #用StripPrefix的filter 在转发之前将/auth去掉
+        #          filters:
+        #            # 验证码处理
+        #            - ValidateCaptchaFilter
+
+        # 认证中心
+        - id: qx-auth-sso
+          uri: lb://qx-auth-sso
+          predicates:
+            - Path=/auth/**
+
+        # user
+        - id: qx-user-consumer
+          uri: lb://qx-user-consumer
+          predicates:
+            - Path=/admin/**
+          filters:
+            # 验证码处理
+            - ValidateCaptchaFilter
+            # 降级配置
+            - name: Hystrix
+              args:
+                name: default
+                fallbackUri: 'forward:/fallback'
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: 9999
 
 # 注册中心配置
 eureka:
   instance:
-    instance-id: qx-user-consumer-${grpc.server.port}
+    instance-id: qx-user-gateway-${server.port}
     prefer-ip-address: true     #访问路径可以显示IP地址
     lease-renewal-interval-in-seconds: 3 #设置下线心跳
     lease-expiration-duration-in-seconds: 9
   client:
     service-url:
       defaultZone: http://qx:qx@10.0.75.1:7001/eureka/,http://qx:qx@10.0.75.1:7002/eureka/,http://qx:qx@10.0.75.1:7003/eureka/
-
