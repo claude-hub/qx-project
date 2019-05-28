@@ -47,6 +47,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         return getUserPermissions(sysUserDTO);
     }
 
+    @SneakyThrows
     @Override
     public SysUserDTO signIn(String loginStr, String password){
         SysUser user = getUserByAccount(loginStr);
@@ -56,9 +57,21 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         if(!accountValid(user, password)){
             return null;
         }
-        String token = jwtTokenUtil.generateToken(user.getId(),user.getPhone());
-        user.setCurrentToken(token);
-        baseMapper.updateById(user);
+        try {
+            //验证token格式是否正确
+            jwtTokenUtil.parseToken(user.getCurrentToken());
+            //是否过期
+            boolean flag = jwtTokenUtil.isTokenExpired(user.getCurrentToken());
+            if (flag) {
+                String token = jwtTokenUtil.generateToken(user.getId(), user.getPhone());
+                user.setCurrentToken(token);
+                baseMapper.updateById(user);
+            }
+        }catch (Exception e){
+            String token = jwtTokenUtil.generateToken(user.getId(), user.getPhone());
+            user.setCurrentToken(token);
+            baseMapper.updateById(user);
+        }
         SysUserDTO sysUserDTO = new SysUserDTO();
         BeanUtils.copyProperties(user, sysUserDTO);
         return getUserPermissions(sysUserDTO);
