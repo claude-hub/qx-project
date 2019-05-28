@@ -8,7 +8,7 @@ spring:
   profiles:
     active: 7001
 
-#eureka:
+eureka:
 #  instance:
 #    hostname: qx-eureka #eureka服务端的实例名称
 #  client:
@@ -18,10 +18,10 @@ spring:
 #      defaultZone: http://10.0.75.1:7001/eureka/,http://10.0.75.1:7002/eureka/,http://10.0.75.1:7003/eureka/
 #      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/       #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址（单机）。
 #      defaultZone: http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
-#  server:
-#    eviction-interval-timer-in-ms: 4000
-#    enable-self-preservation: false #关闭自我保护机制
-#    renewal-percent-threshold: 0.9
+  server:
+    eviction-interval-timer-in-ms: 4000
+    enable-self-preservation: false #关闭自我保护机制
+    renewal-percent-threshold: 0.9
 
 
 management:

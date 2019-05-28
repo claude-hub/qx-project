@@ -1,10 +1,6 @@
 server:
   port: 9001 #单元测试需要web环境
 
-grpc:
-  server:
-    port: 8789
-
 spring:
   application:
     name: qx-user-provider
@@ -17,16 +13,31 @@ spring:
 #      discovery:
 #        enabled: true
 #        service-id: qx-config
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
   profiles:
-    active: dev
+    active: 7201
   main:
     allow-bean-definition-overriding: true
 
 # 注册中心配置
 eureka:
   instance:
-    instance-id: qx-user-provider
+    instance-id: qx-user-consumer-${grpc.server.port}
     prefer-ip-address: true     #访问路径可以显示IP地址
+    lease-renewal-interval-in-seconds: 3 #设置下线心跳
+    lease-expiration-duration-in-seconds: 9
   client:
     service-url:
-      defaultZone: http://qx:qx@localhost:7001/eureka/
+      defaultZone: http://qx:qx@10.0.75.1:7001/eureka/,http://qx:qx@10.0.75.1:7002/eureka/,http://qx:qx@10.0.75.1:7003/eureka/
+
+###################  Mybatis-plus配置  ###################
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*.xml
+  global-config:
+    db-config:
+      logic-delete-value: -1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql，生成环境请去掉
