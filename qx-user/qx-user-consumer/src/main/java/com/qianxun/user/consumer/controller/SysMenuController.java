@@ -1,23 +1,33 @@
 package com.qianxun.user.consumer.controller;
 
+import com.qianxun.admin.api.dto.base.RequestDTO;
 import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
+import com.qianxun.admin.api.dto.extend.SysMenuDTO;
+import com.qianxun.admin.api.dto.extend.SysUserDTO;
 import com.qianxun.admin.api.dto.sysMenu.request.*;
 import com.qianxun.admin.api.dto.sysMenu.response.SysMenuResponseDTO;
 import com.qianxun.admin.api.entity.SysMenu;
+import com.qianxun.common.utils.mapper.BeanMapper;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysMenuClient;
+import com.qianxun.user.consumer.utils.SecurityBeanUtils;
+import com.qianxun.user.consumer.utils.TreeUtil;
 import lombok.AllArgsConstructor;
+import org.apache.commons.beanutils.BeanMap;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Cloudy
  *  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/sysMenu")
+@RequestMapping("/sysMenu")
 public class SysMenuController {
     private final GrpcSysMenuClient grpcSysMenuClient;
 
@@ -77,15 +87,34 @@ public class SysMenuController {
     }
 
     /**
-    * 逻辑删除
-    * @param input
-    * @return
-    */
+     * 逻辑删除
+     * @param input
+     * @return
+     */
     @DeleteMapping(value = "/{id}")
     public JSONResult deleteSysMenu(@Valid SysMenuDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);
         result.setData(grpcSysMenuClient.deleteSysMenu(req));
+        return result;
+    }
+
+    /**
+     * 获取当前用户的菜单
+     * @return
+     */
+    @GetMapping(value = "/userMenus")
+    public JSONResult getUserMenus(RequestDTO input) {
+        JSONResult result = new JSONResult();
+        SysUserDTO sysUserDTO = SecurityBeanUtils.getUser();
+        if(sysUserDTO == null){
+            result.setErrCode("403");
+            result.setMessage("无权访问");
+            return result;
+        }
+        List<SysMenu> menuList = grpcSysMenuClient.getUserMenus(sysUserDTO.getId());
+        List<SysMenuDTO> sysMenus= BeanMapper.mapList(menuList, SysMenuDTO.class);
+        result.setData(TreeUtil.buildByLoop(sysMenus, -1));
         return result;
     }
 }

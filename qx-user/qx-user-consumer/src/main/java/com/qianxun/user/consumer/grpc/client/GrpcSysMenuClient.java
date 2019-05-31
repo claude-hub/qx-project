@@ -9,6 +9,10 @@ import io.grpc.Channel;
 import net.devh.springboot.autoconfigure.grpc.client.GrpcClient;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * @author Cloudy
  *  */
@@ -45,5 +49,23 @@ public class GrpcSysMenuClient {
         SysMenuServiceGrpc.SysMenuServiceBlockingStub stub = SysMenuServiceGrpc.newBlockingStub(serverChannel);
         SysMenuOuterClass.Result res = stub.delete(req);
         return res.getSuccess();
+    }
+
+    /**
+     * 获取当前用户的菜单
+     * @param userId
+     * @return
+     */
+    public List<SysMenu> getUserMenus(Integer userId) {
+        SysMenuServiceGrpc.SysMenuServiceBlockingStub stub = SysMenuServiceGrpc.newBlockingStub(serverChannel);
+        SysMenuOuterClass.ByIdReq getByIdReq = SysMenuOuterClass.ByIdReq.newBuilder().setId(userId).build();
+        Iterator<SysMenuOuterClass.SysMenu> iterator;
+        List<SysMenu> menus = new ArrayList<>();
+        iterator = stub.getUserMenus(getByIdReq);
+        while (iterator.hasNext()) {
+            SysMenuOuterClass.SysMenu sysMenu = iterator.next();
+            menus.add(ProtoBufUtils.fromProtoBuffer(sysMenu, SysMenu.class));
+        }
+        return menus;
     }
 }

@@ -17,7 +17,7 @@ import javax.validation.Valid;
  *  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/sysDept")
+@RequestMapping("/sysDept")
 public class SysDeptController {
     private final GrpcSysDeptClient grpcSysDeptClient;
 

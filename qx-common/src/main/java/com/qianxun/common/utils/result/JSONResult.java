@@ -12,6 +12,8 @@ import io.swagger.annotations.ApiModelProperty;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class JSONResult {
     public JSONResult() {
+        this.errCode = "0";
+        this.message = null;
     }
 
     public JSONResult(String errCode, Object message) {

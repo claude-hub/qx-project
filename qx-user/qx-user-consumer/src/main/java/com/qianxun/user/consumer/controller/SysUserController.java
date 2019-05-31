@@ -17,7 +17,7 @@ import javax.validation.Valid;
  *  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/sysUser")
+@RequestMapping("/sysUser")
 public class SysUserController {
     private final GrpcSysUserClient grpcSysUserClient;
 

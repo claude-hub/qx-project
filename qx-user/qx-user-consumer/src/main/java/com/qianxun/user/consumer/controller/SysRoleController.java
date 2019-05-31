@@ -17,7 +17,7 @@ import javax.validation.Valid;
  *  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/sysRole")
+@RequestMapping("/sysRole")
 public class SysRoleController {
     private final GrpcSysRoleClient grpcSysRoleClient;
 

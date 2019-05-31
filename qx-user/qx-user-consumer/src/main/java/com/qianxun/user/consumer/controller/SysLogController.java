@@ -17,7 +17,7 @@ import javax.validation.Valid;
  *  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/sysLog")
+@RequestMapping("/sysLog")
 public class SysLogController {
     private final GrpcSysLogClient grpcSysLogClient;
 

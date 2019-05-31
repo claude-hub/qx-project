@@ -28,7 +28,7 @@
 			sys_menu.sort DESC
     </select>
 
-    <select id="getMenusByUserId" resultMap="BaseResultMap">
+    <select id="getUserSpecialMenus" resultMap="BaseResultMap">
          SELECT
 			sys_menu.*
 		FROM

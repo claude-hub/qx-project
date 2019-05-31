@@ -37,6 +37,9 @@ public class ProtoBufUtils {
             if (modelFields != null && modelFields.length > 0) {
                 for (Field modelField : modelFields) {
                     String fieldName = modelField.getName();
+                    if(fieldName.equals("serialVersionUID")){
+                        continue;
+                    }
                     String upperName = fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
                     Class<?> fieldType = modelField.getType();
                     Type type = modelField.getGenericType(); // 获取属性的参数类型（java.lang.List<com.qianxun.api.sysRole>）
@@ -126,6 +129,9 @@ public class ProtoBufUtils {
                     // 小驼峰命名
                     String lowerName = modelField.getName();
                     // 大驼峰命名
+                    if(lowerName.equals("serialVersionUID")){
+                        continue;
+                    }
                     String upperName = lowerName.substring(0, 1).toUpperCase() + lowerName.substring(1);
                     Class<?> fieldType = modelField.getType();
                     try {

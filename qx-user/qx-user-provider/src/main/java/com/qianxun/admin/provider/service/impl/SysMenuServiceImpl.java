@@ -2,6 +2,7 @@ package com.qianxun.admin.provider.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianxun.admin.api.entity.SysMenu;
+import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.admin.provider.mapper.SysMenuMapper;
 import com.qianxun.admin.provider.service.SysMenuService;
 import com.qianxun.admin.provider.service.SysRoleService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Cloudy
@@ -21,7 +23,6 @@ import java.util.*;
 public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> implements SysMenuService {
     private final SysRoleService sysRoleService;
 
-    @Transactional(rollbackFor = Exception.class)
     @Override
     public List<SysMenu> getMenusByRoleId(Integer roleId){
         return baseMapper.getMenusByRoleId(roleId);
@@ -29,7 +30,27 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
 
     @Override
     public List<SysMenu> getMenusByUserId(Integer userId){
-        return baseMapper.getMenusByUserId(userId);
+        return baseMapper.getUserSpecialMenus(userId);
+    }
+
+    @Override
+    public List<SysMenu> getUserMenus(Integer userId){
+        //角色列表
+        List<Integer> roleIds = sysRoleService.getRolesByUserId(userId)
+                .stream()
+                .map(SysRole::getId)
+                .collect(Collectors.toList());
+
+        //角色权限列表
+        Set<SysMenu> menus = new HashSet<>();
+        roleIds.forEach(roleId -> {
+            menus.addAll(baseMapper.getMenusByRoleId(roleId));
+        });
+        //用户单独的权限列表
+        menus.addAll(baseMapper.getUserSpecialMenus(userId));
+        return menus.stream().filter(item -> item.getType() == 0)
+                .sorted(Comparator.comparingInt(SysMenu::getSort))
+                .collect(Collectors.toList());
     }
 }
 

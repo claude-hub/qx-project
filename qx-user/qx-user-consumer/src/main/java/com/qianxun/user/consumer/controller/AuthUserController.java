@@ -19,7 +19,7 @@ import javax.validation.Valid;
  * Date: 2019/5/27 21:56
  */
 @RestController
-@RequestMapping(value = "/api/admin/auth")
+@RequestMapping(value = "/auth")
 @AllArgsConstructor
 public class AuthUserController {
     private final GrpcAuthUserClient grpcAuthUserClient;

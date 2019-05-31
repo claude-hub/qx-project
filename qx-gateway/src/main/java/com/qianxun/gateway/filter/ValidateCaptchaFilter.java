@@ -33,7 +33,7 @@ public class ValidateCaptchaFilter extends AbstractGatewayFilterFactory {
             ServerHttpRequest request = exchange.getRequest();
             // 不是登录请求，直接向下执行
             if (!StrUtil.containsAnyIgnoreCase(request.getURI().getPath()
-                    , "/oauth/token")) {
+                    , "/auth/sign_in")) {
                 return chain.filter(exchange);
             }
             JSONResult result = new JSONResult();

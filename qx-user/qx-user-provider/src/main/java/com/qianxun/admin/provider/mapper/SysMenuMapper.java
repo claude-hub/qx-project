@@ -11,6 +11,5 @@ import java.util.List;
 public interface SysMenuMapper extends BaseMapper<SysMenu> {
    List<SysMenu> getMenusByRoleId(Integer roleId);
 
-   List<SysMenu> getMenusByUserId(Integer userId);
+   List<SysMenu> getUserSpecialMenus(Integer userId);
 }
-
