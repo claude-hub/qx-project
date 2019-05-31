@@ -1,9 +1,9 @@
 package com.qianxun.user.consumer.controller;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
 import com.qianxun.admin.api.dto.sysDept.request.*;
 import com.qianxun.admin.api.dto.sysDept.response.SysDeptResponseDTO;
-import com.qianxun.admin.api.dto.extend.SysDeptDTO;
+import com.qianxun.admin.api.entity.SysDept;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysDept.SysDeptOuterClass;
@@ -27,11 +27,11 @@ public class SysDeptController {
     * @return
     */
     @GetMapping(value = "/{id}")
-    public JSONResult getSysDeptId(@Valid SysDeptSearchByIdDTO input) {
+    public JSONResult getSysDeptId(@Valid SearchByIdInputDTO input) {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.ByIdReq.class);
-        SysDeptDTO sysDeptDTO = grpcSysDeptClient.getSysDeptById(getByIdReq);
-        result.setData(sysDeptDTO.getId() != null ? sysDeptDTO : "");
+        SysDept sysDept = grpcSysDeptClient.getSysDeptById(getByIdReq);
+        result.setData(sysDept.getId() != null ? sysDept : "");
         return result;
     }
 
@@ -41,20 +41,12 @@ public class SysDeptController {
     * @return
     */
     @GetMapping(value = "/list")
-    @HystrixCommand(fallbackMethod = "fallbackGetList")
     public JSONResult getSysDeptList(@Valid SysDeptQueryInputDTO input) {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.GetListReq.class);
         SysDeptResponseDTO responseDTO = grpcSysDeptClient.getSysDeptList(getListReq);
         result.setData(responseDTO.getSysDepts());
         result.setTotalCount(responseDTO.getTotal());
-        return result;
-    }
-
-    public JSONResult fallbackGetList(@Valid SysDeptQueryInputDTO input){
-        JSONResult result = new JSONResult();
-        result.setErrCode("404");
-        result.setMessage("can`t found micro service");
         return result;
     }
 

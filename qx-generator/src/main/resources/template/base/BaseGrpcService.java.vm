@@ -45,9 +45,16 @@ public class Grpc${className}Service extends ${className}ServiceGrpc.${className
         }else {
             pageList = ${classname}Service.page(page, Wrappers.<${className}>query().lambda()
                     .and(item -> item
-                            .like(${className}::getException, inputDTO.getQuery())
-                            .or()
-                            .like(${className}::getUpdatedAt, inputDTO.getQuery())
+                            #foreach ($column in $columns)
+                                #if($column.attrname != "id")
+                                    #if($velocityCount != $columns.size())
+                                         .like(${className}::get${column.attrName}, inputDTO.getQuery())
+                                         .or()
+                                    #else
+                                        .like(${className}::get${column.attrName}, inputDTO.getQuery())
+                                    #end
+                                #end
+                            #end
                     )
 
             );

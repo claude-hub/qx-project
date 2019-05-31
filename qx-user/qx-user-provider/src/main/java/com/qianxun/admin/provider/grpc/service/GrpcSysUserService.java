@@ -14,7 +14,6 @@ import com.qianxun.grpc.lib.sysUser.SysUserServiceGrpc;
 import io.grpc.stub.StreamObserver;
 import lombok.AllArgsConstructor;
 import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * @author Cloudy
@@ -22,7 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @GrpcService(SysUserOuterClass.class)
 @AllArgsConstructor
 public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBase {
-    private final PasswordEncoder passwordEncoder;
     private final SysUserService sysUserService;
     private final UpdateDBResponseDTO responseDTO = new UpdateDBResponseDTO();
 
@@ -46,10 +44,40 @@ public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBas
         }else {
             pageList = sysUserService.page(page, Wrappers.<SysUser>query().lambda()
                     .and(item -> item
-                            .like(SysUser::getName, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getUpdatedAt, inputDTO.getQuery())
-                    )
+                                                                                                                                                                                                     .like(SysUser::getDeptId, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getName, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getIdentification, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getPhone, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getEmail, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getAvatar, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getLocked, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getDeleted, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getUserName, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getResetPasswordToken, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getPasswordEncrypted, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getCreatedAt, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getUpdatedAt, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getCurrentToken, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getCurrentSignInAt, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysUser::getLastSignInAt, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                            .like(SysUser::getSignInCount, inputDTO.getQuery())
+                                                                                                                    )
 
             );
         }
@@ -65,7 +93,6 @@ public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBas
     public void insert(SysUserOuterClass.BaseSysUser request,
                        StreamObserver<SysUserOuterClass.Result> responseObserver) {
         SysUser sysUser = ProtoBufUtils.fromProtoBuffer(request, SysUser.class);
-        sysUser.setPasswordEncrypted(passwordEncoder.encode(sysUser.getPasswordEncrypted()));
         responseDTO.setSuccess(sysUserService.save(sysUser));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysUserOuterClass.Result.class));
         responseObserver.onCompleted();
@@ -75,7 +102,6 @@ public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBas
     public void update(SysUserOuterClass.SysUser request,
                        StreamObserver<SysUserOuterClass.Result> responseObserver) {
         SysUser sysUser = ProtoBufUtils.fromProtoBuffer(request, SysUser.class);
-        sysUser.setPasswordEncrypted(passwordEncoder.encode(sysUser.getPasswordEncrypted()));
         responseDTO.setSuccess(sysUserService.updateById(sysUser));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysUserOuterClass.Result.class));
         responseObserver.onCompleted();

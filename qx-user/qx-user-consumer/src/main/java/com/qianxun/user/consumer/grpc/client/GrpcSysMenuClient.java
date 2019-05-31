@@ -1,18 +1,13 @@
 package com.qianxun.user.consumer.grpc.client;
 
 import com.qianxun.admin.api.dto.sysMenu.response.SysMenuResponseDTO;
-import com.qianxun.admin.api.dto.extend.SysMenuDTO;
+import com.qianxun.admin.api.entity.SysMenu;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass;
 import com.qianxun.grpc.lib.sysMenu.SysMenuServiceGrpc;
 import io.grpc.Channel;
-import lombok.SneakyThrows;
 import net.devh.springboot.autoconfigure.grpc.client.GrpcClient;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 /**
  * @author Cloudy
@@ -22,10 +17,10 @@ public class GrpcSysMenuClient {
     @GrpcClient("qx-user-provider")
     private Channel serverChannel;
 
-    public SysMenuDTO getSysMenuById(SysMenuOuterClass.ByIdReq getByIdReq) {
+    public SysMenu getSysMenuById(SysMenuOuterClass.ByIdReq getByIdReq) {
         SysMenuServiceGrpc.SysMenuServiceBlockingStub stub = SysMenuServiceGrpc.newBlockingStub(serverChannel);
         SysMenuOuterClass.SysMenu res = stub.getById(getByIdReq);
-        return ProtoBufUtils.fromProtoBuffer(res, SysMenuDTO.class);
+        return ProtoBufUtils.fromProtoBuffer(res, SysMenu.class);
     }
 
     public SysMenuResponseDTO getSysMenuList(SysMenuOuterClass.GetListReq getListReq) {
@@ -50,18 +45,5 @@ public class GrpcSysMenuClient {
         SysMenuServiceGrpc.SysMenuServiceBlockingStub stub = SysMenuServiceGrpc.newBlockingStub(serverChannel);
         SysMenuOuterClass.Result res = stub.delete(req);
         return res.getSuccess();
-    }
-
-    @SneakyThrows
-    public List<SysMenuDTO> getUserMenus(SysMenuOuterClass.ByIdReq getByIdReq) {
-        SysMenuServiceGrpc.SysMenuServiceBlockingStub stub = SysMenuServiceGrpc.newBlockingStub(serverChannel);
-        Iterator<SysMenuOuterClass.SysMenu> iterator;
-        List<SysMenuDTO> menus = new ArrayList<>();
-        iterator = stub.getUserMenus(getByIdReq);
-        while (iterator.hasNext()) {
-            SysMenuOuterClass.SysMenu sysMenu = iterator.next();
-            menus.add(ProtoBufUtils.fromProtoBuffer(sysMenu, SysMenuDTO.class));
-        }
-        return menus;
     }
 }

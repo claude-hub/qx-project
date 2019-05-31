@@ -1,11 +1,8 @@
 package com.qianxun.admin.provider.grpc.service;
 
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.qianxun.admin.api.dto.authUser.AuthUserInputDTO;
 import com.qianxun.admin.api.dto.authUser.AuthUserLoginInputDTO;
-import com.qianxun.admin.api.dto.authUser.AuthUserResponseDTO;
 import com.qianxun.admin.api.dto.extend.SysUserDTO;
-import com.qianxun.admin.api.entity.SysUser;
 import com.qianxun.admin.provider.service.SysUserService;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.authUser.AuthUserOuterClass;
@@ -35,9 +32,7 @@ public class GrpcAuthUserService extends AuthUserServiceGrpc.AuthUserServiceImpl
 
         AuthUserInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, AuthUserInputDTO.class);
         SysUserDTO sysUserDTO = sysUserService.getUserInfoByAccount(inputDTO.getAccount());
-        AuthUserResponseDTO responseDTO = new AuthUserResponseDTO();
-        BeanUtils.copyProperties(sysUserDTO, responseDTO);
-        AuthUserOuterClass.AuthUser res = ProtoBufUtils.toProtoBuffer(responseDTO, AuthUserOuterClass.AuthUser.class);
+        AuthUserOuterClass.AuthUser res = ProtoBufUtils.toProtoBuffer(sysUserDTO, AuthUserOuterClass.AuthUser.class);
         responseObserver.onNext(res);
         responseObserver.onCompleted();
     }

@@ -16,14 +16,12 @@ service SysDeptService {
 
 message ByIdReq {
     int32 id = 1;
-    int32 lang_id = 2;
 }
 
 message GetListReq {
-    int32 lang_id = 1;
-    string query = 2;
-    int32 page_size = 3;
-    int32 page = 4;
+    string query = 1;
+    int32 page_size = 2;
+    int32 page = 3;
 }
 
 message Result {
@@ -32,20 +30,20 @@ message Result {
 
 // 新增时,使用的message,以保证用户不传入多余信息
 message BaseSysDept {
-                int32 parent_id = 2;
-                            int32 sort = 3;
-                                int32 lang_id = 7;    string name = 8;
-}
+                                string name = 2;
+                                        int32 parent_id = 3;
+                                                int32 sort = 4;
+                                        }
 
 message SysDept {
         int32 id = 1;
-                        int32 parent_id = 2;
-                        int32 sort = 3;
-                                    google.protobuf.Timestamp created_at = 4;
-                        google.protobuf.Timestamp updated_at = 5;
-            int32 deleted = 6;
-                    int32 lang_id = 7;    string name = 8;
-}
+                                string name = 2;
+                int32 parent_id = 3;
+                        int32 sort = 4;
+                                    google.protobuf.Timestamp created_at = 5;
+                        google.protobuf.Timestamp updated_at = 6;
+            int32 deleted = 7;
+                }
 
 message PageList {
     int32 total = 1;

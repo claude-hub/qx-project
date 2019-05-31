@@ -2,9 +2,9 @@ package com.qianxun.admin.provider.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qianxun.admin.api.dto.extend.SysMenuDTO;
-import com.qianxun.admin.api.dto.extend.SysRoleDTO;
 import com.qianxun.admin.api.dto.extend.SysUserDTO;
+import com.qianxun.admin.api.entity.SysMenu;
+import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.admin.api.entity.SysUser;
 import com.qianxun.admin.provider.mapper.SysUserMapper;
 import com.qianxun.admin.provider.service.SysMenuService;
@@ -113,7 +113,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         //角色列表
         List<Integer> roleIds = sysRoleService.getRolesByUserId(sysUserDTO.getId())
                 .stream()
-                .map(SysRoleDTO::getId)
+                .map(SysRole::getId)
                 .collect(Collectors.toList());
         sysUserDTO.setRoles(roleIds);
         //角色权限列表
@@ -121,16 +121,16 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         roleIds.forEach(roleId -> {
             List<String> rolePermissionList = sysMenuService.getMenusByRoleId(roleId)
                     .stream()
-                    .filter(sysMenuDTO -> StringUtils.isNotEmpty(sysMenuDTO.getMenuCode()))
-                    .map(SysMenuDTO::getMenuCode)
+                    .filter(sysMenu -> StringUtils.isNotEmpty(sysMenu.getPermission()))
+                    .map(SysMenu::getPermission)
                     .collect(Collectors.toList());
             permissions.addAll(rolePermissionList);
         });
         //用户单独的权限列表
         List<String> userPermissionList = sysMenuService.getMenusByUserId(sysUserDTO.getId())
                 .stream()
-                .filter(sysMenuDTO -> StringUtils.isNotEmpty(sysMenuDTO.getMenuCode()))
-                .map(SysMenuDTO::getMenuCode)
+                .filter(sysMenu -> StringUtils.isNotEmpty(sysMenu.getPermission()))
+                .map(SysMenu::getPermission)
                 .collect(Collectors.toList());
         permissions.addAll(userPermissionList);
         sysUserDTO.setPermissions(new ArrayList<>(permissions));

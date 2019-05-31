@@ -1,16 +1,14 @@
 package com.qianxun.admin.api.dto.sysRole.response;
 
-import com.qianxun.admin.api.dto.extend.SysRoleDTO;
+import com.qianxun.admin.api.entity.SysRole;
 import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 19:35:18
- */
+ *  */
 @Data
 public class SysRoleResponseDTO implements Serializable {
     /**
@@ -23,5 +21,5 @@ public class SysRoleResponseDTO implements Serializable {
      * 分页查询结果
      * 需初始化，避免传回前端无字段
      */
-    private List<SysRoleDTO> sysRoles = new ArrayList<>();
+    private List<SysRole> sysRoles = new ArrayList<>();
 }

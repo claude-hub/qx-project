@@ -2,6 +2,7 @@ package com.qianxun.admin.api.dto.sysLog.request;
 
 import java.util.Date;
 import lombok.Data;
+import com.qianxun.admin.api.dto.base.RequestDTO;
 import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotBlank;
@@ -11,7 +12,7 @@ import java.io.Serializable;
  * @author Cloudy
  *  */
 @Data
-public class SysLogAddInputDTO implements Serializable {
+public class SysLogAddInputDTO extends RequestDTO implements Serializable {
                                                                                     @ApiModelProperty(value = "日志类型")
                             private String type;
 

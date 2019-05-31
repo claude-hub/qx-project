@@ -1,12 +1,12 @@
 package com.qianxun.admin.provider.grpc.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
-import com.qianxun.admin.api.dto.extend.SysDeptDTO;
-import com.qianxun.admin.api.dto.sysDept.request.SysDeptSearchByIdDTO;
 import com.qianxun.admin.api.dto.sysDept.request.SysDeptQueryInputDTO;
 import com.qianxun.admin.api.dto.sysDept.response.SysDeptResponseDTO;
+import com.qianxun.admin.api.entity.SysDept;
 import com.qianxun.admin.provider.service.SysDeptService;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysDept.SysDeptOuterClass;
@@ -27,9 +27,8 @@ public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBas
     @Override
     public void getById(SysDeptOuterClass.ByIdReq request,
                         StreamObserver<SysDeptOuterClass.SysDept> responseObserver) {
-        SysDeptSearchByIdDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysDeptSearchByIdDTO.class);
-        SysDeptDTO sysDeptDTO = sysDeptService.searchById(inputDTO);
-        SysDeptOuterClass.SysDept res = ProtoBufUtils.toProtoBuffer(sysDeptDTO, SysDeptOuterClass.SysDept.class);
+        SysDept sysDept = sysDeptService.getById(request.getId());
+        SysDeptOuterClass.SysDept res = ProtoBufUtils.toProtoBuffer(sysDept, SysDeptOuterClass.SysDept.class);
         responseObserver.onNext(res);
         responseObserver.onCompleted();
     }
@@ -38,8 +37,28 @@ public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBas
     public void getList(SysDeptOuterClass.GetListReq request,
                         StreamObserver<SysDeptOuterClass.PageList> responseObserver) {
         SysDeptQueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysDeptQueryInputDTO.class);
-        Page page = new Page(inputDTO.getPage(),inputDTO.getPageSize());
-        IPage pageList = sysDeptService.getSysDepts(page, inputDTO);
+        IPage<SysDept> page = new Page<SysDept>(inputDTO.getPage(),inputDTO.getPageSize());
+        IPage pageList;
+        if(inputDTO.getQuery() == null || inputDTO.getQuery().equals("")){
+            pageList = sysDeptService.page(page);
+        }else {
+            pageList = sysDeptService.page(page, Wrappers.<SysDept>query().lambda()
+                    .and(item -> item
+                                                                                                                                                                                                     .like(SysDept::getName, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysDept::getParentId, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysDept::getSort, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysDept::getCreatedAt, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysDept::getUpdatedAt, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                            .like(SysDept::getDeleted, inputDTO.getQuery())
+                                                                                                                    )
+
+            );
+        }
         SysDeptResponseDTO dto = new SysDeptResponseDTO();
         dto.setTotal((int) pageList.getTotal());
         dto.setSysDepts(pageList.getRecords());
@@ -51,8 +70,8 @@ public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBas
     @Override
     public void insert(SysDeptOuterClass.BaseSysDept request,
                        StreamObserver<SysDeptOuterClass.Result> responseObserver) {
-        SysDeptDTO sysDeptDTO = ProtoBufUtils.fromProtoBuffer(request, SysDeptDTO.class);
-        responseDTO.setSuccess(sysDeptService.saveSysDept(sysDeptDTO));
+        SysDept sysDept = ProtoBufUtils.fromProtoBuffer(request, SysDept.class);
+        responseDTO.setSuccess(sysDeptService.save(sysDept));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysDeptOuterClass.Result.class));
         responseObserver.onCompleted();
     }
@@ -60,8 +79,8 @@ public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBas
     @Override
     public void update(SysDeptOuterClass.SysDept request,
                        StreamObserver<SysDeptOuterClass.Result> responseObserver) {
-        SysDeptDTO sysDeptDTO = ProtoBufUtils.fromProtoBuffer(request, SysDeptDTO.class);
-        responseDTO.setSuccess(sysDeptService.updateSysDept(sysDeptDTO));
+        SysDept sysDept = ProtoBufUtils.fromProtoBuffer(request, SysDept.class);
+        responseDTO.setSuccess(sysDeptService.updateById(sysDept));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysDeptOuterClass.Result.class));
         responseObserver.onCompleted();
     }

@@ -7,30 +7,21 @@ package sysMenu;
 import public "google/protobuf/timestamp.proto";
 
 service SysMenuService {
-    rpc GetById (ByIdReq) returns (SysMenu) {
-    }
-    rpc GetList (GetListReq) returns (PageList) {
-    }
-    rpc Insert (BaseSysMenu) returns (Result) {
-    }
-    rpc Update (SysMenu) returns (Result) {
-    }
-    rpc Delete (ByIdReq) returns (Result) {
-    }
-    rpc GetUserMenus (ByIdReq) returns (stream SysMenu) {
-    }
+    rpc GetById(ByIdReq) returns (SysMenu){}
+    rpc GetList(GetListReq) returns (PageList) {}
+    rpc Insert(BaseSysMenu) returns (Result) {}
+    rpc Update(SysMenu) returns (Result) {}
+    rpc Delete(ByIdReq) returns (Result) {}
 }
 
 message ByIdReq {
     int32 id = 1;
-    int32 lang_id = 2;
 }
 
 message GetListReq {
-    int32 lang_id = 1;
-    string query = 2;
-    int32 page_size = 3;
-    int32 page = 4;
+    string query = 1;
+    int32 page_size = 2;
+    int32 page = 3;
 }
 
 message Result {
@@ -39,30 +30,32 @@ message Result {
 
 // 新增时,使用的message,以保证用户不传入多余信息
 message BaseSysMenu {
-    int32 parent_id = 2;
-    string menu_code = 3;
-    string path = 4;
-    string icon = 5;
-    int32 sort = 6;
-    int32 type = 7;
-    int32 lang_id = 11;
-    string name = 12;
-}
+                                string name = 2;
+                                        int32 parent_id = 3;
+                                                        string permission = 4;
+                                                string component = 5;
+                                                string path = 6;
+                                                string icon = 7;
+                                        int32 sort = 8;
+                                                int32 type = 9;
+                                                int32 keep_alive = 10;
+                                        }
 
 message SysMenu {
-    int32 id = 1;
-    int32 parent_id = 2;
-    string menu_code = 3;
-    string path = 4;
-    string icon = 5;
-    int32 sort = 6;
-    int32 type = 7;
-    google.protobuf.Timestamp created_at = 8;
-    google.protobuf.Timestamp updated_at = 9;
-    int32 deleted = 10;
-    int32 lang_id = 11;
-    string name = 12;
-}
+        int32 id = 1;
+                                string name = 2;
+                int32 parent_id = 3;
+                                string permission = 4;
+                        string component = 5;
+                        string path = 6;
+                        string icon = 7;
+                int32 sort = 8;
+                        int32 type = 9;
+                        int32 keep_alive = 10;
+                                    google.protobuf.Timestamp created_at = 11;
+                        google.protobuf.Timestamp updated_at = 12;
+            int32 deleted = 13;
+                }
 
 message PageList {
     int32 total = 1;

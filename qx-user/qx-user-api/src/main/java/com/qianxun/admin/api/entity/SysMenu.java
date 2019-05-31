@@ -20,13 +20,21 @@ public class SysMenu implements Serializable {
         @TableId(value = "id", type = IdType.AUTO)
                 private Integer id;
     /**
+     * 菜单名
+     */
+                private String name;
+    /**
      * 父菜单ID
      */
                 private Integer parentId;
     /**
      * 菜单权限标识
      */
-                private String menuCode;
+                private String permission;
+    /**
+     * VUE页面
+     */
+                private String component;
     /**
      * 前端URL
      */
@@ -43,6 +51,10 @@ public class SysMenu implements Serializable {
      * 菜单类型 （0菜单 1按钮）
      */
                 private Integer type;
+    /**
+     * 0-开启，1- 关闭
+     */
+                private Integer keepAlive;
     /**
      * 创建时间
      */

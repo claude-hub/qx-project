@@ -13,16 +13,22 @@ import java.io.Serializable;
 
 /**
  * @author Cloudy
- * Date 2019-05-13 19:35:18
  */
 @Data
 public class SysRole implements Serializable {
     /**
      * 角色ID
      */
-    /* 必须设置自动递增，不然底层会生成一个很大的数字，如：1126698029325058050 */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+    /**
+     * 角色名
+     */
+    private String name;
+    /**
+     * 角色描述
+     */
+    private String roleDesc;
     /**
      * 角色码
      */
@@ -34,7 +40,6 @@ public class SysRole implements Serializable {
     private Date createdAt;
     /**
      * 更新时间
-     * 乐观锁
      */
     @Version
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

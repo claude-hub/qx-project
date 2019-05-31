@@ -1,0 +1,49 @@
+# 加解密根密码
+jasypt:
+  encryptor:
+    password: cloudy #密码盐
+
+---
+grpc:
+  server:
+    port: 7201
+
+spring:
+  profiles: 7201
+  datasource:
+    url: jdbc:mysql://10.0.75.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    username: ENC(poF65paNtUaD8EWGDKheuw==)
+    password: ENC(V/CENxwW+JzyEs3a0ImgbA==)
+    #使用阿里的druid数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+---
+grpc:
+  server:
+    port: 7202
+
+spring:
+  profiles: 7202
+  datasource:
+    url: jdbc:mysql://10.0.75.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    username: ENC(poF65paNtUaD8EWGDKheuw==)
+    password: ENC(V/CENxwW+JzyEs3a0ImgbA==)
+    #使用阿里的druid数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+---
+grpc:
+  server:
+    port: 7203
+
+spring:
+  profiles: 7203
+  datasource:
+    url: jdbc:mysql://10.0.75.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    username: ENC(poF65paNtUaD8EWGDKheuw==)
+    password: ENC(V/CENxwW+JzyEs3a0ImgbA==)
+    #使用阿里的druid数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource

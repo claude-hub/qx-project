@@ -4,22 +4,22 @@ server:
 spring:
   application:
     name:  qx-config
-#  profiles:
-#    active: native
+  profiles:
+    active: native
   cloud:
     config:
       server:
-#        native:
-#          search-locations: classpath:/config/
-        git:
-          uri: https://github.com/cloudslife/qx-config.git
-          search-paths: /*
+        native:
+          search-locations: classpath:/config/
+#        git:
+#          uri: https://github.com/cloudslife/qx-config.git
+#          search-paths: /*
 
 # 注册中心配置
 eureka:
   instance:
     instance-id: qx-user-config-${server.port}
-    prefer-ip-address: true     #访问路径可以显示IP地址
+#    prefer-ip-address: true     #访问路径可以显示IP地址
     lease-renewal-interval-in-seconds: 3 #设置下线心跳
     lease-expiration-duration-in-seconds: 9
   client:

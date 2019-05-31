@@ -18,4 +18,7 @@ public class BaseQueryInputDTO {
 
     @ApiModelProperty(value = "分页大小，默认值=5", name = "pageSize", dataType = "Integer")
     private Integer pageSize = 5;
+
+    @ApiModelProperty(value = "token")
+    private String token;
 }

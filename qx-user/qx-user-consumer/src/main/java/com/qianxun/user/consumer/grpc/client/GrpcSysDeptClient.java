@@ -1,7 +1,7 @@
 package com.qianxun.user.consumer.grpc.client;
 
 import com.qianxun.admin.api.dto.sysDept.response.SysDeptResponseDTO;
-import com.qianxun.admin.api.dto.extend.SysDeptDTO;
+import com.qianxun.admin.api.entity.SysDept;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.grpc.lib.sysDept.SysDeptOuterClass;
 import com.qianxun.grpc.lib.sysDept.SysDeptServiceGrpc;
@@ -17,10 +17,10 @@ public class GrpcSysDeptClient {
     @GrpcClient("qx-user-provider")
     private Channel serverChannel;
 
-    public SysDeptDTO getSysDeptById(SysDeptOuterClass.ByIdReq getByIdReq) {
+    public SysDept getSysDeptById(SysDeptOuterClass.ByIdReq getByIdReq) {
         SysDeptServiceGrpc.SysDeptServiceBlockingStub stub = SysDeptServiceGrpc.newBlockingStub(serverChannel);
         SysDeptOuterClass.SysDept res = stub.getById(getByIdReq);
-        return ProtoBufUtils.fromProtoBuffer(res, SysDeptDTO.class);
+        return ProtoBufUtils.fromProtoBuffer(res, SysDept.class);
     }
 
     public SysDeptResponseDTO getSysDeptList(SysDeptOuterClass.GetListReq getListReq) {

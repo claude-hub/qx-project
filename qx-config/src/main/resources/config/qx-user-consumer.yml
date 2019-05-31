@@ -1,0 +1,17 @@
+---
+spring:
+  profiles: 7101
+server:
+  port: 7101
+
+---
+spring:
+  profiles: 7102
+server:
+  port: 7102
+
+---
+spring:
+  profiles: 7103
+server:
+  port: 7103

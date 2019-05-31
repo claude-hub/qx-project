@@ -10,5 +10,8 @@ import java.io.Serializable;
  */
 @Data
 public class AuthUserInputDTO implements Serializable {
+    /**
+     * 单点登录时，用账号查询
+     */
     private String account;
 }

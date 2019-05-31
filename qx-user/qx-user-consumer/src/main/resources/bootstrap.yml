@@ -6,14 +6,14 @@ spring:
   application:
     name: qx-user-consumer
   # 配置中心
-  cloud:
-    config:
-      fail-fast: true
-      name: ${spring.application.name}
-      profile: ${spring.profiles.active}
-      discovery:
-        enabled: true
-        service-id: qx-config
+#  cloud:
+#    config:
+#      fail-fast: true
+#      name: ${spring.application.name}
+#      profile: ${spring.profiles.active}
+#      discovery:
+#        enabled: true
+#        service-id: qx-config
   profiles:
     active: 7101
   main:
@@ -23,7 +23,7 @@ spring:
 eureka:
   instance:
     instance-id: qx-user-consumer-${server.port}
-    prefer-ip-address: true     #访问路径可以显示IP地址
+    # prefer-ip-address: true     #访问路径可以显示IP地址
     lease-renewal-interval-in-seconds: 3 #设置下线心跳
     lease-expiration-duration-in-seconds: 9
   client:

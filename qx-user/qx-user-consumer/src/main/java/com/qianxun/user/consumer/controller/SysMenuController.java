@@ -1,14 +1,14 @@
 package com.qianxun.user.consumer.controller;
 
+import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
 import com.qianxun.admin.api.dto.sysMenu.request.*;
 import com.qianxun.admin.api.dto.sysMenu.response.SysMenuResponseDTO;
-import com.qianxun.admin.api.dto.extend.SysMenuDTO;
+import com.qianxun.admin.api.entity.SysMenu;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysMenuClient;
 import lombok.AllArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
@@ -26,12 +26,12 @@ public class SysMenuController {
     * @param input
     * @return
     */
-    @GetMapping(value = "/item")
-    public JSONResult getSysMenuId(@Valid SysMenuSearchByIdDTO input) {
+    @GetMapping(value = "/{id}")
+    public JSONResult getSysMenuId(@Valid SearchByIdInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);
-        SysMenuDTO sysMenuDTO = grpcSysMenuClient.getSysMenuById(getByIdReq);
-        result.setData(sysMenuDTO.getId() != null ? sysMenuDTO : "");
+        SysMenu sysMenu = grpcSysMenuClient.getSysMenuById(getByIdReq);
+        result.setData(sysMenu.getId() != null ? sysMenu : "");
         return result;
     }
 
@@ -56,7 +56,6 @@ public class SysMenuController {
     * @return
     */
     @PostMapping(value = "/add")
-    @PreAuthorize("@qx.hasPermission('sys_menu_add')")
     public JSONResult addSysMenu(@Valid SysMenuAddInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.BaseSysMenu baseSysMenu = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.BaseSysMenu.class);
@@ -82,20 +81,11 @@ public class SysMenuController {
     * @param input
     * @return
     */
-    @DeleteMapping(value = "/delete")
-    @PreAuthorize("@qx.hasPermission('sys_menu_del')")
+    @DeleteMapping(value = "/{id}")
     public JSONResult deleteSysMenu(@Valid SysMenuDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);
         result.setData(grpcSysMenuClient.deleteSysMenu(req));
-        return result;
-    }
-
-    @GetMapping(value = "/userMenus")
-    public JSONResult getUserMenus(@Valid SysMenuSearchByIdDTO input) {
-        JSONResult result = new JSONResult();
-        SysMenuOuterClass.ByIdReq getByIdReq = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);
-        result.setData(grpcSysMenuClient.getUserMenus(getByIdReq));
         return result;
     }
 }

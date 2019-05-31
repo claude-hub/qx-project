@@ -44,9 +44,8 @@ message AuthUser {
     google.protobuf.Timestamp current_sign_in_at = 16;
     google.protobuf.Timestamp last_sign_in_at = 17;
     int32 sign_in_count = 18;
-    string db_source = 19;
-    repeated string permissions = 20;
-    repeated int32 roles = 21;
+    repeated string permissions = 19;
+    repeated int32 roles = 20;
 }
 
 //message SysUser {

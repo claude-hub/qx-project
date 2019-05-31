@@ -2,6 +2,7 @@ package com.qianxun.admin.api.dto.sysLog.request;
 
 import java.util.Date;
 import lombok.Data;
+import com.qianxun.admin.api.dto.base.RequestDTO;
 import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author Cloudy
  *  */
 @Data
-public class SysLogUpdateInputDTO implements Serializable {
+public class SysLogUpdateInputDTO extends RequestDTO implements Serializable {
                                                                                             @NotNull(message = "不能为空")
                                     @ApiModelProperty(value = "", required = true)
                                     private Long id;

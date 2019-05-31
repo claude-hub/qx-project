@@ -1,6 +1,6 @@
 package com.qianxun.admin.api.dto.sysDept.response;
 
-import com.qianxun.admin.api.dto.extend.SysDeptDTO;
+import com.qianxun.admin.api.entity.SysDept;
 import lombok.Data;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,5 +21,5 @@ public class SysDeptResponseDTO implements Serializable {
      * 分页查询结果
      * 需初始化，避免传回前端无字段
      */
-    private List<SysDeptDTO> sysDepts = new ArrayList<>();
+    private List<SysDept> sysDepts = new ArrayList<>();
 }

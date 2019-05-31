@@ -2,34 +2,35 @@ package com.qianxun.admin.api.dto.sysRole.request;
 
 import java.util.Date;
 import lombok.Data;
+import com.qianxun.admin.api.dto.base.RequestDTO;
 import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 /**
  * @author Cloudy
- * Date 2019-05-13 20:12:16
- */
+ *  */
 @Data
-public class SysRoleUpdateInputDTO implements Serializable {
-    @NotNull(message = "主键不能为空")
-    @ApiModelProperty(value = "主键ID", required = true)
-    private Integer id;
+public class SysRoleUpdateInputDTO extends RequestDTO implements Serializable {
+                                                                                            @NotNull(message = "角色ID不能为空")
+                                    @ApiModelProperty(value = "角色ID", required = true)
+                                    private Integer id;
 
-    @ApiModelProperty(value = "角色码")
-    private String roleCode;
+                                                                            @ApiModelProperty(value = "角色名")
+                                    private String name;
 
-    @NotNull(message = "上此更新的时间不能为空")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty(value = "更新时间", required = true)
-    private Date updatedAt;
+                                                                            @ApiModelProperty(value = "角色描述")
+                                    private String roleDesc;
 
-    @NotNull(message = "语言Id不能为空")
-    @ApiModelProperty(value = "语言id", required = true)
-    private Integer langId;
+                                                                                                    @NotBlank(message = "角色码不能为空")
+                                    @ApiModelProperty(value = "角色码", required = true)
+                                    private String roleCode;
 
-    @ApiModelProperty(value = "SysRole名称")
-    private String name;
-}
+                                                                        @NotNull(message = "上此更新的时间不能为空")
+            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+            @ApiModelProperty(value = "更新时间", required = true)
+                    private Date updatedAt;
+
+                            }

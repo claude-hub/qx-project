@@ -2,6 +2,7 @@ package ${package}.${moduleName}.api.dto.${classname}.request;
 
 import java.util.Date;
 import lombok.Data;
+import ${package}.${moduleName}.api.dto.base.RequestDTO;
 import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.NotBlank;
@@ -13,7 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * ##Date ${datetime}
  */
 @Data
-public class ${className}UpdateInputDTO implements Serializable {
+public class ${className}UpdateInputDTO extends RequestDTO implements Serializable {
     #foreach ($column in $columns)
     ##排除created_at,deleted字段
         #if($column.columnName != "created_at" && $column.columnName != "deleted")

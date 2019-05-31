@@ -1,6 +1,6 @@
 package com.qianxun.admin.api.dto.sysMenu.response;
 
-import com.qianxun.admin.api.dto.extend.SysMenuDTO;
+import com.qianxun.admin.api.entity.SysMenu;
 import lombok.Data;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,5 +21,5 @@ public class SysMenuResponseDTO implements Serializable {
      * 分页查询结果
      * 需初始化，避免传回前端无字段
      */
-    private List<SysMenuDTO> sysMenus = new ArrayList<>();
+    private List<SysMenu> sysMenus = new ArrayList<>();
 }

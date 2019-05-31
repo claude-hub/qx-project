@@ -1,4 +1,4 @@
-package com.qianxun.admin.provider.grpc.service.sysLog;
+package com.qianxun.admin.provider.grpc.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
@@ -44,10 +44,32 @@ public class GrpcSysLogService extends SysLogServiceGrpc.SysLogServiceImplBase {
         }else {
             pageList = sysLogService.page(page, Wrappers.<SysLog>query().lambda()
                     .and(item -> item
-                            .like(SysLog::getException, inputDTO.getQuery())
-                            .or()
-                            .like(SysLog::getUpdatedAt, inputDTO.getQuery())
-                    )
+                                                                                                                                                                                                     .like(SysLog::getType, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getTitle, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getServiceId, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getCreateBy, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getCreatedAt, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getUpdatedAt, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getIpAddr, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getRequestUri, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getMethod, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getParams, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getTime, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                             .like(SysLog::getException, inputDTO.getQuery())
+                                         .or()
+                                                                                                                                                                                                            .like(SysLog::getDeleted, inputDTO.getQuery())
+                                                                                                                    )
 
             );
         }
