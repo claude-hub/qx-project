@@ -1,8 +1,11 @@
 package com.qianxun.admin.provider.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qianxun.admin.api.dto.extend.SysUserDTO;
+import com.qianxun.admin.api.dto.sysUser.request.SysUserQueryInputDTO;
 import com.qianxun.admin.api.entity.SysMenu;
 import com.qianxun.admin.api.entity.SysRole;
 import com.qianxun.admin.api.entity.SysUser;
@@ -36,6 +39,11 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     private final SysMenuService sysMenuService;
     private final JwtTokenUtil jwtTokenUtil;
     private final PasswordEncoder passwordEncoder;
+
+    @Override
+    public IPage getUserWithRolePage(Page page, SysUserQueryInputDTO dto){
+        return baseMapper.getUserVMsPage(page, dto);
+    }
 
     @Transactional(rollbackFor = Exception.class)
     @Override

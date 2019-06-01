@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.sysUser.request.SysUserAddInputDTO;
 import com.qianxun.admin.api.dto.sysUser.request.SysUserQueryInputDTO;
+import com.qianxun.admin.api.dto.sysUser.request.SysUserUpdateInputDTO;
 import com.qianxun.admin.api.dto.sysUser.response.SysUserResponseDTO;
 import com.qianxun.admin.api.entity.SysUser;
 import com.qianxun.admin.api.entity.SysUserMenu;
@@ -50,51 +51,10 @@ public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBas
     public void getList(SysUserOuterClass.GetListReq request,
                         StreamObserver<SysUserOuterClass.PageList> responseObserver) {
         SysUserQueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysUserQueryInputDTO.class);
-        IPage<SysUser> page = new Page<SysUser>(inputDTO.getPage(), inputDTO.getPageSize());
-        IPage pageList;
-        if (inputDTO.getQuery() == null || inputDTO.getQuery().equals("")) {
-            pageList = sysUserService.page(page, Wrappers.<SysUser>query().lambda().orderByDesc(SysUser::getCreatedAt));
-        } else {
-            pageList = sysUserService.page(page, Wrappers.<SysUser>query().lambda()
-                    .and(item -> item
-                            .like(SysUser::getDeptId, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getName, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getIdentification, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getPhone, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getEmail, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getAvatar, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getLocked, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getDeleted, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getUserName, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getResetPasswordToken, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getPasswordEncrypted, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getCreatedAt, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getUpdatedAt, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getCurrentToken, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getCurrentSignInAt, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getLastSignInAt, inputDTO.getQuery())
-                            .or()
-                            .like(SysUser::getSignInCount, inputDTO.getQuery())
-                    )
-                    .orderByDesc(SysUser::getCreatedAt)
+        Page<SysUser> page = new Page<SysUser>(inputDTO.getPage(), inputDTO.getPageSize());
 
-            );
-        }
+        IPage pageList = sysUserService.getUserWithRolePage(page, inputDTO);
+
         SysUserResponseDTO dto = new SysUserResponseDTO();
         dto.setTotal((int) pageList.getTotal());
         dto.setSysUsers(pageList.getRecords());
@@ -111,25 +71,25 @@ public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBas
         SysUserAddInputDTO addInputDTO = ProtoBufUtils.fromProtoBuffer(request, SysUserAddInputDTO.class);
         SysUser sysUser = new SysUser();
         BeanUtil.copyProperties(addInputDTO, sysUser);
-        if(sysUserService.getOne(Wrappers.<SysUser>query().lambda()
-                .eq(SysUser::getPhone, addInputDTO.getPhone()))!=null){
+        if (sysUserService.getOne(Wrappers.<SysUser>query().lambda()
+                .eq(SysUser::getPhone, addInputDTO.getPhone())) != null) {
             responseDTO.setSuccess(false);
             responseDTO.setMessage("手机号已存在");
-        }else {
-            if(sysUserService.getOne(Wrappers.<SysUser>query().lambda()
-                    .eq(SysUser::getUserName, addInputDTO.getUserName()))!=null) {
+        } else {
+            if (sysUserService.getOne(Wrappers.<SysUser>query().lambda()
+                    .eq(SysUser::getUserName, addInputDTO.getUserName())) != null) {
                 responseDTO.setSuccess(false);
                 responseDTO.setMessage("用户名已存在");
-            }else {
-                if(sysUserService.getOne(Wrappers.<SysUser>query().lambda()
-                        .eq(SysUser::getEmail, addInputDTO.getEmail()))!=null) {
+            } else {
+                if (sysUserService.getOne(Wrappers.<SysUser>query().lambda()
+                        .eq(SysUser::getEmail, addInputDTO.getEmail())) != null) {
                     responseDTO.setSuccess(false);
                     responseDTO.setMessage("邮箱已存在");
-                }else {
+                } else {
                     sysUserService.save(sysUser);
                     List<SysUserRole> roles = new ArrayList<>();
-                    for (Integer roleId:
-                    addInputDTO.getRoleIds()) {
+                    for (Integer roleId :
+                            addInputDTO.getRoleIds()) {
                         SysUserRole role = new SysUserRole();
                         role.setUserId(sysUser.getId());
                         role.setRoleId(roleId);
@@ -138,8 +98,8 @@ public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBas
                     sysUserRoleService.saveBatch(roles);
 
                     List<SysUserMenu> menus = new ArrayList<>();
-                    for (Integer menuId:
-                         addInputDTO.getPermissionIds()) {
+                    for (Integer menuId :
+                            addInputDTO.getPermissionIds()) {
                         SysUserMenu sysUserMenu = new SysUserMenu();
                         sysUserMenu.setMenuId(menuId);
                         sysUserMenu.setUserId(sysUser.getId());
@@ -155,10 +115,41 @@ public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBas
     }
 
     @Override
-    public void update(SysUserOuterClass.SysUser request,
+    @Transactional
+    public void update(SysUserOuterClass.BaseSysUser request,
                        StreamObserver<SysUserOuterClass.Result> responseObserver) {
-        SysUser sysUser = ProtoBufUtils.fromProtoBuffer(request, SysUser.class);
-        responseDTO.setSuccess(sysUserService.updateById(sysUser));
+        SysUserUpdateInputDTO dto = ProtoBufUtils.fromProtoBuffer(request, SysUserUpdateInputDTO.class);
+        SysUser sysUser = new SysUser();
+        BeanUtil.copyProperties(dto, sysUser);
+
+        sysUserService.updateById(sysUser);
+
+        /**
+         * 保存角色
+         */
+        sysUserRoleService.remove(Wrappers.<SysUserRole>update().lambda()
+                .eq(SysUserRole::getUserId, dto.getId()));
+        dto.getRoleIds().forEach(roleId -> {
+            SysUserRole userRole = new SysUserRole();
+            userRole.setUserId(sysUser.getId());
+            userRole.setRoleId(roleId);
+            sysUserRoleService.save(userRole);
+        });
+
+        /**
+         * 单独权限
+         */
+        sysUserMenuService.remove(Wrappers.<SysUserMenu>update().lambda()
+                .eq(SysUserMenu::getUserId, dto.getId()));
+        if (dto.getPermissionIds() != null && dto.getPermissionIds().size() > 0) {
+            dto.getPermissionIds().forEach(menuId -> {
+                SysUserMenu userMenu = new SysUserMenu();
+                userMenu.setUserId(sysUser.getId());
+                userMenu.setMenuId(menuId);
+                sysUserMenuService.save(userMenu);
+            });
+        }
+        responseDTO.setSuccess(true);
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysUserOuterClass.Result.class));
         responseObserver.onCompleted();
     }

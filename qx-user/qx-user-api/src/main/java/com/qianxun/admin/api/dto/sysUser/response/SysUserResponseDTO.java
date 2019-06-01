@@ -1,6 +1,6 @@
 package com.qianxun.admin.api.dto.sysUser.response;
 
-import com.qianxun.admin.api.entity.SysUser;
+import com.qianxun.admin.api.dto.extend.SysUserVM;
 import lombok.Data;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,5 +21,5 @@ public class SysUserResponseDTO implements Serializable {
      * 分页查询结果
      * 需初始化，避免传回前端无字段
      */
-    private List<SysUser> sysUsers = new ArrayList<>();
+    private List<SysUserVM> sysUsers = new ArrayList<>();
 }

@@ -5,6 +5,8 @@ option java_package = "com.qianxun.grpc.lib.sysUser";
 package sysUser;
 
 import public "google/protobuf/timestamp.proto";
+import "sys_role.proto";
+import "sys_menu.proto";
 
 service SysUserService {
     rpc GetById (ByIdReq) returns (SysUser) {
@@ -13,7 +15,7 @@ service SysUserService {
     }
     rpc Insert (BaseSysUser) returns (Result) {
     }
-    rpc Update (SysUser) returns (Result) {
+    rpc Update (BaseSysUser) returns (Result) {
     }
     rpc Delete (ByIdReq) returns (Result) {
     }
@@ -27,6 +29,7 @@ message GetListReq {
     string query = 1;
     int32 page_size = 2;
     int32 page = 3;
+    int32 dept_id = 4;
 }
 
 message Result {
@@ -34,8 +37,8 @@ message Result {
     string message = 2;
 }
 
-// 新增时,使用的message,以保证用户不传入多余信息
 message BaseSysUser {
+    int32 id = 1;
     int32 dept_id = 2;
     string name = 3;
     string identification = 4;
@@ -74,6 +77,9 @@ message SysUser {
     google.protobuf.Timestamp current_sign_in_at = 16;
     google.protobuf.Timestamp last_sign_in_at = 17;
     int32 sign_in_count = 18;
+    string dept_name = 19;
+    repeated sysRole.SysRole roles = 20;
+    repeated sysMenu.SysMenu menus = 21;
 }
 
 message PageList {

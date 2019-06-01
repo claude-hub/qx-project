@@ -123,28 +123,28 @@ public final class SysUserServiceGrpc {
      return getInsertMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser,
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser,
       com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result> getUpdateMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Update",
-      requestType = com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser.class,
+      requestType = com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser.class,
       responseType = com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser,
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser,
       com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result> getUpdateMethod() {
-    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser, com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result> getUpdateMethod;
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser, com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result> getUpdateMethod;
     if ((getUpdateMethod = SysUserServiceGrpc.getUpdateMethod) == null) {
       synchronized (SysUserServiceGrpc.class) {
         if ((getUpdateMethod = SysUserServiceGrpc.getUpdateMethod) == null) {
           SysUserServiceGrpc.getUpdateMethod = getUpdateMethod = 
-              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser, com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result>newBuilder()
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser, com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "sysUser.SysUserService", "Update"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser.getDefaultInstance()))
+                  com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result.getDefaultInstance()))
                   .setSchemaDescriptor(new SysUserServiceMethodDescriptorSupplier("Update"))
@@ -237,7 +237,7 @@ public final class SysUserServiceGrpc {
 
     /**
      */
-    public void update(com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser request,
+    public void update(com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result> responseObserver) {
       asyncUnimplementedUnaryCall(getUpdateMethod(), responseObserver);
     }
@@ -276,7 +276,7 @@ public final class SysUserServiceGrpc {
             getUpdateMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser,
+                com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser,
                 com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result>(
                   this, METHODID_UPDATE)))
           .addMethod(
@@ -334,7 +334,7 @@ public final class SysUserServiceGrpc {
 
     /**
      */
-    public void update(com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser request,
+    public void update(com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser request,
         io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getUpdateMethod(), getCallOptions()), request, responseObserver);
@@ -390,7 +390,7 @@ public final class SysUserServiceGrpc {
 
     /**
      */
-    public com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result update(com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser request) {
+    public com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result update(com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser request) {
       return blockingUnaryCall(
           getChannel(), getUpdateMethod(), getCallOptions(), request);
     }
@@ -448,7 +448,7 @@ public final class SysUserServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result> update(
-        com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser request) {
+        com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser request) {
       return futureUnaryCall(
           getChannel().newCall(getUpdateMethod(), getCallOptions()), request);
     }
@@ -498,7 +498,7 @@ public final class SysUserServiceGrpc {
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result>) responseObserver);
           break;
         case METHODID_UPDATE:
-          serviceImpl.update((com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser) request,
+          serviceImpl.update((com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysUser.SysUserOuterClass.Result>) responseObserver);
           break;
         case METHODID_DELETE:

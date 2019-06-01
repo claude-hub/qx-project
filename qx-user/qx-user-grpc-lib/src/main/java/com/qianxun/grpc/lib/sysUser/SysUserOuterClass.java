@@ -511,6 +511,11 @@ public final class SysUserOuterClass {
      * <code>int32 page = 3;</code>
      */
     int getPage();
+
+    /**
+     * <code>int32 dept_id = 4;</code>
+     */
+    int getDeptId();
   }
   /**
    * Protobuf type {@code sysUser.GetListReq}
@@ -566,6 +571,11 @@ public final class SysUserOuterClass {
             case 24: {
 
               page_ = input.readInt32();
+              break;
+            }
+            case 32: {
+
+              deptId_ = input.readInt32();
               break;
             }
             default: {
@@ -652,6 +662,15 @@ public final class SysUserOuterClass {
       return page_;
     }
 
+    public static final int DEPT_ID_FIELD_NUMBER = 4;
+    private int deptId_;
+    /**
+     * <code>int32 dept_id = 4;</code>
+     */
+    public int getDeptId() {
+      return deptId_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -675,6 +694,9 @@ public final class SysUserOuterClass {
       if (page_ != 0) {
         output.writeInt32(3, page_);
       }
+      if (deptId_ != 0) {
+        output.writeInt32(4, deptId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -694,6 +716,10 @@ public final class SysUserOuterClass {
       if (page_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, page_);
+      }
+      if (deptId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, deptId_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -716,6 +742,8 @@ public final class SysUserOuterClass {
           != other.getPageSize()) return false;
       if (getPage()
           != other.getPage()) return false;
+      if (getDeptId()
+          != other.getDeptId()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -733,6 +761,8 @@ public final class SysUserOuterClass {
       hash = (53 * hash) + getPageSize();
       hash = (37 * hash) + PAGE_FIELD_NUMBER;
       hash = (53 * hash) + getPage();
+      hash = (37 * hash) + DEPT_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getDeptId();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -872,6 +902,8 @@ public final class SysUserOuterClass {
 
         page_ = 0;
 
+        deptId_ = 0;
+
         return this;
       }
 
@@ -901,6 +933,7 @@ public final class SysUserOuterClass {
         result.query_ = query_;
         result.pageSize_ = pageSize_;
         result.page_ = page_;
+        result.deptId_ = deptId_;
         onBuilt();
         return result;
       }
@@ -958,6 +991,9 @@ public final class SysUserOuterClass {
         }
         if (other.getPage() != 0) {
           setPage(other.getPage());
+        }
+        if (other.getDeptId() != 0) {
+          setDeptId(other.getDeptId());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1105,6 +1141,32 @@ public final class SysUserOuterClass {
       public Builder clearPage() {
         
         page_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int deptId_ ;
+      /**
+       * <code>int32 dept_id = 4;</code>
+       */
+      public int getDeptId() {
+        return deptId_;
+      }
+      /**
+       * <code>int32 dept_id = 4;</code>
+       */
+      public Builder setDeptId(int value) {
+        
+        deptId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 dept_id = 4;</code>
+       */
+      public Builder clearDeptId() {
+        
+        deptId_ = 0;
         onChanged();
         return this;
       }
@@ -1778,6 +1840,11 @@ public final class SysUserOuterClass {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>int32 id = 1;</code>
+     */
+    int getId();
+
+    /**
      * <code>int32 dept_id = 2;</code>
      */
     int getDeptId();
@@ -1935,10 +2002,6 @@ public final class SysUserOuterClass {
     int getPermissionIds(int index);
   }
   /**
-   * <pre>
-   * 新增时,使用的message,以保证用户不传入多余信息
-   * </pre>
-   *
    * Protobuf type {@code sysUser.BaseSysUser}
    */
   public  static final class BaseSysUser extends
@@ -1988,6 +2051,11 @@ public final class SysUserOuterClass {
             case 0:
               done = true;
               break;
+            case 8: {
+
+              id_ = input.readInt32();
+              break;
+            }
             case 16: {
 
               deptId_ = input.readInt32();
@@ -2084,9 +2152,9 @@ public final class SysUserOuterClass {
               break;
             }
             case 152: {
-              if (!((mutable_bitField0_ & 0x00004000) != 0)) {
+              if (!((mutable_bitField0_ & 0x00008000) != 0)) {
                 roleIds_ = newIntList();
-                mutable_bitField0_ |= 0x00004000;
+                mutable_bitField0_ |= 0x00008000;
               }
               roleIds_.addInt(input.readInt32());
               break;
@@ -2094,9 +2162,9 @@ public final class SysUserOuterClass {
             case 154: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00004000) != 0) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00008000) != 0) && input.getBytesUntilLimit() > 0) {
                 roleIds_ = newIntList();
-                mutable_bitField0_ |= 0x00004000;
+                mutable_bitField0_ |= 0x00008000;
               }
               while (input.getBytesUntilLimit() > 0) {
                 roleIds_.addInt(input.readInt32());
@@ -2105,9 +2173,9 @@ public final class SysUserOuterClass {
               break;
             }
             case 160: {
-              if (!((mutable_bitField0_ & 0x00008000) != 0)) {
+              if (!((mutable_bitField0_ & 0x00010000) != 0)) {
                 permissionIds_ = newIntList();
-                mutable_bitField0_ |= 0x00008000;
+                mutable_bitField0_ |= 0x00010000;
               }
               permissionIds_.addInt(input.readInt32());
               break;
@@ -2115,9 +2183,9 @@ public final class SysUserOuterClass {
             case 162: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00008000) != 0) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00010000) != 0) && input.getBytesUntilLimit() > 0) {
                 permissionIds_ = newIntList();
-                mutable_bitField0_ |= 0x00008000;
+                mutable_bitField0_ |= 0x00010000;
               }
               while (input.getBytesUntilLimit() > 0) {
                 permissionIds_.addInt(input.readInt32());
@@ -2140,10 +2208,10 @@ public final class SysUserOuterClass {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00004000) != 0)) {
+        if (((mutable_bitField0_ & 0x00008000) != 0)) {
           roleIds_.makeImmutable(); // C
         }
-        if (((mutable_bitField0_ & 0x00008000) != 0)) {
+        if (((mutable_bitField0_ & 0x00010000) != 0)) {
           permissionIds_.makeImmutable(); // C
         }
         this.unknownFields = unknownFields.build();
@@ -2164,6 +2232,15 @@ public final class SysUserOuterClass {
     }
 
     private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>int32 id = 1;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
     public static final int DEPT_ID_FIELD_NUMBER = 2;
     private int deptId_;
     /**
@@ -2600,6 +2677,9 @@ public final class SysUserOuterClass {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
+      }
       if (deptId_ != 0) {
         output.writeInt32(2, deptId_);
       }
@@ -2665,6 +2745,10 @@ public final class SysUserOuterClass {
       if (size != -1) return size;
 
       size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
       if (deptId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, deptId_);
@@ -2755,6 +2839,8 @@ public final class SysUserOuterClass {
       }
       com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser other = (com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser) obj;
 
+      if (getId()
+          != other.getId()) return false;
       if (getDeptId()
           != other.getDeptId()) return false;
       if (!getName()
@@ -2804,6 +2890,8 @@ public final class SysUserOuterClass {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
       hash = (37 * hash) + DEPT_ID_FIELD_NUMBER;
       hash = (53 * hash) + getDeptId();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
@@ -2940,10 +3028,6 @@ public final class SysUserOuterClass {
       return builder;
     }
     /**
-     * <pre>
-     * 新增时,使用的message,以保证用户不传入多余信息
-     * </pre>
-     *
      * Protobuf type {@code sysUser.BaseSysUser}
      */
     public static final class Builder extends
@@ -2981,6 +3065,8 @@ public final class SysUserOuterClass {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        id_ = 0;
+
         deptId_ = 0;
 
         name_ = "";
@@ -3018,9 +3104,9 @@ public final class SysUserOuterClass {
         signInCount_ = 0;
 
         roleIds_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00004000);
-        permissionIds_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00008000);
+        permissionIds_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00010000);
         return this;
       }
 
@@ -3049,6 +3135,7 @@ public final class SysUserOuterClass {
         com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser result = new com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
+        result.id_ = id_;
         result.deptId_ = deptId_;
         result.name_ = name_;
         result.identification_ = identification_;
@@ -3071,14 +3158,14 @@ public final class SysUserOuterClass {
           result.lastSignInAt_ = lastSignInAtBuilder_.build();
         }
         result.signInCount_ = signInCount_;
-        if (((bitField0_ & 0x00004000) != 0)) {
+        if (((bitField0_ & 0x00008000) != 0)) {
           roleIds_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00004000);
+          bitField0_ = (bitField0_ & ~0x00008000);
         }
         result.roleIds_ = roleIds_;
-        if (((bitField0_ & 0x00008000) != 0)) {
+        if (((bitField0_ & 0x00010000) != 0)) {
           permissionIds_.makeImmutable();
-          bitField0_ = (bitField0_ & ~0x00008000);
+          bitField0_ = (bitField0_ & ~0x00010000);
         }
         result.permissionIds_ = permissionIds_;
         result.bitField0_ = to_bitField0_;
@@ -3130,6 +3217,9 @@ public final class SysUserOuterClass {
 
       public Builder mergeFrom(com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser other) {
         if (other == com.qianxun.grpc.lib.sysUser.SysUserOuterClass.BaseSysUser.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
         if (other.getDeptId() != 0) {
           setDeptId(other.getDeptId());
         }
@@ -3184,7 +3274,7 @@ public final class SysUserOuterClass {
         if (!other.roleIds_.isEmpty()) {
           if (roleIds_.isEmpty()) {
             roleIds_ = other.roleIds_;
-            bitField0_ = (bitField0_ & ~0x00004000);
+            bitField0_ = (bitField0_ & ~0x00008000);
           } else {
             ensureRoleIdsIsMutable();
             roleIds_.addAll(other.roleIds_);
@@ -3194,7 +3284,7 @@ public final class SysUserOuterClass {
         if (!other.permissionIds_.isEmpty()) {
           if (permissionIds_.isEmpty()) {
             permissionIds_ = other.permissionIds_;
-            bitField0_ = (bitField0_ & ~0x00008000);
+            bitField0_ = (bitField0_ & ~0x00010000);
           } else {
             ensurePermissionIdsIsMutable();
             permissionIds_.addAll(other.permissionIds_);
@@ -3230,6 +3320,32 @@ public final class SysUserOuterClass {
         return this;
       }
       private int bitField0_;
+
+      private int id_ ;
+      /**
+       * <code>int32 id = 1;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
+        return this;
+      }
 
       private int deptId_ ;
       /**
@@ -4166,9 +4282,9 @@ public final class SysUserOuterClass {
 
       private com.google.protobuf.Internal.IntList roleIds_ = emptyIntList();
       private void ensureRoleIdsIsMutable() {
-        if (!((bitField0_ & 0x00004000) != 0)) {
+        if (!((bitField0_ & 0x00008000) != 0)) {
           roleIds_ = mutableCopy(roleIds_);
-          bitField0_ |= 0x00004000;
+          bitField0_ |= 0x00008000;
          }
       }
       /**
@@ -4176,7 +4292,7 @@ public final class SysUserOuterClass {
        */
       public java.util.List<java.lang.Integer>
           getRoleIdsList() {
-        return ((bitField0_ & 0x00004000) != 0) ?
+        return ((bitField0_ & 0x00008000) != 0) ?
                  java.util.Collections.unmodifiableList(roleIds_) : roleIds_;
       }
       /**
@@ -4226,16 +4342,16 @@ public final class SysUserOuterClass {
        */
       public Builder clearRoleIds() {
         roleIds_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         onChanged();
         return this;
       }
 
       private com.google.protobuf.Internal.IntList permissionIds_ = emptyIntList();
       private void ensurePermissionIdsIsMutable() {
-        if (!((bitField0_ & 0x00008000) != 0)) {
+        if (!((bitField0_ & 0x00010000) != 0)) {
           permissionIds_ = mutableCopy(permissionIds_);
-          bitField0_ |= 0x00008000;
+          bitField0_ |= 0x00010000;
          }
       }
       /**
@@ -4243,7 +4359,7 @@ public final class SysUserOuterClass {
        */
       public java.util.List<java.lang.Integer>
           getPermissionIdsList() {
-        return ((bitField0_ & 0x00008000) != 0) ?
+        return ((bitField0_ & 0x00010000) != 0) ?
                  java.util.Collections.unmodifiableList(permissionIds_) : permissionIds_;
       }
       /**
@@ -4293,7 +4409,7 @@ public final class SysUserOuterClass {
        */
       public Builder clearPermissionIds() {
         permissionIds_ = emptyIntList();
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00010000);
         onChanged();
         return this;
       }
@@ -4520,6 +4636,64 @@ public final class SysUserOuterClass {
      * <code>int32 sign_in_count = 18;</code>
      */
     int getSignInCount();
+
+    /**
+     * <code>string dept_name = 19;</code>
+     */
+    java.lang.String getDeptName();
+    /**
+     * <code>string dept_name = 19;</code>
+     */
+    com.google.protobuf.ByteString
+        getDeptNameBytes();
+
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> 
+        getRolesList();
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getRoles(int index);
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    int getRolesCount();
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    java.util.List<? extends com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> 
+        getRolesOrBuilderList();
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getRolesOrBuilder(
+        int index);
+
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    java.util.List<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> 
+        getMenusList();
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu getMenus(int index);
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    int getMenusCount();
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    java.util.List<? extends com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder> 
+        getMenusOrBuilderList();
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder getMenusOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code sysUser.SysUser}
@@ -4543,6 +4717,9 @@ public final class SysUserOuterClass {
       resetPasswordToken_ = "";
       passwordEncrypted_ = "";
       currentToken_ = "";
+      deptName_ = "";
+      roles_ = java.util.Collections.emptyList();
+      menus_ = java.util.Collections.emptyList();
     }
 
     @java.lang.Override
@@ -4700,6 +4877,30 @@ public final class SysUserOuterClass {
               signInCount_ = input.readInt32();
               break;
             }
+            case 154: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              deptName_ = s;
+              break;
+            }
+            case 162: {
+              if (!((mutable_bitField0_ & 0x00080000) != 0)) {
+                roles_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole>();
+                mutable_bitField0_ |= 0x00080000;
+              }
+              roles_.add(
+                  input.readMessage(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.parser(), extensionRegistry));
+              break;
+            }
+            case 170: {
+              if (!((mutable_bitField0_ & 0x00100000) != 0)) {
+                menus_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>();
+                mutable_bitField0_ |= 0x00100000;
+              }
+              menus_.add(
+                  input.readMessage(com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.parser(), extensionRegistry));
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -4715,6 +4916,12 @@ public final class SysUserOuterClass {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00080000) != 0)) {
+          roles_ = java.util.Collections.unmodifiableList(roles_);
+        }
+        if (((mutable_bitField0_ & 0x00100000) != 0)) {
+          menus_ = java.util.Collections.unmodifiableList(menus_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -4732,6 +4939,7 @@ public final class SysUserOuterClass {
               com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser.class, com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser.Builder.class);
     }
 
+    private int bitField0_;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
@@ -5167,6 +5375,110 @@ public final class SysUserOuterClass {
       return signInCount_;
     }
 
+    public static final int DEPT_NAME_FIELD_NUMBER = 19;
+    private volatile java.lang.Object deptName_;
+    /**
+     * <code>string dept_name = 19;</code>
+     */
+    public java.lang.String getDeptName() {
+      java.lang.Object ref = deptName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        deptName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string dept_name = 19;</code>
+     */
+    public com.google.protobuf.ByteString
+        getDeptNameBytes() {
+      java.lang.Object ref = deptName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        deptName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ROLES_FIELD_NUMBER = 20;
+    private java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> roles_;
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    public java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> getRolesList() {
+      return roles_;
+    }
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    public java.util.List<? extends com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> 
+        getRolesOrBuilderList() {
+      return roles_;
+    }
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    public int getRolesCount() {
+      return roles_.size();
+    }
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getRoles(int index) {
+      return roles_.get(index);
+    }
+    /**
+     * <code>repeated .sysRole.SysRole roles = 20;</code>
+     */
+    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getRolesOrBuilder(
+        int index) {
+      return roles_.get(index);
+    }
+
+    public static final int MENUS_FIELD_NUMBER = 21;
+    private java.util.List<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> menus_;
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    public java.util.List<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getMenusList() {
+      return menus_;
+    }
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    public java.util.List<? extends com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder> 
+        getMenusOrBuilderList() {
+      return menus_;
+    }
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    public int getMenusCount() {
+      return menus_.size();
+    }
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu getMenus(int index) {
+      return menus_.get(index);
+    }
+    /**
+     * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+     */
+    public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder getMenusOrBuilder(
+        int index) {
+      return menus_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5234,6 +5546,15 @@ public final class SysUserOuterClass {
       }
       if (signInCount_ != 0) {
         output.writeInt32(18, signInCount_);
+      }
+      if (!getDeptNameBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 19, deptName_);
+      }
+      for (int i = 0; i < roles_.size(); i++) {
+        output.writeMessage(20, roles_.get(i));
+      }
+      for (int i = 0; i < menus_.size(); i++) {
+        output.writeMessage(21, menus_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -5307,6 +5628,17 @@ public final class SysUserOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(18, signInCount_);
       }
+      if (!getDeptNameBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(19, deptName_);
+      }
+      for (int i = 0; i < roles_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, roles_.get(i));
+      }
+      for (int i = 0; i < menus_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(21, menus_.get(i));
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -5370,6 +5702,12 @@ public final class SysUserOuterClass {
       }
       if (getSignInCount()
           != other.getSignInCount()) return false;
+      if (!getDeptName()
+          .equals(other.getDeptName())) return false;
+      if (!getRolesList()
+          .equals(other.getRolesList())) return false;
+      if (!getMenusList()
+          .equals(other.getMenusList())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5425,6 +5763,16 @@ public final class SysUserOuterClass {
       }
       hash = (37 * hash) + SIGN_IN_COUNT_FIELD_NUMBER;
       hash = (53 * hash) + getSignInCount();
+      hash = (37 * hash) + DEPT_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDeptName().hashCode();
+      if (getRolesCount() > 0) {
+        hash = (37 * hash) + ROLES_FIELD_NUMBER;
+        hash = (53 * hash) + getRolesList().hashCode();
+      }
+      if (getMenusCount() > 0) {
+        hash = (37 * hash) + MENUS_FIELD_NUMBER;
+        hash = (53 * hash) + getMenusList().hashCode();
+      }
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5553,6 +5901,8 @@ public final class SysUserOuterClass {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessageV3
                 .alwaysUseFieldBuilders) {
+          getRolesFieldBuilder();
+          getMenusFieldBuilder();
         }
       }
       @java.lang.Override
@@ -5610,6 +5960,20 @@ public final class SysUserOuterClass {
         }
         signInCount_ = 0;
 
+        deptName_ = "";
+
+        if (rolesBuilder_ == null) {
+          roles_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00080000);
+        } else {
+          rolesBuilder_.clear();
+        }
+        if (menusBuilder_ == null) {
+          menus_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00100000);
+        } else {
+          menusBuilder_.clear();
+        }
         return this;
       }
 
@@ -5636,6 +6000,8 @@ public final class SysUserOuterClass {
       @java.lang.Override
       public com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser buildPartial() {
         com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser result = new com.qianxun.grpc.lib.sysUser.SysUserOuterClass.SysUser(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
         result.id_ = id_;
         result.deptId_ = deptId_;
         result.name_ = name_;
@@ -5670,6 +6036,26 @@ public final class SysUserOuterClass {
           result.lastSignInAt_ = lastSignInAtBuilder_.build();
         }
         result.signInCount_ = signInCount_;
+        result.deptName_ = deptName_;
+        if (rolesBuilder_ == null) {
+          if (((bitField0_ & 0x00080000) != 0)) {
+            roles_ = java.util.Collections.unmodifiableList(roles_);
+            bitField0_ = (bitField0_ & ~0x00080000);
+          }
+          result.roles_ = roles_;
+        } else {
+          result.roles_ = rolesBuilder_.build();
+        }
+        if (menusBuilder_ == null) {
+          if (((bitField0_ & 0x00100000) != 0)) {
+            menus_ = java.util.Collections.unmodifiableList(menus_);
+            bitField0_ = (bitField0_ & ~0x00100000);
+          }
+          result.menus_ = menus_;
+        } else {
+          result.menus_ = menusBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
@@ -5781,6 +6167,62 @@ public final class SysUserOuterClass {
         if (other.getSignInCount() != 0) {
           setSignInCount(other.getSignInCount());
         }
+        if (!other.getDeptName().isEmpty()) {
+          deptName_ = other.deptName_;
+          onChanged();
+        }
+        if (rolesBuilder_ == null) {
+          if (!other.roles_.isEmpty()) {
+            if (roles_.isEmpty()) {
+              roles_ = other.roles_;
+              bitField0_ = (bitField0_ & ~0x00080000);
+            } else {
+              ensureRolesIsMutable();
+              roles_.addAll(other.roles_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.roles_.isEmpty()) {
+            if (rolesBuilder_.isEmpty()) {
+              rolesBuilder_.dispose();
+              rolesBuilder_ = null;
+              roles_ = other.roles_;
+              bitField0_ = (bitField0_ & ~0x00080000);
+              rolesBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getRolesFieldBuilder() : null;
+            } else {
+              rolesBuilder_.addAllMessages(other.roles_);
+            }
+          }
+        }
+        if (menusBuilder_ == null) {
+          if (!other.menus_.isEmpty()) {
+            if (menus_.isEmpty()) {
+              menus_ = other.menus_;
+              bitField0_ = (bitField0_ & ~0x00100000);
+            } else {
+              ensureMenusIsMutable();
+              menus_.addAll(other.menus_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.menus_.isEmpty()) {
+            if (menusBuilder_.isEmpty()) {
+              menusBuilder_.dispose();
+              menusBuilder_ = null;
+              menus_ = other.menus_;
+              bitField0_ = (bitField0_ & ~0x00100000);
+              menusBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getMenusFieldBuilder() : null;
+            } else {
+              menusBuilder_.addAllMessages(other.menus_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -5809,6 +6251,7 @@ public final class SysUserOuterClass {
         }
         return this;
       }
+      private int bitField0_;
 
       private int id_ ;
       /**
@@ -7028,6 +7471,555 @@ public final class SysUserOuterClass {
         onChanged();
         return this;
       }
+
+      private java.lang.Object deptName_ = "";
+      /**
+       * <code>string dept_name = 19;</code>
+       */
+      public java.lang.String getDeptName() {
+        java.lang.Object ref = deptName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          deptName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string dept_name = 19;</code>
+       */
+      public com.google.protobuf.ByteString
+          getDeptNameBytes() {
+        java.lang.Object ref = deptName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          deptName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string dept_name = 19;</code>
+       */
+      public Builder setDeptName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        deptName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string dept_name = 19;</code>
+       */
+      public Builder clearDeptName() {
+        
+        deptName_ = getDefaultInstance().getDeptName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string dept_name = 19;</code>
+       */
+      public Builder setDeptNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        deptName_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> roles_ =
+        java.util.Collections.emptyList();
+      private void ensureRolesIsMutable() {
+        if (!((bitField0_ & 0x00080000) != 0)) {
+          roles_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole>(roles_);
+          bitField0_ |= 0x00080000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> rolesBuilder_;
+
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> getRolesList() {
+        if (rolesBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(roles_);
+        } else {
+          return rolesBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public int getRolesCount() {
+        if (rolesBuilder_ == null) {
+          return roles_.size();
+        } else {
+          return rolesBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole getRoles(int index) {
+        if (rolesBuilder_ == null) {
+          return roles_.get(index);
+        } else {
+          return rolesBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder setRoles(
+          int index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole value) {
+        if (rolesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRolesIsMutable();
+          roles_.set(index, value);
+          onChanged();
+        } else {
+          rolesBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder setRoles(
+          int index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder builderForValue) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          roles_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          rolesBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder addRoles(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole value) {
+        if (rolesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRolesIsMutable();
+          roles_.add(value);
+          onChanged();
+        } else {
+          rolesBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder addRoles(
+          int index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole value) {
+        if (rolesBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRolesIsMutable();
+          roles_.add(index, value);
+          onChanged();
+        } else {
+          rolesBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder addRoles(
+          com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder builderForValue) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          roles_.add(builderForValue.build());
+          onChanged();
+        } else {
+          rolesBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder addRoles(
+          int index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder builderForValue) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          roles_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          rolesBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder addAllRoles(
+          java.lang.Iterable<? extends com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole> values) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, roles_);
+          onChanged();
+        } else {
+          rolesBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder clearRoles() {
+        if (rolesBuilder_ == null) {
+          roles_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00080000);
+          onChanged();
+        } else {
+          rolesBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public Builder removeRoles(int index) {
+        if (rolesBuilder_ == null) {
+          ensureRolesIsMutable();
+          roles_.remove(index);
+          onChanged();
+        } else {
+          rolesBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder getRolesBuilder(
+          int index) {
+        return getRolesFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder getRolesOrBuilder(
+          int index) {
+        if (rolesBuilder_ == null) {
+          return roles_.get(index);  } else {
+          return rolesBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public java.util.List<? extends com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> 
+           getRolesOrBuilderList() {
+        if (rolesBuilder_ != null) {
+          return rolesBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(roles_);
+        }
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder addRolesBuilder() {
+        return getRolesFieldBuilder().addBuilder(
+            com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder addRolesBuilder(
+          int index) {
+        return getRolesFieldBuilder().addBuilder(
+            index, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .sysRole.SysRole roles = 20;</code>
+       */
+      public java.util.List<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder> 
+           getRolesBuilderList() {
+        return getRolesFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder> 
+          getRolesFieldBuilder() {
+        if (rolesBuilder_ == null) {
+          rolesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRole.Builder, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.SysRoleOrBuilder>(
+                  roles_,
+                  ((bitField0_ & 0x00080000) != 0),
+                  getParentForChildren(),
+                  isClean());
+          roles_ = null;
+        }
+        return rolesBuilder_;
+      }
+
+      private java.util.List<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> menus_ =
+        java.util.Collections.emptyList();
+      private void ensureMenusIsMutable() {
+        if (!((bitField0_ & 0x00100000) != 0)) {
+          menus_ = new java.util.ArrayList<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>(menus_);
+          bitField0_ |= 0x00100000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder> menusBuilder_;
+
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public java.util.List<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getMenusList() {
+        if (menusBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(menus_);
+        } else {
+          return menusBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public int getMenusCount() {
+        if (menusBuilder_ == null) {
+          return menus_.size();
+        } else {
+          return menusBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu getMenus(int index) {
+        if (menusBuilder_ == null) {
+          return menus_.get(index);
+        } else {
+          return menusBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder setMenus(
+          int index, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu value) {
+        if (menusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMenusIsMutable();
+          menus_.set(index, value);
+          onChanged();
+        } else {
+          menusBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder setMenus(
+          int index, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder builderForValue) {
+        if (menusBuilder_ == null) {
+          ensureMenusIsMutable();
+          menus_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          menusBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder addMenus(com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu value) {
+        if (menusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMenusIsMutable();
+          menus_.add(value);
+          onChanged();
+        } else {
+          menusBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder addMenus(
+          int index, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu value) {
+        if (menusBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMenusIsMutable();
+          menus_.add(index, value);
+          onChanged();
+        } else {
+          menusBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder addMenus(
+          com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder builderForValue) {
+        if (menusBuilder_ == null) {
+          ensureMenusIsMutable();
+          menus_.add(builderForValue.build());
+          onChanged();
+        } else {
+          menusBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder addMenus(
+          int index, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder builderForValue) {
+        if (menusBuilder_ == null) {
+          ensureMenusIsMutable();
+          menus_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          menusBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder addAllMenus(
+          java.lang.Iterable<? extends com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> values) {
+        if (menusBuilder_ == null) {
+          ensureMenusIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, menus_);
+          onChanged();
+        } else {
+          menusBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder clearMenus() {
+        if (menusBuilder_ == null) {
+          menus_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00100000);
+          onChanged();
+        } else {
+          menusBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public Builder removeMenus(int index) {
+        if (menusBuilder_ == null) {
+          ensureMenusIsMutable();
+          menus_.remove(index);
+          onChanged();
+        } else {
+          menusBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder getMenusBuilder(
+          int index) {
+        return getMenusFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder getMenusOrBuilder(
+          int index) {
+        if (menusBuilder_ == null) {
+          return menus_.get(index);  } else {
+          return menusBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public java.util.List<? extends com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder> 
+           getMenusOrBuilderList() {
+        if (menusBuilder_ != null) {
+          return menusBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(menus_);
+        }
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder addMenusBuilder() {
+        return getMenusFieldBuilder().addBuilder(
+            com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder addMenusBuilder(
+          int index) {
+        return getMenusFieldBuilder().addBuilder(
+            index, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .sysMenu.SysMenu menus = 21;</code>
+       */
+      public java.util.List<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder> 
+           getMenusBuilderList() {
+        return getMenusFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder> 
+          getMenusFieldBuilder() {
+        if (menusBuilder_ == null) {
+          menusBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.Builder, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder>(
+                  menus_,
+                  ((bitField0_ & 0x00100000) != 0),
+                  getParentForChildren(),
+                  isClean());
+          menus_ = null;
+        }
+        return menusBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -7967,42 +8959,46 @@ public final class SysUserOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\016sys_user.proto\022\007sysUser\032\037google/protob" +
-      "uf/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
-      "\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_s" +
-      "ize\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"*\n\006Result\022\017\n\007suc" +
-      "cess\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\224\003\n\013BaseSysU" +
-      "ser\022\017\n\007dept_id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\026\n\016id" +
-      "entification\030\004 \001(\t\022\r\n\005phone\030\005 \001(\t\022\r\n\005ema" +
-      "il\030\006 \001(\t\022\016\n\006avatar\030\007 \001(\t\022\016\n\006locked\030\010 \001(\005" +
-      "\022\021\n\tuser_name\030\n \001(\t\022\034\n\024reset_password_to" +
-      "ken\030\013 \001(\t\022\032\n\022password_encrypted\030\014 \001(\t\022\025\n" +
-      "\rcurrent_token\030\017 \001(\t\0226\n\022current_sign_in_" +
-      "at\030\020 \001(\0132\032.google.protobuf.Timestamp\0223\n\017" +
-      "last_sign_in_at\030\021 \001(\0132\032.google.protobuf." +
-      "Timestamp\022\025\n\rsign_in_count\030\022 \001(\005\022\020\n\010role" +
-      "_ids\030\023 \003(\005\022\026\n\016permission_ids\030\024 \003(\005\"\343\003\n\007S" +
-      "ysUser\022\n\n\002id\030\001 \001(\005\022\017\n\007dept_id\030\002 \001(\005\022\014\n\004n" +
-      "ame\030\003 \001(\t\022\026\n\016identification\030\004 \001(\t\022\r\n\005pho" +
-      "ne\030\005 \001(\t\022\r\n\005email\030\006 \001(\t\022\016\n\006avatar\030\007 \001(\t\022" +
-      "\016\n\006locked\030\010 \001(\005\022\017\n\007deleted\030\t \001(\005\022\021\n\tuser" +
-      "_name\030\n \001(\t\022\034\n\024reset_password_token\030\013 \001(" +
-      "\t\022\032\n\022password_encrypted\030\014 \001(\t\022.\n\ncreated" +
-      "_at\030\r \001(\0132\032.google.protobuf.Timestamp\022.\n" +
-      "\nupdated_at\030\016 \001(\0132\032.google.protobuf.Time" +
-      "stamp\022\025\n\rcurrent_token\030\017 \001(\t\0226\n\022current_" +
-      "sign_in_at\030\020 \001(\0132\032.google.protobuf.Times" +
-      "tamp\0223\n\017last_sign_in_at\030\021 \001(\0132\032.google.p" +
-      "rotobuf.Timestamp\022\025\n\rsign_in_count\030\022 \001(\005" +
-      "\">\n\010PageList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_users" +
-      "\030\002 \003(\0132\020.sysUser.SysUser2\207\002\n\016SysUserServ" +
-      "ice\022/\n\007GetById\022\020.sysUser.ByIdReq\032\020.sysUs" +
-      "er.SysUser\"\000\0223\n\007GetList\022\023.sysUser.GetLis" +
-      "tReq\032\021.sysUser.PageList\"\000\0221\n\006Insert\022\024.sy" +
-      "sUser.BaseSysUser\032\017.sysUser.Result\"\000\022-\n\006" +
-      "Update\022\020.sysUser.SysUser\032\017.sysUser.Resul" +
-      "t\"\000\022-\n\006Delete\022\020.sysUser.ByIdReq\032\017.sysUse" +
-      "r.Result\"\000B\036\n\034com.qianxun.grpc.lib.sysUs" +
-      "erP\000b\006proto3"
+      "uf/timestamp.proto\032\016sys_role.proto\032\016sys_" +
+      "menu.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(\005\"M\n\nGet" +
+      "ListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(" +
+      "\005\022\014\n\004page\030\003 \001(\005\022\017\n\007dept_id\030\004 \001(\005\"*\n\006Resu" +
+      "lt\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\240\003\n" +
+      "\013BaseSysUser\022\n\n\002id\030\001 \001(\005\022\017\n\007dept_id\030\002 \001(" +
+      "\005\022\014\n\004name\030\003 \001(\t\022\026\n\016identification\030\004 \001(\t\022" +
+      "\r\n\005phone\030\005 \001(\t\022\r\n\005email\030\006 \001(\t\022\016\n\006avatar\030" +
+      "\007 \001(\t\022\016\n\006locked\030\010 \001(\005\022\021\n\tuser_name\030\n \001(\t" +
+      "\022\034\n\024reset_password_token\030\013 \001(\t\022\032\n\022passwo" +
+      "rd_encrypted\030\014 \001(\t\022\025\n\rcurrent_token\030\017 \001(" +
+      "\t\0226\n\022current_sign_in_at\030\020 \001(\0132\032.google.p" +
+      "rotobuf.Timestamp\0223\n\017last_sign_in_at\030\021 \001" +
+      "(\0132\032.google.protobuf.Timestamp\022\025\n\rsign_i" +
+      "n_count\030\022 \001(\005\022\020\n\010role_ids\030\023 \003(\005\022\026\n\016permi" +
+      "ssion_ids\030\024 \003(\005\"\270\004\n\007SysUser\022\n\n\002id\030\001 \001(\005\022" +
+      "\017\n\007dept_id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\026\n\016identi" +
+      "fication\030\004 \001(\t\022\r\n\005phone\030\005 \001(\t\022\r\n\005email\030\006" +
+      " \001(\t\022\016\n\006avatar\030\007 \001(\t\022\016\n\006locked\030\010 \001(\005\022\017\n\007" +
+      "deleted\030\t \001(\005\022\021\n\tuser_name\030\n \001(\t\022\034\n\024rese" +
+      "t_password_token\030\013 \001(\t\022\032\n\022password_encry" +
+      "pted\030\014 \001(\t\022.\n\ncreated_at\030\r \001(\0132\032.google." +
+      "protobuf.Timestamp\022.\n\nupdated_at\030\016 \001(\0132\032" +
+      ".google.protobuf.Timestamp\022\025\n\rcurrent_to" +
+      "ken\030\017 \001(\t\0226\n\022current_sign_in_at\030\020 \001(\0132\032." +
+      "google.protobuf.Timestamp\0223\n\017last_sign_i" +
+      "n_at\030\021 \001(\0132\032.google.protobuf.Timestamp\022\025" +
+      "\n\rsign_in_count\030\022 \001(\005\022\021\n\tdept_name\030\023 \001(\t" +
+      "\022\037\n\005roles\030\024 \003(\0132\020.sysRole.SysRole\022\037\n\005men" +
+      "us\030\025 \003(\0132\020.sysMenu.SysMenu\">\n\010PageList\022\r" +
+      "\n\005total\030\001 \001(\005\022#\n\tsys_users\030\002 \003(\0132\020.sysUs" +
+      "er.SysUser2\213\002\n\016SysUserService\022/\n\007GetById" +
+      "\022\020.sysUser.ByIdReq\032\020.sysUser.SysUser\"\000\0223" +
+      "\n\007GetList\022\023.sysUser.GetListReq\032\021.sysUser" +
+      ".PageList\"\000\0221\n\006Insert\022\024.sysUser.BaseSysU" +
+      "ser\032\017.sysUser.Result\"\000\0221\n\006Update\022\024.sysUs" +
+      "er.BaseSysUser\032\017.sysUser.Result\"\000\022-\n\006Del" +
+      "ete\022\020.sysUser.ByIdReq\032\017.sysUser.Result\"\000" +
+      "B\036\n\034com.qianxun.grpc.lib.sysUserP\000b\006prot" +
+      "o3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -8016,6 +9012,8 @@ public final class SysUserOuterClass {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
+          com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.getDescriptor(),
+          com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.getDescriptor(),
         }, assigner);
     internal_static_sysUser_ByIdReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -8028,7 +9026,7 @@ public final class SysUserOuterClass {
     internal_static_sysUser_GetListReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysUser_GetListReq_descriptor,
-        new java.lang.String[] { "Query", "PageSize", "Page", });
+        new java.lang.String[] { "Query", "PageSize", "Page", "DeptId", });
     internal_static_sysUser_Result_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_sysUser_Result_fieldAccessorTable = new
@@ -8040,13 +9038,13 @@ public final class SysUserOuterClass {
     internal_static_sysUser_BaseSysUser_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysUser_BaseSysUser_descriptor,
-        new java.lang.String[] { "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "RoleIds", "PermissionIds", });
+        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "RoleIds", "PermissionIds", });
     internal_static_sysUser_SysUser_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_sysUser_SysUser_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysUser_SysUser_descriptor,
-        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "Deleted", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CreatedAt", "UpdatedAt", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", });
+        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "Deleted", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CreatedAt", "UpdatedAt", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "DeptName", "Roles", "Menus", });
     internal_static_sysUser_PageList_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_sysUser_PageList_fieldAccessorTable = new
@@ -8054,6 +9052,8 @@ public final class SysUserOuterClass {
         internal_static_sysUser_PageList_descriptor,
         new java.lang.String[] { "Total", "SysUsers", });
     com.google.protobuf.TimestampProto.getDescriptor();
+    com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.getDescriptor();
+    com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

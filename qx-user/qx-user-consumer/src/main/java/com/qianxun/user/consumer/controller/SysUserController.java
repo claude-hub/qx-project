@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 /**
  * @author Cloudy
@@ -73,8 +74,8 @@ public class SysUserController {
     @PutMapping(value = "/update")
     public JSONResult updateSysUser(@Valid SysUserUpdateInputDTO input) {
         JSONResult result = new JSONResult();
-        SysUserOuterClass.SysUser sysUser = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.SysUser.class);
-        result.setData(grpcSysUserClient.updateSysUser(sysUser));
+        SysUserOuterClass.BaseSysUser baseSysUser = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.BaseSysUser.class);
+        result.setData(grpcSysUserClient.updateSysUser(baseSysUser));
         return result;
     }
 

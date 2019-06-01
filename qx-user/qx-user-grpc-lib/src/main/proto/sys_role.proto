@@ -7,11 +7,16 @@ package sysRole;
 import public "google/protobuf/timestamp.proto";
 
 service SysRoleService {
-    rpc GetById(ByIdReq) returns (SysRole){}
-    rpc GetList(GetListReq) returns (PageList) {}
-    rpc Insert(BaseSysRole) returns (Result) {}
-    rpc Update(SysRole) returns (Result) {}
-    rpc Delete(ByIdReq) returns (Result) {}
+    rpc GetById (ByIdReq) returns (SysRole) {
+    }
+    rpc GetList (GetListReq) returns (PageList) {
+    }
+    rpc Insert (BaseSysRole) returns (Result) {
+    }
+    rpc Update (SysRole) returns (Result) {
+    }
+    rpc Delete (ByIdReq) returns (Result) {
+    }
 }
 
 message ByIdReq {
@@ -30,20 +35,20 @@ message Result {
 
 // 新增时,使用的message,以保证用户不传入多余信息
 message BaseSysRole {
-                                string name = 2;
-                                                string role_desc = 3;
-                                                string role_code = 4;
-                                }
+    string name = 2;
+    string role_desc = 3;
+    string role_code = 4;
+}
 
 message SysRole {
-        int32 id = 1;
-                                string name = 2;
-                        string role_desc = 3;
-                        string role_code = 4;
-                            google.protobuf.Timestamp created_at = 5;
-                        google.protobuf.Timestamp updated_at = 6;
-            int32 deleted = 7;
-                }
+    int32 id = 1;
+    string name = 2;
+    string role_desc = 3;
+    string role_code = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
+    int32 deleted = 7;
+}
 
 message PageList {
     int32 total = 1;
