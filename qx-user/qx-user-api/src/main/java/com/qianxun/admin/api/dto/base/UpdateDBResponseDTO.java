@@ -14,4 +14,9 @@ public class UpdateDBResponseDTO implements Serializable {
      * 是否成功
      */
     private Boolean success;
+
+    /**
+     * 返回消息
+     */
+    private String message;
 }

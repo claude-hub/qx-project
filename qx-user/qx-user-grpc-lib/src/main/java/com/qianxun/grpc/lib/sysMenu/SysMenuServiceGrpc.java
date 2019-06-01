@@ -219,6 +219,38 @@ public final class SysMenuServiceGrpc {
      return getGetUserMenusMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq,
+      com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getGetAllListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllList",
+      requestType = com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq.class,
+      responseType = com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq,
+      com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getGetAllListMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getGetAllListMethod;
+    if ((getGetAllListMethod = SysMenuServiceGrpc.getGetAllListMethod) == null) {
+      synchronized (SysMenuServiceGrpc.class) {
+        if ((getGetAllListMethod = SysMenuServiceGrpc.getGetAllListMethod) == null) {
+          SysMenuServiceGrpc.getGetAllListMethod = getGetAllListMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq, com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "sysMenu.SysMenuService", "GetAllList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.getDefaultInstance()))
+                  .setSchemaDescriptor(new SysMenuServiceMethodDescriptorSupplier("GetAllList"))
+                  .build();
+          }
+        }
+     }
+     return getGetAllListMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -288,6 +320,13 @@ public final class SysMenuServiceGrpc {
       asyncUnimplementedUnaryCall(getGetUserMenusMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getAllList(com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetAllListMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -332,6 +371,13 @@ public final class SysMenuServiceGrpc {
                 com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq,
                 com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>(
                   this, METHODID_GET_USER_MENUS)))
+          .addMethod(
+            getGetAllListMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq,
+                com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>(
+                  this, METHODID_GET_ALL_LIST)))
           .build();
     }
   }
@@ -401,6 +447,14 @@ public final class SysMenuServiceGrpc {
       asyncServerStreamingCall(
           getChannel().newCall(getGetUserMenusMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getAllList(com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getGetAllListMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -462,6 +516,14 @@ public final class SysMenuServiceGrpc {
         com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq request) {
       return blockingServerStreamingCall(
           getChannel(), getGetUserMenusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu> getAllList(
+        com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq request) {
+      return blockingServerStreamingCall(
+          getChannel(), getGetAllListMethod(), getCallOptions(), request);
     }
   }
 
@@ -530,6 +592,7 @@ public final class SysMenuServiceGrpc {
   private static final int METHODID_UPDATE = 3;
   private static final int METHODID_DELETE = 4;
   private static final int METHODID_GET_USER_MENUS = 5;
+  private static final int METHODID_GET_ALL_LIST = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -570,6 +633,10 @@ public final class SysMenuServiceGrpc {
           break;
         case METHODID_GET_USER_MENUS:
           serviceImpl.getUserMenus((com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.ByIdReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>) responseObserver);
+          break;
+        case METHODID_GET_ALL_LIST:
+          serviceImpl.getAllList((com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.GetListReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu>) responseObserver);
           break;
         default:
@@ -639,6 +706,7 @@ public final class SysMenuServiceGrpc {
               .addMethod(getUpdateMethod())
               .addMethod(getDeleteMethod())
               .addMethod(getGetUserMenusMethod())
+              .addMethod(getGetAllListMethod())
               .build();
         }
       }

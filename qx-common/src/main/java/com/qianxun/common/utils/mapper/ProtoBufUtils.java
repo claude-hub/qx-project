@@ -37,7 +37,7 @@ public class ProtoBufUtils {
             if (modelFields != null && modelFields.length > 0) {
                 for (Field modelField : modelFields) {
                     String fieldName = modelField.getName();
-                    if(fieldName.equals("serialVersionUID")){
+                    if(fieldName.equals("serialVersionUID") || fieldName.equals("token")){
                         continue;
                     }
                     String upperName = fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
@@ -129,7 +129,7 @@ public class ProtoBufUtils {
                     // 小驼峰命名
                     String lowerName = modelField.getName();
                     // 大驼峰命名
-                    if(lowerName.equals("serialVersionUID")){
+                    if(lowerName.equals("serialVersionUID") || lowerName.equals("token")){
                         continue;
                     }
                     String upperName = lowerName.substring(0, 1).toUpperCase() + lowerName.substring(1);

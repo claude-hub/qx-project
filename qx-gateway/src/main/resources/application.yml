@@ -6,7 +6,7 @@ spring:
     host: 10.0.75.1
     timeout: 5000
 server:
-  port: 9999
+  port: 9991
 
 ---
 spring:

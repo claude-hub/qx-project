@@ -1,16 +1,20 @@
 package com.qianxun.user.consumer.controller;
 
 import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
+import com.qianxun.admin.api.dto.extend.DeptTree;
 import com.qianxun.admin.api.dto.sysDept.request.*;
 import com.qianxun.admin.api.dto.sysDept.response.SysDeptResponseDTO;
 import com.qianxun.admin.api.entity.SysDept;
+import com.qianxun.common.utils.mapper.BeanMapper;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysDept.SysDeptOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysDeptClient;
+import com.qianxun.user.consumer.utils.TreeUtil;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * @author Cloudy
@@ -86,6 +90,22 @@ public class SysDeptController {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.ByIdReq.class);
         result.setData(grpcSysDeptClient.deleteSysDept(req));
+        return result;
+    }
+
+    /**
+     * 返回树形菜单集合
+     *
+     * @return 树形菜单
+     */
+    @GetMapping(value = "/tree")
+    public JSONResult listDeptTrees(@Valid SysDeptQueryInputDTO input) {
+        JSONResult result = new JSONResult();
+        SysDeptOuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.GetListReq.class);
+        SysDeptResponseDTO responseDTO = grpcSysDeptClient.getSysDeptList(getListReq);
+        List<SysDept> deptList = responseDTO.getSysDepts();
+        List<DeptTree> trees = BeanMapper.mapList(deptList, DeptTree.class);
+        result.setData(TreeUtil.buildByLoop(trees, 0));
         return result;
     }
 }

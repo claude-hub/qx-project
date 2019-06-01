@@ -33,6 +33,9 @@ public class AuthUserController {
         JSONResult data = new JSONResult();
         AuthUserOuterClass.SignInReq signInReq = ProtoBufUtils.toProtoBuffer(input, AuthUserOuterClass.SignInReq.class);
         SysUserDTO sysUserDTO = grpcAuthUserClient.signIn(signInReq);
+        if(sysUserDTO.getId() == null){
+            throw new Exception("用户名或密码不正确!");
+        }
         data.setData(sysUserDTO);
         return data;
     }

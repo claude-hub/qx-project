@@ -1,5 +1,6 @@
 package com.qianxun.user.consumer.grpc.client;
 
+import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.sysUser.response.SysUserResponseDTO;
 import com.qianxun.admin.api.entity.SysUser;
 import com.qianxun.common.utils.mapper.ProtoBufUtils;
@@ -29,10 +30,10 @@ public class GrpcSysUserClient {
         return ProtoBufUtils.fromProtoBuffer(pageList, SysUserResponseDTO.class);
     }
 
-    public Boolean addSysUser(SysUserOuterClass.BaseSysUser baseSysUser) {
+    public UpdateDBResponseDTO addSysUser(SysUserOuterClass.BaseSysUser baseSysUser) {
         SysUserServiceGrpc.SysUserServiceBlockingStub stub = SysUserServiceGrpc.newBlockingStub(serverChannel);
         SysUserOuterClass.Result res = stub.insert(baseSysUser);
-        return res.getSuccess();
+        return ProtoBufUtils.fromProtoBuffer(res, UpdateDBResponseDTO.class);
     }
 
     public Boolean updateSysUser(SysUserOuterClass.SysUser role) {

@@ -68,4 +68,16 @@ public class GrpcSysMenuClient {
         }
         return menus;
     }
+
+    public List<SysMenu> getAllMenus() {
+        SysMenuServiceGrpc.SysMenuServiceBlockingStub stub = SysMenuServiceGrpc.newBlockingStub(serverChannel);
+        Iterator<SysMenuOuterClass.SysMenu> iterator;
+        List<SysMenu> menus = new ArrayList<>();
+        iterator = stub.getAllList(null);
+        while (iterator.hasNext()) {
+            SysMenuOuterClass.SysMenu sysMenu = iterator.next();
+            menus.add(ProtoBufUtils.fromProtoBuffer(sysMenu, SysMenu.class));
+        }
+        return menus;
+    }
 }

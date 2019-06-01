@@ -120,4 +120,19 @@ public class GrpcSysMenuService extends SysMenuServiceGrpc.SysMenuServiceImplBas
         }
         responseObserver.onCompleted();
     }
+
+    /**
+     * 获取所有菜单列表
+     * @param request
+     * @param responseObserver
+     */
+    @Override
+    public void getAllList(SysMenuOuterClass.GetListReq request,
+                             StreamObserver<SysMenuOuterClass.SysMenu> responseObserver) {
+        List<SysMenu> menus = sysMenuService.list();
+        for (SysMenu menuItem : menus) {
+            responseObserver.onNext(ProtoBufUtils.toProtoBuffer(menuItem, SysMenuOuterClass.SysMenu.class));
+        }
+        responseObserver.onCompleted();
+    }
 }

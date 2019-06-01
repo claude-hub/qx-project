@@ -117,4 +117,17 @@ public class SysMenuController {
         result.setData(TreeUtil.buildByLoop(sysMenus, -1));
         return result;
     }
+
+    /**
+     * 获取树形菜单
+     * @return
+     */
+    @GetMapping(value = "/tree")
+    public JSONResult getMenuTree() {
+        JSONResult result = new JSONResult();
+        List<SysMenu> menuList = grpcSysMenuClient.getAllMenus();
+        List<SysMenuDTO> sysMenus= BeanMapper.mapList(menuList, SysMenuDTO.class);
+        result.setData(TreeUtil.buildByLoop(sysMenus, -1));
+        return result;
+    }
 }

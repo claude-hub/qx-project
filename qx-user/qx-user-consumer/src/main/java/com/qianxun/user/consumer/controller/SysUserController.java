@@ -1,6 +1,7 @@
 package com.qianxun.user.consumer.controller;
 
 import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
+import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.sysUser.request.*;
 import com.qianxun.admin.api.dto.sysUser.response.SysUserResponseDTO;
 import com.qianxun.admin.api.entity.SysUser;
@@ -9,6 +10,7 @@ import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysUser.SysUserOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysUserClient;
 import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
@@ -36,7 +38,7 @@ public class SysUserController {
     }
 
     /**
-    * 根据语言分页查询
+    * 分页查询
     * @param input
     * @return
     */
@@ -50,18 +52,18 @@ public class SysUserController {
         return result;
     }
 
-    /**
-    * 根据语言新增
-    * @param input
-    * @return
-    */
-    @PostMapping(value = "/add")
-    public JSONResult addSysUser(@Valid SysUserAddInputDTO input) {
-        JSONResult result = new JSONResult();
-        SysUserOuterClass.BaseSysUser baseSysUser = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.BaseSysUser.class);
-        result.setData(grpcSysUserClient.addSysUser(baseSysUser));
-        return result;
-    }
+//    /**
+//    * 新增
+//    * @param input
+//    * @return
+//    */
+//    @PostMapping(value = "/add")
+//    public JSONResult addSysUser(@Valid SysUserAddInputDTO input) {
+//        JSONResult result = new JSONResult();
+//        SysUserOuterClass.BaseSysUser baseSysUser = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.BaseSysUser.class);
+//        result.setData(grpcSysUserClient.addSysUser(baseSysUser));
+//        return result;
+//    }
 
     /**
     * 更新
@@ -81,11 +83,29 @@ public class SysUserController {
     * @param input
     * @return
     */
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/delete")
     public JSONResult deleteSysUser(@Valid SysUserDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysUserOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.ByIdReq.class);
         result.setData(grpcSysUserClient.deleteSysUser(req));
+        return result;
+    }
+
+    /**
+     * 新增员工,包含权限
+     * @param input
+     * @return
+     */
+    @PostMapping(value = "/add")
+    @SneakyThrows
+    public JSONResult addSysUser(@Valid SysUserAddInputDTO input) {
+        JSONResult result = new JSONResult();
+        SysUserOuterClass.BaseSysUser baseSysUser = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.BaseSysUser.class);
+        UpdateDBResponseDTO dto = grpcSysUserClient.addSysUser(baseSysUser);
+        if(!dto.getSuccess()){
+            throw new Exception(dto.getMessage());
+        }
+        result.setData(true);
         return result;
     }
 }

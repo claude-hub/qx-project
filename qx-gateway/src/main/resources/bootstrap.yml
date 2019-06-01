@@ -61,3 +61,11 @@ eureka:
   client:
     service-url:
       defaultZone: http://qx:qx@10.0.75.1:7001/eureka/,http://qx:qx@10.0.75.1:7002/eureka/,http://qx:qx@10.0.75.1:7003/eureka/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000

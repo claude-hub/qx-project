@@ -8,4 +8,9 @@ import java.io.Serializable;
  *  */
 public class SysUserQueryInputDTO extends BaseQueryInputDTO implements Serializable{
 
+    /**
+     * 部门id
+     */
+    private Integer deptId;
+
 }

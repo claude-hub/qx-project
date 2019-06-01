@@ -65,7 +65,7 @@ public class ValidateCaptchaFilter extends AbstractGatewayFilterFactory {
     private void checkCode(ServerHttpRequest request) {
         String code = request.getQueryParams().getFirst("captcha");
         if (StrUtil.isBlank(code)) {
-            throw new ValidateCaptchaException("captcha is null");
+            throw new ValidateCaptchaException("验证码为空");
         }
 
         String randomStr = request.getQueryParams().getFirst("randomStr");
@@ -75,24 +75,24 @@ public class ValidateCaptchaFilter extends AbstractGatewayFilterFactory {
         String DEFAULT_CODE_KEY = "captcha_";
         String key = DEFAULT_CODE_KEY + randomStr;
         if (!redisTemplate.hasKey(key)) {
-            throw new ValidateCaptchaException("captcha not validate");
+            throw new ValidateCaptchaException("验证码不正确");
         }
 
         Object codeObj = redisTemplate.opsForValue().get(key);
 
         if (codeObj == null) {
-            throw new ValidateCaptchaException("captcha not validate");
+            throw new ValidateCaptchaException("验证码不正确");
         }
 
         String saveCode = codeObj.toString();
         if (StrUtil.isBlank(saveCode)) {
             redisTemplate.delete(key);
-            throw new ValidateCaptchaException("captcha not validate");
+            throw new ValidateCaptchaException("验证码不正确");
         }
 
         if (!StrUtil.equals(saveCode, code)) {
             redisTemplate.delete(key);
-            throw new ValidateCaptchaException("captcha not validate");
+            throw new ValidateCaptchaException("验证码不正确");
         }
 
         redisTemplate.delete(key);

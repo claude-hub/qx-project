@@ -19,7 +19,7 @@ public class TreeNode {
     protected String label;
 
     /**
-     * 菜单名
+     * 名称
      */
     private String name;
     protected List<TreeNode> children = new ArrayList<TreeNode>();
