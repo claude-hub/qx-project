@@ -2,6 +2,8 @@ package com.qianxun.admin.api.dto.sysUser.request;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.Version;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import com.qianxun.admin.api.dto.base.RequestDTO;
 
@@ -56,11 +58,6 @@ public class SysUserUpdateInputDTO extends RequestDTO implements Serializable {
     @ApiModelProperty(value = "加密后的密码", required = true)
     private String passwordEncrypted;
 
-    @NotNull(message = "上此更新的时间不能为空")
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @ApiModelProperty(value = "修改时间", required = true)
-    private Date updatedAt;
-
     @ApiModelProperty(value = "当前的token")
     private String currentToken;
 
@@ -72,6 +69,14 @@ public class SysUserUpdateInputDTO extends RequestDTO implements Serializable {
 
     @ApiModelProperty(value = "累积登录次数")
     private Integer signInCount;
+
+    /**
+     * 乐观锁
+     */
+    @Version
+    @ApiModelProperty(value = "乐观锁", required = true)
+    @NotNull(message = "乐观锁版本不能为空")
+    private Integer version;
 
     @ApiModelProperty(value = "角色列表")
     private List<Integer> roleIds;

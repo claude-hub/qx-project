@@ -2376,6 +2376,11 @@ public final class SysDeptOuterClass {
      * <code>int32 deleted = 7;</code>
      */
     int getDeleted();
+
+    /**
+     * <code>int32 version = 8;</code>
+     */
+    int getVersion();
   }
   /**
    * Protobuf type {@code sysDept.SysDept}
@@ -2467,6 +2472,11 @@ public final class SysDeptOuterClass {
             case 56: {
 
               deleted_ = input.readInt32();
+              break;
+            }
+            case 64: {
+
+              version_ = input.readInt32();
               break;
             }
             default: {
@@ -2613,6 +2623,15 @@ public final class SysDeptOuterClass {
       return deleted_;
     }
 
+    public static final int VERSION_FIELD_NUMBER = 8;
+    private int version_;
+    /**
+     * <code>int32 version = 8;</code>
+     */
+    public int getVersion() {
+      return version_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2647,6 +2666,9 @@ public final class SysDeptOuterClass {
       }
       if (deleted_ != 0) {
         output.writeInt32(7, deleted_);
+      }
+      if (version_ != 0) {
+        output.writeInt32(8, version_);
       }
       unknownFields.writeTo(output);
     }
@@ -2684,6 +2706,10 @@ public final class SysDeptOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, deleted_);
       }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, version_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2719,6 +2745,8 @@ public final class SysDeptOuterClass {
       }
       if (getDeleted()
           != other.getDeleted()) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2748,6 +2776,8 @@ public final class SysDeptOuterClass {
       }
       hash = (37 * hash) + DELETED_FIELD_NUMBER;
       hash = (53 * hash) + getDeleted();
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2903,6 +2933,8 @@ public final class SysDeptOuterClass {
         }
         deleted_ = 0;
 
+        version_ = 0;
+
         return this;
       }
 
@@ -2944,6 +2976,7 @@ public final class SysDeptOuterClass {
           result.updatedAt_ = updatedAtBuilder_.build();
         }
         result.deleted_ = deleted_;
+        result.version_ = version_;
         onBuilt();
         return result;
       }
@@ -3013,6 +3046,9 @@ public final class SysDeptOuterClass {
         }
         if (other.getDeleted() != 0) {
           setDeleted(other.getDeleted());
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3446,6 +3482,32 @@ public final class SysDeptOuterClass {
       public Builder clearDeleted() {
         
         deleted_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int version_ ;
+      /**
+       * <code>int32 version = 8;</code>
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>int32 version = 8;</code>
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 version = 8;</code>
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
         onChanged();
         return this;
       }
@@ -4392,21 +4454,22 @@ public final class SysDeptOuterClass {
       "\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_s" +
       "ize\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"\031\n\006Result\022\017\n\007suc" +
       "cess\030\001 \001(\010\"<\n\013BaseSysDept\022\014\n\004name\030\002 \001(\t\022" +
-      "\021\n\tparent_id\030\003 \001(\005\022\014\n\004sort\030\004 \001(\005\"\265\001\n\007Sys" +
+      "\021\n\tparent_id\030\003 \001(\005\022\014\n\004sort\030\004 \001(\005\"\306\001\n\007Sys" +
       "Dept\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n\tparent" +
       "_id\030\003 \001(\005\022\014\n\004sort\030\004 \001(\005\022.\n\ncreated_at\030\005 " +
       "\001(\0132\032.google.protobuf.Timestamp\022.\n\nupdat" +
       "ed_at\030\006 \001(\0132\032.google.protobuf.Timestamp\022" +
-      "\017\n\007deleted\030\007 \001(\005\">\n\010PageList\022\r\n\005total\030\001 " +
-      "\001(\005\022#\n\tsys_depts\030\002 \003(\0132\020.sysDept.SysDept" +
-      "2\207\002\n\016SysDeptService\022/\n\007GetById\022\020.sysDept" +
-      ".ByIdReq\032\020.sysDept.SysDept\"\000\0223\n\007GetList\022" +
-      "\023.sysDept.GetListReq\032\021.sysDept.PageList\"" +
-      "\000\0221\n\006Insert\022\024.sysDept.BaseSysDept\032\017.sysD" +
-      "ept.Result\"\000\022-\n\006Update\022\020.sysDept.SysDept" +
-      "\032\017.sysDept.Result\"\000\022-\n\006Delete\022\020.sysDept." +
-      "ByIdReq\032\017.sysDept.Result\"\000B\036\n\034com.qianxu" +
-      "n.grpc.lib.sysDeptP\000b\006proto3"
+      "\017\n\007deleted\030\007 \001(\005\022\017\n\007version\030\010 \001(\005\">\n\010Pag" +
+      "eList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_depts\030\002 \003(\0132" +
+      "\020.sysDept.SysDept2\207\002\n\016SysDeptService\022/\n\007" +
+      "GetById\022\020.sysDept.ByIdReq\032\020.sysDept.SysD" +
+      "ept\"\000\0223\n\007GetList\022\023.sysDept.GetListReq\032\021." +
+      "sysDept.PageList\"\000\0221\n\006Insert\022\024.sysDept.B" +
+      "aseSysDept\032\017.sysDept.Result\"\000\022-\n\006Update\022" +
+      "\020.sysDept.SysDept\032\017.sysDept.Result\"\000\022-\n\006" +
+      "Delete\022\020.sysDept.ByIdReq\032\017.sysDept.Resul" +
+      "t\"\000B\036\n\034com.qianxun.grpc.lib.sysDeptP\000b\006p" +
+      "roto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4450,7 +4513,7 @@ public final class SysDeptOuterClass {
     internal_static_sysDept_SysDept_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysDept_SysDept_descriptor,
-        new java.lang.String[] { "Id", "Name", "ParentId", "Sort", "CreatedAt", "UpdatedAt", "Deleted", });
+        new java.lang.String[] { "Id", "Name", "ParentId", "Sort", "CreatedAt", "UpdatedAt", "Deleted", "Version", });
     internal_static_sysDept_PageList_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_sysDept_PageList_fieldAccessorTable = new

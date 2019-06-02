@@ -81,7 +81,7 @@ public class SysRoleController {
     * @param input
     * @return
     */
-    @DeleteMapping(value = "/{id}")
+    @PostMapping(value = "/delete")
     public JSONResult deleteSysRole(@Valid SysRoleDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysRoleOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysRoleOuterClass.ByIdReq.class);

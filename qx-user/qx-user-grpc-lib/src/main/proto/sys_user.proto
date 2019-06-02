@@ -56,6 +56,8 @@ message BaseSysUser {
 
     repeated int32 role_ids = 19;
     repeated int32 permission_ids = 20;
+
+    int32 version = 21;
 }
 
 message SysUser {
@@ -80,6 +82,7 @@ message SysUser {
     string dept_name = 19;
     repeated sysRole.SysRole roles = 20;
     repeated sysMenu.SysMenu menus = 21;
+    int32 version = 22;
 }
 
 message PageList {

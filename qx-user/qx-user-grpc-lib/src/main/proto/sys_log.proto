@@ -7,11 +7,16 @@ package sysLog;
 import public "google/protobuf/timestamp.proto";
 
 service SysLogService {
-    rpc GetById(ByIdReq) returns (SysLog){}
-    rpc GetList(GetListReq) returns (PageList) {}
-    rpc Insert(BaseSysLog) returns (Result) {}
-    rpc Update(SysLog) returns (Result) {}
-    rpc Delete(ByIdReq) returns (Result) {}
+    rpc GetById (ByIdReq) returns (SysLog) {
+    }
+    rpc GetList (GetListReq) returns (PageList) {
+    }
+    rpc Insert (BaseSysLog) returns (Result) {
+    }
+    rpc Update (SysLog) returns (Result) {
+    }
+    rpc Delete (ByIdReq) returns (Result) {
+    }
 }
 
 message ByIdReq {
@@ -30,33 +35,33 @@ message Result {
 
 // 新增时,使用的message,以保证用户不传入多余信息
 message BaseSysLog {
-                                string type = 2;
-                                                string title = 3;
-                                                string service_id = 4;
-                                                string create_by = 5;
-                                                        string ip_addr = 8;
-                                                string request_uri = 9;
-                                                string method = 10;
-                                                string params = 11;
-                                                                                string exception = 13;
-                        }
+    string type = 2;
+    string title = 3;
+    string service_id = 4;
+    string create_by = 5;
+    string ip_addr = 8;
+    string request_uri = 9;
+    string method = 10;
+    string params = 11;
+    string exception = 13;
+}
 
 message SysLog {
-            int64 id = 1;
-                            string type = 2;
-                        string title = 3;
-                        string service_id = 4;
-                        string create_by = 5;
-                            google.protobuf.Timestamp created_at = 6;
-                        google.protobuf.Timestamp updated_at = 7;
-                    string ip_addr = 8;
-                        string request_uri = 9;
-                        string method = 10;
-                        string params = 11;
-                    int64 time = 12;
-                            string exception = 13;
-                int32 deleted = 14;
-                }
+    int64 id = 1;
+    string type = 2;
+    string title = 3;
+    string service_id = 4;
+    string create_by = 5;
+    google.protobuf.Timestamp created_at = 6;
+    google.protobuf.Timestamp updated_at = 7;
+    string ip_addr = 8;
+    string request_uri = 9;
+    string method = 10;
+    string params = 11;
+    int64 time = 12;
+    string exception = 13;
+    int32 deleted = 14;
+}
 
 message PageList {
     int32 total = 1;

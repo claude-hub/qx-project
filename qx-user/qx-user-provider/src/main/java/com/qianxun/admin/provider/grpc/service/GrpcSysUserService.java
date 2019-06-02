@@ -122,34 +122,37 @@ public class GrpcSysUserService extends SysUserServiceGrpc.SysUserServiceImplBas
         SysUser sysUser = new SysUser();
         BeanUtil.copyProperties(dto, sysUser);
 
-        sysUserService.updateById(sysUser);
-
-        /**
-         * 保存角色
-         */
-        sysUserRoleService.remove(Wrappers.<SysUserRole>update().lambda()
-                .eq(SysUserRole::getUserId, dto.getId()));
-        dto.getRoleIds().forEach(roleId -> {
-            SysUserRole userRole = new SysUserRole();
-            userRole.setUserId(sysUser.getId());
-            userRole.setRoleId(roleId);
-            sysUserRoleService.save(userRole);
-        });
-
-        /**
-         * 单独权限
-         */
-        sysUserMenuService.remove(Wrappers.<SysUserMenu>update().lambda()
-                .eq(SysUserMenu::getUserId, dto.getId()));
-        if (dto.getPermissionIds() != null && dto.getPermissionIds().size() > 0) {
-            dto.getPermissionIds().forEach(menuId -> {
-                SysUserMenu userMenu = new SysUserMenu();
-                userMenu.setUserId(sysUser.getId());
-                userMenu.setMenuId(menuId);
-                sysUserMenuService.save(userMenu);
+        if(sysUserService.updateById(sysUser)){
+            /**
+             * 保存角色
+             */
+            sysUserRoleService.remove(Wrappers.<SysUserRole>update().lambda()
+                    .eq(SysUserRole::getUserId, dto.getId()));
+            dto.getRoleIds().forEach(roleId -> {
+                SysUserRole userRole = new SysUserRole();
+                userRole.setUserId(sysUser.getId());
+                userRole.setRoleId(roleId);
+                sysUserRoleService.save(userRole);
             });
+
+            /**
+             * 单独权限
+             */
+            sysUserMenuService.remove(Wrappers.<SysUserMenu>update().lambda()
+                    .eq(SysUserMenu::getUserId, dto.getId()));
+            if (dto.getPermissionIds() != null && dto.getPermissionIds().size() > 0) {
+                dto.getPermissionIds().forEach(menuId -> {
+                    SysUserMenu userMenu = new SysUserMenu();
+                    userMenu.setUserId(sysUser.getId());
+                    userMenu.setMenuId(menuId);
+                    sysUserMenuService.save(userMenu);
+                });
+            }
+            responseDTO.setSuccess(true);
+        }else {
+            responseDTO.setSuccess(false);
+            responseDTO.setMessage("其他人已更新，更新失败!");
         }
-        responseDTO.setSuccess(true);
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysUserOuterClass.Result.class));
         responseObserver.onCompleted();
     }

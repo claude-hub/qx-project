@@ -2000,6 +2000,11 @@ public final class SysUserOuterClass {
      * <code>repeated int32 permission_ids = 20;</code>
      */
     int getPermissionIds(int index);
+
+    /**
+     * <code>int32 version = 21;</code>
+     */
+    int getVersion();
   }
   /**
    * Protobuf type {@code sysUser.BaseSysUser}
@@ -2191,6 +2196,11 @@ public final class SysUserOuterClass {
                 permissionIds_.addInt(input.readInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 168: {
+
+              version_ = input.readInt32();
               break;
             }
             default: {
@@ -2662,6 +2672,15 @@ public final class SysUserOuterClass {
     }
     private int permissionIdsMemoizedSerializedSize = -1;
 
+    public static final int VERSION_FIELD_NUMBER = 21;
+    private int version_;
+    /**
+     * <code>int32 version = 21;</code>
+     */
+    public int getVersion() {
+      return version_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2735,6 +2754,9 @@ public final class SysUserOuterClass {
       }
       for (int i = 0; i < permissionIds_.size(); i++) {
         output.writeInt32NoTag(permissionIds_.getInt(i));
+      }
+      if (version_ != 0) {
+        output.writeInt32(21, version_);
       }
       unknownFields.writeTo(output);
     }
@@ -2824,6 +2846,10 @@ public final class SysUserOuterClass {
         }
         permissionIdsMemoizedSerializedSize = dataSize;
       }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(21, version_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2879,6 +2905,8 @@ public final class SysUserOuterClass {
           .equals(other.getRoleIdsList())) return false;
       if (!getPermissionIdsList()
           .equals(other.getPermissionIdsList())) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2932,6 +2960,8 @@ public final class SysUserOuterClass {
         hash = (37 * hash) + PERMISSION_IDS_FIELD_NUMBER;
         hash = (53 * hash) + getPermissionIdsList().hashCode();
       }
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3107,6 +3137,8 @@ public final class SysUserOuterClass {
         bitField0_ = (bitField0_ & ~0x00008000);
         permissionIds_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00010000);
+        version_ = 0;
+
         return this;
       }
 
@@ -3168,6 +3200,7 @@ public final class SysUserOuterClass {
           bitField0_ = (bitField0_ & ~0x00010000);
         }
         result.permissionIds_ = permissionIds_;
+        result.version_ = version_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3290,6 +3323,9 @@ public final class SysUserOuterClass {
             permissionIds_.addAll(other.permissionIds_);
           }
           onChanged();
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4413,6 +4449,32 @@ public final class SysUserOuterClass {
         onChanged();
         return this;
       }
+
+      private int version_ ;
+      /**
+       * <code>int32 version = 21;</code>
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>int32 version = 21;</code>
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 version = 21;</code>
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4694,6 +4756,11 @@ public final class SysUserOuterClass {
      */
     com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenuOrBuilder getMenusOrBuilder(
         int index);
+
+    /**
+     * <code>int32 version = 22;</code>
+     */
+    int getVersion();
   }
   /**
    * Protobuf type {@code sysUser.SysUser}
@@ -4899,6 +4966,11 @@ public final class SysUserOuterClass {
               }
               menus_.add(
                   input.readMessage(com.qianxun.grpc.lib.sysMenu.SysMenuOuterClass.SysMenu.parser(), extensionRegistry));
+              break;
+            }
+            case 176: {
+
+              version_ = input.readInt32();
               break;
             }
             default: {
@@ -5479,6 +5551,15 @@ public final class SysUserOuterClass {
       return menus_.get(index);
     }
 
+    public static final int VERSION_FIELD_NUMBER = 22;
+    private int version_;
+    /**
+     * <code>int32 version = 22;</code>
+     */
+    public int getVersion() {
+      return version_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5555,6 +5636,9 @@ public final class SysUserOuterClass {
       }
       for (int i = 0; i < menus_.size(); i++) {
         output.writeMessage(21, menus_.get(i));
+      }
+      if (version_ != 0) {
+        output.writeInt32(22, version_);
       }
       unknownFields.writeTo(output);
     }
@@ -5639,6 +5723,10 @@ public final class SysUserOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(21, menus_.get(i));
       }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(22, version_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -5708,6 +5796,8 @@ public final class SysUserOuterClass {
           .equals(other.getRolesList())) return false;
       if (!getMenusList()
           .equals(other.getMenusList())) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5773,6 +5863,8 @@ public final class SysUserOuterClass {
         hash = (37 * hash) + MENUS_FIELD_NUMBER;
         hash = (53 * hash) + getMenusList().hashCode();
       }
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5974,6 +6066,8 @@ public final class SysUserOuterClass {
         } else {
           menusBuilder_.clear();
         }
+        version_ = 0;
+
         return this;
       }
 
@@ -6055,6 +6149,7 @@ public final class SysUserOuterClass {
         } else {
           result.menus_ = menusBuilder_.build();
         }
+        result.version_ = version_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6222,6 +6317,9 @@ public final class SysUserOuterClass {
               menusBuilder_.addAllMessages(other.menus_);
             }
           }
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -8020,6 +8118,32 @@ public final class SysUserOuterClass {
         }
         return menusBuilder_;
       }
+
+      private int version_ ;
+      /**
+       * <code>int32 version = 22;</code>
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>int32 version = 22;</code>
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 version = 22;</code>
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -8963,7 +9087,7 @@ public final class SysUserOuterClass {
       "menu.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(\005\"M\n\nGet" +
       "ListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_size\030\002 \001(" +
       "\005\022\014\n\004page\030\003 \001(\005\022\017\n\007dept_id\030\004 \001(\005\"*\n\006Resu" +
-      "lt\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\240\003\n" +
+      "lt\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"\261\003\n" +
       "\013BaseSysUser\022\n\n\002id\030\001 \001(\005\022\017\n\007dept_id\030\002 \001(" +
       "\005\022\014\n\004name\030\003 \001(\t\022\026\n\016identification\030\004 \001(\t\022" +
       "\r\n\005phone\030\005 \001(\t\022\r\n\005email\030\006 \001(\t\022\016\n\006avatar\030" +
@@ -8974,31 +9098,31 @@ public final class SysUserOuterClass {
       "rotobuf.Timestamp\0223\n\017last_sign_in_at\030\021 \001" +
       "(\0132\032.google.protobuf.Timestamp\022\025\n\rsign_i" +
       "n_count\030\022 \001(\005\022\020\n\010role_ids\030\023 \003(\005\022\026\n\016permi" +
-      "ssion_ids\030\024 \003(\005\"\270\004\n\007SysUser\022\n\n\002id\030\001 \001(\005\022" +
-      "\017\n\007dept_id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\026\n\016identi" +
-      "fication\030\004 \001(\t\022\r\n\005phone\030\005 \001(\t\022\r\n\005email\030\006" +
-      " \001(\t\022\016\n\006avatar\030\007 \001(\t\022\016\n\006locked\030\010 \001(\005\022\017\n\007" +
-      "deleted\030\t \001(\005\022\021\n\tuser_name\030\n \001(\t\022\034\n\024rese" +
-      "t_password_token\030\013 \001(\t\022\032\n\022password_encry" +
-      "pted\030\014 \001(\t\022.\n\ncreated_at\030\r \001(\0132\032.google." +
-      "protobuf.Timestamp\022.\n\nupdated_at\030\016 \001(\0132\032" +
-      ".google.protobuf.Timestamp\022\025\n\rcurrent_to" +
-      "ken\030\017 \001(\t\0226\n\022current_sign_in_at\030\020 \001(\0132\032." +
-      "google.protobuf.Timestamp\0223\n\017last_sign_i" +
-      "n_at\030\021 \001(\0132\032.google.protobuf.Timestamp\022\025" +
-      "\n\rsign_in_count\030\022 \001(\005\022\021\n\tdept_name\030\023 \001(\t" +
-      "\022\037\n\005roles\030\024 \003(\0132\020.sysRole.SysRole\022\037\n\005men" +
-      "us\030\025 \003(\0132\020.sysMenu.SysMenu\">\n\010PageList\022\r" +
-      "\n\005total\030\001 \001(\005\022#\n\tsys_users\030\002 \003(\0132\020.sysUs" +
-      "er.SysUser2\213\002\n\016SysUserService\022/\n\007GetById" +
-      "\022\020.sysUser.ByIdReq\032\020.sysUser.SysUser\"\000\0223" +
-      "\n\007GetList\022\023.sysUser.GetListReq\032\021.sysUser" +
-      ".PageList\"\000\0221\n\006Insert\022\024.sysUser.BaseSysU" +
-      "ser\032\017.sysUser.Result\"\000\0221\n\006Update\022\024.sysUs" +
-      "er.BaseSysUser\032\017.sysUser.Result\"\000\022-\n\006Del" +
-      "ete\022\020.sysUser.ByIdReq\032\017.sysUser.Result\"\000" +
-      "B\036\n\034com.qianxun.grpc.lib.sysUserP\000b\006prot" +
-      "o3"
+      "ssion_ids\030\024 \003(\005\022\017\n\007version\030\025 \001(\005\"\311\004\n\007Sys" +
+      "User\022\n\n\002id\030\001 \001(\005\022\017\n\007dept_id\030\002 \001(\005\022\014\n\004nam" +
+      "e\030\003 \001(\t\022\026\n\016identification\030\004 \001(\t\022\r\n\005phone" +
+      "\030\005 \001(\t\022\r\n\005email\030\006 \001(\t\022\016\n\006avatar\030\007 \001(\t\022\016\n" +
+      "\006locked\030\010 \001(\005\022\017\n\007deleted\030\t \001(\005\022\021\n\tuser_n" +
+      "ame\030\n \001(\t\022\034\n\024reset_password_token\030\013 \001(\t\022" +
+      "\032\n\022password_encrypted\030\014 \001(\t\022.\n\ncreated_a" +
+      "t\030\r \001(\0132\032.google.protobuf.Timestamp\022.\n\nu" +
+      "pdated_at\030\016 \001(\0132\032.google.protobuf.Timest" +
+      "amp\022\025\n\rcurrent_token\030\017 \001(\t\0226\n\022current_si" +
+      "gn_in_at\030\020 \001(\0132\032.google.protobuf.Timesta" +
+      "mp\0223\n\017last_sign_in_at\030\021 \001(\0132\032.google.pro" +
+      "tobuf.Timestamp\022\025\n\rsign_in_count\030\022 \001(\005\022\021" +
+      "\n\tdept_name\030\023 \001(\t\022\037\n\005roles\030\024 \003(\0132\020.sysRo" +
+      "le.SysRole\022\037\n\005menus\030\025 \003(\0132\020.sysMenu.SysM" +
+      "enu\022\017\n\007version\030\026 \001(\005\">\n\010PageList\022\r\n\005tota" +
+      "l\030\001 \001(\005\022#\n\tsys_users\030\002 \003(\0132\020.sysUser.Sys" +
+      "User2\213\002\n\016SysUserService\022/\n\007GetById\022\020.sys" +
+      "User.ByIdReq\032\020.sysUser.SysUser\"\000\0223\n\007GetL" +
+      "ist\022\023.sysUser.GetListReq\032\021.sysUser.PageL" +
+      "ist\"\000\0221\n\006Insert\022\024.sysUser.BaseSysUser\032\017." +
+      "sysUser.Result\"\000\0221\n\006Update\022\024.sysUser.Bas" +
+      "eSysUser\032\017.sysUser.Result\"\000\022-\n\006Delete\022\020." +
+      "sysUser.ByIdReq\032\017.sysUser.Result\"\000B\036\n\034co" +
+      "m.qianxun.grpc.lib.sysUserP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9038,13 +9162,13 @@ public final class SysUserOuterClass {
     internal_static_sysUser_BaseSysUser_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysUser_BaseSysUser_descriptor,
-        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "RoleIds", "PermissionIds", });
+        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "RoleIds", "PermissionIds", "Version", });
     internal_static_sysUser_SysUser_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_sysUser_SysUser_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysUser_SysUser_descriptor,
-        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "Deleted", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CreatedAt", "UpdatedAt", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "DeptName", "Roles", "Menus", });
+        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "Deleted", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CreatedAt", "UpdatedAt", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "DeptName", "Roles", "Menus", "Version", });
     internal_static_sysUser_PageList_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_sysUser_PageList_fieldAccessorTable = new

@@ -77,7 +77,6 @@ public class SysUserVM implements Serializable {
     /**
      * 修改时间
      */
-    @Version
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updatedAt;
     /**
@@ -98,6 +97,11 @@ public class SysUserVM implements Serializable {
      * 累积登录次数
      */
     private Integer signInCount;
+    /**
+     * 乐观锁
+     */
+    @Version
+    private Integer version;
 
     /**
      * 部门名称

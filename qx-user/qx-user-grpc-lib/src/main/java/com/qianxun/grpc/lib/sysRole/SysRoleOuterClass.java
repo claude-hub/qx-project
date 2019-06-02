@@ -2536,6 +2536,11 @@ public final class SysRoleOuterClass {
      * <code>int32 deleted = 7;</code>
      */
     int getDeleted();
+
+    /**
+     * <code>int32 version = 8;</code>
+     */
+    int getVersion();
   }
   /**
    * Protobuf type {@code sysRole.SysRole}
@@ -2631,6 +2636,11 @@ public final class SysRoleOuterClass {
             case 56: {
 
               deleted_ = input.readInt32();
+              break;
+            }
+            case 64: {
+
+              version_ = input.readInt32();
               break;
             }
             default: {
@@ -2827,6 +2837,15 @@ public final class SysRoleOuterClass {
       return deleted_;
     }
 
+    public static final int VERSION_FIELD_NUMBER = 8;
+    private int version_;
+    /**
+     * <code>int32 version = 8;</code>
+     */
+    public int getVersion() {
+      return version_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2862,6 +2881,9 @@ public final class SysRoleOuterClass {
       if (deleted_ != 0) {
         output.writeInt32(7, deleted_);
       }
+      if (version_ != 0) {
+        output.writeInt32(8, version_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -2895,6 +2917,10 @@ public final class SysRoleOuterClass {
       if (deleted_ != 0) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(7, deleted_);
+      }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(8, version_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -2931,6 +2957,8 @@ public final class SysRoleOuterClass {
       }
       if (getDeleted()
           != other.getDeleted()) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -2960,6 +2988,8 @@ public final class SysRoleOuterClass {
       }
       hash = (37 * hash) + DELETED_FIELD_NUMBER;
       hash = (53 * hash) + getDeleted();
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3115,6 +3145,8 @@ public final class SysRoleOuterClass {
         }
         deleted_ = 0;
 
+        version_ = 0;
+
         return this;
       }
 
@@ -3156,6 +3188,7 @@ public final class SysRoleOuterClass {
           result.updatedAt_ = updatedAtBuilder_.build();
         }
         result.deleted_ = deleted_;
+        result.version_ = version_;
         onBuilt();
         return result;
       }
@@ -3227,6 +3260,9 @@ public final class SysRoleOuterClass {
         }
         if (other.getDeleted() != 0) {
           setDeleted(other.getDeleted());
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -3746,6 +3782,32 @@ public final class SysRoleOuterClass {
       public Builder clearDeleted() {
         
         deleted_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int version_ ;
+      /**
+       * <code>int32 version = 8;</code>
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>int32 version = 8;</code>
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 version = 8;</code>
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
         onChanged();
         return this;
       }
@@ -4692,21 +4754,22 @@ public final class SysRoleOuterClass {
       "\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_s" +
       "ize\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"\031\n\006Result\022\017\n\007suc" +
       "cess\030\001 \001(\010\"A\n\013BaseSysRole\022\014\n\004name\030\002 \001(\t\022" +
-      "\021\n\trole_desc\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\"\272\001" +
+      "\021\n\trole_desc\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\"\313\001" +
       "\n\007SysRole\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n\tr" +
       "ole_desc\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\022.\n\ncre" +
       "ated_at\030\005 \001(\0132\032.google.protobuf.Timestam" +
       "p\022.\n\nupdated_at\030\006 \001(\0132\032.google.protobuf." +
-      "Timestamp\022\017\n\007deleted\030\007 \001(\005\">\n\010PageList\022\r" +
-      "\n\005total\030\001 \001(\005\022#\n\tsys_roles\030\002 \003(\0132\020.sysRo" +
-      "le.SysRole2\207\002\n\016SysRoleService\022/\n\007GetById" +
-      "\022\020.sysRole.ByIdReq\032\020.sysRole.SysRole\"\000\0223" +
-      "\n\007GetList\022\023.sysRole.GetListReq\032\021.sysRole" +
-      ".PageList\"\000\0221\n\006Insert\022\024.sysRole.BaseSysR" +
-      "ole\032\017.sysRole.Result\"\000\022-\n\006Update\022\020.sysRo" +
-      "le.SysRole\032\017.sysRole.Result\"\000\022-\n\006Delete\022" +
-      "\020.sysRole.ByIdReq\032\017.sysRole.Result\"\000B\036\n\034" +
-      "com.qianxun.grpc.lib.sysRoleP\000b\006proto3"
+      "Timestamp\022\017\n\007deleted\030\007 \001(\005\022\017\n\007version\030\010 " +
+      "\001(\005\">\n\010PageList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_ro" +
+      "les\030\002 \003(\0132\020.sysRole.SysRole2\207\002\n\016SysRoleS" +
+      "ervice\022/\n\007GetById\022\020.sysRole.ByIdReq\032\020.sy" +
+      "sRole.SysRole\"\000\0223\n\007GetList\022\023.sysRole.Get" +
+      "ListReq\032\021.sysRole.PageList\"\000\0221\n\006Insert\022\024" +
+      ".sysRole.BaseSysRole\032\017.sysRole.Result\"\000\022" +
+      "-\n\006Update\022\020.sysRole.SysRole\032\017.sysRole.Re" +
+      "sult\"\000\022-\n\006Delete\022\020.sysRole.ByIdReq\032\017.sys" +
+      "Role.Result\"\000B\036\n\034com.qianxun.grpc.lib.sy" +
+      "sRoleP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4750,7 +4813,7 @@ public final class SysRoleOuterClass {
     internal_static_sysRole_SysRole_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_SysRole_descriptor,
-        new java.lang.String[] { "Id", "Name", "RoleDesc", "RoleCode", "CreatedAt", "UpdatedAt", "Deleted", });
+        new java.lang.String[] { "Id", "Name", "RoleDesc", "RoleCode", "CreatedAt", "UpdatedAt", "Deleted", "Version", });
     internal_static_sysRole_PageList_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_sysRole_PageList_fieldAccessorTable = new

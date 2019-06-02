@@ -7,11 +7,16 @@ package sysDept;
 import public "google/protobuf/timestamp.proto";
 
 service SysDeptService {
-    rpc GetById(ByIdReq) returns (SysDept){}
-    rpc GetList(GetListReq) returns (PageList) {}
-    rpc Insert(BaseSysDept) returns (Result) {}
-    rpc Update(SysDept) returns (Result) {}
-    rpc Delete(ByIdReq) returns (Result) {}
+    rpc GetById (ByIdReq) returns (SysDept) {
+    }
+    rpc GetList (GetListReq) returns (PageList) {
+    }
+    rpc Insert (BaseSysDept) returns (Result) {
+    }
+    rpc Update (SysDept) returns (Result) {
+    }
+    rpc Delete (ByIdReq) returns (Result) {
+    }
 }
 
 message ByIdReq {
@@ -30,20 +35,21 @@ message Result {
 
 // 新增时,使用的message,以保证用户不传入多余信息
 message BaseSysDept {
-                                string name = 2;
-                                        int32 parent_id = 3;
-                                                int32 sort = 4;
-                                        }
+    string name = 2;
+    int32 parent_id = 3;
+    int32 sort = 4;
+}
 
 message SysDept {
-        int32 id = 1;
-                                string name = 2;
-                int32 parent_id = 3;
-                        int32 sort = 4;
-                                    google.protobuf.Timestamp created_at = 5;
-                        google.protobuf.Timestamp updated_at = 6;
-            int32 deleted = 7;
-                }
+    int32 id = 1;
+    string name = 2;
+    int32 parent_id = 3;
+    int32 sort = 4;
+    google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
+    int32 deleted = 7;
+    int32 version = 8;
+}
 
 message PageList {
     int32 total = 1;

@@ -2000,6 +2000,11 @@ public final class AuthUserOuterClass {
      * <code>repeated int32 roles = 20;</code>
      */
     int getRoles(int index);
+
+    /**
+     * <code>int32 version = 21;</code>
+     */
+    int getVersion();
   }
   /**
    * Protobuf type {@code authUser.AuthUser}
@@ -2210,6 +2215,11 @@ public final class AuthUserOuterClass {
                 roles_.addInt(input.readInt32());
               }
               input.popLimit(limit);
+              break;
+            }
+            case 168: {
+
+              version_ = input.readInt32();
               break;
             }
             default: {
@@ -2738,6 +2748,15 @@ public final class AuthUserOuterClass {
     }
     private int rolesMemoizedSerializedSize = -1;
 
+    public static final int VERSION_FIELD_NUMBER = 21;
+    private int version_;
+    /**
+     * <code>int32 version = 21;</code>
+     */
+    public int getVersion() {
+      return version_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2816,6 +2835,9 @@ public final class AuthUserOuterClass {
       }
       for (int i = 0; i < roles_.size(); i++) {
         output.writeInt32NoTag(roles_.getInt(i));
+      }
+      if (version_ != 0) {
+        output.writeInt32(21, version_);
       }
       unknownFields.writeTo(output);
     }
@@ -2911,6 +2933,10 @@ public final class AuthUserOuterClass {
         }
         rolesMemoizedSerializedSize = dataSize;
       }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(21, version_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -2978,6 +3004,8 @@ public final class AuthUserOuterClass {
           .equals(other.getPermissionsList())) return false;
       if (!getRolesList()
           .equals(other.getRolesList())) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3041,6 +3069,8 @@ public final class AuthUserOuterClass {
         hash = (37 * hash) + ROLES_FIELD_NUMBER;
         hash = (53 * hash) + getRolesList().hashCode();
       }
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3230,6 +3260,8 @@ public final class AuthUserOuterClass {
         bitField0_ = (bitField0_ & ~0x00040000);
         roles_ = emptyIntList();
         bitField0_ = (bitField0_ & ~0x00080000);
+        version_ = 0;
+
         return this;
       }
 
@@ -3302,6 +3334,7 @@ public final class AuthUserOuterClass {
           bitField0_ = (bitField0_ & ~0x00080000);
         }
         result.roles_ = roles_;
+        result.version_ = version_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3433,6 +3466,9 @@ public final class AuthUserOuterClass {
             roles_.addAll(other.roles_);
           }
           onChanged();
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4843,6 +4879,32 @@ public final class AuthUserOuterClass {
         onChanged();
         return this;
       }
+
+      private int version_ ;
+      /**
+       * <code>int32 version = 21;</code>
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>int32 version = 21;</code>
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 version = 21;</code>
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -4929,7 +4991,7 @@ public final class AuthUserOuterClass {
       "obuf/timestamp.proto\"\037\n\014ByAccountReq\022\017\n\007" +
       "account\030\001 \001(\t\"0\n\tSignInReq\022\021\n\tlogin_str\030" +
       "\001 \001(\t\022\020\n\010password\030\002 \001(\t\"!\n\020SignInByToken" +
-      "Req\022\r\n\005token\030\001 \001(\t\"\210\004\n\010AuthUser\022\n\n\002id\030\001 " +
+      "Req\022\r\n\005token\030\001 \001(\t\"\231\004\n\010AuthUser\022\n\n\002id\030\001 " +
       "\001(\005\022\017\n\007dept_id\030\002 \001(\005\022\014\n\004name\030\003 \001(\t\022\026\n\016id" +
       "entification\030\004 \001(\t\022\r\n\005phone\030\005 \001(\t\022\r\n\005ema" +
       "il\030\006 \001(\t\022\016\n\006avatar\030\007 \001(\t\022\016\n\006locked\030\010 \001(\005" +
@@ -4942,13 +5004,14 @@ public final class AuthUserOuterClass {
       "\0132\032.google.protobuf.Timestamp\0223\n\017last_si" +
       "gn_in_at\030\021 \001(\0132\032.google.protobuf.Timesta" +
       "mp\022\025\n\rsign_in_count\030\022 \001(\005\022\023\n\013permissions" +
-      "\030\023 \003(\t\022\r\n\005roles\030\024 \003(\0052\307\001\n\017AuthUserServic" +
-      "e\022<\n\014GetByAccount\022\026.authUser.ByAccountRe" +
-      "q\032\022.authUser.AuthUser\"\000\0223\n\006SignIn\022\023.auth" +
-      "User.SignInReq\032\022.authUser.AuthUser\"\000\022A\n\r" +
-      "SignInByToken\022\032.authUser.SignInByTokenRe" +
-      "q\032\022.authUser.AuthUser\"\000B\037\n\035com.qianxun.g" +
-      "rpc.lib.authUserP\000b\006proto3"
+      "\030\023 \003(\t\022\r\n\005roles\030\024 \003(\005\022\017\n\007version\030\025 \001(\0052\307" +
+      "\001\n\017AuthUserService\022<\n\014GetByAccount\022\026.aut" +
+      "hUser.ByAccountReq\032\022.authUser.AuthUser\"\000" +
+      "\0223\n\006SignIn\022\023.authUser.SignInReq\032\022.authUs" +
+      "er.AuthUser\"\000\022A\n\rSignInByToken\022\032.authUse" +
+      "r.SignInByTokenReq\032\022.authUser.AuthUser\"\000" +
+      "B\037\n\035com.qianxun.grpc.lib.authUserP\000b\006pro" +
+      "to3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4986,7 +5049,7 @@ public final class AuthUserOuterClass {
     internal_static_authUser_AuthUser_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_authUser_AuthUser_descriptor,
-        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "Deleted", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CreatedAt", "UpdatedAt", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "Permissions", "Roles", });
+        new java.lang.String[] { "Id", "DeptId", "Name", "Identification", "Phone", "Email", "Avatar", "Locked", "Deleted", "UserName", "ResetPasswordToken", "PasswordEncrypted", "CreatedAt", "UpdatedAt", "CurrentToken", "CurrentSignInAt", "LastSignInAt", "SignInCount", "Permissions", "Roles", "Version", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 

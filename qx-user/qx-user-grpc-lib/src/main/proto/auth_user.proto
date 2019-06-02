@@ -46,6 +46,7 @@ message AuthUser {
     int32 sign_in_count = 18;
     repeated string permissions = 19;
     repeated int32 roles = 20;
+    int32 version = 21;
 }
 
 //message SysUser {

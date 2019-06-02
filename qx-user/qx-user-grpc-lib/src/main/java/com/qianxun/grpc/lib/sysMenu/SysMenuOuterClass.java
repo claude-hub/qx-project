@@ -3098,6 +3098,11 @@ public final class SysMenuOuterClass {
      * <code>int32 deleted = 13;</code>
      */
     int getDeleted();
+
+    /**
+     * <code>int32 version = 14;</code>
+     */
+    int getVersion();
   }
   /**
    * Protobuf type {@code sysMenu.SysMenu}
@@ -3227,6 +3232,11 @@ public final class SysMenuOuterClass {
             case 104: {
 
               deleted_ = input.readInt32();
+              break;
+            }
+            case 112: {
+
+              version_ = input.readInt32();
               break;
             }
             default: {
@@ -3527,6 +3537,15 @@ public final class SysMenuOuterClass {
       return deleted_;
     }
 
+    public static final int VERSION_FIELD_NUMBER = 14;
+    private int version_;
+    /**
+     * <code>int32 version = 14;</code>
+     */
+    public int getVersion() {
+      return version_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -3579,6 +3598,9 @@ public final class SysMenuOuterClass {
       }
       if (deleted_ != 0) {
         output.writeInt32(13, deleted_);
+      }
+      if (version_ != 0) {
+        output.writeInt32(14, version_);
       }
       unknownFields.writeTo(output);
     }
@@ -3636,6 +3658,10 @@ public final class SysMenuOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(13, deleted_);
       }
+      if (version_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(14, version_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -3683,6 +3709,8 @@ public final class SysMenuOuterClass {
       }
       if (getDeleted()
           != other.getDeleted()) return false;
+      if (getVersion()
+          != other.getVersion()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -3724,6 +3752,8 @@ public final class SysMenuOuterClass {
       }
       hash = (37 * hash) + DELETED_FIELD_NUMBER;
       hash = (53 * hash) + getDeleted();
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + getVersion();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -3891,6 +3921,8 @@ public final class SysMenuOuterClass {
         }
         deleted_ = 0;
 
+        version_ = 0;
+
         return this;
       }
 
@@ -3938,6 +3970,7 @@ public final class SysMenuOuterClass {
           result.updatedAt_ = updatedAtBuilder_.build();
         }
         result.deleted_ = deleted_;
+        result.version_ = version_;
         onBuilt();
         return result;
       }
@@ -4029,6 +4062,9 @@ public final class SysMenuOuterClass {
         }
         if (other.getDeleted() != 0) {
           setDeleted(other.getDeleted());
+        }
+        if (other.getVersion() != 0) {
+          setVersion(other.getVersion());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -4790,6 +4826,32 @@ public final class SysMenuOuterClass {
       public Builder clearDeleted() {
         
         deleted_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int version_ ;
+      /**
+       * <code>int32 version = 14;</code>
+       */
+      public int getVersion() {
+        return version_;
+      }
+      /**
+       * <code>int32 version = 14;</code>
+       */
+      public Builder setVersion(int value) {
+        
+        version_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 version = 14;</code>
+       */
+      public Builder clearVersion() {
+        
+        version_ = 0;
         onChanged();
         return this;
       }
@@ -5739,26 +5801,27 @@ public final class SysMenuOuterClass {
       "\022\021\n\tparent_id\030\003 \001(\005\022\022\n\npermission\030\004 \001(\t\022" +
       "\021\n\tcomponent\030\005 \001(\t\022\014\n\004path\030\006 \001(\t\022\014\n\004icon" +
       "\030\007 \001(\t\022\014\n\004sort\030\010 \001(\005\022\014\n\004type\030\t \001(\005\022\022\n\nke" +
-      "ep_alive\030\n \001(\005\"\232\002\n\007SysMenu\022\n\n\002id\030\001 \001(\005\022\014" +
+      "ep_alive\030\n \001(\005\"\253\002\n\007SysMenu\022\n\n\002id\030\001 \001(\005\022\014" +
       "\n\004name\030\002 \001(\t\022\021\n\tparent_id\030\003 \001(\005\022\022\n\npermi" +
       "ssion\030\004 \001(\t\022\021\n\tcomponent\030\005 \001(\t\022\014\n\004path\030\006" +
       " \001(\t\022\014\n\004icon\030\007 \001(\t\022\014\n\004sort\030\010 \001(\005\022\014\n\004type" +
       "\030\t \001(\005\022\022\n\nkeep_alive\030\n \001(\005\022.\n\ncreated_at" +
       "\030\013 \001(\0132\032.google.protobuf.Timestamp\022.\n\nup" +
       "dated_at\030\014 \001(\0132\032.google.protobuf.Timesta" +
-      "mp\022\017\n\007deleted\030\r \001(\005\">\n\010PageList\022\r\n\005total" +
-      "\030\001 \001(\005\022#\n\tsys_menus\030\002 \003(\0132\020.sysMenu.SysM" +
-      "enu2\370\002\n\016SysMenuService\022/\n\007GetById\022\020.sysM" +
-      "enu.ByIdReq\032\020.sysMenu.SysMenu\"\000\0223\n\007GetLi" +
-      "st\022\023.sysMenu.GetListReq\032\021.sysMenu.PageLi" +
-      "st\"\000\0221\n\006Insert\022\024.sysMenu.BaseSysMenu\032\017.s" +
-      "ysMenu.Result\"\000\022-\n\006Update\022\020.sysMenu.SysM" +
-      "enu\032\017.sysMenu.Result\"\000\022-\n\006Delete\022\020.sysMe" +
-      "nu.ByIdReq\032\017.sysMenu.Result\"\000\0226\n\014GetUser" +
-      "Menus\022\020.sysMenu.ByIdReq\032\020.sysMenu.SysMen" +
-      "u\"\0000\001\0227\n\nGetAllList\022\023.sysMenu.GetListReq" +
-      "\032\020.sysMenu.SysMenu\"\0000\001B\036\n\034com.qianxun.gr" +
-      "pc.lib.sysMenuP\000b\006proto3"
+      "mp\022\017\n\007deleted\030\r \001(\005\022\017\n\007version\030\016 \001(\005\">\n\010" +
+      "PageList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_menus\030\002 \003" +
+      "(\0132\020.sysMenu.SysMenu2\370\002\n\016SysMenuService\022" +
+      "/\n\007GetById\022\020.sysMenu.ByIdReq\032\020.sysMenu.S" +
+      "ysMenu\"\000\0223\n\007GetList\022\023.sysMenu.GetListReq" +
+      "\032\021.sysMenu.PageList\"\000\0221\n\006Insert\022\024.sysMen" +
+      "u.BaseSysMenu\032\017.sysMenu.Result\"\000\022-\n\006Upda" +
+      "te\022\020.sysMenu.SysMenu\032\017.sysMenu.Result\"\000\022" +
+      "-\n\006Delete\022\020.sysMenu.ByIdReq\032\017.sysMenu.Re" +
+      "sult\"\000\0226\n\014GetUserMenus\022\020.sysMenu.ByIdReq" +
+      "\032\020.sysMenu.SysMenu\"\0000\001\0227\n\nGetAllList\022\023.s" +
+      "ysMenu.GetListReq\032\020.sysMenu.SysMenu\"\0000\001B" +
+      "\036\n\034com.qianxun.grpc.lib.sysMenuP\000b\006proto" +
+      "3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5802,7 +5865,7 @@ public final class SysMenuOuterClass {
     internal_static_sysMenu_SysMenu_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysMenu_SysMenu_descriptor,
-        new java.lang.String[] { "Id", "Name", "ParentId", "Permission", "Component", "Path", "Icon", "Sort", "Type", "KeepAlive", "CreatedAt", "UpdatedAt", "Deleted", });
+        new java.lang.String[] { "Id", "Name", "ParentId", "Permission", "Component", "Path", "Icon", "Sort", "Type", "KeepAlive", "CreatedAt", "UpdatedAt", "Deleted", "Version", });
     internal_static_sysMenu_PageList_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_sysMenu_PageList_fieldAccessorTable = new
