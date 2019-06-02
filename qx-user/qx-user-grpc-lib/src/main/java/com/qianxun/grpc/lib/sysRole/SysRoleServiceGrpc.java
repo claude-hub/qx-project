@@ -187,6 +187,38 @@ public final class SysRoleServiceGrpc {
      return getDeleteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq,
+      com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> getAddRolePermsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AddRolePerms",
+      requestType = com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.class,
+      responseType = com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq,
+      com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> getAddRolePermsMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> getAddRolePermsMethod;
+    if ((getAddRolePermsMethod = SysRoleServiceGrpc.getAddRolePermsMethod) == null) {
+      synchronized (SysRoleServiceGrpc.class) {
+        if ((getAddRolePermsMethod = SysRoleServiceGrpc.getAddRolePermsMethod) == null) {
+          SysRoleServiceGrpc.getAddRolePermsMethod = getAddRolePermsMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "sysRole.SysRoleService", "AddRolePerms"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result.getDefaultInstance()))
+                  .setSchemaDescriptor(new SysRoleServiceMethodDescriptorSupplier("AddRolePerms"))
+                  .build();
+          }
+        }
+     }
+     return getAddRolePermsMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -249,6 +281,13 @@ public final class SysRoleServiceGrpc {
       asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void addRolePerms(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> responseObserver) {
+      asyncUnimplementedUnaryCall(getAddRolePermsMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -286,6 +325,13 @@ public final class SysRoleServiceGrpc {
                 com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.ByIdReq,
                 com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>(
                   this, METHODID_DELETE)))
+          .addMethod(
+            getAddRolePermsMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq,
+                com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>(
+                  this, METHODID_ADD_ROLE_PERMS)))
           .build();
     }
   }
@@ -347,6 +393,14 @@ public final class SysRoleServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void addRolePerms(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getAddRolePermsMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -400,6 +454,13 @@ public final class SysRoleServiceGrpc {
     public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result delete(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.ByIdReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result addRolePerms(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq request) {
+      return blockingUnaryCall(
+          getChannel(), getAddRolePermsMethod(), getCallOptions(), request);
     }
   }
 
@@ -460,6 +521,14 @@ public final class SysRoleServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result> addRolePerms(
+        com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq request) {
+      return futureUnaryCall(
+          getChannel().newCall(getAddRolePermsMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_BY_ID = 0;
@@ -467,6 +536,7 @@ public final class SysRoleServiceGrpc {
   private static final int METHODID_INSERT = 2;
   private static final int METHODID_UPDATE = 3;
   private static final int METHODID_DELETE = 4;
+  private static final int METHODID_ADD_ROLE_PERMS = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -503,6 +573,10 @@ public final class SysRoleServiceGrpc {
           break;
         case METHODID_DELETE:
           serviceImpl.delete((com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.ByIdReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>) responseObserver);
+          break;
+        case METHODID_ADD_ROLE_PERMS:
+          serviceImpl.addRolePerms((com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result>) responseObserver);
           break;
         default:
@@ -571,6 +645,7 @@ public final class SysRoleServiceGrpc {
               .addMethod(getInsertMethod())
               .addMethod(getUpdateMethod())
               .addMethod(getDeleteMethod())
+              .addMethod(getAddRolePermsMethod())
               .build();
         }
       }

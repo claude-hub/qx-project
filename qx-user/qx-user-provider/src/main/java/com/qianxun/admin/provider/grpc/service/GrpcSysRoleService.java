@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
+import com.qianxun.admin.api.dto.sysRole.request.SysRolePermissionDTO;
 import com.qianxun.admin.api.dto.sysRole.request.SysRoleQueryInputDTO;
 import com.qianxun.admin.api.dto.sysRole.response.SysRoleResponseDTO;
 import com.qianxun.admin.api.entity.SysRole;
@@ -91,5 +92,14 @@ public class GrpcSysRoleService extends SysRoleServiceGrpc.SysRoleServiceImplBas
         responseDTO.setSuccess(sysRoleService.removeById(request.getId()));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysRoleOuterClass.Result.class));
         responseObserver.onCompleted();
+    }
+
+    public void addRolePerms(SysRoleOuterClass.RolePermsReq request,
+                             StreamObserver<SysRoleOuterClass.Result> responseObserver) {
+        SysRolePermissionDTO dto = ProtoBufUtils.fromProtoBuffer(request, SysRolePermissionDTO.class);
+        UpdateDBResponseDTO updateDBResponseDTO = sysRoleService.addRolePerms(dto);
+        responseObserver.onNext(ProtoBufUtils.toProtoBuffer(updateDBResponseDTO, SysRoleOuterClass.Result.class));
+        responseObserver.onCompleted();
+
     }
 }

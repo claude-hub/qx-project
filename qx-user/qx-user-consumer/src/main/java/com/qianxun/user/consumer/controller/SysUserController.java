@@ -1,7 +1,9 @@
 package com.qianxun.user.consumer.controller;
 
+import com.qianxun.admin.api.dto.base.RequestDTO;
 import com.qianxun.admin.api.dto.base.SearchByIdInputDTO;
 import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
+import com.qianxun.admin.api.dto.extend.SysUserDTO;
 import com.qianxun.admin.api.dto.sysUser.request.*;
 import com.qianxun.admin.api.dto.sysUser.response.SysUserResponseDTO;
 import com.qianxun.admin.api.entity.SysUser;
@@ -9,6 +11,7 @@ import com.qianxun.common.utils.mapper.ProtoBufUtils;
 import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysUser.SysUserOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysUserClient;
+import com.qianxun.user.consumer.utils.SecurityBeanUtils;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.web.bind.annotation.*;
@@ -109,4 +112,12 @@ public class SysUserController {
         result.setData(true);
         return result;
     }
+
+    @GetMapping(value = "/userInfo")
+    public JSONResult getUserMenus(RequestDTO input) {
+        JSONResult result = new JSONResult();
+        result.setData(SecurityBeanUtils.getUser());
+        return result;
+    }
+
 }

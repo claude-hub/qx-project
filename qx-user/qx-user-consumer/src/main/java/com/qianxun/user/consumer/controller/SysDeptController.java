@@ -103,7 +103,7 @@ public class SysDeptController {
         JSONResult result = new JSONResult();
         List<SysDept> deptList = grpcSysDeptClient.getAllMenus();
         List<DeptTree> trees = BeanMapper.mapList(deptList, DeptTree.class);
-        result.setData(TreeUtil.buildByLoop(trees, 0));
+        result.setData(TreeUtil.buildByLoop(trees, -1));
         return result;
     }
 }

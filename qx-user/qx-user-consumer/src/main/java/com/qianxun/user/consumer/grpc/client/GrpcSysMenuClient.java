@@ -80,4 +80,17 @@ public class GrpcSysMenuClient {
         }
         return menus;
     }
+
+    public List<SysMenu> getMenusByRoleId(Integer roleId) {
+        SysMenuServiceGrpc.SysMenuServiceBlockingStub stub = SysMenuServiceGrpc.newBlockingStub(serverChannel);
+        SysMenuOuterClass.ByIdReq getByIdReq = SysMenuOuterClass.ByIdReq.newBuilder().setId(roleId).build();
+        Iterator<SysMenuOuterClass.SysMenu> iterator;
+        List<SysMenu> menus = new ArrayList<>();
+        iterator = stub.getMenusByRoleId(getByIdReq);
+        while (iterator.hasNext()) {
+            SysMenuOuterClass.SysMenu sysMenu = iterator.next();
+            menus.add(ProtoBufUtils.fromProtoBuffer(sysMenu, SysMenu.class));
+        }
+        return menus;
+    }
 }

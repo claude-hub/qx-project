@@ -135,4 +135,14 @@ public class GrpcSysMenuService extends SysMenuServiceGrpc.SysMenuServiceImplBas
         }
         responseObserver.onCompleted();
     }
+
+    @Override
+    public void getMenusByRoleId(SysMenuOuterClass.ByIdReq request,
+                                 StreamObserver<SysMenuOuterClass.SysMenu> responseObserver) {
+        List<SysMenu> menus = sysMenuService.getMenusByRoleId(request.getId());
+        for (SysMenu menuItem : menus) {
+            responseObserver.onNext(ProtoBufUtils.toProtoBuffer(menuItem, SysMenuOuterClass.SysMenu.class));
+        }
+        responseObserver.onCompleted();
+    }
 }

@@ -20,6 +20,8 @@ service SysMenuService {
     rpc GetUserMenus (ByIdReq) returns (stream SysMenu) {
     }
     rpc GetAllList(GetListReq) returns (stream SysMenu) {}
+
+    rpc GetMenusByRoleId(ByIdReq) returns (stream SysMenu) {}
 }
 
 message ByIdReq {

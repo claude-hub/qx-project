@@ -130,4 +130,19 @@ public class SysMenuController {
         result.setData(TreeUtil.buildByLoop(sysMenus, -1));
         return result;
     }
+
+    /**
+     * 角色的菜单
+     * @param inputDTO
+     * @return
+     */
+    @GetMapping(value = "/roleMenus")
+    public JSONResult getMenusByRoleId(@Valid SearchByIdInputDTO inputDTO) {
+        JSONResult result = new JSONResult();
+        List<SysMenu> menuList = grpcSysMenuClient.getMenusByRoleId(inputDTO.getId());
+//        List<SysMenuDTO> sysMenus= BeanMapper.mapList(menuList, SysMenuDTO.class);
+//        result.setData(TreeUtil.buildByLoop(sysMenus, -1));
+        result.setData(menuList);
+        return result;
+    }
 }

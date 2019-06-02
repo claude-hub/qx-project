@@ -14,6 +14,658 @@ public final class SysRoleOuterClass {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface RolePermsReqOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:sysRole.RolePermsReq)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 role_id = 1;</code>
+     */
+    int getRoleId();
+
+    /**
+     * <code>repeated int32 menu_ids = 2;</code>
+     */
+    java.util.List<java.lang.Integer> getMenuIdsList();
+    /**
+     * <code>repeated int32 menu_ids = 2;</code>
+     */
+    int getMenuIdsCount();
+    /**
+     * <code>repeated int32 menu_ids = 2;</code>
+     */
+    int getMenuIds(int index);
+  }
+  /**
+   * Protobuf type {@code sysRole.RolePermsReq}
+   */
+  public  static final class RolePermsReq extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:sysRole.RolePermsReq)
+      RolePermsReqOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RolePermsReq.newBuilder() to construct.
+    private RolePermsReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RolePermsReq() {
+      menuIds_ = emptyIntList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RolePermsReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              roleId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+                menuIds_ = newIntList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              menuIds_.addInt(input.readInt32());
+              break;
+            }
+            case 18: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+                menuIds_ = newIntList();
+                mutable_bitField0_ |= 0x00000002;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                menuIds_.addInt(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000002) != 0)) {
+          menuIds_.makeImmutable(); // C
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.internal_static_sysRole_RolePermsReq_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.internal_static_sysRole_RolePermsReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.class, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ROLE_ID_FIELD_NUMBER = 1;
+    private int roleId_;
+    /**
+     * <code>int32 role_id = 1;</code>
+     */
+    public int getRoleId() {
+      return roleId_;
+    }
+
+    public static final int MENU_IDS_FIELD_NUMBER = 2;
+    private com.google.protobuf.Internal.IntList menuIds_;
+    /**
+     * <code>repeated int32 menu_ids = 2;</code>
+     */
+    public java.util.List<java.lang.Integer>
+        getMenuIdsList() {
+      return menuIds_;
+    }
+    /**
+     * <code>repeated int32 menu_ids = 2;</code>
+     */
+    public int getMenuIdsCount() {
+      return menuIds_.size();
+    }
+    /**
+     * <code>repeated int32 menu_ids = 2;</code>
+     */
+    public int getMenuIds(int index) {
+      return menuIds_.getInt(index);
+    }
+    private int menuIdsMemoizedSerializedSize = -1;
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (roleId_ != 0) {
+        output.writeInt32(1, roleId_);
+      }
+      if (getMenuIdsList().size() > 0) {
+        output.writeUInt32NoTag(18);
+        output.writeUInt32NoTag(menuIdsMemoizedSerializedSize);
+      }
+      for (int i = 0; i < menuIds_.size(); i++) {
+        output.writeInt32NoTag(menuIds_.getInt(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (roleId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, roleId_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < menuIds_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(menuIds_.getInt(i));
+        }
+        size += dataSize;
+        if (!getMenuIdsList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        menuIdsMemoizedSerializedSize = dataSize;
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq)) {
+        return super.equals(obj);
+      }
+      com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq other = (com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq) obj;
+
+      if (getRoleId()
+          != other.getRoleId()) return false;
+      if (!getMenuIdsList()
+          .equals(other.getMenuIdsList())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ROLE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getRoleId();
+      if (getMenuIdsCount() > 0) {
+        hash = (37 * hash) + MENU_IDS_FIELD_NUMBER;
+        hash = (53 * hash) + getMenuIdsList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code sysRole.RolePermsReq}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:sysRole.RolePermsReq)
+        com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.internal_static_sysRole_RolePermsReq_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.internal_static_sysRole_RolePermsReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.class, com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.Builder.class);
+      }
+
+      // Construct using com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        roleId_ = 0;
+
+        menuIds_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.internal_static_sysRole_RolePermsReq_descriptor;
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq getDefaultInstanceForType() {
+        return com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq build() {
+        com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq buildPartial() {
+        com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq result = new com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.roleId_ = roleId_;
+        if (((bitField0_ & 0x00000002) != 0)) {
+          menuIds_.makeImmutable();
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.menuIds_ = menuIds_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq) {
+          return mergeFrom((com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq other) {
+        if (other == com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq.getDefaultInstance()) return this;
+        if (other.getRoleId() != 0) {
+          setRoleId(other.getRoleId());
+        }
+        if (!other.menuIds_.isEmpty()) {
+          if (menuIds_.isEmpty()) {
+            menuIds_ = other.menuIds_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureMenuIdsIsMutable();
+            menuIds_.addAll(other.menuIds_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int roleId_ ;
+      /**
+       * <code>int32 role_id = 1;</code>
+       */
+      public int getRoleId() {
+        return roleId_;
+      }
+      /**
+       * <code>int32 role_id = 1;</code>
+       */
+      public Builder setRoleId(int value) {
+        
+        roleId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 role_id = 1;</code>
+       */
+      public Builder clearRoleId() {
+        
+        roleId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList menuIds_ = emptyIntList();
+      private void ensureMenuIdsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          menuIds_ = mutableCopy(menuIds_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+      /**
+       * <code>repeated int32 menu_ids = 2;</code>
+       */
+      public java.util.List<java.lang.Integer>
+          getMenuIdsList() {
+        return ((bitField0_ & 0x00000002) != 0) ?
+                 java.util.Collections.unmodifiableList(menuIds_) : menuIds_;
+      }
+      /**
+       * <code>repeated int32 menu_ids = 2;</code>
+       */
+      public int getMenuIdsCount() {
+        return menuIds_.size();
+      }
+      /**
+       * <code>repeated int32 menu_ids = 2;</code>
+       */
+      public int getMenuIds(int index) {
+        return menuIds_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 menu_ids = 2;</code>
+       */
+      public Builder setMenuIds(
+          int index, int value) {
+        ensureMenuIdsIsMutable();
+        menuIds_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 menu_ids = 2;</code>
+       */
+      public Builder addMenuIds(int value) {
+        ensureMenuIdsIsMutable();
+        menuIds_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 menu_ids = 2;</code>
+       */
+      public Builder addAllMenuIds(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureMenuIdsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, menuIds_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 menu_ids = 2;</code>
+       */
+      public Builder clearMenuIds() {
+        menuIds_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:sysRole.RolePermsReq)
+    }
+
+    // @@protoc_insertion_point(class_scope:sysRole.RolePermsReq)
+    private static final com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq();
+    }
+
+    public static com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RolePermsReq>
+        PARSER = new com.google.protobuf.AbstractParser<RolePermsReq>() {
+      @java.lang.Override
+      public RolePermsReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RolePermsReq(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RolePermsReq> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RolePermsReq> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.RolePermsReq getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface ByIdReqOrBuilder extends
       // @@protoc_insertion_point(interface_extends:sysRole.ByIdReq)
       com.google.protobuf.MessageOrBuilder {
@@ -1169,6 +1821,16 @@ public final class SysRoleOuterClass {
      * <code>bool success = 1;</code>
      */
     boolean getSuccess();
+
+    /**
+     * <code>string message = 2;</code>
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
   }
   /**
    * Protobuf type {@code sysRole.Result}
@@ -1183,6 +1845,7 @@ public final class SysRoleOuterClass {
       super(builder);
     }
     private Result() {
+      message_ = "";
     }
 
     @java.lang.Override
@@ -1212,6 +1875,12 @@ public final class SysRoleOuterClass {
             case 8: {
 
               success_ = input.readBool();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              message_ = s;
               break;
             }
             default: {
@@ -1255,6 +1924,40 @@ public final class SysRoleOuterClass {
       return success_;
     }
 
+    public static final int MESSAGE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object message_;
+    /**
+     * <code>string message = 2;</code>
+     */
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1272,6 +1975,9 @@ public final class SysRoleOuterClass {
       if (success_ != false) {
         output.writeBool(1, success_);
       }
+      if (!getMessageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1284,6 +1990,9 @@ public final class SysRoleOuterClass {
       if (success_ != false) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, success_);
+      }
+      if (!getMessageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1302,6 +2011,8 @@ public final class SysRoleOuterClass {
 
       if (getSuccess()
           != other.getSuccess()) return false;
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1316,6 +2027,8 @@ public final class SysRoleOuterClass {
       hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getSuccess());
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1451,6 +2164,8 @@ public final class SysRoleOuterClass {
         super.clear();
         success_ = false;
 
+        message_ = "";
+
         return this;
       }
 
@@ -1478,6 +2193,7 @@ public final class SysRoleOuterClass {
       public com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result buildPartial() {
         com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result result = new com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result(this);
         result.success_ = success_;
+        result.message_ = message_;
         onBuilt();
         return result;
       }
@@ -1528,6 +2244,10 @@ public final class SysRoleOuterClass {
         if (other == com.qianxun.grpc.lib.sysRole.SysRoleOuterClass.Result.getDefaultInstance()) return this;
         if (other.getSuccess() != false) {
           setSuccess(other.getSuccess());
+        }
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1580,6 +2300,75 @@ public final class SysRoleOuterClass {
       public Builder clearSuccess() {
         
         success_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 2;</code>
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 2;</code>
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 2;</code>
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 2;</code>
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
         onChanged();
         return this;
       }
@@ -4711,6 +5500,11 @@ public final class SysRoleOuterClass {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_sysRole_RolePermsReq_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_sysRole_RolePermsReq_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_sysRole_ByIdReq_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -4750,26 +5544,29 @@ public final class SysRoleOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\016sys_role.proto\022\007sysRole\032\037google/protob" +
-      "uf/timestamp.proto\"\025\n\007ByIdReq\022\n\n\002id\030\001 \001(" +
-      "\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(\t\022\021\n\tpage_s" +
-      "ize\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"\031\n\006Result\022\017\n\007suc" +
-      "cess\030\001 \001(\010\"A\n\013BaseSysRole\022\014\n\004name\030\002 \001(\t\022" +
-      "\021\n\trole_desc\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\"\313\001" +
-      "\n\007SysRole\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n\tr" +
-      "ole_desc\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\022.\n\ncre" +
-      "ated_at\030\005 \001(\0132\032.google.protobuf.Timestam" +
-      "p\022.\n\nupdated_at\030\006 \001(\0132\032.google.protobuf." +
-      "Timestamp\022\017\n\007deleted\030\007 \001(\005\022\017\n\007version\030\010 " +
-      "\001(\005\">\n\010PageList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_ro" +
-      "les\030\002 \003(\0132\020.sysRole.SysRole2\207\002\n\016SysRoleS" +
-      "ervice\022/\n\007GetById\022\020.sysRole.ByIdReq\032\020.sy" +
-      "sRole.SysRole\"\000\0223\n\007GetList\022\023.sysRole.Get" +
-      "ListReq\032\021.sysRole.PageList\"\000\0221\n\006Insert\022\024" +
-      ".sysRole.BaseSysRole\032\017.sysRole.Result\"\000\022" +
-      "-\n\006Update\022\020.sysRole.SysRole\032\017.sysRole.Re" +
-      "sult\"\000\022-\n\006Delete\022\020.sysRole.ByIdReq\032\017.sys" +
-      "Role.Result\"\000B\036\n\034com.qianxun.grpc.lib.sy" +
-      "sRoleP\000b\006proto3"
+      "uf/timestamp.proto\"1\n\014RolePermsReq\022\017\n\007ro" +
+      "le_id\030\001 \001(\005\022\020\n\010menu_ids\030\002 \003(\005\"\025\n\007ByIdReq" +
+      "\022\n\n\002id\030\001 \001(\005\"<\n\nGetListReq\022\r\n\005query\030\001 \001(" +
+      "\t\022\021\n\tpage_size\030\002 \001(\005\022\014\n\004page\030\003 \001(\005\"*\n\006Re" +
+      "sult\022\017\n\007success\030\001 \001(\010\022\017\n\007message\030\002 \001(\t\"A" +
+      "\n\013BaseSysRole\022\014\n\004name\030\002 \001(\t\022\021\n\trole_desc" +
+      "\030\003 \001(\t\022\021\n\trole_code\030\004 \001(\t\"\313\001\n\007SysRole\022\n\n" +
+      "\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\021\n\trole_desc\030\003 \001" +
+      "(\t\022\021\n\trole_code\030\004 \001(\t\022.\n\ncreated_at\030\005 \001(" +
+      "\0132\032.google.protobuf.Timestamp\022.\n\nupdated" +
+      "_at\030\006 \001(\0132\032.google.protobuf.Timestamp\022\017\n" +
+      "\007deleted\030\007 \001(\005\022\017\n\007version\030\010 \001(\005\">\n\010PageL" +
+      "ist\022\r\n\005total\030\001 \001(\005\022#\n\tsys_roles\030\002 \003(\0132\020." +
+      "sysRole.SysRole2\301\002\n\016SysRoleService\022/\n\007Ge" +
+      "tById\022\020.sysRole.ByIdReq\032\020.sysRole.SysRol" +
+      "e\"\000\0223\n\007GetList\022\023.sysRole.GetListReq\032\021.sy" +
+      "sRole.PageList\"\000\0221\n\006Insert\022\024.sysRole.Bas" +
+      "eSysRole\032\017.sysRole.Result\"\000\022-\n\006Update\022\020." +
+      "sysRole.SysRole\032\017.sysRole.Result\"\000\022-\n\006De" +
+      "lete\022\020.sysRole.ByIdReq\032\017.sysRole.Result\"" +
+      "\000\0228\n\014AddRolePerms\022\025.sysRole.RolePermsReq" +
+      "\032\017.sysRole.Result\"\000B\036\n\034com.qianxun.grpc." +
+      "lib.sysRoleP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -4784,38 +5581,44 @@ public final class SysRoleOuterClass {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
         }, assigner);
-    internal_static_sysRole_ByIdReq_descriptor =
+    internal_static_sysRole_RolePermsReq_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_sysRole_RolePermsReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_sysRole_RolePermsReq_descriptor,
+        new java.lang.String[] { "RoleId", "MenuIds", });
+    internal_static_sysRole_ByIdReq_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_sysRole_ByIdReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_ByIdReq_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_sysRole_GetListReq_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_sysRole_GetListReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_GetListReq_descriptor,
         new java.lang.String[] { "Query", "PageSize", "Page", });
     internal_static_sysRole_Result_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_sysRole_Result_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_Result_descriptor,
-        new java.lang.String[] { "Success", });
+        new java.lang.String[] { "Success", "Message", });
     internal_static_sysRole_BaseSysRole_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_sysRole_BaseSysRole_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_BaseSysRole_descriptor,
         new java.lang.String[] { "Name", "RoleDesc", "RoleCode", });
     internal_static_sysRole_SysRole_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_sysRole_SysRole_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_SysRole_descriptor,
         new java.lang.String[] { "Id", "Name", "RoleDesc", "RoleCode", "CreatedAt", "UpdatedAt", "Deleted", "Version", });
     internal_static_sysRole_PageList_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_sysRole_PageList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_sysRole_PageList_descriptor,

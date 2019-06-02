@@ -17,6 +17,12 @@ service SysRoleService {
     }
     rpc Delete (ByIdReq) returns (Result) {
     }
+    rpc AddRolePerms (RolePermsReq) returns (Result) {}
+}
+
+message RolePermsReq {
+    int32 role_id = 1;
+    repeated int32 menu_ids = 2;
 }
 
 message ByIdReq {
@@ -31,6 +37,7 @@ message GetListReq {
 
 message Result {
     bool success = 1;
+    string message = 2;
 }
 
 // 新增时,使用的message,以保证用户不传入多余信息

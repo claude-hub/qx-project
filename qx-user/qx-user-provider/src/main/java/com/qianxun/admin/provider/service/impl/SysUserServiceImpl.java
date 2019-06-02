@@ -164,6 +164,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         UpdateDBResponseDTO responseDTO = new UpdateDBResponseDTO();
         SysUser sysUser = new SysUser();
         BeanUtil.copyProperties(addInputDTO, sysUser);
+        sysUser.setPasswordEncrypted(passwordEncoder.encode(sysUser.getPasswordEncrypted()));
         if (this.getOne(Wrappers.<SysUser>query().lambda()
                 .eq(SysUser::getPhone, addInputDTO.getPhone())) != null) {
             responseDTO.setSuccess(false);
@@ -189,16 +190,17 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
                         roles.add(role);
                     }
                     sysUserRoleService.saveBatch(roles);
-
-                    List<SysUserMenu> menus = new ArrayList<>();
-                    for (Integer menuId :
-                            addInputDTO.getPermissionIds()) {
-                        SysUserMenu sysUserMenu = new SysUserMenu();
-                        sysUserMenu.setMenuId(menuId);
-                        sysUserMenu.setUserId(sysUser.getId());
-                        menus.add(sysUserMenu);
+                    if (addInputDTO.getPermissionIds() != null) {
+                        List<SysUserMenu> menus = new ArrayList<>();
+                        for (Integer menuId :
+                                addInputDTO.getPermissionIds()) {
+                            SysUserMenu sysUserMenu = new SysUserMenu();
+                            sysUserMenu.setMenuId(menuId);
+                            sysUserMenu.setUserId(sysUser.getId());
+                            menus.add(sysUserMenu);
+                        }
+                        sysUserMenuService.saveBatch(menus);
                     }
-                    sysUserMenuService.saveBatch(menus);
                     responseDTO.setSuccess(true);
                 }
             }

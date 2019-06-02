@@ -88,4 +88,17 @@ public class SysRoleController {
         result.setData(grpcSysRoleClient.deleteSysRole(req));
         return result;
     }
+
+    /**
+     * 添加角色权限
+     * @param input
+     * @return
+     */
+    @PostMapping(value = "/rolePermissions")
+    public JSONResult addRolePermissions(@Valid SysRolePermissionDTO input) {
+        JSONResult result = new JSONResult();
+        SysRoleOuterClass.RolePermsReq req = ProtoBufUtils.toProtoBuffer(input, SysRoleOuterClass.RolePermsReq.class);
+        result.setData(grpcSysRoleClient.addRolePerms(req));
+        return result;
+    }
 }

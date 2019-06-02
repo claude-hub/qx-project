@@ -5810,7 +5810,7 @@ public final class SysMenuOuterClass {
       "dated_at\030\014 \001(\0132\032.google.protobuf.Timesta" +
       "mp\022\017\n\007deleted\030\r \001(\005\022\017\n\007version\030\016 \001(\005\">\n\010" +
       "PageList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_menus\030\002 \003" +
-      "(\0132\020.sysMenu.SysMenu2\370\002\n\016SysMenuService\022" +
+      "(\0132\020.sysMenu.SysMenu2\264\003\n\016SysMenuService\022" +
       "/\n\007GetById\022\020.sysMenu.ByIdReq\032\020.sysMenu.S" +
       "ysMenu\"\000\0223\n\007GetList\022\023.sysMenu.GetListReq" +
       "\032\021.sysMenu.PageList\"\000\0221\n\006Insert\022\024.sysMen" +
@@ -5819,9 +5819,10 @@ public final class SysMenuOuterClass {
       "-\n\006Delete\022\020.sysMenu.ByIdReq\032\017.sysMenu.Re" +
       "sult\"\000\0226\n\014GetUserMenus\022\020.sysMenu.ByIdReq" +
       "\032\020.sysMenu.SysMenu\"\0000\001\0227\n\nGetAllList\022\023.s" +
-      "ysMenu.GetListReq\032\020.sysMenu.SysMenu\"\0000\001B" +
-      "\036\n\034com.qianxun.grpc.lib.sysMenuP\000b\006proto" +
-      "3"
+      "ysMenu.GetListReq\032\020.sysMenu.SysMenu\"\0000\001\022" +
+      ":\n\020GetMenusByRoleId\022\020.sysMenu.ByIdReq\032\020." +
+      "sysMenu.SysMenu\"\0000\001B\036\n\034com.qianxun.grpc." +
+      "lib.sysMenuP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

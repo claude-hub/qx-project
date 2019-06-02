@@ -46,4 +46,10 @@ public class GrpcSysRoleClient {
         SysRoleOuterClass.Result res = stub.delete(req);
         return res.getSuccess();
     }
+
+    public Boolean addRolePerms(SysRoleOuterClass.RolePermsReq req) {
+        SysRoleServiceGrpc.SysRoleServiceBlockingStub stub = SysRoleServiceGrpc.newBlockingStub(serverChannel);
+        SysRoleOuterClass.Result res = stub.addRolePerms(req);
+        return res.getSuccess();
+    }
 }
