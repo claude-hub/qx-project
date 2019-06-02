@@ -84,7 +84,7 @@ public class SysUserController {
     * @param input
     * @return
     */
-    @DeleteMapping(value = "/delete")
+    @PostMapping(value = "/delete")
     public JSONResult deleteSysUser(@Valid SysUserDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysUserOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.ByIdReq.class);

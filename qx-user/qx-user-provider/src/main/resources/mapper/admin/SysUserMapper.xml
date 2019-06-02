@@ -11,7 +11,8 @@
         <result column="phone" javaType="java.lang.String" jdbcType="VARCHAR" property="phone"/>
         <result column="email" javaType="java.lang.String" jdbcType="VARCHAR" property="email"/>
         <result column="avatar" javaType="java.lang.String" jdbcType="VARCHAR" property="avatar"/>
-        <result column="status" javaType="java.lang.Integer" jdbcType="INTEGER" property="status"/>
+        <result column="locked" javaType="java.lang.Integer" jdbcType="INTEGER" property="locked"/>
+        <result column="deleted" javaType="java.lang.Integer" jdbcType="INTEGER" property="deleted"/>
         <result column="user_name" javaType="java.lang.String" jdbcType="VARCHAR" property="userName"/>
         <result column="reset_password_token" javaType="java.lang.String" jdbcType="VARCHAR"
                 property="resetPasswordToken"/>
@@ -49,6 +50,7 @@
             <if test="query.deptId != null">
                 and `user`.dept_id = #{query.deptId}
             </if>
+            and `user`.deleted = 0
         </where>
         ORDER BY `user`.created_at DESC
     </select>

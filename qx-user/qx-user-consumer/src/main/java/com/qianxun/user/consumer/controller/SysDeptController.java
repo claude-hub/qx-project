@@ -85,7 +85,7 @@ public class SysDeptController {
     * @param input
     * @return
     */
-    @DeleteMapping(value = "/{id}")
+    @PostMapping(value = "/delete")
     public JSONResult deleteSysDept(@Valid SysDeptDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.ByIdReq.class);
