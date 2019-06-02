@@ -187,6 +187,38 @@ public final class SysDeptServiceGrpc {
      return getDeleteMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq,
+      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetAllListMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllList",
+      requestType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq.class,
+      responseType = com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq,
+      com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetAllListMethod() {
+    io.grpc.MethodDescriptor<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getGetAllListMethod;
+    if ((getGetAllListMethod = SysDeptServiceGrpc.getGetAllListMethod) == null) {
+      synchronized (SysDeptServiceGrpc.class) {
+        if ((getGetAllListMethod = SysDeptServiceGrpc.getGetAllListMethod) == null) {
+          SysDeptServiceGrpc.getGetAllListMethod = getGetAllListMethod = 
+              io.grpc.MethodDescriptor.<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq, com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(
+                  "sysDept.SysDeptService", "GetAllList"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept.getDefaultInstance()))
+                  .setSchemaDescriptor(new SysDeptServiceMethodDescriptorSupplier("GetAllList"))
+                  .build();
+          }
+        }
+     }
+     return getGetAllListMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -249,6 +281,13 @@ public final class SysDeptServiceGrpc {
       asyncUnimplementedUnaryCall(getDeleteMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getAllList(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetAllListMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -286,6 +325,13 @@ public final class SysDeptServiceGrpc {
                 com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq,
                 com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>(
                   this, METHODID_DELETE)))
+          .addMethod(
+            getGetAllListMethod(),
+            asyncServerStreamingCall(
+              new MethodHandlers<
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq,
+                com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>(
+                  this, METHODID_GET_ALL_LIST)))
           .build();
     }
   }
@@ -347,6 +393,14 @@ public final class SysDeptServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getDeleteMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getAllList(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq request,
+        io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> responseObserver) {
+      asyncServerStreamingCall(
+          getChannel().newCall(getGetAllListMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -400,6 +454,14 @@ public final class SysDeptServiceGrpc {
     public com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result delete(com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq request) {
       return blockingUnaryCall(
           getChannel(), getDeleteMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept> getAllList(
+        com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq request) {
+      return blockingServerStreamingCall(
+          getChannel(), getGetAllListMethod(), getCallOptions(), request);
     }
   }
 
@@ -467,6 +529,7 @@ public final class SysDeptServiceGrpc {
   private static final int METHODID_INSERT = 2;
   private static final int METHODID_UPDATE = 3;
   private static final int METHODID_DELETE = 4;
+  private static final int METHODID_GET_ALL_LIST = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -504,6 +567,10 @@ public final class SysDeptServiceGrpc {
         case METHODID_DELETE:
           serviceImpl.delete((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.ByIdReq) request,
               (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.Result>) responseObserver);
+          break;
+        case METHODID_GET_ALL_LIST:
+          serviceImpl.getAllList((com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.GetListReq) request,
+              (io.grpc.stub.StreamObserver<com.qianxun.grpc.lib.sysDept.SysDeptOuterClass.SysDept>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -571,6 +638,7 @@ public final class SysDeptServiceGrpc {
               .addMethod(getInsertMethod())
               .addMethod(getUpdateMethod())
               .addMethod(getDeleteMethod())
+              .addMethod(getGetAllListMethod())
               .build();
         }
       }

@@ -17,6 +17,7 @@ service SysDeptService {
     }
     rpc Delete (ByIdReq) returns (Result) {
     }
+    rpc GetAllList(GetListReq) returns (stream SysDept) {}
 }
 
 message ByIdReq {

@@ -1,7 +1,9 @@
 //package com.qianxun.admin.provider;
 //
 //import com.qianxun.admin.api.dto.extend.SysUserDTO;
+//import com.qianxun.admin.api.entity.SysDept;
 //import com.qianxun.admin.api.entity.SysRole;
+//import com.qianxun.admin.provider.service.SysDeptService;
 //import com.qianxun.admin.provider.service.SysRoleService;
 //import com.qianxun.admin.provider.service.SysUserService;
 //import lombok.extern.slf4j.Slf4j;
@@ -27,6 +29,10 @@
 //
 //    @Autowired
 //    private SysUserService sysUserService;
+//
+//    @Autowired
+//    private SysDeptService sysDeptService;
+//
 //
 //    @Test
 //    public void testSelect() {
@@ -55,9 +61,23 @@
 ////        List<SysRole> userList = sysRoleService.list();
 //////        Assert.assertEquals(5, userList.size());
 ////        userList.forEach(System.out::println);
-//        SysUserDTO  sysUserDTO = sysUserService.signIn("15223246130", "123456");
+////        SysUserDTO  sysUserDTO = sysUserService.signIn("15223246130", "123456");
+////
+////        System.out.println(sysUserDTO);
 //
-//        System.out.println(sysUserDTO);
+//        SysDept sysDept = new SysDept();
+//        sysDept.setId(10);
+//        sysDept.setName("adad");
+//        sysDept.setVersion(12);
+//        boolean a = sysDeptService.updateById(sysDept);
+//        System.out.println(a);
+//
+//        SysRole sysRole = new SysRole();
+//        sysRole.setId(1);
+//        sysRole.setName("13");
+//        sysRole.setVersion(12);
+//        boolean b = sysRoleService.updateById(sysRole);
+//        System.out.println(b);
 //    }
 //
 //}

@@ -4461,15 +4461,16 @@ public final class SysDeptOuterClass {
       "ed_at\030\006 \001(\0132\032.google.protobuf.Timestamp\022" +
       "\017\n\007deleted\030\007 \001(\005\022\017\n\007version\030\010 \001(\005\">\n\010Pag" +
       "eList\022\r\n\005total\030\001 \001(\005\022#\n\tsys_depts\030\002 \003(\0132" +
-      "\020.sysDept.SysDept2\207\002\n\016SysDeptService\022/\n\007" +
+      "\020.sysDept.SysDept2\300\002\n\016SysDeptService\022/\n\007" +
       "GetById\022\020.sysDept.ByIdReq\032\020.sysDept.SysD" +
       "ept\"\000\0223\n\007GetList\022\023.sysDept.GetListReq\032\021." +
       "sysDept.PageList\"\000\0221\n\006Insert\022\024.sysDept.B" +
       "aseSysDept\032\017.sysDept.Result\"\000\022-\n\006Update\022" +
       "\020.sysDept.SysDept\032\017.sysDept.Result\"\000\022-\n\006" +
       "Delete\022\020.sysDept.ByIdReq\032\017.sysDept.Resul" +
-      "t\"\000B\036\n\034com.qianxun.grpc.lib.sysDeptP\000b\006p" +
-      "roto3"
+      "t\"\000\0227\n\nGetAllList\022\023.sysDept.GetListReq\032\020" +
+      ".sysDept.SysDept\"\0000\001B\036\n\034com.qianxun.grpc" +
+      ".lib.sysDeptP\000b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

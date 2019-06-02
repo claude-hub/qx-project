@@ -1,18 +1,18 @@
 package com.qianxun.admin.provider.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.extend.SysUserDTO;
+import com.qianxun.admin.api.dto.sysUser.request.SysUserAddInputDTO;
 import com.qianxun.admin.api.dto.sysUser.request.SysUserQueryInputDTO;
-import com.qianxun.admin.api.entity.SysMenu;
-import com.qianxun.admin.api.entity.SysRole;
-import com.qianxun.admin.api.entity.SysUser;
+import com.qianxun.admin.api.dto.sysUser.request.SysUserUpdateInputDTO;
+import com.qianxun.admin.api.entity.*;
 import com.qianxun.admin.provider.mapper.SysUserMapper;
-import com.qianxun.admin.provider.service.SysMenuService;
-import com.qianxun.admin.provider.service.SysRoleService;
-import com.qianxun.admin.provider.service.SysUserService;
+import com.qianxun.admin.provider.service.*;
 import com.qianxun.common.utils.jwt.JwtTokenUtil;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
@@ -35,6 +35,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
+    private final SysUserRoleService sysUserRoleService;
+    private final SysUserMenuService sysUserMenuService;
     private final SysRoleService sysRoleService;
     private final SysMenuService sysMenuService;
     private final JwtTokenUtil jwtTokenUtil;
@@ -153,5 +155,94 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
      */
     private Boolean accountValid(SysUser user, String password) {
         return passwordEncoder.matches(password, user.getPasswordEncrypted());
+    }
+
+    @Override
+    @SneakyThrows
+    @Transactional
+    public UpdateDBResponseDTO addUser(SysUserAddInputDTO addInputDTO){
+        UpdateDBResponseDTO responseDTO = new UpdateDBResponseDTO();
+        SysUser sysUser = new SysUser();
+        BeanUtil.copyProperties(addInputDTO, sysUser);
+        if (this.getOne(Wrappers.<SysUser>query().lambda()
+                .eq(SysUser::getPhone, addInputDTO.getPhone())) != null) {
+            responseDTO.setSuccess(false);
+            responseDTO.setMessage("手机号已存在");
+        } else {
+            if (this.getOne(Wrappers.<SysUser>query().lambda()
+                    .eq(SysUser::getUserName, addInputDTO.getUserName())) != null) {
+                responseDTO.setSuccess(false);
+                responseDTO.setMessage("用户名已存在");
+            } else {
+                if (this.getOne(Wrappers.<SysUser>query().lambda()
+                        .eq(SysUser::getEmail, addInputDTO.getEmail())) != null) {
+                    responseDTO.setSuccess(false);
+                    responseDTO.setMessage("邮箱已存在");
+                } else {
+                    this.save(sysUser);
+                    List<SysUserRole> roles = new ArrayList<>();
+                    for (Integer roleId :
+                            addInputDTO.getRoleIds()) {
+                        SysUserRole role = new SysUserRole();
+                        role.setUserId(sysUser.getId());
+                        role.setRoleId(roleId);
+                        roles.add(role);
+                    }
+                    sysUserRoleService.saveBatch(roles);
+
+                    List<SysUserMenu> menus = new ArrayList<>();
+                    for (Integer menuId :
+                            addInputDTO.getPermissionIds()) {
+                        SysUserMenu sysUserMenu = new SysUserMenu();
+                        sysUserMenu.setMenuId(menuId);
+                        sysUserMenu.setUserId(sysUser.getId());
+                        menus.add(sysUserMenu);
+                    }
+                    sysUserMenuService.saveBatch(menus);
+                    responseDTO.setSuccess(true);
+                }
+            }
+        }
+        return responseDTO;
+    }
+
+    @Override
+    public UpdateDBResponseDTO updateUser(SysUserUpdateInputDTO dto){
+        UpdateDBResponseDTO responseDTO = new UpdateDBResponseDTO();
+        SysUser sysUser = new SysUser();
+        BeanUtil.copyProperties(dto, sysUser);
+        sysUser.setPasswordEncrypted(passwordEncoder.encode(sysUser.getPasswordEncrypted()));
+        if(this.updateById(sysUser)){
+            /**
+             * 保存角色
+             */
+            sysUserRoleService.remove(Wrappers.<SysUserRole>update().lambda()
+                    .eq(SysUserRole::getUserId, dto.getId()));
+            dto.getRoleIds().forEach(roleId -> {
+                SysUserRole userRole = new SysUserRole();
+                userRole.setUserId(sysUser.getId());
+                userRole.setRoleId(roleId);
+                sysUserRoleService.save(userRole);
+            });
+
+            /**
+             * 单独权限
+             */
+            sysUserMenuService.remove(Wrappers.<SysUserMenu>update().lambda()
+                    .eq(SysUserMenu::getUserId, dto.getId()));
+            if (dto.getPermissionIds() != null && dto.getPermissionIds().size() > 0) {
+                dto.getPermissionIds().forEach(menuId -> {
+                    SysUserMenu userMenu = new SysUserMenu();
+                    userMenu.setUserId(sysUser.getId());
+                    userMenu.setMenuId(menuId);
+                    sysUserMenuService.save(userMenu);
+                });
+            }
+            responseDTO.setSuccess(true);
+        }else {
+            responseDTO.setSuccess(false);
+            responseDTO.setMessage("其他人已更新，更新失败!");
+        }
+        return responseDTO;
     }
 }

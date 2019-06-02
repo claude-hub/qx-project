@@ -15,9 +15,11 @@ import io.grpc.stub.StreamObserver;
 import lombok.AllArgsConstructor;
 import net.devh.springboot.autoconfigure.grpc.server.GrpcService;
 
+import java.util.List;
+
 /**
  * @author Cloudy
- *  */
+ */
 @GrpcService(SysDeptOuterClass.class)
 @AllArgsConstructor
 public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBase {
@@ -37,25 +39,25 @@ public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBas
     public void getList(SysDeptOuterClass.GetListReq request,
                         StreamObserver<SysDeptOuterClass.PageList> responseObserver) {
         SysDeptQueryInputDTO inputDTO = ProtoBufUtils.fromProtoBuffer(request, SysDeptQueryInputDTO.class);
-        IPage<SysDept> page = new Page<SysDept>(inputDTO.getPage(),inputDTO.getPageSize());
+        IPage<SysDept> page = new Page<SysDept>(inputDTO.getPage(), inputDTO.getPageSize());
         IPage pageList;
-        if(inputDTO.getQuery() == null || inputDTO.getQuery().equals("")){
+        if (inputDTO.getQuery() == null || inputDTO.getQuery().equals("")) {
             pageList = sysDeptService.page(page);
-        }else {
+        } else {
             pageList = sysDeptService.page(page, Wrappers.<SysDept>query().lambda()
                     .and(item -> item
-                                                                                                                                                                                                     .like(SysDept::getName, inputDTO.getQuery())
-                                         .or()
-                                                                                                                                                                                                             .like(SysDept::getParentId, inputDTO.getQuery())
-                                         .or()
-                                                                                                                                                                                                             .like(SysDept::getSort, inputDTO.getQuery())
-                                         .or()
-                                                                                                                                                                                                             .like(SysDept::getCreatedAt, inputDTO.getQuery())
-                                         .or()
-                                                                                                                                                                                                             .like(SysDept::getUpdatedAt, inputDTO.getQuery())
-                                         .or()
-                                                                                                                                                                                                            .like(SysDept::getDeleted, inputDTO.getQuery())
-                                                                                                                    )
+                            .like(SysDept::getName, inputDTO.getQuery())
+                            .or()
+                            .like(SysDept::getParentId, inputDTO.getQuery())
+                            .or()
+                            .like(SysDept::getSort, inputDTO.getQuery())
+                            .or()
+                            .like(SysDept::getCreatedAt, inputDTO.getQuery())
+                            .or()
+                            .like(SysDept::getUpdatedAt, inputDTO.getQuery())
+                            .or()
+                            .like(SysDept::getDeleted, inputDTO.getQuery())
+                    )
 
             );
         }
@@ -90,6 +92,21 @@ public class GrpcSysDeptService extends SysDeptServiceGrpc.SysDeptServiceImplBas
                        StreamObserver<SysDeptOuterClass.Result> responseObserver) {
         responseDTO.setSuccess(sysDeptService.removeById(request.getId()));
         responseObserver.onNext(ProtoBufUtils.toProtoBuffer(responseDTO, SysDeptOuterClass.Result.class));
+        responseObserver.onCompleted();
+    }
+
+    /**
+     * 获取所有部门列表
+     * @param request
+     * @param responseObserver
+     */
+    @Override
+    public void getAllList(SysDeptOuterClass.GetListReq request,
+                           StreamObserver<SysDeptOuterClass.SysDept> responseObserver) {
+        List<SysDept> depts = sysDeptService.list();
+        for (SysDept deptItem : depts) {
+            responseObserver.onNext(ProtoBufUtils.toProtoBuffer(deptItem, SysDeptOuterClass.SysDept.class));
+        }
         responseObserver.onCompleted();
     }
 }

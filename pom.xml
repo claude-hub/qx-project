@@ -30,7 +30,7 @@
         <spring-boot.version>2.1.3.RELEASE</spring-boot.version>
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <mybatis-plus.version>3.1.1</mybatis-plus.version>
-        <druid.version>1.1.16</druid.version>
+        <druid.version>1.1.17</druid.version>
         <validation-api>2.0.1.Final</validation-api>
 
         <hutool.version>4.5.0</hutool.version>

@@ -3,8 +3,11 @@ package com.qianxun.admin.provider.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.qianxun.admin.api.dto.base.UpdateDBResponseDTO;
 import com.qianxun.admin.api.dto.extend.SysUserDTO;
+import com.qianxun.admin.api.dto.sysUser.request.SysUserAddInputDTO;
 import com.qianxun.admin.api.dto.sysUser.request.SysUserQueryInputDTO;
+import com.qianxun.admin.api.dto.sysUser.request.SysUserUpdateInputDTO;
 import com.qianxun.admin.api.entity.SysUser;
 
 /**
@@ -37,4 +40,8 @@ public interface SysUserService extends IService<SysUser> {
      * @return
      */
     IPage getUserWithRolePage(Page page, SysUserQueryInputDTO dto);
+
+    UpdateDBResponseDTO addUser(SysUserAddInputDTO addInputDTO);
+
+    UpdateDBResponseDTO updateUser(SysUserUpdateInputDTO dto);
 }

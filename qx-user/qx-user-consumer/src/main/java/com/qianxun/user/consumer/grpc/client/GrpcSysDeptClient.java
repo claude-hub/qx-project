@@ -9,6 +9,10 @@ import io.grpc.Channel;
 import net.devh.springboot.autoconfigure.grpc.client.GrpcClient;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 /**
  * @author Cloudy
  *  */
@@ -45,5 +49,17 @@ public class GrpcSysDeptClient {
         SysDeptServiceGrpc.SysDeptServiceBlockingStub stub = SysDeptServiceGrpc.newBlockingStub(serverChannel);
         SysDeptOuterClass.Result res = stub.delete(req);
         return res.getSuccess();
+    }
+
+    public List<SysDept> getAllMenus() {
+        SysDeptServiceGrpc.SysDeptServiceBlockingStub stub = SysDeptServiceGrpc.newBlockingStub(serverChannel);
+        Iterator<SysDeptOuterClass.SysDept> iterator;
+        List<SysDept> menus = new ArrayList<>();
+        iterator = stub.getAllList(null);
+        while (iterator.hasNext()) {
+            SysDeptOuterClass.SysDept sysDept = iterator.next();
+            menus.add(ProtoBufUtils.fromProtoBuffer(sysDept, SysDept.class));
+        }
+        return menus;
     }
 }

@@ -99,11 +99,9 @@ public class SysDeptController {
      * @return 树形菜单
      */
     @GetMapping(value = "/tree")
-    public JSONResult listDeptTrees(@Valid SysDeptQueryInputDTO input) {
+    public JSONResult listDeptTrees() {
         JSONResult result = new JSONResult();
-        SysDeptOuterClass.GetListReq getListReq = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.GetListReq.class);
-        SysDeptResponseDTO responseDTO = grpcSysDeptClient.getSysDeptList(getListReq);
-        List<SysDept> deptList = responseDTO.getSysDepts();
+        List<SysDept> deptList = grpcSysDeptClient.getAllMenus();
         List<DeptTree> trees = BeanMapper.mapList(deptList, DeptTree.class);
         result.setData(TreeUtil.buildByLoop(trees, 0));
         return result;
