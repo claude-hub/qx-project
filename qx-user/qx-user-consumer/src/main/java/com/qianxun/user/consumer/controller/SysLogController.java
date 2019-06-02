@@ -81,7 +81,7 @@ public class SysLogController {
     * @param input
     * @return
     */
-    @DeleteMapping(value = "/{id}")
+    @PostMapping(value = "/delete")
     public JSONResult deleteSysLog(@Valid SysLogDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysLogOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysLogOuterClass.ByIdReq.class);

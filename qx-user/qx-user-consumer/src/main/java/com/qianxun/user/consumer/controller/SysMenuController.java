@@ -46,7 +46,7 @@ public class SysMenuController {
     }
 
     /**
-    * 根据语言分页查询
+    * 根据分页查询
     * @param input
     * @return
     */
@@ -91,7 +91,7 @@ public class SysMenuController {
      * @param input
      * @return
      */
-    @DeleteMapping(value = "/{id}")
+    @PostMapping(value = "/delete")
     public JSONResult deleteSysMenu(@Valid SysMenuDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);

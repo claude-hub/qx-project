@@ -33,6 +33,12 @@ spring:
           predicates:
             - Path=/auth/**
 
+        # 代码生成器
+        - id: qx-generator
+          uri: lb://qx-generator
+          predicates:
+            - Path=/gen/**
+
         # user
         - id: qx-user-consumer
           uri: lb://qx-user-consumer

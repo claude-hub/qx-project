@@ -52,4 +52,6 @@ public class SysMenuDTO extends TreeNode{
      * 0--正常 -1--删除
      */
     private Integer deleted;
+
+    private Integer version;
 }

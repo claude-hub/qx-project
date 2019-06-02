@@ -13,6 +13,7 @@
         <result column="created_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="createdAt"/>
         <result column="updated_at" javaType="java.util.Date" jdbcType="TIMESTAMP" property="updatedAt"/>
         <result column="deleted" javaType="java.lang.Integer" jdbcType="INTEGER" property="deleted"/>
+        <result column="version" javaType="java.lang.Integer" jdbcType="INTEGER" property="version"/>
     </resultMap>
 
     <select id="getMenusByRoleId" resultMap="BaseResultMap">

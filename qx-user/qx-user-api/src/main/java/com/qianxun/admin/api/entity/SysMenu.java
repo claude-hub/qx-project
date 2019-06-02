@@ -72,4 +72,9 @@ public class SysMenu implements Serializable {
      */
     @TableLogic
     private Integer deleted;
+    /**
+     * 乐观锁
+     */
+    @Version
+    private Integer version;
 }

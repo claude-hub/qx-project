@@ -18,7 +18,6 @@ import java.util.List;
  * 代码生成器
  */
 @RestController
-@RequestMapping(value = "/api/generator")
 @AllArgsConstructor
 public class GeneratorController {
     private final GeneratorService generatorService;
