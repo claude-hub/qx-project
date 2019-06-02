@@ -17,11 +17,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class ${className}UpdateInputDTO extends RequestDTO implements Serializable {
     #foreach ($column in $columns)
     ##排除created_at,deleted字段
-        #if($column.columnName != "created_at" && $column.columnName != "deleted")
-        ##updated_at字段
-            #if($column.columnName == "updated_at")
-            @NotNull(message = "上此更新的时间不能为空")
-            @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        #if($column.columnName != "created_at" && $column.columnName != "deleted"
+        && $column.columnName != "updated_at")
+        ##version
+            #if($column.columnName == "version")
+            @NotNull(message = "乐观锁版本不能为空")
             @ApiModelProperty(value = "$column.comments", required = true)
             #else
                 #if($column.nullable == "NO")

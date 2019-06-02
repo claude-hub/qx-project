@@ -18,7 +18,7 @@ import javax.validation.Valid;
  */
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/${classname}")
+@RequestMapping("/${classname}")
 public class ${className}Controller {
     private final Grpc${className}Client grpc${className}Client;
 
@@ -82,7 +82,7 @@ public class ${className}Controller {
     * @param input
     * @return
     */
-    @DeleteMapping(value = "/{id}")
+    @PostMapping(value = "/delete")
     public JSONResult delete${className}(@Valid ${className}DeleteInputDTO input) {
         JSONResult result = new JSONResult();
         ${className}OuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, ${className}OuterClass.ByIdReq.class);

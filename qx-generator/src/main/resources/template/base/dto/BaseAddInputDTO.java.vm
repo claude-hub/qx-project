@@ -19,7 +19,7 @@ public class ${className}AddInputDTO extends RequestDTO implements Serializable 
         #if($column.columnName != $pk.columnName)
         ##排除created_at,updated_at,deleted字段
             #if($column.columnName != "created_at" && $column.columnName != "updated_at"
-            && $column.columnName != "deleted")
+            && $column.columnName != "deleted" && $column.columnName != "version")
                 #if($column.nullable == "NO")
                     #if($column.attrType == "Integer")
                     @NotNull(message = "${column.comments}不能为空")

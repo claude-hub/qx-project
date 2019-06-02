@@ -16,6 +16,7 @@ service ${className}Service {
 
 message ByIdReq {
     int32 id = 1;
+    string message = 2;
 }
 
 message GetListReq {
@@ -34,7 +35,8 @@ message Base${className} {
 #foreach ($column in $columns)
 ##排除主键
     #if($column.columnName != $pk.columnName && $column.columnName != "created_at"
-    &&$column.columnName != "updated_at"&&$column.columnName != "deleted")
+    &&$column.columnName != "updated_at"&&$column.columnName != "deleted"
+    &&$column.columnName != "version")
         #if($column.attrType == "Integer")
         int32 ${column.columnName} = ${i};
         #end

@@ -9,7 +9,7 @@ spring:
   application:
     name: qx-generator
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    url: jdbc:mysql://10.0.75.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
     username: root
     password: root
     #使用阿里的druid数据源
