@@ -54,8 +54,7 @@ public class SysUserUpdateInputDTO extends RequestDTO implements Serializable {
     @ApiModelProperty(value = "重置密码的token")
     private String resetPasswordToken;
 
-    @NotBlank(message = "加密后的密码不能为空")
-    @ApiModelProperty(value = "加密后的密码", required = true)
+    @ApiModelProperty(value = "加密后的密码")
     private String passwordEncrypted;
 
     @ApiModelProperty(value = "当前的token")

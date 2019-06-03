@@ -213,7 +213,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         UpdateDBResponseDTO responseDTO = new UpdateDBResponseDTO();
         SysUser sysUser = new SysUser();
         BeanUtil.copyProperties(dto, sysUser);
-        sysUser.setPasswordEncrypted(passwordEncoder.encode(sysUser.getPasswordEncrypted()));
+        if (sysUser.getPasswordEncrypted() != null) {
+            sysUser.setPasswordEncrypted(passwordEncoder.encode(sysUser.getPasswordEncrypted()));
+        }
         if(this.updateById(sysUser)){
             /**
              * 保存角色

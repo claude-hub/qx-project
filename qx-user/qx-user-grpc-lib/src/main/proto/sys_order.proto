@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_package = "com.qianxun.grpc.lib.sysOrder";
+
+package sysOrder;
+
+import public "google/protobuf/timestamp.proto";
+
+service SysOrderService {
+    rpc GetById(ByIdReq) returns (SysOrder){}
+    rpc GetList(GetListReq) returns (PageList) {}
+    rpc Insert(BaseSysOrder) returns (Result) {}
+    rpc Update(SysOrder) returns (Result) {}
+    rpc Delete(ByIdReq) returns (Result) {}
+}
+
+message ByIdReq {
+    int32 id = 1;
+    string message = 2;
+}
+
+message GetListReq {
+    string query = 1;
+    int32 page_size = 2;
+    int32 page = 3;
+}
+
+message Result {
+    bool success = 1;
+}
+
+// 新增时,使用的message,以保证用户不传入多余信息
+message BaseSysOrder {
+                                string name = 2;
+                                    }
+
+message SysOrder {
+        int32 id = 1;
+                                string name = 2;
+                            google.protobuf.Timestamp created_at = 3;
+                        google.protobuf.Timestamp updated_at = 4;
+            int32 deleted = 5;
+                        int32 version = 6;
+                }
+
+message PageList {
+    int32 total = 1;
+    repeated SysOrder sys_orders = 2;
+}
