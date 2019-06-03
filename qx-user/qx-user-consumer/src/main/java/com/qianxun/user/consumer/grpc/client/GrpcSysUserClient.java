@@ -36,10 +36,10 @@ public class GrpcSysUserClient {
         return ProtoBufUtils.fromProtoBuffer(res, UpdateDBResponseDTO.class);
     }
 
-    public Boolean updateSysUser(SysUserOuterClass.BaseSysUser req) {
+    public UpdateDBResponseDTO updateSysUser(SysUserOuterClass.BaseSysUser req) {
         SysUserServiceGrpc.SysUserServiceBlockingStub stub = SysUserServiceGrpc.newBlockingStub(serverChannel);
         SysUserOuterClass.Result res = stub.update(req);
-        return res.getSuccess();
+        return ProtoBufUtils.fromProtoBuffer(res, UpdateDBResponseDTO.class);
     }
 
     public Boolean deleteSysUser(SysUserOuterClass.ByIdReq req) {
