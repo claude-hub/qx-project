@@ -12,7 +12,7 @@ eureka:
     register-with-eureka: false     #false表示不向注册中心注册自己。
     fetch-registry: false     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
     service-url:
-      defaultZone: http://10.0.75.1:7002/eureka/,http://10.0.75.1:7003/eureka/
+      defaultZone: http://127.0.0.1:7002/eureka/,http://127.0.0.1:7003/eureka/
 
 ---
 spring:
@@ -28,7 +28,7 @@ eureka:
     register-with-eureka: false     #false表示不向注册中心注册自己。
     fetch-registry: false     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
     service-url:
-      defaultZone: http://10.0.75.1:7001/eureka/,http://10.0.75.1:7003/eureka/
+      defaultZone: http://127.0.0.1:7001/eureka/,http://127.0.0.1:7003/eureka/
 
 ---
 spring:
@@ -44,4 +44,4 @@ eureka:
     register-with-eureka: false     #false表示不向注册中心注册自己。
     fetch-registry: false     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
     service-url:
-      defaultZone: http://10.0.75.1:7001/eureka/,http://10.0.75.1:7002/eureka/
+      defaultZone: http://127.0.0.1:7001/eureka/,http://127.0.0.1:7002/eureka/

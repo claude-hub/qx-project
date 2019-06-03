@@ -16,6 +16,7 @@ import com.qianxun.user.consumer.utils.SecurityBeanUtils;
 import com.qianxun.user.consumer.utils.TreeUtil;
 import lombok.AllArgsConstructor;
 import org.apache.commons.beanutils.BeanMap;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Comparator;
@@ -66,6 +67,7 @@ public class SysMenuController {
     * @return
     */
     @PostMapping(value = "/add")
+    @PreAuthorize("@qx.hasPermission('sys_menu_add')")
     public JSONResult addSysMenu(@Valid SysMenuAddInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.BaseSysMenu baseSysMenu = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.BaseSysMenu.class);
@@ -79,6 +81,7 @@ public class SysMenuController {
     * @return
     */
     @PutMapping(value = "/update")
+    @PreAuthorize("@qx.hasPermission('sys_menu_edit')")
     public JSONResult updateSysMenu(@Valid SysMenuUpdateInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.SysMenu sysMenu = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.SysMenu.class);
@@ -92,6 +95,7 @@ public class SysMenuController {
      * @return
      */
     @PostMapping(value = "/delete")
+    @PreAuthorize("@qx.hasPermission('sys_menu_del')")
     public JSONResult deleteSysMenu(@Valid SysMenuDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysMenuOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysMenuOuterClass.ByIdReq.class);

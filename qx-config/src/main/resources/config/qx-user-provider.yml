@@ -11,7 +11,7 @@ grpc:
 spring:
   profiles: 7201
   datasource:
-    url: jdbc:mysql://10.0.75.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
     username: ENC(poF65paNtUaD8EWGDKheuw==)
     password: ENC(V/CENxwW+JzyEs3a0ImgbA==)
     #使用阿里的druid数据源
@@ -26,7 +26,7 @@ grpc:
 spring:
   profiles: 7202
   datasource:
-    url: jdbc:mysql://10.0.75.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
     username: ENC(poF65paNtUaD8EWGDKheuw==)
     password: ENC(V/CENxwW+JzyEs3a0ImgbA==)
     #使用阿里的druid数据源
@@ -41,7 +41,7 @@ grpc:
 spring:
   profiles: 7203
   datasource:
-    url: jdbc:mysql://10.0.75.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/qx-test?useSSL=false&&serverTimezone=GMT%2B8
     username: ENC(poF65paNtUaD8EWGDKheuw==)
     password: ENC(V/CENxwW+JzyEs3a0ImgbA==)
     #使用阿里的druid数据源

@@ -14,6 +14,7 @@ import com.qianxun.user.consumer.grpc.client.GrpcSysUserClient;
 import com.qianxun.user.consumer.utils.SecurityBeanUtils;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.stream.Collectors;
@@ -75,6 +76,7 @@ public class SysUserController {
     * @return
     */
     @PutMapping(value = "/update")
+    @PreAuthorize("@qx.hasPermission('sys_user_edit')")
     public JSONResult updateSysUser(@Valid SysUserUpdateInputDTO input) {
         JSONResult result = new JSONResult();
         SysUserOuterClass.BaseSysUser baseSysUser = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.BaseSysUser.class);
@@ -88,6 +90,7 @@ public class SysUserController {
     * @return
     */
     @PostMapping(value = "/delete")
+    @PreAuthorize("@qx.hasPermission('sys_user_del')")
     public JSONResult deleteSysUser(@Valid SysUserDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysUserOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysUserOuterClass.ByIdReq.class);
@@ -101,6 +104,7 @@ public class SysUserController {
      * @return
      */
     @PostMapping(value = "/add")
+    @PreAuthorize("@qx.hasPermission('sys_user_add')")
     @SneakyThrows
     public JSONResult addSysUser(@Valid SysUserAddInputDTO input) {
         JSONResult result = new JSONResult();

@@ -9,6 +9,7 @@ import com.qianxun.common.utils.result.JSONResult;
 import com.qianxun.grpc.lib.sysRole.SysRoleOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysRoleClient;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
@@ -56,6 +57,7 @@ public class SysRoleController {
     * @return
     */
     @PostMapping(value = "/add")
+    @PreAuthorize("@qx.hasPermission('sys_role_add')")
     public JSONResult addSysRole(@Valid SysRoleAddInputDTO input) {
         JSONResult result = new JSONResult();
         SysRoleOuterClass.BaseSysRole baseSysRole = ProtoBufUtils.toProtoBuffer(input, SysRoleOuterClass.BaseSysRole.class);
@@ -69,6 +71,7 @@ public class SysRoleController {
     * @return
     */
     @PutMapping(value = "/update")
+    @PreAuthorize("@qx.hasPermission('sys_role_edit')")
     public JSONResult updateSysRole(@Valid SysRoleUpdateInputDTO input) {
         JSONResult result = new JSONResult();
         SysRoleOuterClass.SysRole sysRole = ProtoBufUtils.toProtoBuffer(input, SysRoleOuterClass.SysRole.class);
@@ -82,6 +85,7 @@ public class SysRoleController {
     * @return
     */
     @PostMapping(value = "/delete")
+    @PreAuthorize("@qx.hasPermission('sys_role_del')")
     public JSONResult deleteSysRole(@Valid SysRoleDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysRoleOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysRoleOuterClass.ByIdReq.class);

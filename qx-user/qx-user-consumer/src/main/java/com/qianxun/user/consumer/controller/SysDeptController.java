@@ -12,6 +12,7 @@ import com.qianxun.grpc.lib.sysDept.SysDeptOuterClass;
 import com.qianxun.user.consumer.grpc.client.GrpcSysDeptClient;
 import com.qianxun.user.consumer.utils.TreeUtil;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
@@ -60,6 +61,7 @@ public class SysDeptController {
     * @return
     */
     @PostMapping(value = "/add")
+    @PreAuthorize("@qx.hasPermission('sys_dept_add')")
     public JSONResult addSysDept(@Valid SysDeptAddInputDTO input) {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.BaseSysDept baseSysDept = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.BaseSysDept.class);
@@ -73,6 +75,7 @@ public class SysDeptController {
     * @return
     */
     @PutMapping(value = "/update")
+    @PreAuthorize("@qx.hasPermission('sys_dept_edit')")
     public JSONResult updateSysDept(@Valid SysDeptUpdateInputDTO input) {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.SysDept sysDept = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.SysDept.class);
@@ -86,6 +89,7 @@ public class SysDeptController {
     * @return
     */
     @PostMapping(value = "/delete")
+    @PreAuthorize("@qx.hasPermission('sys_dept_del')")
     public JSONResult deleteSysDept(@Valid SysDeptDeleteInputDTO input) {
         JSONResult result = new JSONResult();
         SysDeptOuterClass.ByIdReq req = ProtoBufUtils.toProtoBuffer(input, SysDeptOuterClass.ByIdReq.class);
